@@ -3,4 +3,3 @@ bin
 appsettings.json
 .vs
 *.gen
-properties/launchSettings.json

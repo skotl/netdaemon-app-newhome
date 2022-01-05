@@ -8,9 +8,8 @@ We are currently building the future API model called `HassModel`. We encourage 
 
 1. Make new repository with this repo as template
 2. RENAME `src/_appsettings.json` to `src/appsettings.json`. Edit the appsettings.json file to provide details about how to connect to Home Assistant. Token, Host is mandatory. Rest is optional.
-3. RENAME `src/Properties/_launchSettings.json` to `launchSettings.json`. This instructs your local dev environment to launch the app in Development mode. 
-4. Run dotnet restore in the terminal
-5. Run code generation tool `nd-codegen` to generate strongly typed classes from your entities and services in Home Assistant and copy the generated file in the apps folder
+3. Run dotnet restore in the terminal
+4. Run code generation tool `nd-codegen` to generate strongly typed classes from your entities and services in Home Assistant and copy the generated file in the apps folder
 6. Add and edit your apps in the `/src/apps` folder. There are a few code-snippets you can use.
 7. Copy the edited `/src/apps` to the folder `netdaemon/apps` under your Hass.io config folder. See advanced deployment for alternatives.
 8. Install NetDaemon runtime using add-on or run a docker container. Please see [https://netdaemon.xyz/docs/started/installation](https://netdaemon.xyz/docs/started/installation) for details how to run the daemon.
