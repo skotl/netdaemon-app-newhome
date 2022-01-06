@@ -40,9 +40,6 @@ public class TidesFetcherService
         _tidalConfig = configuration.GetSection("Tides")
             .Get<TideConfiguration>();
 
-        var dotNetEnv = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT");
-        _logger.LogDebug($"donet env is {dotNetEnv}");
-        
         // For debugging, execute the data fetch (almost) immediately
         if (EnvironmentHelper.IsDevelopment)
         {
