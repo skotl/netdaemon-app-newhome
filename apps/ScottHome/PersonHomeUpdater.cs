@@ -25,9 +25,9 @@ public class PersonHomeUpdater
 
         var entities = new Entities(ha);
 
-        entities.Person.ScottLeckie.StateChanges()
+        entities.Person.Scott.StateChanges()
             .Subscribe(e => PersonChangedState(e.Entity.EntityId, e.New?.State));
-        entities.Person.JoLaidlaw.StateChanges()
+        entities.Person.Jo.StateChanges()
             .Subscribe(e => PersonChangedState(e.Entity.EntityId, e.New?.State));
         entities.Person.Theo.StateChanges()
             .Subscribe(e => PersonChangedState(e.Entity.EntityId, e.New?.State));

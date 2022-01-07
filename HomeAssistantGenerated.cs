@@ -159,7 +159,7 @@ namespace HomeAssistantGenerated
 			_haContext = haContext;
 		}
 
-		///<summary>scott office</summary>
+		///<summary>Scott office blind</summary>
 		public CoverEntity ScottOffice => new(_haContext, "cover.scott_office");
 	}
 
@@ -251,10 +251,10 @@ namespace HomeAssistantGenerated
 			_haContext = haContext;
 		}
 
-		///<summary>Jo Laidlaw</summary>
-		public PersonEntity JoLaidlaw => new(_haContext, "person.jo_laidlaw");
-		///<summary>Scott Leckie</summary>
-		public PersonEntity ScottLeckie => new(_haContext, "person.scott_leckie");
+		///<summary>Jo</summary>
+		public PersonEntity Jo => new(_haContext, "person.jo");
+		///<summary>Scott</summary>
+		public PersonEntity Scott => new(_haContext, "person.scott");
 		///<summary>Theo</summary>
 		public PersonEntity Theo => new(_haContext, "person.theo");
 	}
@@ -341,6 +341,8 @@ namespace HomeAssistantGenerated
 		public SensorEntity JoSIphoneSim2 => new(_haContext, "sensor.jo_s_iphone_sim_2");
 		///<summary>Jo's iPhone SSID</summary>
 		public SensorEntity JoSIphoneSsid => new(_haContext, "sensor.jo_s_iphone_ssid");
+		///<summary>LeithTides</summary>
+		public SensorEntity Leithtides => new(_haContext, "sensor.leithtides");
 		///<summary>netdaemon_status</summary>
 		public SensorEntity NetdaemonStatus => new(_haContext, "sensor.netdaemon_status");
 		///<summary>Scott's XR Activity</summary>
@@ -487,6 +489,8 @@ namespace HomeAssistantGenerated
 		public SwitchEntity FrontDoorRecordAudio => new(_haContext, "switch.front_door_record_audio");
 		///<summary>Front door recording</summary>
 		public SwitchEntity FrontDoorRecording => new(_haContext, "switch.front_door_recording");
+		///<summary>netdaemon_devmodeapp</summary>
+		public SwitchEntity NetdaemonDevmodeapp => new(_haContext, "switch.netdaemon_devmodeapp");
 		///<summary>netdaemon_frontdoorlocker</summary>
 		public SwitchEntity NetdaemonFrontdoorlocker => new(_haContext, "switch.netdaemon_frontdoorlocker");
 		///<summary>netdaemon_hello_world_app</summary>
@@ -902,23 +906,11 @@ namespace HomeAssistantGenerated
 
 	public record LightAttributes
 	{
-		[System.Text.Json.Serialization.JsonPropertyNameAttribute("brightness")]
-		public double? Brightness { get; init; }
-
-		[System.Text.Json.Serialization.JsonPropertyNameAttribute("color_mode")]
-		public string? ColorMode { get; init; }
-
-		[System.Text.Json.Serialization.JsonPropertyNameAttribute("color_temp")]
-		public double? ColorTemp { get; init; }
-
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("dynamics")]
 		public string? Dynamics { get; init; }
 
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("friendly_name")]
 		public string? FriendlyName { get; init; }
-
-		[System.Text.Json.Serialization.JsonPropertyNameAttribute("hs_color")]
-		public object? HsColor { get; init; }
 
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("max_mireds")]
 		public double? MaxMireds { get; init; }
@@ -929,17 +921,11 @@ namespace HomeAssistantGenerated
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("mode")]
 		public string? Mode { get; init; }
 
-		[System.Text.Json.Serialization.JsonPropertyNameAttribute("rgb_color")]
-		public object? RgbColor { get; init; }
-
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("supported_color_modes")]
 		public object? SupportedColorModes { get; init; }
 
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("supported_features")]
 		public double? SupportedFeatures { get; init; }
-
-		[System.Text.Json.Serialization.JsonPropertyNameAttribute("xy_color")]
-		public object? XyColor { get; init; }
 	}
 
 	public record LockAttributes
@@ -1058,6 +1044,9 @@ namespace HomeAssistantGenerated
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("Carrier Name")]
 		public string? CarrierName { get; init; }
 
+		[System.Text.Json.Serialization.JsonPropertyNameAttribute("Cellular Technology")]
+		public string? CellularTechnology { get; init; }
+
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("command_set")]
 		public string? CommandSet { get; init; }
 
@@ -1127,6 +1116,9 @@ namespace HomeAssistantGenerated
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("Postal Code")]
 		public string? PostalCode { get; init; }
 
+		[System.Text.Json.Serialization.JsonPropertyNameAttribute("restored")]
+		public bool? Restored { get; init; }
+
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("serial")]
 		public string? Serial { get; init; }
 
@@ -1150,6 +1142,9 @@ namespace HomeAssistantGenerated
 
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("Sub Thoroughfare")]
 		public string? SubThoroughfare { get; init; }
+
+		[System.Text.Json.Serialization.JsonPropertyNameAttribute("supported_features")]
+		public double? SupportedFeatures { get; init; }
 
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("Thoroughfare")]
 		public string? Thoroughfare { get; init; }
