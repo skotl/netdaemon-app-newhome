@@ -32,7 +32,7 @@ public class FrontDoorLocker
         var frontDoorLock = new Entities(_ha).Lock.FrontDoorLock;
         var currentLockStatus = StateEnums.ConvertToLockState(frontDoorLock.State);
 
-        _logger.LogDebug($"Home state changed to {homeStatus}, door lock is {currentHomeStatus}");
+        _logger.LogDebug($"Home state changed to {homeStatus}, door lock is {currentLockStatus}");
         
         switch (currentHomeStatus)
         {
