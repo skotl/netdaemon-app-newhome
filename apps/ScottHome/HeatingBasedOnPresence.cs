@@ -1,4 +1,7 @@
-﻿using daemonapp.apps.ScottHome.Geolocation;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using daemonapp.apps.ScottHome.Geolocation;
 using daemonapp.apps.ScottHome.Geolocation.Model;
 using HomeAssistantGenerated;
 using NetDaemon.HassModel.Entities;
@@ -98,13 +101,14 @@ public class HeatingBasedOnPresence
         var distance = LocationHelper.CalculateDistance(changes?.New?.Attributes?.Latitude,
             changes?.New?.Attributes?.Longitude, _homeLocation);
 
-        _logger.LogDebug($"Person {changes?.Entity?.EntityId} is outside heat zone, checking everyone");
+        _logger.LogDebug($"Tracker {changes?.Entity?.EntityId} is outside heat zone, checking everyone");
         bool allPeopleAreFarAway = true;
         foreach (var trackerId in MyHomeEntityList.GetFamilyTrackers)
         {
-            var tracker = (DeviceTrackerEntity) _ha.Entity(trackerId);
-            if (LocationHelper.CalculateDistance(tracker?.Attributes?.Latitude, tracker?.Attributes?.Longitude,
-                    _homeLocation) < _turnUpReturnDistance)
+            var tracker = _ha.Entity(trackerId);
+
+            if (LocationHelper.CalculateDistance(ExtractCoordindatesFromEntity(tracker), _homeLocation)
+                < _turnUpReturnDistance)
             {
                 _logger.LogDebug($"Tracker {trackerId} is inside the heat zone, aborting check");
                 allPeopleAreFarAway = false;
@@ -119,13 +123,26 @@ public class HeatingBasedOnPresence
         }
     }
 
+    private Coordinates ExtractCoordindatesFromEntity(Entity tracker)
+    {
+        var attributes = tracker.Attributes as IDictionary<string, object>;
+        if (!attributes.ContainsKey("latitude") || !attributes.ContainsKey("longitude"))
+            throw new InvalidDataException(
+                $"Entity with id = {tracker.EntityId} does not contain lat or long attributes");
+
+        return new Coordinates(
+            double.Parse(attributes["latitude"].ToString()),
+            double.Parse(attributes["longitude"].ToString()));
+    }
+
     private void PersonHasMovedCloser(StateChange<DeviceTrackerEntity, EntityState<DeviceTrackerAttributes>> changes,
         Entities entities)
     {
         var distance = LocationHelper.CalculateDistance(changes?.New?.Attributes?.Latitude,
             changes?.New?.Attributes?.Longitude, _homeLocation);
 
-        _logger.LogDebug($"Person {changes?.Entity?.EntityId} is inside heat zone, {(int)distance}m away, setting heat to {_targetTempReturn}");
+        _logger.LogDebug(
+            $"Person {changes?.Entity?.EntityId} is inside heat zone, {(int)distance}m away, setting heat to {_targetTempReturn}");
         entities.Climate.Thermostat1.SetTemperature(_targetTempReturn);
     }
 }
