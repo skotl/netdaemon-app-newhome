@@ -25,8 +25,6 @@ namespace HomeAssistantGenerated
 
 		MediaPlayerEntities MediaPlayer { get; }
 
-		PersistentNotificationEntities PersistentNotification { get; }
-
 		PersonEntities Person { get; }
 
 		SceneEntities Scene { get; }
@@ -60,7 +58,6 @@ namespace HomeAssistantGenerated
 		public LightEntities Light => new(_haContext);
 		public LockEntities Lock => new(_haContext);
 		public MediaPlayerEntities MediaPlayer => new(_haContext);
-		public PersistentNotificationEntities PersistentNotification => new(_haContext);
 		public PersonEntities Person => new(_haContext);
 		public SceneEntities Scene => new(_haContext);
 		public SensorEntities Sensor => new(_haContext);
@@ -108,6 +105,8 @@ namespace HomeAssistantGenerated
 		public BinarySensorEntity FrontDoorMotion => new(_haContext, "binary_sensor.front_door_motion");
 		///<summary>Front Door tamper</summary>
 		public BinarySensorEntity FrontDoorTamper => new(_haContext, "binary_sensor.front_door_tamper");
+		///<summary>frost_forecast</summary>
+		public BinarySensorEntity FrostForecast => new(_haContext, "binary_sensor.frost_forecast");
 		///<summary>garage motion motion</summary>
 		public BinarySensorEntity GarageMotionMotion => new(_haContext, "binary_sensor.garage_motion_motion");
 		///<summary>Hive Hub Status</summary>
@@ -246,18 +245,6 @@ namespace HomeAssistantGenerated
 		public MediaPlayerEntity LgWebosTvBa72 => new(_haContext, "media_player.lg_webos_tv_ba72");
 	}
 
-	public class PersistentNotificationEntities
-	{
-		private readonly NetDaemon.HassModel.Common.IHaContext _haContext;
-		public PersistentNotificationEntities(NetDaemon.HassModel.Common.IHaContext haContext)
-		{
-			_haContext = haContext;
-		}
-
-		///<summary>Login attempt failed</summary>
-		public PersistentNotificationEntity HttpLogin => new(_haContext, "persistent_notification.http_login");
-	}
-
 	public class PersonEntities
 	{
 		private readonly NetDaemon.HassModel.Common.IHaContext _haContext;
@@ -356,8 +343,6 @@ namespace HomeAssistantGenerated
 		public SensorEntity JoSIphoneSim2 => new(_haContext, "sensor.jo_s_iphone_sim_2");
 		///<summary>Jo's iPhone SSID</summary>
 		public SensorEntity JoSIphoneSsid => new(_haContext, "sensor.jo_s_iphone_ssid");
-		///<summary>LeithTides</summary>
-		public SensorEntity Leithtides => new(_haContext, "sensor.leithtides");
 		///<summary>netdaemon_status</summary>
 		public SensorEntity NetdaemonStatus => new(_haContext, "sensor.netdaemon_status");
 		///<summary>Scott's XR Activity</summary>
@@ -500,6 +485,8 @@ namespace HomeAssistantGenerated
 		public SwitchEntity FrontDoorFtp => new(_haContext, "switch.front_door_ftp");
 		///<summary>Front door IR lights</summary>
 		public SwitchEntity FrontDoorIrLights => new(_haContext, "switch.front_door_ir_lights");
+		///<summary>Front door push notifications</summary>
+		public SwitchEntity FrontDoorPushNotifications => new(_haContext, "switch.front_door_push_notifications");
 		///<summary>Front door record audio</summary>
 		public SwitchEntity FrontDoorRecordAudio => new(_haContext, "switch.front_door_record_audio");
 		///<summary>Front door recording</summary>
@@ -508,6 +495,10 @@ namespace HomeAssistantGenerated
 		public SwitchEntity NetdaemonDevmodeapp => new(_haContext, "switch.netdaemon_devmodeapp");
 		///<summary>netdaemon_frontdoorlocker</summary>
 		public SwitchEntity NetdaemonFrontdoorlocker => new(_haContext, "switch.netdaemon_frontdoorlocker");
+		///<summary>netdaemon_garagedehumidifierwarning</summary>
+		public SwitchEntity NetdaemonGaragedehumidifierwarning => new(_haContext, "switch.netdaemon_garagedehumidifierwarning");
+		///<summary>netdaemon_heatingbasedonpresence</summary>
+		public SwitchEntity NetdaemonHeatingbasedonpresence => new(_haContext, "switch.netdaemon_heatingbasedonpresence");
 		///<summary>netdaemon_hello_world_app</summary>
 		public SwitchEntity NetdaemonHelloWorldApp => new(_haContext, "switch.netdaemon_hello_world_app");
 		///<summary>netdaemon_helloappcontext</summary>
@@ -524,6 +515,8 @@ namespace HomeAssistantGenerated
 		public SwitchEntity NetdaemonPersonhomeupdater => new(_haContext, "switch.netdaemon_personhomeupdater");
 		///<summary>netdaemon_schedulingapp</summary>
 		public SwitchEntity NetdaemonSchedulingapp => new(_haContext, "switch.netdaemon_schedulingapp");
+		///<summary>netdaemon_setfrostexpectedsensor</summary>
+		public SwitchEntity NetdaemonSetfrostexpectedsensor => new(_haContext, "switch.netdaemon_setfrostexpectedsensor");
 		///<summary>netdaemon_tidesfetcher</summary>
 		public SwitchEntity NetdaemonTidesfetcher => new(_haContext, "switch.netdaemon_tidesfetcher");
 		///<summary>netdaemon_tidesfetcherservice</summary>
@@ -672,17 +665,6 @@ namespace HomeAssistantGenerated
 		}
 	}
 
-	public record PersistentNotificationEntity : NetDaemon.HassModel.Entities.Entity<PersistentNotificationEntity, NetDaemon.HassModel.Entities.EntityState<PersistentNotificationAttributes>, PersistentNotificationAttributes>
-	{
-		public PersistentNotificationEntity(NetDaemon.HassModel.Common.IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public PersistentNotificationEntity(NetDaemon.HassModel.Entities.Entity entity) : base(entity)
-		{
-		}
-	}
-
 	public record PersonEntity : NetDaemon.HassModel.Entities.Entity<PersonEntity, NetDaemon.HassModel.Entities.EntityState<PersonAttributes>, PersonAttributes>
 	{
 		public PersonEntity(NetDaemon.HassModel.Common.IHaContext haContext, string entityId) : base(haContext, entityId)
@@ -803,6 +785,9 @@ namespace HomeAssistantGenerated
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("icon")]
 		public string? Icon { get; init; }
 
+		[System.Text.Json.Serialization.JsonPropertyNameAttribute("integration")]
+		public string? Integration { get; init; }
+
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("mode")]
 		public object? Mode { get; init; }
 
@@ -881,6 +866,9 @@ namespace HomeAssistantGenerated
 
 	public record CoverAttributes
 	{
+		[System.Text.Json.Serialization.JsonPropertyNameAttribute("current_position")]
+		public double? CurrentPosition { get; init; }
+
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("friendly_name")]
 		public string? FriendlyName { get; init; }
 
@@ -929,12 +917,6 @@ namespace HomeAssistantGenerated
 
 	public record LightAttributes
 	{
-		[System.Text.Json.Serialization.JsonPropertyNameAttribute("brightness")]
-		public double? Brightness { get; init; }
-
-		[System.Text.Json.Serialization.JsonPropertyNameAttribute("color_mode")]
-		public string? ColorMode { get; init; }
-
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("dynamics")]
 		public string? Dynamics { get; init; }
 
@@ -964,6 +946,9 @@ namespace HomeAssistantGenerated
 
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("lock_state")]
 		public string? LockState { get; init; }
+
+		[System.Text.Json.Serialization.JsonPropertyNameAttribute("method")]
+		public string? Method { get; init; }
 	}
 
 	public record MediaPlayerAttributes
@@ -982,18 +967,6 @@ namespace HomeAssistantGenerated
 
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("supported_features")]
 		public double? SupportedFeatures { get; init; }
-	}
-
-	public record PersistentNotificationAttributes
-	{
-		[System.Text.Json.Serialization.JsonPropertyNameAttribute("friendly_name")]
-		public string? FriendlyName { get; init; }
-
-		[System.Text.Json.Serialization.JsonPropertyNameAttribute("message")]
-		public string? Message { get; init; }
-
-		[System.Text.Json.Serialization.JsonPropertyNameAttribute("title")]
-		public string? Title { get; init; }
 	}
 
 	public record PersonAttributes
@@ -1068,7 +1041,7 @@ namespace HomeAssistantGenerated
 		public bool? AllowsVoIP { get; init; }
 
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("Areas Of Interest")]
-		public object? AreasOfInterest { get; init; }
+		public string? AreasOfInterest { get; init; }
 
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("backups")]
 		public object? Backups { get; init; }
@@ -1084,6 +1057,9 @@ namespace HomeAssistantGenerated
 
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("Carrier Name")]
 		public string? CarrierName { get; init; }
+
+		[System.Text.Json.Serialization.JsonPropertyNameAttribute("Cellular Technology")]
+		public string? CellularTechnology { get; init; }
 
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("command_set")]
 		public string? CommandSet { get; init; }
