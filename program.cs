@@ -3,6 +3,8 @@ using NetDaemon;
 
 try
 {
+    Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+    
     await Host.CreateDefaultBuilder(args)
         .UseDefaultNetDaemonLogging()
         .UseNetDaemon()
