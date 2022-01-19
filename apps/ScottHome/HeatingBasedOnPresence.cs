@@ -8,7 +8,6 @@ using NetDaemon.HassModel.Entities;
 
 namespace daemonapp.apps.ScottHome;
 
-[Focus]
 [NetDaemonApp]
 public class HeatingBasedOnPresence
 {
