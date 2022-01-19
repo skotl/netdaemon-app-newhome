@@ -1,10 +1,14 @@
+using HomeAssistantGenerated.Logging;
 using Microsoft.Extensions.Hosting;
 using NetDaemon;
 
 try
 {
+    Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+    
     await Host.CreateDefaultBuilder(args)
-        .UseDefaultNetDaemonLogging()
+        //.UseDefaultNetDaemonLogging()
+        .UseCustomLogging()
         .UseNetDaemon()
         .Build()
         .RunAsync();
