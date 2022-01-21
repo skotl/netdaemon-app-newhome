@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using NetDaemon.Infrastructure.Config;
 using Serilog;
 
 namespace HomeAssistantGenerated.Logging;
