@@ -19,6 +19,8 @@ namespace HomeAssistantGenerated
 
 		GroupEntities Group { get; }
 
+		InputBooleanEntities InputBoolean { get; }
+
 		LightEntities Light { get; }
 
 		LockEntities Lock { get; }
@@ -55,6 +57,7 @@ namespace HomeAssistantGenerated
 		public CoverEntities Cover => new(_haContext);
 		public DeviceTrackerEntities DeviceTracker => new(_haContext);
 		public GroupEntities Group => new(_haContext);
+		public InputBooleanEntities InputBoolean => new(_haContext);
 		public LightEntities Light => new(_haContext);
 		public LockEntities Lock => new(_haContext);
 		public MediaPlayerEntities MediaPlayer => new(_haContext);
@@ -85,6 +88,8 @@ namespace HomeAssistantGenerated
 		public AutomationEntity LowBatteryCheck => new(_haContext, "automation.low_battery_check");
 		///<summary>Notify on stale backups</summary>
 		public AutomationEntity NotifyOnStaleBackups => new(_haContext, "automation.notify_on_stale_backups");
+		///<summary>Set frost sensor</summary>
+		public AutomationEntity SetFrostSensor => new(_haContext, "automation.set_frost_sensor");
 		///<summary>Turn off lights at midnight</summary>
 		public AutomationEntity TurnOffLightsAtMidnight => new(_haContext, "automation.turn_off_lights_at_midnight");
 	}
@@ -191,6 +196,34 @@ namespace HomeAssistantGenerated
 
 		///<summary>Family</summary>
 		public GroupEntity Family => new(_haContext, "group.family");
+	}
+
+	public class InputBooleanEntities
+	{
+		private readonly NetDaemon.HassModel.Common.IHaContext _haContext;
+		public InputBooleanEntities(NetDaemon.HassModel.Common.IHaContext haContext)
+		{
+			_haContext = haContext;
+		}
+
+		///<summary>netdaemon_appsconcurrencytestapp</summary>
+		public InputBooleanEntity NetdaemonAppsconcurrencytestapp => new(_haContext, "input_boolean.netdaemon_appsconcurrencytestapp");
+		///<summary>netdaemon_appsconcurrencytestapp2</summary>
+		public InputBooleanEntity NetdaemonAppsconcurrencytestapp2 => new(_haContext, "input_boolean.netdaemon_appsconcurrencytestapp2");
+		///<summary>netdaemon_appshelloapp</summary>
+		public InputBooleanEntity NetdaemonAppshelloapp => new(_haContext, "input_boolean.netdaemon_appshelloapp");
+		///<summary>netdaemon_daemonappappsscotthomefrontdoorlocker</summary>
+		public InputBooleanEntity NetdaemonDaemonappappsscotthomefrontdoorlocker => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthomefrontdoorlocker");
+		///<summary>netdaemon_daemonappappsscotthomeheatingbasedonpresence</summary>
+		public InputBooleanEntity NetdaemonDaemonappappsscotthomeheatingbasedonpresence => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthomeheatingbasedonpresence");
+		///<summary>netdaemon_daemonappappsscotthomelivingroomlightsservice</summary>
+		public InputBooleanEntity NetdaemonDaemonappappsscotthomelivingroomlightsservice => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthomelivingroomlightsservice");
+		///<summary>netdaemon_daemonappappsscotthomepersonhomeupdater</summary>
+		public InputBooleanEntity NetdaemonDaemonappappsscotthomepersonhomeupdater => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthomepersonhomeupdater");
+		///<summary>netdaemon_daemonappappsscotthomesetfrostexpectedsensorservice</summary>
+		public InputBooleanEntity NetdaemonDaemonappappsscotthomesetfrostexpectedsensorservice => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthomesetfrostexpectedsensorservice");
+		///<summary>netdaemon_daemonappappsscotthometidesfetcherservice</summary>
+		public InputBooleanEntity NetdaemonDaemonappappsscotthometidesfetcherservice => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthometidesfetcherservice");
 	}
 
 	public class LightEntities
@@ -343,6 +376,8 @@ namespace HomeAssistantGenerated
 		public SensorEntity JoSIphoneSim2 => new(_haContext, "sensor.jo_s_iphone_sim_2");
 		///<summary>Jo's iPhone SSID</summary>
 		public SensorEntity JoSIphoneSsid => new(_haContext, "sensor.jo_s_iphone_ssid");
+		///<summary>LeithTides</summary>
+		public SensorEntity Leithtides => new(_haContext, "sensor.leithtides");
 		///<summary>netdaemon_status</summary>
 		public SensorEntity NetdaemonStatus => new(_haContext, "sensor.netdaemon_status");
 		///<summary>Scott's XR Activity</summary>
@@ -517,6 +552,8 @@ namespace HomeAssistantGenerated
 		public SwitchEntity NetdaemonSchedulingapp => new(_haContext, "switch.netdaemon_schedulingapp");
 		///<summary>netdaemon_setfrostexpectedsensor</summary>
 		public SwitchEntity NetdaemonSetfrostexpectedsensor => new(_haContext, "switch.netdaemon_setfrostexpectedsensor");
+		///<summary>netdaemon_setfrostexpectedsensorservice</summary>
+		public SwitchEntity NetdaemonSetfrostexpectedsensorservice => new(_haContext, "switch.netdaemon_setfrostexpectedsensorservice");
 		///<summary>netdaemon_tidesfetcher</summary>
 		public SwitchEntity NetdaemonTidesfetcher => new(_haContext, "switch.netdaemon_tidesfetcher");
 		///<summary>netdaemon_tidesfetcherservice</summary>
@@ -628,6 +665,17 @@ namespace HomeAssistantGenerated
 		}
 
 		public GroupEntity(NetDaemon.HassModel.Entities.Entity entity) : base(entity)
+		{
+		}
+	}
+
+	public record InputBooleanEntity : NetDaemon.HassModel.Entities.Entity<InputBooleanEntity, NetDaemon.HassModel.Entities.EntityState<InputBooleanAttributes>, InputBooleanAttributes>
+	{
+		public InputBooleanEntity(NetDaemon.HassModel.Common.IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public InputBooleanEntity(NetDaemon.HassModel.Entities.Entity entity) : base(entity)
 		{
 		}
 	}
@@ -915,8 +963,23 @@ namespace HomeAssistantGenerated
 		public double? Order { get; init; }
 	}
 
+	public record InputBooleanAttributes
+	{
+		[System.Text.Json.Serialization.JsonPropertyNameAttribute("editable")]
+		public bool? Editable { get; init; }
+
+		[System.Text.Json.Serialization.JsonPropertyNameAttribute("friendly_name")]
+		public string? FriendlyName { get; init; }
+	}
+
 	public record LightAttributes
 	{
+		[System.Text.Json.Serialization.JsonPropertyNameAttribute("brightness")]
+		public double? Brightness { get; init; }
+
+		[System.Text.Json.Serialization.JsonPropertyNameAttribute("color_mode")]
+		public string? ColorMode { get; init; }
+
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("dynamics")]
 		public string? Dynamics { get; init; }
 
@@ -941,6 +1004,9 @@ namespace HomeAssistantGenerated
 
 	public record LockAttributes
 	{
+		[System.Text.Json.Serialization.JsonPropertyNameAttribute("code_id")]
+		public string? CodeId { get; init; }
+
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("friendly_name")]
 		public string? FriendlyName { get; init; }
 
@@ -958,9 +1024,6 @@ namespace HomeAssistantGenerated
 
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("friendly_name")]
 		public string? FriendlyName { get; init; }
-
-		[System.Text.Json.Serialization.JsonPropertyNameAttribute("source")]
-		public string? Source { get; init; }
 
 		[System.Text.Json.Serialization.JsonPropertyNameAttribute("source_list")]
 		public object? SourceList { get; init; }
@@ -4220,21 +4283,6 @@ namespace HomeAssistantGenerated
 			_haContext.CallService("netdaemon", "entity_update", null, new NetdaemonEntityUpdateParameters{EntityId = @entityId, State = @state, Icon = @icon, Unit = @unit, Attributes = @attributes});
 		}
 
-		public void GetTidalEvents()
-		{
-			_haContext.CallService("netdaemon", "get_tidal_events", null);
-		}
-
-		public void LivingroomLightsOff()
-		{
-			_haContext.CallService("netdaemon", "livingroom_lights_off", null);
-		}
-
-		public void LivingroomLightsOn()
-		{
-			_haContext.CallService("netdaemon", "livingroom_lights_on", null);
-		}
-
 		///<summary>Register a new service for netdaemon, used by the daemon and not to be used by users</summary>
 		public void RegisterService(NetdaemonRegisterServiceParameters data)
 		{
@@ -5792,6 +5840,27 @@ namespace HomeAssistantGenerated
 		public static void BoostHeatingOn(this ClimateEntity entity, DateTime @timePeriod, double? @temperature = null)
 		{
 			entity.CallService("boost_heating_on", new HiveBoostHeatingOnParameters{TimePeriod = @timePeriod, Temperature = @temperature});
+		}
+	}
+
+	public static class InputBooleanEntityExtensionMethods
+	{
+		///<summary>Toggle an input boolean</summary>
+		public static void Toggle(this InputBooleanEntity entity)
+		{
+			entity.CallService("toggle");
+		}
+
+		///<summary>Turn off an input boolean</summary>
+		public static void TurnOff(this InputBooleanEntity entity)
+		{
+			entity.CallService("turn_off");
+		}
+
+		///<summary>Turn on an input boolean</summary>
+		public static void TurnOn(this InputBooleanEntity entity)
+		{
+			entity.CallService("turn_on");
 		}
 	}
 

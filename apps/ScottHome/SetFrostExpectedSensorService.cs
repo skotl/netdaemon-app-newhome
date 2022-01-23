@@ -8,7 +8,6 @@ using NetDaemon.HassModel.Integration;
 
 namespace daemonapp.apps.ScottHome;
 
-[Focus]
 [NetDaemonApp]
 public class SetFrostExpectedSensorService
 {
@@ -21,13 +20,11 @@ public class SetFrostExpectedSensorService
     private const string WarningSetFalse = "off";
     private readonly IHaContext _ha;
     private readonly ILogger<SetFrostExpectedSensorService> _logger;
-    private readonly INetDaemon _netDaemon;
 
-    public SetFrostExpectedSensorService(IHaContext ha, ILogger<SetFrostExpectedSensorService> logger, INetDaemon netDaemon, INetDaemonScheduler scheduler)
+    public SetFrostExpectedSensorService(IHaContext ha, ILogger<SetFrostExpectedSensorService> logger, INetDaemonScheduler scheduler)
     {
         _ha = ha;
         _logger = logger;
-        _netDaemon = netDaemon;
 
         _logger.LogInformation($"{nameof(SetFrostExpectedSensorService)} started");
         
@@ -95,20 +92,23 @@ public class SetFrostExpectedSensorService
         // });
         //
         
-    _netDaemon.SetState("binary_sensor.frost_forecast", WarningSetTrue,
-        attributes: new
-        {
-            friendly_name = "Frost forecast", icon = "mdi:snowflake-alert", coldTemp = coldest.TempLow,
-            coldDate = coldest.DateTime, clearTemp = clearingBy?.TempLow, clearDate = clearingBy?.DateTime
-        });
+        var services = new Services(_ha);
+        services.Netdaemon.EntityUpdate("binary_sensor.frost_forecast", WarningSetTrue);
+        //attributes: new
+        //{
+        //    friendly_name = "Frost forecast", icon = "mdi:snowflake-alert", coldTemp = coldest.TempLow,
+        //    coldDate = coldest.DateTime, clearTemp = clearingBy?.TempLow, clearDate = clearingBy?.DateTime
+        //});
     }
 
     private void ClearFrostWarning()
     {
-        _netDaemon.SetState("binary_sensor.frost_forecast", WarningSetFalse,
-            attributes: new
-            {
-                friendly_name = "Frost forecast", icon = "mdi:sun-thermometer-outline"
-            });
+        // _netDaemon.SetState("binary_sensor.frost_forecast", WarningSetFalse,
+        //     attributes: new
+        //     {
+        //         friendly_name = "Frost forecast", icon = "mdi:sun-thermometer-outline"
+        //     });
+        var services = new Services(_ha);
+        services.Netdaemon.EntityUpdate("binary_sensor.frost_forecast", WarningSetFalse);
     }
 }

@@ -13,13 +13,11 @@ public class PersonHomeUpdater
 {
     private readonly IHaContext _ha;
     private readonly ILogger<PersonHomeUpdater> _logger;
-    private readonly INetDaemon _netDaemon;
 
-    public PersonHomeUpdater(IHaContext ha, ILogger<PersonHomeUpdater> logger, INetDaemon netDaemon)
+    public PersonHomeUpdater(IHaContext ha, ILogger<PersonHomeUpdater> logger)
     {
         _ha = ha;
         _logger = logger;
-        _netDaemon = netDaemon;
 
         _logger.LogInformation($"{nameof(PersonHomeUpdater)} started");
 
@@ -56,8 +54,11 @@ public class PersonHomeUpdater
         var currentState = homeOccupancy.State;
 
         _logger.LogDebug($"Home presence currently {currentState}, should be {verifiedState}");
-        
+
         if (currentState == null || currentState != verifiedStateValue)
-            _netDaemon.SetState(homeOccupancy.EntityId, verifiedStateValue);
+        {
+            var services = new Services(_ha);
+            services.Netdaemon.EntityUpdate(homeOccupancy.EntityId, verifiedStateValue);
+        }
     }
 }

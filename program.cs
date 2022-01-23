@@ -1,23 +1,33 @@
-using HomeAssistantGenerated.Logging;
 using Microsoft.Extensions.Hosting;
-using NetDaemon;
+using System.Reflection;
+using HomeAssistantGenerated.Logging;
+using NetDaemon.Extensions.Scheduler;
+using NetDaemon.Extensions.Tts;
+using NetDaemon.Runtime;
+
+#pragma warning disable CA1812
 
 try
 {
-    Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-    
+    //Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
     await Host.CreateDefaultBuilder(args)
-        //.UseDefaultNetDaemonLogging()
+        .UseNetDaemonAppSettings()
         .UseCustomLogging()
-        .UseNetDaemon()
+        .UseNetDaemonRuntime()
+        .UseNetDaemonTextToSpeech()
+        .ConfigureServices((_, services) =>
+            services
+                .AddAppsFromAssembly(Assembly.GetExecutingAssembly())
+                .AddNetDaemonStateManager()
+                .AddNetDaemonScheduler()
+        )
         .Build()
-        .RunAsync();
+        .RunAsync()
+        .ConfigureAwait(false);
 }
 catch (Exception e)
 {
     Console.WriteLine($"Failed to start host... {e}");
-}
-finally
-{
-    NetDaemon.NetDaemonExtensions.CleanupNetDaemon();
+    throw;
 }
