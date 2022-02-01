@@ -96,7 +96,8 @@ public class SetFrostExpectedSensorService
             attributes: new
             {
                 friendly_name = "Frost forecast", icon = "mdi:snowflake-alert", coldTemp = coldest.TempLow,
-                coldDate = coldest.DateTime, clearTemp = clearingBy?.TempLow, clearDate = clearingBy?.DateTime
+                coldDate = coldest.DateTime, clearTemp = clearingBy?.TempLow, clearDate = clearingBy?.DateTime,
+                updated = DateTime.UtcNow
             });
     }
 
@@ -106,7 +107,8 @@ public class SetFrostExpectedSensorService
             WarningSetFalse,
             attributes: new
             {
-                friendly_name = "Frost forecast", icon = "mdi:sun-thermometer-outline"
+                friendly_name = "Frost forecast", icon = "mdi:sun-thermometer-outline",
+                updated = DateTime.UtcNow
             });
     }
 }
