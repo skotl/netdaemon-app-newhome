@@ -26,6 +26,9 @@ public class FrostSensorNotifications
 
         _logger.LogInformation($"{sensorArg.Entity.EntityId} changed state to {sensorArg.New.State}");
         var frostSensor = new Entities(_ha).BinarySensor.FrostForecast;
+        if (sensorArg.New.State == "unavailable")
+            return;
+        
         var state = StateEnums.ConvertToBinaryState(sensorArg.New.State);
 
         if (state)
