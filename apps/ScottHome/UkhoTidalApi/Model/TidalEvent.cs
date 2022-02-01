@@ -14,4 +14,9 @@ public class TidalEvent
     public decimal Height { get; set; }
     public bool IsApproximateHeight { get; set; }
     public DateTime Date { get; set; }
+
+    public override string ToString()
+    {
+        return $"{EventType} at {this.DateTime.ToLocalTime()}, {Height}m";
+    }
 }

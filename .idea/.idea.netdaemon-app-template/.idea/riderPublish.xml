@@ -4,6 +4,7 @@
     <option name="locations">
       <list>
         <option value="//homeassistant/config/netdaemon/apps" />
+        <option value="//homeassistant/config/netdaemon3" />
       </list>
     </option>
   </component>

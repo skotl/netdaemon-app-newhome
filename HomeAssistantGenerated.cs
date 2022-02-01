@@ -30,8 +30,6 @@ namespace HomeAssistantGenerated
 
 		MediaPlayerEntities MediaPlayer { get; }
 
-		PersistentNotificationEntities PersistentNotification { get; }
-
 		PersonEntities Person { get; }
 
 		SceneEntities Scene { get; }
@@ -66,7 +64,6 @@ namespace HomeAssistantGenerated
 		public LightEntities Light => new(_haContext);
 		public LockEntities Lock => new(_haContext);
 		public MediaPlayerEntities MediaPlayer => new(_haContext);
-		public PersistentNotificationEntities PersistentNotification => new(_haContext);
 		public PersonEntities Person => new(_haContext);
 		public SceneEntities Scene => new(_haContext);
 		public SensorEntities Sensor => new(_haContext);
@@ -220,6 +217,8 @@ namespace HomeAssistantGenerated
 		public InputBooleanEntity NetdaemonAppshelloapp => new(_haContext, "input_boolean.netdaemon_appshelloapp");
 		///<summary>netdaemon_daemonappappsscotthomefrontdoorlocker</summary>
 		public InputBooleanEntity NetdaemonDaemonappappsscotthomefrontdoorlocker => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthomefrontdoorlocker");
+		///<summary>netdaemon_daemonappappsscotthomefrostsensornotifications</summary>
+		public InputBooleanEntity NetdaemonDaemonappappsscotthomefrostsensornotifications => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthomefrostsensornotifications");
 		///<summary>netdaemon_daemonappappsscotthomeheatingbasedonpresence</summary>
 		public InputBooleanEntity NetdaemonDaemonappappsscotthomeheatingbasedonpresence => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthomeheatingbasedonpresence");
 		///<summary>netdaemon_daemonappappsscotthomelivingroomlightsservice</summary>
@@ -282,18 +281,6 @@ namespace HomeAssistantGenerated
 
 		///<summary>LG webOS TV BA72</summary>
 		public MediaPlayerEntity LgWebosTvBa72 => new(_haContext, "media_player.lg_webos_tv_ba72");
-	}
-
-	public class PersistentNotificationEntities
-	{
-		private readonly IHaContext _haContext;
-		public PersistentNotificationEntities(IHaContext haContext)
-		{
-			_haContext = haContext;
-		}
-
-		///<summary>New devices discovered</summary>
-		public PersistentNotificationEntity ConfigEntryDiscovery => new(_haContext, "persistent_notification.config_entry_discovery");
 	}
 
 	public class PersonEntities
@@ -394,8 +381,6 @@ namespace HomeAssistantGenerated
 		public SensorEntity JoSIphoneSim2 => new(_haContext, "sensor.jo_s_iphone_sim_2");
 		///<summary>Jo's iPhone SSID</summary>
 		public SensorEntity JoSIphoneSsid => new(_haContext, "sensor.jo_s_iphone_ssid");
-		///<summary>LeithTides</summary>
-		public SensorEntity Leithtides => new(_haContext, "sensor.leithtides");
 		///<summary>netdaemon_status</summary>
 		public SensorEntity NetdaemonStatus => new(_haContext, "sensor.netdaemon_status");
 		///<summary>Scott's XR Activity</summary>
@@ -416,6 +401,8 @@ namespace HomeAssistantGenerated
 		public SensorEntity ScottSXrSim2 => new(_haContext, "sensor.scott_s_xr_sim_2");
 		///<summary>Scott's XR SSID</summary>
 		public SensorEntity ScottSXrSsid => new(_haContext, "sensor.scott_s_xr_ssid");
+		///<summary>testtides</summary>
+		public SensorEntity Testtides => new(_haContext, "sensor.testtides");
 		///<summary>Theo’s iPhone 6S Activity</summary>
 		public SensorEntity TheosIphone6sActivity => new(_haContext, "sensor.theos_iphone_6s_activity");
 		///<summary>Theo’s iPhone 6S Battery State</summary>
@@ -731,17 +718,6 @@ namespace HomeAssistantGenerated
 		}
 	}
 
-	public record PersistentNotificationEntity : Entity<PersistentNotificationEntity, EntityState<PersistentNotificationAttributes>, PersistentNotificationAttributes>
-	{
-		public PersistentNotificationEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public PersistentNotificationEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
 	public record PersonEntity : Entity<PersonEntity, EntityState<PersonAttributes>, PersonAttributes>
 	{
 		public PersonEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
@@ -1050,9 +1026,6 @@ namespace HomeAssistantGenerated
 
 		[JsonPropertyName("lock_state")]
 		public string? LockState { get; init; }
-
-		[JsonPropertyName("method")]
-		public string? Method { get; init; }
 	}
 
 	public record MediaPlayerAttributes
@@ -1071,18 +1044,6 @@ namespace HomeAssistantGenerated
 
 		[JsonPropertyName("supported_features")]
 		public double? SupportedFeatures { get; init; }
-	}
-
-	public record PersistentNotificationAttributes
-	{
-		[JsonPropertyName("friendly_name")]
-		public string? FriendlyName { get; init; }
-
-		[JsonPropertyName("message")]
-		public string? Message { get; init; }
-
-		[JsonPropertyName("title")]
-		public string? Title { get; init; }
 	}
 
 	public record PersonAttributes
@@ -1174,9 +1135,6 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("Carrier Name")]
 		public string? CarrierName { get; init; }
 
-		[JsonPropertyName("Cellular Technology")]
-		public string? CellularTechnology { get; init; }
-
 		[JsonPropertyName("command_set")]
 		public string? CommandSet { get; init; }
 
@@ -1225,6 +1183,9 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("Low Power Mode")]
 		public bool? LowPowerMode { get; init; }
 
+		[JsonPropertyName("me")]
+		public string? Me { get; init; }
+
 		[JsonPropertyName("Mobile Country Code")]
 		public string? MobileCountryCode { get; init; }
 
@@ -1245,9 +1206,6 @@ namespace HomeAssistantGenerated
 
 		[JsonPropertyName("Postal Code")]
 		public string? PostalCode { get; init; }
-
-		[JsonPropertyName("restored")]
-		public bool? Restored { get; init; }
 
 		[JsonPropertyName("serial")]
 		public string? Serial { get; init; }
@@ -1272,9 +1230,6 @@ namespace HomeAssistantGenerated
 
 		[JsonPropertyName("Sub Thoroughfare")]
 		public string? SubThoroughfare { get; init; }
-
-		[JsonPropertyName("supported_features")]
-		public double? SupportedFeatures { get; init; }
 
 		[JsonPropertyName("Thoroughfare")]
 		public string? Thoroughfare { get; init; }

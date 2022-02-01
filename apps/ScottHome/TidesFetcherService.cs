@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Net.Http;
-using System.Threading.Tasks;
 using daemonapp.apps.ScottHome.Helpers;
 using daemonapp.apps.ScottHome.UkhoTidalApi;
 using daemonapp.apps.ScottHome.UkhoTidalApi.Model;
@@ -62,7 +63,8 @@ public class TidesFetcherService
         var events = GetTidalEvents(tidalApi, stationId);
         _logger.LogDebug($"Retrieved {events.Count} tidal events");
 
-        
+        if (events.Any())
+            UpdateTidesSensor(events);
     }
 
     private string? GetStationId(TidalApi tidalApi)
@@ -86,4 +88,35 @@ public class TidesFetcherService
 
         return tidalEventsGetter.Result;
     }
+    
+    private void UpdateTidesSensor(List<TidalEvent> events)
+    {
+        if (events.Count < 4)
+            throw new InvalidDataException($"Expected at least four events, but got {events.Count}");
+        
+        var entityId = "sensor.leithtides";
+    
+        var data = new
+        {
+            Summary1 = events[0].ToString(),
+            Summary2 = events[1].ToString(),
+            Summary3 = events[2].ToString(),
+            Summary4 = events[3].ToString(),
+            EventType1 = events[0].EventType.ToString(),
+            EventType2 = events[1].EventType.ToString(),
+            EventType3 = events[2].EventType.ToString(),
+            EventType4 = events[3].EventType.ToString(),
+            Date1 = events[0].DateTime.ToLocalTime(),
+            Date2 = events[1].DateTime.ToLocalTime(),
+            Date3 = events[2].DateTime.ToLocalTime(),
+            Date4 = events[3].DateTime.ToLocalTime(),
+            Height1 = events[0].Height,
+            Height2 = events[1].Height,
+            Height3 = events[2].Height,
+            Height4 = events[3].Height
+        };
+        
+        new Services(_ha).Netdaemon.EntityUpdate(entityId: entityId, state: DateTime.UtcNow.ToLocalTime(), attributes: data);
+    }
+
 }
