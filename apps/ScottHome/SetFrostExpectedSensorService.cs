@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using daemonapp.apps.ScottHome.Helpers;
 using daemonapp.apps.ScottHome.Weather;
 using daemonapp.apps.ScottHome.Weather.Model;
 using HomeAssistantGenerated;
@@ -30,18 +31,8 @@ public class SetFrostExpectedSensorService
 
         _logger.LogInformation($"{nameof(SetFrostExpectedSensorService)} started");
 
-        ha.RegisterServiceCallBack<ServiceData>("check_for_frost", e =>
-            {
-                try
-                {
-                    SetFrostExpected();
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex, ex.Message);
-                }
-            }
-        );
+        ha.RegisterServiceCallBack<ServiceData>("check_for_frost",
+            e => SafeMethodExecuteWithLogging.Execute(SetFrostExpected, _logger));
     }
 
     private void SetFrostExpected()

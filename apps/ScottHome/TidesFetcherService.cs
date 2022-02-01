@@ -47,7 +47,8 @@ public class TidesFetcherService
             scheduler.RunIn(TimeSpan.FromSeconds(1), GetTides);
         }
 
-        ha.RegisterServiceCallBack<ServiceData>("get_tidal_events", e => GetTides());
+        ha.RegisterServiceCallBack<ServiceData>("get_tidal_events",
+            e => SafeMethodExecuteWithLogging.Execute(GetTides, _logger));
     }
 
     private void GetTides()

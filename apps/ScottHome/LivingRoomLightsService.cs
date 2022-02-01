@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using daemonapp.apps.ScottHome.Helpers;
 using HomeAssistantGenerated;
 using NetDaemon.Extensions.Scheduler;
 using NetDaemon.HassModel.Integration;
@@ -27,8 +28,10 @@ public class LivingRoomLightsService
 
         _logger.LogInformation($"{nameof(LivingRoomLightsService)} started");
 
-        ha.RegisterServiceCallBack<ServiceData>("livingroom_lights_on", e => TurnOnLivingRoom());
-        ha.RegisterServiceCallBack<ServiceData>("livingroom_lights_off", e => TurnOffLivingRoom());
+        ha.RegisterServiceCallBack<ServiceData>("livingroom_lights_on",
+            e => SafeMethodExecuteWithLogging.Execute(TurnOnLivingRoom, _logger));
+        ha.RegisterServiceCallBack<ServiceData>("livingroom_lights_off",
+            e => SafeMethodExecuteWithLogging.Execute(TurnOffLivingRoom, _logger));
     }
 
     /// <summary>
