@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using daemonapp.apps.ScottHome.Weather;
 using daemonapp.apps.ScottHome.Weather.Model;
@@ -14,28 +15,40 @@ public class SetFrostExpectedSensorService
     private class ServiceData
     {
     };
-    
+
     private const double FrostWarningThreshold = 5.0;
     private const string WarningSetTrue = "on";
     private const string WarningSetFalse = "off";
     private readonly IHaContext _ha;
     private readonly ILogger<SetFrostExpectedSensorService> _logger;
 
-    public SetFrostExpectedSensorService(IHaContext ha, ILogger<SetFrostExpectedSensorService> logger, INetDaemonScheduler scheduler)
+    public SetFrostExpectedSensorService(IHaContext ha, ILogger<SetFrostExpectedSensorService> logger,
+        INetDaemonScheduler scheduler)
     {
         _ha = ha;
         _logger = logger;
 
         _logger.LogInformation($"{nameof(SetFrostExpectedSensorService)} started");
-        
-        ha.RegisterServiceCallBack<ServiceData>("check_for_frost", e => SetFrostExpected());
+
+        ha.RegisterServiceCallBack<ServiceData>("check_for_frost", e =>
+            {
+                try
+                {
+                    SetFrostExpected();
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, ex.Message);
+                }
+            }
+        );
     }
 
     private void SetFrostExpected()
     {
         var entities = new Entities(_ha);
         var currentFrostExpected = entities.BinarySensor.FrostForecast.State;
-        
+
         var forecasts = WeatherHelper.GetWeatherForecast(entities.Weather.Home).ToList();
 
         if (!forecasts.Any())
@@ -64,6 +77,9 @@ public class SetFrostExpectedSensorService
                 _logger.LogDebug("Not going to be frosty, state change - clear warning");
                 ClearFrostWarning();
                 break;
+            default:
+                throw new InvalidDataException(
+                    $"Unhandled state for {nameof(currentFrostExpected)} == {currentFrostExpected}, {nameof(willBeFrosty)} == {willBeFrosty}");
         }
     }
 
@@ -74,7 +90,7 @@ public class SetFrostExpectedSensorService
         {
             if (f.TempLow <= FrostWarningThreshold && !inFrost)
                 inFrost = true;
-            else if (f.TempLow > FrostWarningThreshold)
+            else if (f.TempLow > FrostWarningThreshold && inFrost)
                 return f;
         }
 
@@ -84,31 +100,22 @@ public class SetFrostExpectedSensorService
 
     private void SetFrostWarning(WeatherForecast coldest, WeatherForecast? clearingBy)
     {
-        // new Services(_ha).Netdaemon.EntityUpdate(new NetdaemonEntityUpdateParameters
-        // {
-        //     EntityId = "binary_sensor.frost_forecast",
-        //     State = "on", // WarningSetTrue,
-        //     Icon = "mdi:snowflake-alert"
-        // });
-        //
-        
-        var services = new Services(_ha);
-        services.Netdaemon.EntityUpdate("binary_sensor.frost_forecast", WarningSetTrue);
-        //attributes: new
-        //{
-        //    friendly_name = "Frost forecast", icon = "mdi:snowflake-alert", coldTemp = coldest.TempLow,
-        //    coldDate = coldest.DateTime, clearTemp = clearingBy?.TempLow, clearDate = clearingBy?.DateTime
-        //});
+        new Services(_ha).Netdaemon.EntityUpdate("binary_sensor.frost_forecast",
+            WarningSetTrue,
+            attributes: new
+            {
+                friendly_name = "Frost forecast", icon = "mdi:snowflake-alert", coldTemp = coldest.TempLow,
+                coldDate = coldest.DateTime, clearTemp = clearingBy?.TempLow, clearDate = clearingBy?.DateTime
+            });
     }
 
     private void ClearFrostWarning()
     {
-        // _netDaemon.SetState("binary_sensor.frost_forecast", WarningSetFalse,
-        //     attributes: new
-        //     {
-        //         friendly_name = "Frost forecast", icon = "mdi:sun-thermometer-outline"
-        //     });
-        var services = new Services(_ha);
-        services.Netdaemon.EntityUpdate("binary_sensor.frost_forecast", WarningSetFalse);
+        new Services(_ha).Netdaemon.EntityUpdate("binary_sensor.frost_forecast",
+            WarningSetFalse,
+            attributes: new
+            {
+                friendly_name = "Frost forecast", icon = "mdi:sun-thermometer-outline"
+            });
     }
 }
