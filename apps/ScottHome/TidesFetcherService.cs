@@ -117,6 +117,11 @@ public class TidesFetcherService
         };
         
         new Services(_ha).Netdaemon.EntityUpdate(entityId: entityId, state: DateTime.UtcNow.ToLocalTime(), attributes: data);
+
+        var newTidesEntityId = "input_datetime.tides";
+        
+        new Services(_ha).Netdaemon.EntityUpdate(entityId: newTidesEntityId, state: DateTime.UtcNow.ToLocalTime().ToShortDateString(), attributes: data);
+        new Entities(_ha).InputDatetime.Tides.SetDatetime();
     }
 
 }
