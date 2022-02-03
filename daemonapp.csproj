@@ -18,6 +18,11 @@
 
   <ItemGroup>
     <Compile Remove="tests\**" />
+    <Compile Remove="apps\ScottHome\FrontDoorLocker.cs" />
+    <Compile Remove="apps\ScottHome\FrostSensorNotifications.cs" />
+    <Compile Remove="apps\ScottHome\HeatingBasedOnPresence.cs" />
+    <Compile Remove="apps\ScottHome\LivingRoomLightsService.cs" />
+    <Compile Remove="apps\ScottHome\SetFrostExpectedSensorService.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="JoySoftware.NetDaemon.AppModel" Version="22.5.1" />
