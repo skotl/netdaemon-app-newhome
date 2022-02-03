@@ -1,6 +1,8 @@
 using Microsoft.Extensions.Hosting;
 using System.Reflection;
 using HomeAssistantGenerated.Logging;
+using Microsoft.Extensions.DependencyInjection;
+using MqttHandler;
 using NetDaemon.Extensions.Scheduler;
 using NetDaemon.Extensions.Tts;
 using NetDaemon.Runtime;
@@ -21,6 +23,7 @@ try
                 .AddAppsFromAssembly(Assembly.GetExecutingAssembly())
                 .AddNetDaemonStateManager()
                 .AddNetDaemonScheduler()
+                .AddMqttExtensions()
         )
         .Build()
         .RunAsync()
