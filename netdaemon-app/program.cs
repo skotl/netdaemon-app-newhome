@@ -9,7 +9,7 @@ using NetDaemon.Runtime;
 
 try
 {
-    //Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+    Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
     await Host.CreateDefaultBuilder(args)
         .UseNetDaemonAppSettings()
