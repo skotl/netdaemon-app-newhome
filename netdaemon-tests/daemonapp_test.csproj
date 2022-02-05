@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\daemonapp.csproj" />
+    <ProjectReference Include="..\netdaemon-app\daemonapp.csproj" />
   </ItemGroup>
 
 
