@@ -18,24 +18,28 @@
 
   <ItemGroup>
     <Compile Remove="tests\**" />
-    <Compile Remove="apps\ScottHome\FrontDoorLocker.cs" />
     <Compile Remove="apps\ScottHome\FrostSensorNotifications.cs" />
     <Compile Remove="apps\ScottHome\HeatingBasedOnPresence.cs" />
+    <Compile Remove="apps\ScottHome\FrontDoorLocker.cs" />
     <Compile Remove="apps\ScottHome\LivingRoomLightsService.cs" />
-    <Compile Remove="apps\ScottHome\SetFrostExpectedSensorService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="JoySoftware.NetDaemon.AppModel" Version="22.5.2" />
-    <PackageReference Include="JoySoftware.NetDaemon.Client" Version="22.5.2" />
-    <PackageReference Include="JoySoftware.NetDaemon.Extensions.Mqtt" Version="22.5.2" />
-    <PackageReference Include="JoySoftware.NetDaemon.Extensions.Tts" Version="22.5.2" />
-    <PackageReference Include="JoySoftware.NetDaemon.HassModel" Version="22.5.2" />
-    <PackageReference Include="JoySoftware.NetDaemon.Extensions.Scheduling" Version="22.5.1" />
-    <PackageReference Include="JoySoftware.NetDaemon.HassModel.Integration" Version="22.5.2" />
-    <PackageReference Include="JoySoftware.NetDaemon.Runtime" Version="22.5.2" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
-    <PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
+    <PackageReference Include="JoySoftware.NetDaemon.AppModel" Version="22.7.0" />
+    <PackageReference Include="JoySoftware.NetDaemon.Client" Version="22.7.0" />
+    <PackageReference Include="JoySoftware.NetDaemon.Extensions.Mqtt" Version="22.7.0" />
+    <PackageReference Include="JoySoftware.NetDaemon.Extensions.Tts" Version="22.7.0" />
+    <PackageReference Include="JoySoftware.NetDaemon.HassModel" Version="22.7.0" />
+    <PackageReference Include="JoySoftware.NetDaemon.Extensions.Scheduling" Version="22.7.0" />
+    <PackageReference Include="JoySoftware.NetDaemon.HassModel.Integration" Version="22.7.0" />
+    <PackageReference Include="JoySoftware.NetDaemon.Runtime" Version="22.7.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+    <PackageReference Include="MQTTnet" Version="3.1.2" />
+    <PackageReference Include="MQTTnet.Extensions.ManagedClient" Version="3.1.2" />
+    <PackageReference Include="Serilog.AspNetCore" Version="5.0.0" />
     <PackageReference Include="System.Reactive" Version="5.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="apps\ScottHome\EntityRegistrationHelpers" />
   </ItemGroup>
 
 

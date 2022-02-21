@@ -1,6 +1,8 @@
 using Microsoft.Extensions.Hosting;
 using System.Reflection;
+using daemonapp.apps;
 using HomeAssistantGenerated.Logging;
+using NetDaemon.Extensions.MqttEntityManager;
 using NetDaemon.Extensions.Scheduler;
 using NetDaemon.Extensions.Tts;
 using NetDaemon.Runtime;
@@ -16,6 +18,8 @@ try
         .UseCustomLogging()
         .UseNetDaemonRuntime()
         .UseNetDaemonTextToSpeech()
+        .UseNetDaemonMqttEntityManagement()
+        .UseScottServices()
         .ConfigureServices((_, services) =>
             services
                 .AddAppsFromAssembly(Assembly.GetExecutingAssembly())
