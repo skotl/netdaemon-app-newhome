@@ -26,8 +26,6 @@ namespace HomeAssistantGenerated
 
 		InputBooleanEntities InputBoolean { get; }
 
-		InputDatetimeEntities InputDatetime { get; }
-
 		InputTextEntities InputText { get; }
 
 		LightEntities Light { get; }
@@ -35,6 +33,8 @@ namespace HomeAssistantGenerated
 		LockEntities Lock { get; }
 
 		MediaPlayerEntities MediaPlayer { get; }
+
+		PersistentNotificationEntities PersistentNotification { get; }
 
 		PersonEntities Person { get; }
 
@@ -68,11 +68,11 @@ namespace HomeAssistantGenerated
 		public DeviceTrackerEntities DeviceTracker => new(_haContext);
 		public GroupEntities Group => new(_haContext);
 		public InputBooleanEntities InputBoolean => new(_haContext);
-		public InputDatetimeEntities InputDatetime => new(_haContext);
 		public InputTextEntities InputText => new(_haContext);
 		public LightEntities Light => new(_haContext);
 		public LockEntities Lock => new(_haContext);
 		public MediaPlayerEntities MediaPlayer => new(_haContext);
+		public PersistentNotificationEntities PersistentNotification => new(_haContext);
 		public PersonEntities Person => new(_haContext);
 		public SceneEntities Scene => new(_haContext);
 		public SensorEntities Sensor => new(_haContext);
@@ -128,18 +128,10 @@ namespace HomeAssistantGenerated
 		public BinarySensorEntity GarageMotionMotion => new(_haContext, "binary_sensor.garage_motion_motion");
 		///<summary>Hive Hub Status</summary>
 		public BinarySensorEntity HiveHubStatus => new(_haContext, "binary_sensor.hive_hub_status");
-		///<summary>Home occupancy</summary>
-		public BinarySensorEntity HomeOccupancy => new(_haContext, "binary_sensor.home_occupancy");
 		///<summary>Kitchen Door contact</summary>
 		public BinarySensorEntity KitchenDoorContact => new(_haContext, "binary_sensor.kitchen_door_contact");
 		///<summary>Kitchen Door tamper</summary>
 		public BinarySensorEntity KitchenDoorTamper => new(_haContext, "binary_sensor.kitchen_door_tamper");
-		///<summary>Leith Tides</summary>
-		public BinarySensorEntity LeithTides => new(_haContext, "binary_sensor.leith_tides");
-		///<summary>mqtt test</summary>
-		public BinarySensorEntity MqttTest => new(_haContext, "binary_sensor.mqtt_test");
-		///<summary>nd_test</summary>
-		public BinarySensorEntity NdTest => new(_haContext, "binary_sensor.nd_test");
 		///<summary>Remote UI</summary>
 		public BinarySensorEntity RemoteUi => new(_haContext, "binary_sensor.remote_ui");
 		///<summary>RPi Power status</summary>
@@ -238,6 +230,24 @@ namespace HomeAssistantGenerated
 			_haContext = haContext;
 		}
 
+		///<summary>dev_netdaemon_apps_concurrency_test_app</summary>
+		public InputBooleanEntity DevNetdaemonAppsConcurrencyTestApp => new(_haContext, "input_boolean.dev_netdaemon_apps_concurrency_test_app");
+		///<summary>dev_netdaemon_apps_concurrency_test_app2</summary>
+		public InputBooleanEntity DevNetdaemonAppsConcurrencyTestApp2 => new(_haContext, "input_boolean.dev_netdaemon_apps_concurrency_test_app2");
+		///<summary>dev_netdaemon_apps_hello_app</summary>
+		public InputBooleanEntity DevNetdaemonAppsHelloApp => new(_haContext, "input_boolean.dev_netdaemon_apps_hello_app");
+		///<summary>dev_netdaemon_apps_yaml_app</summary>
+		public InputBooleanEntity DevNetdaemonAppsYamlApp => new(_haContext, "input_boolean.dev_netdaemon_apps_yaml_app");
+		///<summary>dev_netdaemon_daemonapp_apps_scott_home_mqtt_tester</summary>
+		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeMqttTester => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_mqtt_tester");
+		///<summary>dev_netdaemon_daemonapp_apps_scott_home_person_home_updater</summary>
+		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomePersonHomeUpdater => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_person_home_updater");
+		///<summary>dev_netdaemon_daemonapp_apps_scott_home_set_frost_expected_sensor_service</summary>
+		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeSetFrostExpectedSensorService => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_set_frost_expected_sensor_service");
+		///<summary>dev_netdaemon_daemonapp_apps_scott_home_tides_fetcher_service</summary>
+		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeTidesFetcherService => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_tides_fetcher_service");
+		///<summary>dev_netdaemon_debug_host_apps_extensions_mqtt_entity_manager_app</summary>
+		public InputBooleanEntity DevNetdaemonDebugHostAppsExtensionsMqttEntityManagerApp => new(_haContext, "input_boolean.dev_netdaemon_debug_host_apps_extensions_mqtt_entity_manager_app");
 		///<summary>FrostySense</summary>
 		public InputBooleanEntity Frostysense => new(_haContext, "input_boolean.frostysense");
 		///<summary>netdaemon_daemonapp_apps_scott_home_mqtt_tester</summary>
@@ -248,18 +258,20 @@ namespace HomeAssistantGenerated
 		public InputBooleanEntity NetdaemonDaemonappAppsScottHomeSetFrostExpectedSensorService => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_set_frost_expected_sensor_service");
 		///<summary>netdaemon_daemonapp_apps_scott_home_tides_fetcher_service</summary>
 		public InputBooleanEntity NetdaemonDaemonappAppsScottHomeTidesFetcherService => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_tides_fetcher_service");
-	}
-
-	public class InputDatetimeEntities
-	{
-		private readonly IHaContext _haContext;
-		public InputDatetimeEntities(IHaContext haContext)
-		{
-			_haContext = haContext;
-		}
-
-		///<summary>Tides</summary>
-		public InputDatetimeEntity Tides => new(_haContext, "input_datetime.tides");
+		///<summary>netdaemon_daemonappappsscotthomefrontdoorlocker</summary>
+		public InputBooleanEntity NetdaemonDaemonappappsscotthomefrontdoorlocker => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthomefrontdoorlocker");
+		///<summary>netdaemon_daemonappappsscotthomefrostsensornotifications</summary>
+		public InputBooleanEntity NetdaemonDaemonappappsscotthomefrostsensornotifications => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthomefrostsensornotifications");
+		///<summary>netdaemon_daemonappappsscotthomeheatingbasedonpresence</summary>
+		public InputBooleanEntity NetdaemonDaemonappappsscotthomeheatingbasedonpresence => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthomeheatingbasedonpresence");
+		///<summary>netdaemon_daemonappappsscotthomelivingroomlightsservice</summary>
+		public InputBooleanEntity NetdaemonDaemonappappsscotthomelivingroomlightsservice => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthomelivingroomlightsservice");
+		///<summary>netdaemon_daemonappappsscotthomepersonhomeupdater</summary>
+		public InputBooleanEntity NetdaemonDaemonappappsscotthomepersonhomeupdater => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthomepersonhomeupdater");
+		///<summary>netdaemon_daemonappappsscotthomesetfrostexpectedsensorservice</summary>
+		public InputBooleanEntity NetdaemonDaemonappappsscotthomesetfrostexpectedsensorservice => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthomesetfrostexpectedsensorservice");
+		///<summary>netdaemon_daemonappappsscotthometidesfetcherservice</summary>
+		public InputBooleanEntity NetdaemonDaemonappappsscotthometidesfetcherservice => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthometidesfetcherservice");
 	}
 
 	public class InputTextEntities
@@ -328,6 +340,18 @@ namespace HomeAssistantGenerated
 		public MediaPlayerEntity Xboxone => new(_haContext, "media_player.xboxone");
 	}
 
+	public class PersistentNotificationEntities
+	{
+		private readonly IHaContext _haContext;
+		public PersistentNotificationEntities(IHaContext haContext)
+		{
+			_haContext = haContext;
+		}
+
+		///<summary>New devices discovered</summary>
+		public PersistentNotificationEntity ConfigEntryDiscovery => new(_haContext, "persistent_notification.config_entry_discovery");
+	}
+
 	public class PersonEntities
 	{
 		private readonly IHaContext _haContext;
@@ -352,6 +376,8 @@ namespace HomeAssistantGenerated
 			_haContext = haContext;
 		}
 
+		///<summary>Dog lights</summary>
+		public SceneEntity DogLights => new(_haContext, "scene.dog_lights");
 		///<summary>Goodbye!</summary>
 		public SceneEntity Goodbye => new(_haContext, "scene.goodbye");
 		///<summary>I'm Back!</summary>
@@ -392,6 +418,8 @@ namespace HomeAssistantGenerated
 		public SceneEntity TheosRoomSpringBlossom => new(_haContext, "scene.theos_room_spring_blossom");
 		///<summary>Theo’s room - Tropical twilight</summary>
 		public SceneEntity TheosRoomTropicalTwilight => new(_haContext, "scene.theos_room_tropical_twilight");
+		///<summary>Watching TV</summary>
+		public SceneEntity WatchingTv => new(_haContext, "scene.watching_tv");
 	}
 
 	public class SensorEntities
@@ -428,10 +456,8 @@ namespace HomeAssistantGenerated
 		public SensorEntity JoSIphoneSsid => new(_haContext, "sensor.jo_s_iphone_ssid");
 		///<summary>Leith Tides</summary>
 		public SensorEntity LeithTides => new(_haContext, "sensor.leith_tides");
-		///<summary>Leith Tides</summary>
+		///<summary>leithtides</summary>
 		public SensorEntity Leithtides => new(_haContext, "sensor.leithtides");
-		///<summary>mqtt_updates</summary>
-		public SensorEntity MqttUpdates => new(_haContext, "sensor.mqtt_updates");
 		///<summary>Scott's XR Activity</summary>
 		public SensorEntity ScottSXrActivity => new(_haContext, "sensor.scott_s_xr_activity");
 		///<summary>Scott's XR Battery State</summary>
@@ -450,6 +476,8 @@ namespace HomeAssistantGenerated
 		public SensorEntity ScottSXrSim2 => new(_haContext, "sensor.scott_s_xr_sim_2");
 		///<summary>Scott's XR SSID</summary>
 		public SensorEntity ScottSXrSsid => new(_haContext, "sensor.scott_s_xr_ssid");
+		///<summary>Testing</summary>
+		public SensorEntity Testing => new(_haContext, "sensor.testing");
 		///<summary>Theo’s iPhone 6S Activity</summary>
 		public SensorEntity TheosIphone6sActivity => new(_haContext, "sensor.theos_iphone_6s_activity");
 		///<summary>Theo’s iPhone 6S Battery State</summary>
@@ -578,8 +606,6 @@ namespace HomeAssistantGenerated
 		public SwitchEntity FrontDoorRecordAudio => new(_haContext, "switch.front_door_record_audio");
 		///<summary>Front door recording</summary>
 		public SwitchEntity FrontDoorRecording => new(_haContext, "switch.front_door_recording");
-		///<summary>Helto switch</summary>
-		public SwitchEntity HeltoSwitch => new(_haContext, "switch.helto_switch");
 		///<summary>On air lamp</summary>
 		public SwitchEntity OnAirLampSocket1 => new(_haContext, "switch.on_air_lamp_socket_1");
 		///<summary>Studio light</summary>
@@ -711,17 +737,6 @@ namespace HomeAssistantGenerated
 		}
 	}
 
-	public record InputDatetimeEntity : Entity<InputDatetimeEntity, EntityState<InputDatetimeAttributes>, InputDatetimeAttributes>
-	{
-		public InputDatetimeEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public InputDatetimeEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
 	public record InputTextEntity : Entity<InputTextEntity, EntityState<InputTextAttributes>, InputTextAttributes>
 	{
 		public InputTextEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
@@ -762,6 +777,17 @@ namespace HomeAssistantGenerated
 		}
 
 		public MediaPlayerEntity(Entity entity) : base(entity)
+		{
+		}
+	}
+
+	public record PersistentNotificationEntity : Entity<PersistentNotificationEntity, EntityState<PersistentNotificationAttributes>, PersistentNotificationAttributes>
+	{
+		public PersistentNotificationEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public PersistentNotificationEntity(Entity entity) : base(entity)
 		{
 		}
 	}
@@ -877,26 +903,11 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("bus_event_id")]
 		public string? BusEventId { get; init; }
 
-		[JsonPropertyName("clearDate")]
-		public object? ClearDate { get; init; }
-
-		[JsonPropertyName("clearTemp")]
-		public object? ClearTemp { get; init; }
-
-		[JsonPropertyName("coldDate")]
-		public string? ColdDate { get; init; }
-
-		[JsonPropertyName("coldTemp")]
-		public double? ColdTemp { get; init; }
-
 		[JsonPropertyName("device_class")]
 		public string? DeviceClass { get; init; }
 
 		[JsonPropertyName("friendly_name")]
 		public string? FriendlyName { get; init; }
-
-		[JsonPropertyName("hi")]
-		public string? Hi { get; init; }
 
 		[JsonPropertyName("icon")]
 		public string? Icon { get; init; }
@@ -913,14 +924,8 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("restored")]
 		public bool? Restored { get; init; }
 
-		[JsonPropertyName("second")]
-		public string? Second { get; init; }
-
 		[JsonPropertyName("supported_features")]
 		public double? SupportedFeatures { get; init; }
-
-		[JsonPropertyName("updated")]
-		public string? Updated { get; init; }
 	}
 
 	public record ButtonAttributes
@@ -1027,9 +1032,6 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("source_type")]
 		public string? SourceType { get; init; }
 
-		[JsonPropertyName("speed")]
-		public double? Speed { get; init; }
-
 		[JsonPropertyName("vertical_accuracy")]
 		public double? VerticalAccuracy { get; init; }
 	}
@@ -1056,36 +1058,6 @@ namespace HomeAssistantGenerated
 
 		[JsonPropertyName("icon")]
 		public string? Icon { get; init; }
-	}
-
-	public record InputDatetimeAttributes
-	{
-		[JsonPropertyName("day")]
-		public double? Day { get; init; }
-
-		[JsonPropertyName("editable")]
-		public bool? Editable { get; init; }
-
-		[JsonPropertyName("friendly_name")]
-		public string? FriendlyName { get; init; }
-
-		[JsonPropertyName("has_date")]
-		public bool? HasDate { get; init; }
-
-		[JsonPropertyName("has_time")]
-		public bool? HasTime { get; init; }
-
-		[JsonPropertyName("icon")]
-		public string? Icon { get; init; }
-
-		[JsonPropertyName("month")]
-		public double? Month { get; init; }
-
-		[JsonPropertyName("timestamp")]
-		public double? Timestamp { get; init; }
-
-		[JsonPropertyName("year")]
-		public double? Year { get; init; }
 	}
 
 	public record InputTextAttributes
@@ -1120,11 +1092,17 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("color_mode")]
 		public string? ColorMode { get; init; }
 
+		[JsonPropertyName("color_temp")]
+		public double? ColorTemp { get; init; }
+
 		[JsonPropertyName("dynamics")]
 		public string? Dynamics { get; init; }
 
 		[JsonPropertyName("friendly_name")]
 		public string? FriendlyName { get; init; }
+
+		[JsonPropertyName("hs_color")]
+		public object? HsColor { get; init; }
 
 		[JsonPropertyName("max_mireds")]
 		public double? MaxMireds { get; init; }
@@ -1135,11 +1113,17 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("mode")]
 		public string? Mode { get; init; }
 
+		[JsonPropertyName("rgb_color")]
+		public object? RgbColor { get; init; }
+
 		[JsonPropertyName("supported_color_modes")]
 		public object? SupportedColorModes { get; init; }
 
 		[JsonPropertyName("supported_features")]
 		public double? SupportedFeatures { get; init; }
+
+		[JsonPropertyName("xy_color")]
+		public object? XyColor { get; init; }
 	}
 
 	public record LockAttributes
@@ -1196,6 +1180,18 @@ namespace HomeAssistantGenerated
 		public double? VolumeLevel { get; init; }
 	}
 
+	public record PersistentNotificationAttributes
+	{
+		[JsonPropertyName("friendly_name")]
+		public string? FriendlyName { get; init; }
+
+		[JsonPropertyName("message")]
+		public string? Message { get; init; }
+
+		[JsonPropertyName("title")]
+		public string? Title { get; init; }
+	}
+
 	public record PersonAttributes
 	{
 		[JsonPropertyName("editable")]
@@ -1234,6 +1230,9 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("color")]
 		public object? Color { get; init; }
 
+		[JsonPropertyName("entity_id")]
+		public object? EntityId { get; init; }
+
 		[JsonPropertyName("friendly_name")]
 		public string? FriendlyName { get; init; }
 
@@ -1245,6 +1244,9 @@ namespace HomeAssistantGenerated
 
 		[JsonPropertyName("icon")]
 		public string? Icon { get; init; }
+
+		[JsonPropertyName("id")]
+		public string? Id { get; init; }
 
 		[JsonPropertyName("is_dynamic")]
 		public bool? IsDynamic { get; init; }
@@ -1432,11 +1434,8 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("Types")]
 		public object? Types { get; init; }
 
-		[JsonPropertyName("updated")]
-		public string? Updated_0 { get; init; }
-
 		[JsonPropertyName("Updated")]
-		public string? Updated_1 { get; init; }
+		public string? Updated { get; init; }
 
 		[JsonPropertyName("uri_supported")]
 		public object? UriSupported { get; init; }
@@ -4660,11 +4659,6 @@ namespace HomeAssistantGenerated
 			_haContext = haContext;
 		}
 
-		public void CheckForFrost()
-		{
-			_haContext.CallService("netdaemon", "check_for_frost", null);
-		}
-
 		///<summary>Create an entity</summary>
 		public void EntityCreate(NetdaemonEntityCreateParameters data)
 		{
@@ -4715,16 +4709,6 @@ namespace HomeAssistantGenerated
 		public void GetTidalEvents()
 		{
 			_haContext.CallService("netdaemon", "get_tidal_events", null);
-		}
-
-		public void LivingroomLightsOff()
-		{
-			_haContext.CallService("netdaemon", "livingroom_lights_off", null);
-		}
-
-		public void LivingroomLightsOn()
-		{
-			_haContext.CallService("netdaemon", "livingroom_lights_on", null);
 		}
 
 		///<summary>Register a new service for netdaemon, used by the daemon and not to be used by users</summary>
@@ -6334,26 +6318,6 @@ namespace HomeAssistantGenerated
 		public static void TurnOn(this InputBooleanEntity entity)
 		{
 			entity.CallService("turn_on");
-		}
-	}
-
-	public static class InputDatetimeEntityExtensionMethods
-	{
-		///<summary>This can be used to dynamically set the date and/or time.</summary>
-		public static void SetDatetime(this InputDatetimeEntity entity, InputDatetimeSetDatetimeParameters data)
-		{
-			entity.CallService("set_datetime", data);
-		}
-
-		///<summary>This can be used to dynamically set the date and/or time.</summary>
-		///<param name="entity">The InputDatetimeEntity to call this service for</param>
-		///<param name="date">The target date the entity should be set to. eg: "2019-04-20"</param>
-		///<param name="time">The target time the entity should be set to. eg: "05:04:20"</param>
-		///<param name="datetime">The target date & time the entity should be set to. eg: "2019-04-20 05:04:20"</param>
-		///<param name="timestamp">The target date & time the entity should be set to as expressed by a UNIX timestamp.</param>
-		public static void SetDatetime(this InputDatetimeEntity entity, string? @date = null, DateTime? @time = null, string? @datetime = null, long? @timestamp = null)
-		{
-			entity.CallService("set_datetime", new InputDatetimeSetDatetimeParameters{Date = @date, Time = @time, Datetime = @datetime, Timestamp = @timestamp});
 		}
 	}
 

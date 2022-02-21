@@ -20,7 +20,6 @@ namespace daemonapp.apps.ScottHome;
 /// Register a tidal events service that can be called by a HASS automation
 /// </summary>
 [NetDaemonApp]
-[Focus]
 public class TidesFetcherService
 {
     private class ServiceData

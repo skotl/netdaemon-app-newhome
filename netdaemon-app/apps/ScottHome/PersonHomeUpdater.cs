@@ -10,10 +10,13 @@ namespace daemonapp.apps.ScottHome;
 /// When a person's state changes, update the "home_occupancy" sensor to show whether home is occupied or not
 /// </summary>
 [NetDaemonApp]
+[Focus]
 public class PersonHomeUpdater
 {
     private const string EntityId = "sensor.home_occupancy";
     private const string EntityName = "Home occupancy";
+    private const string OccupiedIcon = "mdi:home-circle";
+    private const string NotOccupiedIcon = "mdi:home-circle-outline";
     private readonly IHaContext _ha;
     private readonly ILogger<PersonHomeUpdater> _logger;
     private readonly IMqttEntityManager _mqttEntityManager;
@@ -44,7 +47,8 @@ public class PersonHomeUpdater
         try
         {
             _logger.LogDebug($"Creating entity {EntityId}");
-            _mqttEntityManager.CreateAsync(EntityId, new EntityCreationOptions(Name: EntityName))
+            _mqttEntityManager.CreateAsync(EntityId, new EntityCreationOptions(Name: EntityName),
+                    new { icon = NotOccupiedIcon})
                 .GetAwaiter();
             
             PersonChangedState("initalising", "unknown");
@@ -82,6 +86,8 @@ public class PersonHomeUpdater
         if (currentState == null || currentState != verifiedStateValue)
         {
             _mqttEntityManager.SetStateAsync(EntityId, verifiedStateValue).GetAwaiter();
+            _mqttEntityManager.SetAttributesAsync(EntityId,
+                verifiedState == StateEnums.HomePresence.not_occupied ? NotOccupiedIcon : OccupiedIcon);
         }
     }
 }
