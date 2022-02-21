@@ -1,5 +1,4 @@
-﻿using daemonapp.apps.ScottHome.EntityRegistrationHelpers;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace daemonapp.apps;
@@ -11,7 +10,7 @@ public static class DependencyInjectionSetup
     {
         return hostBuilder.ConfigureServices((Action<HostBuilderContext, IServiceCollection>) ((context, services) =>
         {
-            services.AddTransient<IEntityRegistration, EntityRegistration>();
+            
         }));
     }
 }

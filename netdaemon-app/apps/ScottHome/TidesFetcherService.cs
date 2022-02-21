@@ -20,6 +20,7 @@ namespace daemonapp.apps.ScottHome;
 /// Register a tidal events service that can be called by a HASS automation
 /// </summary>
 [NetDaemonApp]
+[Focus]
 public class TidesFetcherService
 {
     private class ServiceData
@@ -70,7 +71,10 @@ public class TidesFetcherService
         try
         {
             _logger.LogDebug($"Creating entity {EntityId}");
-            _mqttEntityManager.CreateAsync(EntityId, new EntityCreationOptions(Name: EntityName))
+            _mqttEntityManager.CreateAsync(EntityId, new EntityCreationOptions(Name: EntityName), new
+                {
+                    icon = "mdi:waves"
+                })
                 .GetAwaiter();
         }
         catch (Exception ex)
