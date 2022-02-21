@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using daemonapp.apps.ScottHome.Geolocation;
 using daemonapp.apps.ScottHome.Geolocation.Model;
 using HomeAssistantGenerated;
@@ -16,7 +15,7 @@ public class HeatingBasedOnPresence
     private readonly double _turnUpReturnDistance = 3000; // Distance in metres, where we should turn up heating
     private readonly double _noChangeTolerance = 100; // Tolerance distance indicating no change
     private readonly double _targetTempExit = 16; // Target temp when everyone is far away
-    private readonly double _targetTempReturn = 22; // Target temp when someone is returning
+    private readonly double _targetTempReturn = 21; // Target temp when someone is returning
 
     private readonly IHaContext _ha;
     private readonly ILogger<HeatingBasedOnPresence> _logger;

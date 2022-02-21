@@ -10,7 +10,6 @@ namespace daemonapp.apps.ScottHome;
 /// When a person's state changes, update the "home_occupancy" sensor to show whether home is occupied or not
 /// </summary>
 [NetDaemonApp]
-[Focus]
 public class PersonHomeUpdater
 {
     private const string EntityId = "sensor.home_occupancy";
