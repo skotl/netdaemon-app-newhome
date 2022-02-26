@@ -1,4 +1,6 @@
-﻿using HomeAssistantGenerated;
+﻿using System.Data;
+using daemonapp.apps.ScottHome.Helpers;
+using HomeAssistantGenerated;
 using NetDaemon.HassModel.Entities;
 
 namespace daemonapp.apps.ScottHome;
@@ -23,11 +25,12 @@ public class FrontDoorLocker
         var entities = new Entities(ha);
         entities.Sensor.HomeOccupancy.StateChanges()
             .Where(e => !string.IsNullOrWhiteSpace(e.New?.State))
-            .Subscribe(e => VerifyLockState(e.New?.State));
+            .Subscribe(e => SafeMethodExecuteWithLogging.Execute(VerifyLockState, logger, e));
     }
 
-    private void VerifyLockState(string? homeStatus)
+    private void VerifyLockState(StateChange stateChange)
     {
+        var homeStatus = new Entities(_ha).Sensor.HomeOccupancy.State;
         var currentHomeStatus = StateEnums.ConvertToHomePresence(homeStatus);
         var frontDoorLock = new Entities(_ha).Lock.FrontDoorLock;
         var currentLockStatus = StateEnums.ConvertToLockState(frontDoorLock.State);
@@ -44,6 +47,14 @@ public class FrontDoorLocker
                 _logger.LogInformation("House status changed to occupied, door is locked: unlocking");
                 frontDoorLock.Unlock();
                 break;
+            case StateEnums.HomePresence.occupied when currentLockStatus == StateEnums.LockState.unlocked:
+                case StateEnums.HomePresence.not_occupied when currentLockStatus == StateEnums.LockState.locked:
+                _logger.LogInformation("No change, home = {homeStatus}, lock = {lockStatus}", currentHomeStatus,
+                    currentLockStatus);
+                break;
+            default:
+                throw new DataException(
+                    $"Unexpected state for current home status = {currentHomeStatus}, current lock status = {currentLockStatus}");
         }
     }
 }
