@@ -24,21 +24,22 @@ public class FrostSensorNotifications
     {
         var sensorArg = (StateChange<BinarySensorEntity, EntityState<BinarySensorAttributes>>)arg;
 
-        _logger.LogInformation($"{sensorArg.Entity.EntityId} changed state to {sensorArg.New.State}");
+        _logger.LogInformation("{EntityId} changed state to {NewState}", sensorArg.Entity.EntityId, sensorArg?.New?.State);
         var frostSensor = new Entities(_ha).BinarySensor.FrostForecast;
-        if (sensorArg.New.State == "unavailable")
-            return;
         
-        var state = StateEnums.ConvertToBinaryState(sensorArg.New.State);
+        var state = StateEnums.ConvertToBinaryState(sensorArg?.New?.State);
 
         if (state)
-            NotifyFrostWarning(frostSensor.Attributes);
+            NotifyFrostWarning(frostSensor?.Attributes);
         else
-            NotifyFrostCleared(frostSensor.Attributes);
+            NotifyFrostCleared(frostSensor?.Attributes);
     }
 
-    private void NotifyFrostWarning(BinarySensorAttributes attributes)
+    private void NotifyFrostWarning(BinarySensorAttributes? attributes)
     {
+        if (attributes == null)
+            throw new ArgumentNullException(nameof(attributes));
+        
         var coldDate = attributes.ColdDate.ToDateTime();
         var clearDate = attributes.ClearDate.ToDateTime();
         
@@ -46,18 +47,21 @@ public class FrostSensorNotifications
         if (clearDate.HasValue)
             msg += $", clearing by {ToShortDate(clearDate)} with temp of {attributes.ClearTemp}C";
         
-        _logger.LogInformation(msg);
+        _logger.LogInformation("{Message}", msg);
 
         var svc = new NotifyServices(_ha);
         svc.MobileAppScottSXr(msg, "title");
     }
 
-    private void NotifyFrostCleared(BinarySensorAttributes attributes)
+    private void NotifyFrostCleared(BinarySensorAttributes? attributes)
     {
+        if (attributes == null)
+            throw new ArgumentNullException(nameof(attributes));
+        
         var clearDate = attributes.ClearDate.ToDateTime();
         var msg = $"Frost will clear by {ToShortDate(clearDate)}, with a temp of {attributes.ClearTemp}C";
         
-        _logger.LogInformation(msg);
+        _logger.LogInformation("{Message}", msg);
         
         var svc = new NotifyServices(_ha);
         svc.MobileAppScottSXr(msg, "title");

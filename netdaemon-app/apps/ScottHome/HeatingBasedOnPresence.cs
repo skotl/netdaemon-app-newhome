@@ -124,13 +124,13 @@ public class HeatingBasedOnPresence
     private Coordinates ExtractCoordindatesFromEntity(Entity tracker)
     {
         var attributes = tracker.Attributes as IDictionary<string, object>;
-        if (!attributes.ContainsKey("latitude") || !attributes.ContainsKey("longitude"))
+        if (attributes == null || !attributes.ContainsKey("latitude") || !attributes.ContainsKey("longitude"))
             throw new InvalidDataException(
                 $"Entity with id = {tracker.EntityId} does not contain lat or long attributes");
 
         return new Coordinates(
-            double.Parse(attributes["latitude"].ToString()),
-            double.Parse(attributes["longitude"].ToString()));
+            double.Parse(attributes["latitude"].ToString()!),
+            double.Parse(attributes["longitude"].ToString()!));
     }
 
     private void PersonHasMovedCloser(StateChange<DeviceTrackerEntity, EntityState<DeviceTrackerAttributes>> changes,
@@ -139,8 +139,9 @@ public class HeatingBasedOnPresence
         var distance = LocationHelper.CalculateDistance(changes?.New?.Attributes?.Latitude,
             changes?.New?.Attributes?.Longitude, _homeLocation);
 
-        _logger.LogDebug(
-            $"Person {changes?.Entity?.EntityId} is inside heat zone, {(int)distance}m away, setting heat to {_targetTempReturn}");
+        _logger.LogDebug("Person {EntityId} is inside heat zone, {Distance}m away, setting heat to {TargetTempReturn}",
+            changes?.Entity?.EntityId, (int)distance, _targetTempReturn);
+        
         entities.Climate.Thermostat1.SetTemperature(_targetTempReturn);
     }
 }
