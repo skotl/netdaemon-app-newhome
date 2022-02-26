@@ -20,6 +20,7 @@ namespace daemonapp.apps.ScottHome;
 /// Register a tidal events service that can be called by a HASS automation
 /// </summary>
 [NetDaemonApp]
+[Focus]
 public class TidesFetcherService
 {
     private class ServiceData
@@ -123,29 +124,17 @@ public class TidesFetcherService
     {
         if (events.Count < 4)
             throw new InvalidDataException($"Expected at least four events, but got {events.Count}");
-    
+
+        var updatedAt = DateTime.UtcNow.ToLocalTime().ToString("dd MMMM");
+        
         var data = new
         {
-            Summary1 = events[0].ToString(),
-            Summary2 = events[1].ToString(),
-            Summary3 = events[2].ToString(),
-            Summary4 = events[3].ToString(),
-            EventType1 = events[0].EventType.ToString(),
-            EventType2 = events[1].EventType.ToString(),
-            EventType3 = events[2].EventType.ToString(),
-            EventType4 = events[3].EventType.ToString(),
-            Date1 = events[0].DateTime.ToLocalTime(),
-            Date2 = events[1].DateTime.ToLocalTime(),
-            Date3 = events[2].DateTime.ToLocalTime(),
-            Date4 = events[3].DateTime.ToLocalTime(),
-            Height1 = events[0].Height,
-            Height2 = events[1].Height,
-            Height3 = events[2].Height,
-            Height4 = events[3].Height,
-            Updated = DateTime.UtcNow
+            Updated = updatedAt,
+            Dates = events.Select(e => e.DateTime),
+            Heights = events.Select(e => e.Height)
         };
 
-        _mqttEntityManager.SetStateAsync(EntityId, DateTime.UtcNow.ToLocalTime().ToShortDateString()).GetAwaiter();
+        _mqttEntityManager.SetStateAsync(EntityId, updatedAt).GetAwaiter();
         _mqttEntityManager.SetAttributesAsync(EntityId, data).GetAwaiter();
     }
 
