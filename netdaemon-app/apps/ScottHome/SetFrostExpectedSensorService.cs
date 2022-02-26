@@ -12,7 +12,6 @@ using NetDaemon.HassModel.Integration;
 namespace daemonapp.apps.ScottHome;
 
 [NetDaemonApp]
-[Focus]
 public class SetFrostExpectedSensorService
 {
     private class ServiceData

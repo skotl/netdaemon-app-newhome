@@ -124,8 +124,6 @@ namespace HomeAssistantGenerated
 		public BinarySensorEntity FrontDoorTamper => new(_haContext, "binary_sensor.front_door_tamper");
 		///<summary>Frost forecast</summary>
 		public BinarySensorEntity FrostForecast => new(_haContext, "binary_sensor.frost_forecast");
-		///<summary>garage motion motion</summary>
-		public BinarySensorEntity GarageMotionMotion => new(_haContext, "binary_sensor.garage_motion_motion");
 		///<summary>Hive Hub Status</summary>
 		public BinarySensorEntity HiveHubStatus => new(_haContext, "binary_sensor.hive_hub_status");
 		///<summary>Kitchen Door contact</summary>
@@ -230,26 +228,14 @@ namespace HomeAssistantGenerated
 			_haContext = haContext;
 		}
 
-		///<summary>dev_netdaemon_apps_concurrency_test_app</summary>
-		public InputBooleanEntity DevNetdaemonAppsConcurrencyTestApp => new(_haContext, "input_boolean.dev_netdaemon_apps_concurrency_test_app");
-		///<summary>dev_netdaemon_apps_concurrency_test_app2</summary>
-		public InputBooleanEntity DevNetdaemonAppsConcurrencyTestApp2 => new(_haContext, "input_boolean.dev_netdaemon_apps_concurrency_test_app2");
-		///<summary>dev_netdaemon_apps_hello_app</summary>
-		public InputBooleanEntity DevNetdaemonAppsHelloApp => new(_haContext, "input_boolean.dev_netdaemon_apps_hello_app");
-		///<summary>dev_netdaemon_apps_yaml_app</summary>
-		public InputBooleanEntity DevNetdaemonAppsYamlApp => new(_haContext, "input_boolean.dev_netdaemon_apps_yaml_app");
-		///<summary>dev_netdaemon_daemonapp_apps_scott_home_mqtt_tester</summary>
-		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeMqttTester => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_mqtt_tester");
-		///<summary>dev_netdaemon_daemonapp_apps_scott_home_person_home_updater</summary>
-		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomePersonHomeUpdater => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_person_home_updater");
 		///<summary>dev_netdaemon_daemonapp_apps_scott_home_set_frost_expected_sensor_service</summary>
 		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeSetFrostExpectedSensorService => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_set_frost_expected_sensor_service");
-		///<summary>dev_netdaemon_daemonapp_apps_scott_home_tides_fetcher_service</summary>
-		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeTidesFetcherService => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_tides_fetcher_service");
-		///<summary>dev_netdaemon_debug_host_apps_extensions_mqtt_entity_manager_app</summary>
-		public InputBooleanEntity DevNetdaemonDebugHostAppsExtensionsMqttEntityManagerApp => new(_haContext, "input_boolean.dev_netdaemon_debug_host_apps_extensions_mqtt_entity_manager_app");
 		///<summary>FrostySense</summary>
 		public InputBooleanEntity Frostysense => new(_haContext, "input_boolean.frostysense");
+		///<summary>netdaemon_daemonapp_apps_scott_home_heating_based_on_presence</summary>
+		public InputBooleanEntity NetdaemonDaemonappAppsScottHomeHeatingBasedOnPresence => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_heating_based_on_presence");
+		///<summary>netdaemon_daemonapp_apps_scott_home_living_room_lights_service</summary>
+		public InputBooleanEntity NetdaemonDaemonappAppsScottHomeLivingRoomLightsService => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_living_room_lights_service");
 		///<summary>netdaemon_daemonapp_apps_scott_home_mqtt_tester</summary>
 		public InputBooleanEntity NetdaemonDaemonappAppsScottHomeMqttTester => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_mqtt_tester");
 		///<summary>netdaemon_daemonapp_apps_scott_home_person_home_updater</summary>
@@ -258,20 +244,6 @@ namespace HomeAssistantGenerated
 		public InputBooleanEntity NetdaemonDaemonappAppsScottHomeSetFrostExpectedSensorService => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_set_frost_expected_sensor_service");
 		///<summary>netdaemon_daemonapp_apps_scott_home_tides_fetcher_service</summary>
 		public InputBooleanEntity NetdaemonDaemonappAppsScottHomeTidesFetcherService => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_tides_fetcher_service");
-		///<summary>netdaemon_daemonappappsscotthomefrontdoorlocker</summary>
-		public InputBooleanEntity NetdaemonDaemonappappsscotthomefrontdoorlocker => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthomefrontdoorlocker");
-		///<summary>netdaemon_daemonappappsscotthomefrostsensornotifications</summary>
-		public InputBooleanEntity NetdaemonDaemonappappsscotthomefrostsensornotifications => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthomefrostsensornotifications");
-		///<summary>netdaemon_daemonappappsscotthomeheatingbasedonpresence</summary>
-		public InputBooleanEntity NetdaemonDaemonappappsscotthomeheatingbasedonpresence => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthomeheatingbasedonpresence");
-		///<summary>netdaemon_daemonappappsscotthomelivingroomlightsservice</summary>
-		public InputBooleanEntity NetdaemonDaemonappappsscotthomelivingroomlightsservice => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthomelivingroomlightsservice");
-		///<summary>netdaemon_daemonappappsscotthomepersonhomeupdater</summary>
-		public InputBooleanEntity NetdaemonDaemonappappsscotthomepersonhomeupdater => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthomepersonhomeupdater");
-		///<summary>netdaemon_daemonappappsscotthomesetfrostexpectedsensorservice</summary>
-		public InputBooleanEntity NetdaemonDaemonappappsscotthomesetfrostexpectedsensorservice => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthomesetfrostexpectedsensorservice");
-		///<summary>netdaemon_daemonappappsscotthometidesfetcherservice</summary>
-		public InputBooleanEntity NetdaemonDaemonappappsscotthometidesfetcherservice => new(_haContext, "input_boolean.netdaemon_daemonappappsscotthometidesfetcherservice");
 	}
 
 	public class InputTextEntities
@@ -430,70 +402,8 @@ namespace HomeAssistantGenerated
 			_haContext = haContext;
 		}
 
-		///<summary>Backup State</summary>
-		public SensorEntity BackupState => new(_haContext, "sensor.backup_state");
-		///<summary>Home occupancy</summary>
-		public SensorEntity HomeOccupancy => new(_haContext, "sensor.home_occupancy");
-		///<summary>HP ENVY 4520 series</summary>
-		public SensorEntity HpEnvy4520Series => new(_haContext, "sensor.hp_envy_4520_series");
-		///<summary>Jo's iPhone Activity</summary>
-		public SensorEntity JoSIphoneActivity => new(_haContext, "sensor.jo_s_iphone_activity");
-		///<summary>Jo's iPhone Battery State</summary>
-		public SensorEntity JoSIphoneBatteryState => new(_haContext, "sensor.jo_s_iphone_battery_state");
-		///<summary>Jo's iPhone BSSID</summary>
-		public SensorEntity JoSIphoneBssid => new(_haContext, "sensor.jo_s_iphone_bssid");
-		///<summary>Jo's iPhone Connection Type</summary>
-		public SensorEntity JoSIphoneConnectionType => new(_haContext, "sensor.jo_s_iphone_connection_type");
-		///<summary>Jo's iPhone Geocoded Location</summary>
-		public SensorEntity JoSIphoneGeocodedLocation => new(_haContext, "sensor.jo_s_iphone_geocoded_location");
-		///<summary>Jo's iPhone Last Update Trigger</summary>
-		public SensorEntity JoSIphoneLastUpdateTrigger => new(_haContext, "sensor.jo_s_iphone_last_update_trigger");
-		///<summary>Jo's iPhone SIM 1</summary>
-		public SensorEntity JoSIphoneSim1 => new(_haContext, "sensor.jo_s_iphone_sim_1");
-		///<summary>Jo's iPhone SIM 2</summary>
-		public SensorEntity JoSIphoneSim2 => new(_haContext, "sensor.jo_s_iphone_sim_2");
-		///<summary>Jo's iPhone SSID</summary>
-		public SensorEntity JoSIphoneSsid => new(_haContext, "sensor.jo_s_iphone_ssid");
-		///<summary>Leith Tides</summary>
-		public SensorEntity LeithTides => new(_haContext, "sensor.leith_tides");
-		///<summary>leithtides</summary>
-		public SensorEntity Leithtides => new(_haContext, "sensor.leithtides");
-		///<summary>Scott's XR Activity</summary>
-		public SensorEntity ScottSXrActivity => new(_haContext, "sensor.scott_s_xr_activity");
-		///<summary>Scott's XR Battery State</summary>
-		public SensorEntity ScottSXrBatteryState => new(_haContext, "sensor.scott_s_xr_battery_state");
-		///<summary>Scott's XR BSSID</summary>
-		public SensorEntity ScottSXrBssid => new(_haContext, "sensor.scott_s_xr_bssid");
-		///<summary>Scott's XR Connection Type</summary>
-		public SensorEntity ScottSXrConnectionType => new(_haContext, "sensor.scott_s_xr_connection_type");
-		///<summary>Scott's XR Geocoded Location</summary>
-		public SensorEntity ScottSXrGeocodedLocation => new(_haContext, "sensor.scott_s_xr_geocoded_location");
-		///<summary>Scott's XR Last Update Trigger</summary>
-		public SensorEntity ScottSXrLastUpdateTrigger => new(_haContext, "sensor.scott_s_xr_last_update_trigger");
-		///<summary>Scott's XR SIM 1</summary>
-		public SensorEntity ScottSXrSim1 => new(_haContext, "sensor.scott_s_xr_sim_1");
-		///<summary>Scott's XR SIM 2</summary>
-		public SensorEntity ScottSXrSim2 => new(_haContext, "sensor.scott_s_xr_sim_2");
-		///<summary>Scott's XR SSID</summary>
-		public SensorEntity ScottSXrSsid => new(_haContext, "sensor.scott_s_xr_ssid");
-		///<summary>Testing</summary>
-		public SensorEntity Testing => new(_haContext, "sensor.testing");
-		///<summary>Theo’s iPhone 6S Activity</summary>
-		public SensorEntity TheosIphone6sActivity => new(_haContext, "sensor.theos_iphone_6s_activity");
-		///<summary>Theo’s iPhone 6S Battery State</summary>
-		public SensorEntity TheosIphone6sBatteryState => new(_haContext, "sensor.theos_iphone_6s_battery_state");
-		///<summary>Theo’s iPhone 6S BSSID</summary>
-		public SensorEntity TheosIphone6sBssid => new(_haContext, "sensor.theos_iphone_6s_bssid");
-		///<summary>Theo’s iPhone 6S Connection Type</summary>
-		public SensorEntity TheosIphone6sConnectionType => new(_haContext, "sensor.theos_iphone_6s_connection_type");
-		///<summary>Theo’s iPhone 6S Geocoded Location</summary>
-		public SensorEntity TheosIphone6sGeocodedLocation => new(_haContext, "sensor.theos_iphone_6s_geocoded_location");
-		///<summary>Theo’s iPhone 6S Last Update Trigger</summary>
-		public SensorEntity TheosIphone6sLastUpdateTrigger => new(_haContext, "sensor.theos_iphone_6s_last_update_trigger");
-		///<summary>Theo’s iPhone 6S SIM 1</summary>
-		public SensorEntity TheosIphone6sSim1 => new(_haContext, "sensor.theos_iphone_6s_sim_1");
-		///<summary>Theo’s iPhone 6S SSID</summary>
-		public SensorEntity TheosIphone6sSsid => new(_haContext, "sensor.theos_iphone_6s_ssid");
+		///<summary>ADS1115 Channel A0-GND</summary>
+		public NumericSensorEntity Ads1115ChannelA0Gnd => new(_haContext, "sensor.ads1115_channel_a0_gnd");
 		///<summary>Camera FTP</summary>
 		public NumericSensorEntity CameraFtp => new(_haContext, "sensor.camera_ftp");
 		///<summary>CPU Temperature</summary>
@@ -504,8 +414,6 @@ namespace HomeAssistantGenerated
 		public NumericSensorEntity FrontDoorLockBattery => new(_haContext, "sensor.front_door_lock_battery");
 		///<summary>garage motion Battery</summary>
 		public NumericSensorEntity GarageMotionBattery => new(_haContext, "sensor.garage_motion_battery");
-		///<summary>garage motion Temperature Measurement</summary>
-		public NumericSensorEntity GarageMotionTemperatureMeasurement => new(_haContext, "sensor.garage_motion_temperature_measurement");
 		///<summary>hacs</summary>
 		public NumericSensorEntity Hacs => new(_haContext, "sensor.hacs");
 		///<summary>HP ENVY 4520 series black ink</summary>
@@ -528,6 +436,8 @@ namespace HomeAssistantGenerated
 		public NumericSensorEntity JoSIphoneStorage => new(_haContext, "sensor.jo_s_iphone_storage");
 		///<summary>Kitchen Door Battery</summary>
 		public NumericSensorEntity KitchenDoorBattery => new(_haContext, "sensor.kitchen_door_battery");
+		///<summary>Measured Current</summary>
+		public NumericSensorEntity MeasuredCurrent => new(_haContext, "sensor.measured_current");
 		///<summary>Memory free</summary>
 		public NumericSensorEntity MemoryFree => new(_haContext, "sensor.memory_free");
 		///<summary>Parents switch Battery</summary>
@@ -572,6 +482,66 @@ namespace HomeAssistantGenerated
 		public NumericSensorEntity TheosIphone6sStorage => new(_haContext, "sensor.theos_iphone_6s_storage");
 		///<summary>Thermostat Battery Level</summary>
 		public NumericSensorEntity Thermostat1BatteryLevel => new(_haContext, "sensor.thermostat_1_battery_level");
+		///<summary>Backup State</summary>
+		public SensorEntity BackupState => new(_haContext, "sensor.backup_state");
+		///<summary>Home occupancy</summary>
+		public SensorEntity HomeOccupancy => new(_haContext, "sensor.home_occupancy");
+		///<summary>HP ENVY 4520 series</summary>
+		public SensorEntity HpEnvy4520Series => new(_haContext, "sensor.hp_envy_4520_series");
+		///<summary>Jo's iPhone Activity</summary>
+		public SensorEntity JoSIphoneActivity => new(_haContext, "sensor.jo_s_iphone_activity");
+		///<summary>Jo's iPhone Battery State</summary>
+		public SensorEntity JoSIphoneBatteryState => new(_haContext, "sensor.jo_s_iphone_battery_state");
+		///<summary>Jo's iPhone BSSID</summary>
+		public SensorEntity JoSIphoneBssid => new(_haContext, "sensor.jo_s_iphone_bssid");
+		///<summary>Jo's iPhone Connection Type</summary>
+		public SensorEntity JoSIphoneConnectionType => new(_haContext, "sensor.jo_s_iphone_connection_type");
+		///<summary>Jo's iPhone Geocoded Location</summary>
+		public SensorEntity JoSIphoneGeocodedLocation => new(_haContext, "sensor.jo_s_iphone_geocoded_location");
+		///<summary>Jo's iPhone Last Update Trigger</summary>
+		public SensorEntity JoSIphoneLastUpdateTrigger => new(_haContext, "sensor.jo_s_iphone_last_update_trigger");
+		///<summary>Jo's iPhone SIM 1</summary>
+		public SensorEntity JoSIphoneSim1 => new(_haContext, "sensor.jo_s_iphone_sim_1");
+		///<summary>Jo's iPhone SIM 2</summary>
+		public SensorEntity JoSIphoneSim2 => new(_haContext, "sensor.jo_s_iphone_sim_2");
+		///<summary>Jo's iPhone SSID</summary>
+		public SensorEntity JoSIphoneSsid => new(_haContext, "sensor.jo_s_iphone_ssid");
+		///<summary>Leith Tides</summary>
+		public SensorEntity LeithTides => new(_haContext, "sensor.leith_tides");
+		///<summary>Scott's XR Activity</summary>
+		public SensorEntity ScottSXrActivity => new(_haContext, "sensor.scott_s_xr_activity");
+		///<summary>Scott's XR Battery State</summary>
+		public SensorEntity ScottSXrBatteryState => new(_haContext, "sensor.scott_s_xr_battery_state");
+		///<summary>Scott's XR BSSID</summary>
+		public SensorEntity ScottSXrBssid => new(_haContext, "sensor.scott_s_xr_bssid");
+		///<summary>Scott's XR Connection Type</summary>
+		public SensorEntity ScottSXrConnectionType => new(_haContext, "sensor.scott_s_xr_connection_type");
+		///<summary>Scott's XR Geocoded Location</summary>
+		public SensorEntity ScottSXrGeocodedLocation => new(_haContext, "sensor.scott_s_xr_geocoded_location");
+		///<summary>Scott's XR Last Update Trigger</summary>
+		public SensorEntity ScottSXrLastUpdateTrigger => new(_haContext, "sensor.scott_s_xr_last_update_trigger");
+		///<summary>Scott's XR SIM 1</summary>
+		public SensorEntity ScottSXrSim1 => new(_haContext, "sensor.scott_s_xr_sim_1");
+		///<summary>Scott's XR SIM 2</summary>
+		public SensorEntity ScottSXrSim2 => new(_haContext, "sensor.scott_s_xr_sim_2");
+		///<summary>Scott's XR SSID</summary>
+		public SensorEntity ScottSXrSsid => new(_haContext, "sensor.scott_s_xr_ssid");
+		///<summary>Theo’s iPhone 6S Activity</summary>
+		public SensorEntity TheosIphone6sActivity => new(_haContext, "sensor.theos_iphone_6s_activity");
+		///<summary>Theo’s iPhone 6S Battery State</summary>
+		public SensorEntity TheosIphone6sBatteryState => new(_haContext, "sensor.theos_iphone_6s_battery_state");
+		///<summary>Theo’s iPhone 6S BSSID</summary>
+		public SensorEntity TheosIphone6sBssid => new(_haContext, "sensor.theos_iphone_6s_bssid");
+		///<summary>Theo’s iPhone 6S Connection Type</summary>
+		public SensorEntity TheosIphone6sConnectionType => new(_haContext, "sensor.theos_iphone_6s_connection_type");
+		///<summary>Theo’s iPhone 6S Geocoded Location</summary>
+		public SensorEntity TheosIphone6sGeocodedLocation => new(_haContext, "sensor.theos_iphone_6s_geocoded_location");
+		///<summary>Theo’s iPhone 6S Last Update Trigger</summary>
+		public SensorEntity TheosIphone6sLastUpdateTrigger => new(_haContext, "sensor.theos_iphone_6s_last_update_trigger");
+		///<summary>Theo’s iPhone 6S SIM 1</summary>
+		public SensorEntity TheosIphone6sSim1 => new(_haContext, "sensor.theos_iphone_6s_sim_1");
+		///<summary>Theo’s iPhone 6S SSID</summary>
+		public SensorEntity TheosIphone6sSsid => new(_haContext, "sensor.theos_iphone_6s_ssid");
 	}
 
 	public class SunEntities
@@ -814,17 +784,6 @@ namespace HomeAssistantGenerated
 		}
 	}
 
-	public record SensorEntity : Entity<SensorEntity, EntityState<SensorAttributes>, SensorAttributes>
-	{
-		public SensorEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public SensorEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
 	public record NumericSensorEntity : NumericEntity<NumericSensorEntity, NumericEntityState<NumericSensorAttributes>, NumericSensorAttributes>
 	{
 		public NumericSensorEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
@@ -832,6 +791,17 @@ namespace HomeAssistantGenerated
 		}
 
 		public NumericSensorEntity(Entity entity) : base(entity)
+		{
+		}
+	}
+
+	public record SensorEntity : Entity<SensorEntity, EntityState<SensorAttributes>, SensorAttributes>
+	{
+		public SensorEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public SensorEntity(Entity entity) : base(entity)
 		{
 		}
 	}
@@ -903,6 +873,18 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("bus_event_id")]
 		public string? BusEventId { get; init; }
 
+		[JsonPropertyName("clearDate")]
+		public object? ClearDate { get; init; }
+
+		[JsonPropertyName("clearTemp")]
+		public object? ClearTemp { get; init; }
+
+		[JsonPropertyName("coldDate")]
+		public string? ColdDate { get; init; }
+
+		[JsonPropertyName("coldTemp")]
+		public double? ColdTemp { get; init; }
+
 		[JsonPropertyName("device_class")]
 		public string? DeviceClass { get; init; }
 
@@ -921,11 +903,8 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("release_notes")]
 		public string? ReleaseNotes { get; init; }
 
-		[JsonPropertyName("restored")]
-		public bool? Restored { get; init; }
-
-		[JsonPropertyName("supported_features")]
-		public double? SupportedFeatures { get; init; }
+		[JsonPropertyName("updated")]
+		public string? Updated { get; init; }
 	}
 
 	public record ButtonAttributes
@@ -996,14 +975,14 @@ namespace HomeAssistantGenerated
 
 	public record CoverAttributes
 	{
-		[JsonPropertyName("current_position")]
-		public double? CurrentPosition { get; init; }
-
 		[JsonPropertyName("device_class")]
 		public string? DeviceClass { get; init; }
 
 		[JsonPropertyName("friendly_name")]
 		public string? FriendlyName { get; init; }
+
+		[JsonPropertyName("restored")]
+		public bool? Restored { get; init; }
 
 		[JsonPropertyName("supported_features")]
 		public double? SupportedFeatures { get; init; }
@@ -1016,6 +995,9 @@ namespace HomeAssistantGenerated
 
 		[JsonPropertyName("battery_level")]
 		public double? BatteryLevel { get; init; }
+
+		[JsonPropertyName("course")]
+		public double? Course { get; init; }
 
 		[JsonPropertyName("friendly_name")]
 		public string? FriendlyName { get; init; }
@@ -1031,6 +1013,9 @@ namespace HomeAssistantGenerated
 
 		[JsonPropertyName("source_type")]
 		public string? SourceType { get; init; }
+
+		[JsonPropertyName("speed")]
+		public double? Speed { get; init; }
 
 		[JsonPropertyName("vertical_accuracy")]
 		public double? VerticalAccuracy { get; init; }
@@ -1146,38 +1131,11 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("friendly_name")]
 		public string? FriendlyName { get; init; }
 
-		[JsonPropertyName("is_volume_muted")]
-		public bool? IsVolumeMuted { get; init; }
-
-		[JsonPropertyName("media_content_id")]
-		public string? MediaContentId { get; init; }
-
-		[JsonPropertyName("media_duration")]
-		public double? MediaDuration { get; init; }
-
-		[JsonPropertyName("media_track")]
-		public double? MediaTrack { get; init; }
-
-		[JsonPropertyName("repeat")]
-		public string? Repeat { get; init; }
-
-		[JsonPropertyName("shuffle")]
-		public bool? Shuffle { get; init; }
-
-		[JsonPropertyName("sound_mode_list")]
-		public object? SoundModeList { get; init; }
-
-		[JsonPropertyName("source")]
-		public string? Source { get; init; }
-
 		[JsonPropertyName("source_list")]
 		public object? SourceList { get; init; }
 
 		[JsonPropertyName("supported_features")]
 		public double? SupportedFeatures { get; init; }
-
-		[JsonPropertyName("volume_level")]
-		public double? VolumeLevel { get; init; }
 	}
 
 	public record PersistentNotificationAttributes
@@ -1259,6 +1217,57 @@ namespace HomeAssistantGenerated
 
 		[JsonPropertyName("speed")]
 		public double? Speed { get; init; }
+	}
+
+	public record NumericSensorAttributes
+	{
+		[JsonPropertyName("Available")]
+		public string? Available { get; init; }
+
+		[JsonPropertyName("Available (Important)")]
+		public string? AvailableImportant { get; init; }
+
+		[JsonPropertyName("Available (Opportunistic)")]
+		public string? AvailableOpportunistic { get; init; }
+
+		[JsonPropertyName("battery_state")]
+		public string? BatteryState { get; init; }
+
+		[JsonPropertyName("device_class")]
+		public string? DeviceClass { get; init; }
+
+		[JsonPropertyName("friendly_name")]
+		public string? FriendlyName { get; init; }
+
+		[JsonPropertyName("icon")]
+		public string? Icon { get; init; }
+
+		[JsonPropertyName("marker_high_level")]
+		public double? MarkerHighLevel { get; init; }
+
+		[JsonPropertyName("marker_low_level")]
+		public double? MarkerLowLevel { get; init; }
+
+		[JsonPropertyName("marker_type")]
+		public string? MarkerType { get; init; }
+
+		[JsonPropertyName("repositories")]
+		public object? Repositories { get; init; }
+
+		[JsonPropertyName("restored")]
+		public bool? Restored { get; init; }
+
+		[JsonPropertyName("state_class")]
+		public string? StateClass { get; init; }
+
+		[JsonPropertyName("supported_features")]
+		public double? SupportedFeatures { get; init; }
+
+		[JsonPropertyName("Total")]
+		public string? Total { get; init; }
+
+		[JsonPropertyName("unit_of_measurement")]
+		public string? UnitOfMeasurement { get; init; }
 	}
 
 	public record SensorAttributes
@@ -1350,9 +1359,6 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("Inland Water")]
 		public string? InlandWater { get; init; }
 
-		[JsonPropertyName("integration")]
-		public string? Integration { get; init; }
-
 		[JsonPropertyName("ISO Country Code")]
 		public string? ISOCountryCode { get; init; }
 
@@ -1442,57 +1448,6 @@ namespace HomeAssistantGenerated
 
 		[JsonPropertyName("Zones")]
 		public object? Zones { get; init; }
-	}
-
-	public record NumericSensorAttributes
-	{
-		[JsonPropertyName("Available")]
-		public string? Available { get; init; }
-
-		[JsonPropertyName("Available (Important)")]
-		public string? AvailableImportant { get; init; }
-
-		[JsonPropertyName("Available (Opportunistic)")]
-		public string? AvailableOpportunistic { get; init; }
-
-		[JsonPropertyName("battery_state")]
-		public string? BatteryState { get; init; }
-
-		[JsonPropertyName("device_class")]
-		public string? DeviceClass { get; init; }
-
-		[JsonPropertyName("friendly_name")]
-		public string? FriendlyName { get; init; }
-
-		[JsonPropertyName("icon")]
-		public string? Icon { get; init; }
-
-		[JsonPropertyName("marker_high_level")]
-		public double? MarkerHighLevel { get; init; }
-
-		[JsonPropertyName("marker_low_level")]
-		public double? MarkerLowLevel { get; init; }
-
-		[JsonPropertyName("marker_type")]
-		public string? MarkerType { get; init; }
-
-		[JsonPropertyName("repositories")]
-		public object? Repositories { get; init; }
-
-		[JsonPropertyName("restored")]
-		public bool? Restored { get; init; }
-
-		[JsonPropertyName("state_class")]
-		public string? StateClass { get; init; }
-
-		[JsonPropertyName("supported_features")]
-		public double? SupportedFeatures { get; init; }
-
-		[JsonPropertyName("Total")]
-		public string? Total { get; init; }
-
-		[JsonPropertyName("unit_of_measurement")]
-		public string? UnitOfMeasurement { get; init; }
 	}
 
 	public record SunAttributes
@@ -4659,6 +4614,11 @@ namespace HomeAssistantGenerated
 			_haContext = haContext;
 		}
 
+		public void CheckForFrost()
+		{
+			_haContext.CallService("netdaemon", "check_for_frost", null);
+		}
+
 		///<summary>Create an entity</summary>
 		public void EntityCreate(NetdaemonEntityCreateParameters data)
 		{
@@ -4709,6 +4669,16 @@ namespace HomeAssistantGenerated
 		public void GetTidalEvents()
 		{
 			_haContext.CallService("netdaemon", "get_tidal_events", null);
+		}
+
+		public void LivingroomLightsOff()
+		{
+			_haContext.CallService("netdaemon", "livingroom_lights_off", null);
+		}
+
+		public void LivingroomLightsOn()
+		{
+			_haContext.CallService("netdaemon", "livingroom_lights_on", null);
 		}
 
 		///<summary>Register a new service for netdaemon, used by the daemon and not to be used by users</summary>

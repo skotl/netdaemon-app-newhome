@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <Compile Remove="tests\**" />
-    <Compile Remove="apps\ScottHome\FrostSensorNotifications.cs" />
     <Compile Remove="apps\ScottHome\FrontDoorLocker.cs" />
   </ItemGroup>
   <ItemGroup>

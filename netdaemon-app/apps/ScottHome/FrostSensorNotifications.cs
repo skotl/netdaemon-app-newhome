@@ -39,20 +39,23 @@ public class FrostSensorNotifications
 
     private void NotifyFrostWarning(BinarySensorAttributes attributes)
     {
-        var msg = $"Frost warning for {ToShortDate(attributes.ColdDate)}, temp below {attributes.ColdTemp}C";
-        if (!string.IsNullOrWhiteSpace(attributes?.ClearDate))
-            msg += $", clearing by {ToShortDate(attributes.ClearDate)} with temp of {attributes.ClearTemp}C";
+        var coldDate = attributes.ColdDate.ToDateTime();
+        var clearDate = attributes.ClearDate.ToDateTime();
+        
+        var msg = $"Frost warning for {ToShortDate(coldDate)}, temp below {attributes.ColdTemp}C";
+        if (clearDate.HasValue)
+            msg += $", clearing by {ToShortDate(clearDate)} with temp of {attributes.ClearTemp}C";
         
         _logger.LogInformation(msg);
 
         var svc = new NotifyServices(_ha);
         svc.MobileAppScottSXr(msg, "title");
-        
     }
 
     private void NotifyFrostCleared(BinarySensorAttributes attributes)
     {
-        var msg = $"Frost will clear by {ToShortDate(attributes.ClearDate)}, with a temp of {attributes.ClearTemp}C";
+        var clearDate = attributes.ClearDate.ToDateTime();
+        var msg = $"Frost will clear by {ToShortDate(clearDate)}, with a temp of {attributes.ClearTemp}C";
         
         _logger.LogInformation(msg);
         
@@ -60,11 +63,8 @@ public class FrostSensorNotifications
         svc.MobileAppScottSXr(msg, "title");
     }
 
-    private string ToShortDate(string dateString)
+    private string ToShortDate(DateTime? date)
     {
-        if (DateTime.TryParse(dateString, out var date))
-            return date.ToShortDateString();
-
-        return "??";
+        return date == null ? "??" : date.Value.ToShortDateString();
     }
 }
