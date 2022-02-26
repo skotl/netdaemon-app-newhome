@@ -13,6 +13,7 @@ public class FrontDoorLocker
 {
     private readonly IHaContext _ha;
     private readonly ILogger<FrontDoorLocker> _logger;
+    private readonly DateTime _dateThisAppStarted = DateTime.Now;
 
     public FrontDoorLocker(IHaContext ha, ILogger<FrontDoorLocker> logger)
     {
@@ -24,7 +25,8 @@ public class FrontDoorLocker
         // TODO: When the debugger starts, this kicks in and unlocks the door. Should we do more checking of the old state?
         var entities = new Entities(ha);
         entities.Sensor.HomeOccupancy.StateChanges()
-            .Where(e => !string.IsNullOrWhiteSpace(e.New?.State))
+            .Where(e => !string.IsNullOrWhiteSpace(e.New?.State)
+                        && DateTime.Now - _dateThisAppStarted > TimeSpan.FromSeconds(30))
             .Subscribe(e => SafeMethodExecuteWithLogging.Execute(VerifyLockState, logger, e));
     }
 
@@ -36,7 +38,7 @@ public class FrontDoorLocker
         var currentLockStatus = StateEnums.ConvertToLockState(frontDoorLock.State);
 
         _logger.LogDebug($"Home state changed to {homeStatus}, door lock is {currentLockStatus}");
-        
+
         switch (currentHomeStatus)
         {
             case StateEnums.HomePresence.not_occupied when currentLockStatus == StateEnums.LockState.unlocked:
@@ -48,7 +50,7 @@ public class FrontDoorLocker
                 frontDoorLock.Unlock();
                 break;
             case StateEnums.HomePresence.occupied when currentLockStatus == StateEnums.LockState.unlocked:
-                case StateEnums.HomePresence.not_occupied when currentLockStatus == StateEnums.LockState.locked:
+            case StateEnums.HomePresence.not_occupied when currentLockStatus == StateEnums.LockState.locked:
                 _logger.LogInformation("No change, home = {homeStatus}, lock = {lockStatus}", currentHomeStatus,
                     currentLockStatus);
                 break;
