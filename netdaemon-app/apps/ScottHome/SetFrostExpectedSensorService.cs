@@ -12,6 +12,7 @@ using NetDaemon.HassModel.Integration;
 namespace daemonapp.apps.ScottHome;
 
 [NetDaemonApp]
+[Focus]
 public class SetFrostExpectedSensorService
 {
     private class ServiceData
@@ -21,8 +22,8 @@ public class SetFrostExpectedSensorService
     private const string EntityId = "binary_sensor.frost_forecast";
     private const string EntityName = "Frost forecast";
     private const double FrostWarningThreshold = 5.0;
-    private const string WarningSetTrue = "ON";
-    private const string WarningSetFalse = "OFF";
+    private const string WarningSetTrue = "on";
+    private const string WarningSetFalse = "off";
     private const string WarningSetUnknown = "unknown";
     private readonly IHaContext _ha;
     private readonly ILogger<SetFrostExpectedSensorService> _logger;
@@ -39,7 +40,6 @@ public class SetFrostExpectedSensorService
 
         scheduler.RunIn(TimeSpan.FromSeconds(1), RegisterEntities);
 
-        return;
         ha.RegisterServiceCallBack<ServiceData>("check_for_frost",
             e => SafeMethodExecuteWithLogging.Execute(SetFrostExpected, _logger));
     }
@@ -51,8 +51,6 @@ public class SetFrostExpectedSensorService
             _logger.LogDebug($"Creating entity {EntityId}");
             _mqttEntityManager.CreateAsync(EntityId, new EntityCreationOptions(Name: EntityName, DeviceClass:"cold"))
                 .GetAwaiter();
-            
-            
         }
         catch (Exception ex)
         {
