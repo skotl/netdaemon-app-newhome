@@ -1,7 +1,9 @@
 ﻿using System.Linq;
+using daemonapp.apps.ScottHome.Helpers;
 using HomeAssistantGenerated;
 using NetDaemon.Extensions.MqttEntityManager;
 using NetDaemon.Extensions.Scheduler;
+using NetDaemon.HassModel.Entities;
 
 namespace daemonapp.apps.ScottHome;
 
@@ -89,7 +91,7 @@ public class PersonHomeUpdater
             {
                 icon = verifiedState == StateEnums.HomePresence.not_occupied ? NotOccupiedIcon : OccupiedIcon
             });
-            _ha.Entity(EntityId).CallService();
+            _ha.WriteLogbook(EntityId, $"Home is now {verifiedState}");
         }
     }
 }

@@ -136,6 +136,8 @@ public class TidesFetcherService
 
         _mqttEntityManager.SetStateAsync(EntityId, updatedAt).GetAwaiter();
         _mqttEntityManager.SetAttributesAsync(EntityId, data).GetAwaiter();
+        
+        _ha.WriteLogbook(EntityId, "Tide times were updated");
     }
 
 }
