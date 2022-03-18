@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using HomeAssistantGenerated;
 using NetDaemon.Extensions.MqttEntityManager;
-using NetDaemon.Extensions.MqttEntityManager.Models;
 using NetDaemon.Extensions.Scheduler;
 
 namespace daemonapp.apps.ScottHome;
@@ -37,19 +36,19 @@ public class PersonHomeUpdater
             .Subscribe(e => PersonChangedState(e.Entity.EntityId, e.New?.State));
         entities.Person.Theo.StateChanges()
             .Subscribe(e => PersonChangedState(e.Entity.EntityId, e.New?.State));
-        
-        _logger.LogInformation($"{nameof(PersonHomeUpdater)} started");
+
+        _logger.LogInformation("{App} started", nameof(PersonHomeUpdater));
     }
 
     private void RegisterEntities()
     {
         try
         {
-            _logger.LogDebug($"Creating entity {EntityId}");
+            _logger.LogDebug("Creating entity {EntityId}", EntityId);
             _mqttEntityManager.CreateAsync(EntityId, new EntityCreationOptions(Name: EntityName),
-                    new { icon = NotOccupiedIcon})
+                    new { icon = NotOccupiedIcon })
                 .GetAwaiter();
-            
+
             PersonChangedState("initalising", "unknown");
         }
         catch (Exception ex)
@@ -60,7 +59,7 @@ public class PersonHomeUpdater
 
     private void PersonChangedState(string entityId, string? newState)
     {
-        _logger.LogDebug($"{entityId} changed state to {newState}");
+        _logger.LogDebug("{EntityId} changed state to {NewState}", entityId, newState);
 
         var peopleStates = _ha.GetAllEntities()
             .Where(e => e.EntityId != entityId && MyHomeEntityList.GetFamily.Contains(e.EntityId))
@@ -80,13 +79,17 @@ public class PersonHomeUpdater
         var homeOccupancy = _ha.Entity(EntityId);
         var currentState = homeOccupancy.State;
 
-        _logger.LogDebug($"Home presence currently {currentState}, should be {verifiedState}");
+        _logger.LogDebug("Home presence currently {CurrentState}, should be {VerifiedState}", currentState,
+            verifiedState);
 
         if (currentState == null || currentState != verifiedStateValue)
         {
             _mqttEntityManager.SetStateAsync(EntityId, verifiedStateValue).GetAwaiter();
-            _mqttEntityManager.SetAttributesAsync(EntityId,
-                verifiedState == StateEnums.HomePresence.not_occupied ? NotOccupiedIcon : OccupiedIcon);
+            _mqttEntityManager.SetAttributesAsync(EntityId, new
+            {
+                icon = verifiedState == StateEnums.HomePresence.not_occupied ? NotOccupiedIcon : OccupiedIcon
+            });
+            _ha.Entity(EntityId).CallService();
         }
     }
 }
