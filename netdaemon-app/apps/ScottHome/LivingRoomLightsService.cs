@@ -16,7 +16,7 @@ public class LivingRoomLightsService
     {
     };
 
-    private static readonly long DefaultBrightness = 30;
+    private static readonly long DefaultBrightness = 70;
     private readonly IHaContext _ha;
     private readonly ILogger<LivingRoomLightsService> _logger;
 
@@ -70,10 +70,10 @@ public class LivingRoomLightsService
         {
             entities.Light.JoSLamp,
             entities.Light.ScottSLamp,
-            entities.Light.LrWallBack,
-            entities.Light.LrWallFront,
-            entities.Light.LrWindowBack,
-            entities.Light.LrWindowFront
+            //entities.Light.LrWallBack,
+            //entities.Light.LrWallFront,
+            //entities.Light.LrWindowBack,
+            //entities.Light.LrWindowFront
         };
     }
 }
