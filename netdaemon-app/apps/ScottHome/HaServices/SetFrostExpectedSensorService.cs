@@ -9,17 +9,11 @@ using NetDaemon.Extensions.MqttEntityManager;
 using NetDaemon.Extensions.Scheduler;
 using NetDaemon.HassModel.Integration;
 
-namespace daemonapp.apps.ScottHome;
+namespace daemonapp.apps.ScottHome.HaServices;
 
 [NetDaemonApp]
 public class SetFrostExpectedSensorService
 {
-    // ReSharper disable once ClassNeverInstantiated.Local
-    // Reason: payload for service call
-    private class ServiceData
-    {
-    };
-
     private const string EntityId = "binary_sensor.frost_forecast";
     private const string EntityName = "Frost forecast";
     private const double FrostWarningThreshold = 5.0;
@@ -41,7 +35,7 @@ public class SetFrostExpectedSensorService
 
         scheduler.RunIn(TimeSpan.FromSeconds(1), RegisterEntities);
 
-        ha.RegisterServiceCallBack<ServiceData>("check_for_frost",
+        ha.RegisterServiceCallBack<HaServiceData>("check_for_frost",
             e => SafeMethodExecuteWithLogging.Execute(SetFrostExpected, _logger));
     }
 

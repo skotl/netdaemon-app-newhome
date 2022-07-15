@@ -2,19 +2,15 @@
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Text.Json;
-using System.Threading.Tasks;
 using daemonapp.apps.ScottHome.Helpers;
 using daemonapp.apps.ScottHome.UkhoTidalApi;
 using daemonapp.apps.ScottHome.UkhoTidalApi.Model;
-using HomeAssistantGenerated;
 using Microsoft.Extensions.Configuration;
 using NetDaemon.Extensions.MqttEntityManager;
-using NetDaemon.Extensions.MqttEntityManager.Models;
 using NetDaemon.Extensions.Scheduler;
 using NetDaemon.HassModel.Integration;
 
-namespace daemonapp.apps.ScottHome;
+namespace daemonapp.apps.ScottHome.HaServices;
 
 /// <summary>
 /// Register a tidal events service that can be called by a HASS automation
@@ -22,12 +18,6 @@ namespace daemonapp.apps.ScottHome;
 [NetDaemonApp]
 public class TidesFetcherService
 {
-    // ReSharper disable once ClassNeverInstantiated.Local
-    // Reason: payload for service call
-    private class ServiceData
-    {
-    };
-
     private const string EntityId = "sensor.leith_tides";
     private const string EntityName = "Leith Tides";
     
@@ -63,7 +53,7 @@ public class TidesFetcherService
 
         scheduler.RunIn(TimeSpan.FromSeconds(1), RegisterEntities);
         
-        ha.RegisterServiceCallBack<ServiceData>("get_tidal_events",
+        ha.RegisterServiceCallBack<HaServiceData>("get_tidal_events",
             e => SafeMethodExecuteWithLogging.Execute(GetTides, _logger));
     }
 

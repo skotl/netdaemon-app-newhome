@@ -4,7 +4,7 @@ using HomeAssistantGenerated;
 using NetDaemon.Extensions.Scheduler;
 using NetDaemon.HassModel.Integration;
 
-namespace daemonapp.apps.ScottHome;
+namespace daemonapp.apps.ScottHome.HaServices;
 
 /// <summary>
 /// Presents living room light controls as services as HA is way better at detecting sunset than we are, over here
@@ -12,12 +12,6 @@ namespace daemonapp.apps.ScottHome;
 [NetDaemonApp]
 public class LivingRoomLightsService
 {
-    // ReSharper disable once ClassNeverInstantiated.Local
-    // Reason: payload for service call
-    private class ServiceData
-    {
-    };
-
     private const long DefaultBrightness = 70;
     private readonly IHaContext _ha;
     private readonly ILogger<LivingRoomLightsService> _logger;
@@ -30,9 +24,9 @@ public class LivingRoomLightsService
 
         _logger.LogInformation("{App} started", nameof(LivingRoomLightsService));
 
-        ha.RegisterServiceCallBack<ServiceData>("livingroom_lights_on",
+        ha.RegisterServiceCallBack<HaServiceData>("livingroom_lights_on",
             e => SafeMethodExecuteWithLogging.Execute(TurnOnLivingRoom, _logger));
-        ha.RegisterServiceCallBack<ServiceData>("livingroom_lights_off",
+        ha.RegisterServiceCallBack<HaServiceData>("livingroom_lights_off",
             e => SafeMethodExecuteWithLogging.Execute(TurnOffLivingRoom, _logger));
     }
 

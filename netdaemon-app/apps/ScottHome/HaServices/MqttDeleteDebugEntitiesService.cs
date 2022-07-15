@@ -3,7 +3,7 @@ using NetDaemon.Extensions.MqttEntityManager;
 using NetDaemon.Extensions.Scheduler;
 using NetDaemon.HassModel.Integration;
 
-namespace daemonapp.apps.ScottHome;
+namespace daemonapp.apps.ScottHome.HaServices;
 
 /// <summary>
 /// This service deletes test / debug entities that I create through the NetDaemon core project
@@ -11,12 +11,6 @@ namespace daemonapp.apps.ScottHome;
 [NetDaemonApp]
 public class MqttDeleteDebugEntitiesService
 {
-    // ReSharper disable once ClassNeverInstantiated.Local
-    // Reason: payload for service call
-    private class ServiceData
-    {
-    };
-
     private readonly ILogger<MqttDeleteDebugEntitiesService> _logger;
     private readonly IHaContext _ha;
     private readonly INetDaemonScheduler _scheduler;
@@ -47,7 +41,7 @@ public class MqttDeleteDebugEntitiesService
 
         scheduler.RunIn(TimeSpan.FromSeconds(1), DeleteEntities);
 
-        ha.RegisterServiceCallBack<ServiceData>("delete_debug_entities",
+        ha.RegisterServiceCallBack<HaServiceData>("delete_debug_entities",
             e => SafeMethodExecuteWithLogging.Execute(DeleteEntities, _logger));
     }
 
