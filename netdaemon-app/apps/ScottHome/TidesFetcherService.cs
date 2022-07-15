@@ -48,7 +48,7 @@ public class TidesFetcherService
         _httpClientFactory = httpClientFactory;
         _mqttEntityManager = mqttEntityManager;
 
-        _logger.LogInformation($"{nameof(TidesFetcherService)} starting");
+        _logger.LogInformation("{App} starting", nameof(TidesFetcherService));
 
         _tidalConfig = configuration.GetSection("Tides")
             .Get<TideConfiguration>();
@@ -70,7 +70,7 @@ public class TidesFetcherService
     {
         try
         {
-            _logger.LogDebug($"Creating entity {EntityId}");
+            _logger.LogDebug("Creating entity {EntityId}", EntityId);
             _mqttEntityManager.CreateAsync(EntityId, new EntityCreationOptions(Name: EntityName), new
                 {
                     icon = "mdi:waves"
@@ -89,10 +89,10 @@ public class TidesFetcherService
         var tidalApi = new TidalApi(_tidalConfig?.ApiKey, httpClient);
         
         var stationId = GetStationId(tidalApi);
-        _logger.LogDebug($"Station ID={stationId} for {_tidalConfig?.StationName}");
+        _logger.LogDebug("Station ID={StationId} for {StationName}", stationId, _tidalConfig?.StationName);
         
         var events = GetTidalEvents(tidalApi, stationId);
-        _logger.LogDebug($"Retrieved {events.Count} tidal events");
+        _logger.LogDebug("Retrieved {Count} tidal events", events.Count);
 
         if (events.Any())
             UpdateTidesSensor(events);

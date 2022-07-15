@@ -26,7 +26,7 @@ public class LivingRoomLightsService
         _ha = ha;
         _logger = logger;
 
-        _logger.LogInformation($"{nameof(LivingRoomLightsService)} started");
+        _logger.LogInformation("{App} started", nameof(LivingRoomLightsService));
 
         ha.RegisterServiceCallBack<ServiceData>("livingroom_lights_on",
             e => SafeMethodExecuteWithLogging.Execute(TurnOnLivingRoom, _logger));

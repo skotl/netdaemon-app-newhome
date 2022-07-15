@@ -35,7 +35,7 @@ public class SetFrostExpectedSensorService
         _logger = logger;
         _mqttEntityManager = mqttEntityManager;
 
-        _logger.LogInformation($"{nameof(SetFrostExpectedSensorService)} started");
+        _logger.LogInformation("{App} started", nameof(SetFrostExpectedSensorService));
 
         scheduler.RunIn(TimeSpan.FromSeconds(1), RegisterEntities);
 
@@ -47,7 +47,7 @@ public class SetFrostExpectedSensorService
     {
         try
         {
-            _logger.LogDebug($"Creating entity {EntityId}");
+            _logger.LogDebug("Creating entity {EntityId}", EntityId);
             _mqttEntityManager.CreateAsync(EntityId, new EntityCreationOptions(Name: EntityName, DeviceClass:"cold"))
                 .GetAwaiter();
         }

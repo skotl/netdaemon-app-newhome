@@ -37,7 +37,7 @@ public class FrontDoorLocker
         var frontDoorLock = new Entities(_ha).Lock.FrontDoorLock;
         var currentLockStatus = StateEnums.ConvertToLockState(frontDoorLock.State);
 
-        _logger.LogDebug($"Home state changed to {homeStatus}, door lock is {currentLockStatus}");
+        _logger.LogDebug("Home state changed to {HomeStatus}, door lock is {CurrentLockStatus}", homeStatus, currentLockStatus);
 
         switch (currentHomeStatus)
         {
@@ -51,7 +51,7 @@ public class FrontDoorLocker
                 break;
             case StateEnums.HomePresence.occupied when currentLockStatus == StateEnums.LockState.unlocked:
             case StateEnums.HomePresence.not_occupied when currentLockStatus == StateEnums.LockState.locked:
-                _logger.LogInformation("No change, home = {homeStatus}, lock = {lockStatus}", currentHomeStatus,
+                _logger.LogInformation("No change, home = {HomeStatus}, lock = {CurrentLockStatus}", currentHomeStatus,
                     currentLockStatus);
                 break;
             default:

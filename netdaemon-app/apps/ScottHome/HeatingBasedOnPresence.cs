@@ -25,7 +25,7 @@ public class HeatingBasedOnPresence
         _ha = ha;
         _logger = logger;
 
-        _logger.LogInformation($"{nameof(HeatingBasedOnPresence)} started");
+        _logger.LogInformation("{App} started", nameof(HeatingBasedOnPresence));
         var entities = new Entities(ha);
         var homeOccupancy = entities.Sensor.HomeOccupancy;
         var thermostat = entities.Climate.Thermostat1;
@@ -99,7 +99,7 @@ public class HeatingBasedOnPresence
         var distance = LocationHelper.CalculateDistance(changes?.New?.Attributes?.Latitude,
             changes?.New?.Attributes?.Longitude, _homeLocation);
 
-        _logger.LogDebug($"Tracker {changes?.Entity?.EntityId} is outside heat zone, checking everyone");
+        _logger.LogDebug("Tracker {EntityId} is outside heat zone, checking everyone", changes?.Entity?.EntityId);
         bool allPeopleAreFarAway = true;
         foreach (var trackerId in MyHomeEntityList.GetFamilyTrackers)
         {
@@ -108,7 +108,7 @@ public class HeatingBasedOnPresence
             if (LocationHelper.CalculateDistance(ExtractCoordindatesFromEntity(tracker), _homeLocation)
                 < _turnUpReturnDistance)
             {
-                _logger.LogDebug($"Tracker {trackerId} is inside the heat zone, aborting check");
+                _logger.LogDebug("Tracker {TrackerId} is inside the heat zone, aborting check", trackerId);
                 allPeopleAreFarAway = false;
                 break;
             }
@@ -116,7 +116,7 @@ public class HeatingBasedOnPresence
 
         if (allPeopleAreFarAway)
         {
-            _logger.LogDebug($"Everyone is far away so set heat to {_targetTempExit}");
+            _logger.LogDebug("Everyone is far away so set heat to {TargetTempExit}", _targetTempExit);
             entities.Climate.Thermostat1.SetTemperature(_targetTempExit);
         }
     }
