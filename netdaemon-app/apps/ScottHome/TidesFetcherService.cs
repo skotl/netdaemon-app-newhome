@@ -79,7 +79,7 @@ public class TidesFetcherService
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, ex.Message);
+            _logger.LogError(ex, "{Message}", ex.Message);
         }
     }
 

@@ -16,7 +16,7 @@ public static class SafeMethodExecuteWithLogging
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, ex.Message);
+            logger.LogError(ex, "{Message}", ex.Message);
         }
     }
     
@@ -28,7 +28,7 @@ public static class SafeMethodExecuteWithLogging
         }
         catch (Exception ex)
         {
-            logger.LogError(ex, ex.Message);
+            logger.LogError(ex, "{Message}", ex.Message);
         }
     }
 }
