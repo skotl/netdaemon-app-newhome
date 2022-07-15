@@ -22,6 +22,8 @@ namespace daemonapp.apps.ScottHome;
 [NetDaemonApp]
 public class TidesFetcherService
 {
+    // ReSharper disable once ClassNeverInstantiated.Local
+    // Reason: payload for service call
     private class ServiceData
     {
     };
@@ -108,7 +110,7 @@ public class TidesFetcherService
         return stationIdGetter.Result;
     }
 
-    private List<TidalEvent> GetTidalEvents(TidalApi tidalApi, string? stationId)
+    private static List<TidalEvent> GetTidalEvents(TidalApi tidalApi, string? stationId)
     {
         var tidalEventsGetter = tidalApi.GetTidalEvents(stationId);
         tidalEventsGetter.Wait();
@@ -119,7 +121,7 @@ public class TidesFetcherService
         return tidalEventsGetter.Result;
     }
     
-    private void UpdateTidesSensor(List<TidalEvent> events)
+    private void UpdateTidesSensor(IReadOnlyCollection<TidalEvent> events)
     {
         if (events.Count < 4)
             throw new InvalidDataException($"Expected at least four events, but got {events.Count}");

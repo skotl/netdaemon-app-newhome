@@ -12,11 +12,13 @@ namespace daemonapp.apps.ScottHome;
 [NetDaemonApp]
 public class LivingRoomLightsService
 {
+    // ReSharper disable once ClassNeverInstantiated.Local
+    // Reason: payload for service call
     private class ServiceData
     {
     };
 
-    private static readonly long DefaultBrightness = 70;
+    private const long DefaultBrightness = 70;
     private readonly IHaContext _ha;
     private readonly ILogger<LivingRoomLightsService> _logger;
 

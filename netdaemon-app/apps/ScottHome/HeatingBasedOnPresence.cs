@@ -114,11 +114,11 @@ public class HeatingBasedOnPresence
             }
         }
 
-        if (allPeopleAreFarAway)
-        {
-            _logger.LogDebug("Everyone is far away so set heat to {TargetTempExit}", _targetTempExit);
-            entities.Climate.Thermostat1.SetTemperature(_targetTempExit);
-        }
+        if (!allPeopleAreFarAway)
+            return;
+        
+        _logger.LogDebug("Everyone is far away so set heat to {TargetTempExit}", _targetTempExit);
+        entities.Climate.Thermostat1.SetTemperature(_targetTempExit);
     }
 
     private Coordinates ExtractCoordindatesFromEntity(Entity tracker)

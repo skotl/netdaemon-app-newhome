@@ -51,7 +51,7 @@ public class PersonHomeUpdater
                     new { icon = NotOccupiedIcon })
                 .GetAwaiter();
 
-            PersonChangedState("initalising", "unknown");
+            PersonChangedState("initialising", "unknown");
         }
         catch (Exception ex)
         {

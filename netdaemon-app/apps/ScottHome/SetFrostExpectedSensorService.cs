@@ -14,6 +14,8 @@ namespace daemonapp.apps.ScottHome;
 [NetDaemonApp]
 public class SetFrostExpectedSensorService
 {
+    // ReSharper disable once ClassNeverInstantiated.Local
+    // Reason: payload for service call
     private class ServiceData
     {
     };
@@ -95,15 +97,19 @@ public class SetFrostExpectedSensorService
         }
     }
 
-    private WeatherForecast? FindClearedForecast(List<WeatherForecast> forecasts)
+    private static WeatherForecast? FindClearedForecast(List<WeatherForecast> forecasts)
     {
         var inFrost = false;
         foreach (var f in forecasts)
         {
-            if (f.TempLow <= FrostWarningThreshold && !inFrost)
-                inFrost = true;
-            else if (f.TempLow > FrostWarningThreshold && inFrost)
-                return f;
+            switch (f.TempLow)
+            {
+                case <= FrostWarningThreshold when !inFrost:
+                    inFrost = true;
+                    break;
+                case > FrostWarningThreshold when inFrost:
+                    return f;
+            }
         }
 
         return null;

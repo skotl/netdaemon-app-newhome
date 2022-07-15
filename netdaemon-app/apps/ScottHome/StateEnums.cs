@@ -30,20 +30,12 @@ public class StateEnums
     
     public static LockState ConvertToLockState(string? status)
     {
-        LockState currentState;
-        if (Enum.TryParse(status, out currentState))
-            return currentState;
-
-        return LockState.unlocked;
+        return Enum.TryParse(status, out LockState currentState) ? currentState : LockState.unlocked;
     }
 
     public static HomePresence ConvertToHomePresence(string? status)
     {
-        HomePresence currentState;
-        if (Enum.TryParse(status, out currentState))
-            return currentState;
-
-        return HomePresence.not_occupied;
+        return Enum.TryParse(status, out HomePresence currentState) ? currentState : HomePresence.not_occupied;
     }
 
     public static bool ConvertToBinaryState(string? status)
