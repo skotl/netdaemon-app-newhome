@@ -1,17 +1,25 @@
-﻿using System.Text.Json;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text.Json;
 using daemonapp.apps.ScottHome.Weather.Model;
 using HomeAssistantGenerated;
 
 namespace daemonapp.apps.ScottHome.Weather;
 
-public class WeatherHelper
+public static class WeatherHelper
 {
-    public static WeatherForecast[] GetWeatherForecast(WeatherEntity weather)
+    public static IEnumerable<WeatherForecast> GetWeatherForecast(WeatherEntity weather)
     {
+        var list = new List<WeatherForecast>();
+
         if (weather?.Attributes?.Forecast == null)
-            return Array.Empty<WeatherForecast>();
+            return list;
+
+        list.AddRange(weather.Attributes.Forecast
+                .Select(f => ((JsonElement)f).Deserialize<WeatherForecast>())
+                .Where(w => w != null)!
+        );
         
-        var json = (JsonElement)weather.Attributes.Forecast;
-        return JsonSerializer.Deserialize<WeatherForecast[]>(json) ?? Array.Empty<WeatherForecast>();
+        return list;
     }
 }

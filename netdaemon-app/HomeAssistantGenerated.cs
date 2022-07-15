@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using NetDaemon.HassModel;
 using NetDaemon.HassModel.Entities;
+using NetDaemon.HassModel.Entities.Core;
 using System.Text.Json.Serialization;
 
 namespace HomeAssistantGenerated
@@ -26,15 +27,13 @@ namespace HomeAssistantGenerated
 
 		InputBooleanEntities InputBoolean { get; }
 
-		InputTextEntities InputText { get; }
-
 		LightEntities Light { get; }
 
 		LockEntities Lock { get; }
 
 		MediaPlayerEntities MediaPlayer { get; }
 
-		PersistentNotificationEntities PersistentNotification { get; }
+		NumberEntities Number { get; }
 
 		PersonEntities Person { get; }
 
@@ -46,12 +45,14 @@ namespace HomeAssistantGenerated
 
 		SwitchEntities Switch { get; }
 
+		UpdateEntities Update { get; }
+
 		WeatherEntities Weather { get; }
 
 		ZoneEntities Zone { get; }
 	}
 
-	public class Entities : IEntities
+	public partial class Entities : IEntities
 	{
 		private readonly IHaContext _haContext;
 		public Entities(IHaContext haContext)
@@ -68,21 +69,21 @@ namespace HomeAssistantGenerated
 		public DeviceTrackerEntities DeviceTracker => new(_haContext);
 		public GroupEntities Group => new(_haContext);
 		public InputBooleanEntities InputBoolean => new(_haContext);
-		public InputTextEntities InputText => new(_haContext);
 		public LightEntities Light => new(_haContext);
 		public LockEntities Lock => new(_haContext);
 		public MediaPlayerEntities MediaPlayer => new(_haContext);
-		public PersistentNotificationEntities PersistentNotification => new(_haContext);
+		public NumberEntities Number => new(_haContext);
 		public PersonEntities Person => new(_haContext);
 		public SceneEntities Scene => new(_haContext);
 		public SensorEntities Sensor => new(_haContext);
 		public SunEntities Sun => new(_haContext);
 		public SwitchEntities Switch => new(_haContext);
+		public UpdateEntities Update => new(_haContext);
 		public WeatherEntities Weather => new(_haContext);
 		public ZoneEntities Zone => new(_haContext);
 	}
 
-	public class AutomationEntities
+	public partial class AutomationEntities
 	{
 		private readonly IHaContext _haContext;
 		public AutomationEntities(IHaContext haContext)
@@ -106,7 +107,7 @@ namespace HomeAssistantGenerated
 		public AutomationEntity TurnOffLightsAtMidnight => new(_haContext, "automation.turn_off_lights_at_midnight");
 	}
 
-	public class BinarySensorEntities
+	public partial class BinarySensorEntities
 	{
 		private readonly IHaContext _haContext;
 		public BinarySensorEntities(IHaContext haContext)
@@ -114,8 +115,10 @@ namespace HomeAssistantGenerated
 			_haContext = haContext;
 		}
 
-		///<summary>Backups Stale</summary>
-		public BinarySensorEntity BackupsStale => new(_haContext, "binary_sensor.backups_stale");
+		///<summary>ESPresense Downstairs</summary>
+		public BinarySensorEntity EspresenseDownstairs => new(_haContext, "binary_sensor.espresense_downstairs");
+		///<summary>ESPresense Scott Office</summary>
+		public BinarySensorEntity EspresenseScottOffice => new(_haContext, "binary_sensor.espresense_scott_office");
 		///<summary>Front Door contact</summary>
 		public BinarySensorEntity FrontDoorContact => new(_haContext, "binary_sensor.front_door_contact");
 		///<summary>Front door motion</summary>
@@ -126,14 +129,18 @@ namespace HomeAssistantGenerated
 		public BinarySensorEntity FrostForecast => new(_haContext, "binary_sensor.frost_forecast");
 		///<summary>Hive Hub Status</summary>
 		public BinarySensorEntity HiveHubStatus => new(_haContext, "binary_sensor.hive_hub_status");
+		///<summary>Jo's iPhone Focus</summary>
+		public BinarySensorEntity JoSIphoneFocus => new(_haContext, "binary_sensor.jo_s_iphone_focus");
 		///<summary>Kitchen Door contact</summary>
 		public BinarySensorEntity KitchenDoorContact => new(_haContext, "binary_sensor.kitchen_door_contact");
 		///<summary>Kitchen Door tamper</summary>
 		public BinarySensorEntity KitchenDoorTamper => new(_haContext, "binary_sensor.kitchen_door_tamper");
+		///<summary>Manager Test</summary>
+		public BinarySensorEntity ManagerTest => new(_haContext, "binary_sensor.manager_test");
 		///<summary>Remote UI</summary>
 		public BinarySensorEntity RemoteUi => new(_haContext, "binary_sensor.remote_ui");
-		///<summary>RPi Power status</summary>
-		public BinarySensorEntity RpiPowerStatus => new(_haContext, "binary_sensor.rpi_power_status");
+		///<summary>HotDog sensor</summary>
+		public BinarySensorEntity S2 => new(_haContext, "binary_sensor.s2");
 		///<summary>Scott's XR Focus</summary>
 		public BinarySensorEntity ScottSXrFocus => new(_haContext, "binary_sensor.scott_s_xr_focus");
 		///<summary>Sun Room Door contact</summary>
@@ -144,7 +151,7 @@ namespace HomeAssistantGenerated
 		public BinarySensorEntity Updater => new(_haContext, "binary_sensor.updater");
 	}
 
-	public class ButtonEntities
+	public partial class ButtonEntities
 	{
 		private readonly IHaContext _haContext;
 		public ButtonEntities(IHaContext haContext)
@@ -152,11 +159,15 @@ namespace HomeAssistantGenerated
 			_haContext = haContext;
 		}
 
+		///<summary>ESPresense Downstairs Restart</summary>
+		public ButtonEntity EspresenseDownstairsRestart => new(_haContext, "button.espresense_downstairs_restart");
+		///<summary>ESPresense Scott Office Restart</summary>
+		public ButtonEntity EspresenseScottOfficeRestart => new(_haContext, "button.espresense_scott_office_restart");
 		///<summary>LG webOS TV BA72 Identify</summary>
 		public ButtonEntity LgWebosTvBa72Identify => new(_haContext, "button.lg_webos_tv_ba72_identify");
 	}
 
-	public class CameraEntities
+	public partial class CameraEntities
 	{
 		private readonly IHaContext _haContext;
 		public CameraEntities(IHaContext haContext)
@@ -168,7 +179,7 @@ namespace HomeAssistantGenerated
 		public CameraEntity FrontDoor => new(_haContext, "camera.front_door");
 	}
 
-	public class ClimateEntities
+	public partial class ClimateEntities
 	{
 		private readonly IHaContext _haContext;
 		public ClimateEntities(IHaContext haContext)
@@ -176,11 +187,11 @@ namespace HomeAssistantGenerated
 			_haContext = haContext;
 		}
 
-		///<summary>Thermostat 1</summary>
-		public ClimateEntity Thermostat1 => new(_haContext, "climate.thermostat_1");
+		///<summary>Thermostat</summary>
+		public ClimateEntity Thermostat => new(_haContext, "climate.thermostat");
 	}
 
-	public class CoverEntities
+	public partial class CoverEntities
 	{
 		private readonly IHaContext _haContext;
 		public CoverEntities(IHaContext haContext)
@@ -192,7 +203,7 @@ namespace HomeAssistantGenerated
 		public CoverEntity ScottOffice => new(_haContext, "cover.scott_office");
 	}
 
-	public class DeviceTrackerEntities
+	public partial class DeviceTrackerEntities
 	{
 		private readonly IHaContext _haContext;
 		public DeviceTrackerEntities(IHaContext haContext)
@@ -208,7 +219,7 @@ namespace HomeAssistantGenerated
 		public DeviceTrackerEntity TheosIphone6s => new(_haContext, "device_tracker.theos_iphone_6s");
 	}
 
-	public class GroupEntities
+	public partial class GroupEntities
 	{
 		private readonly IHaContext _haContext;
 		public GroupEntities(IHaContext haContext)
@@ -220,7 +231,7 @@ namespace HomeAssistantGenerated
 		public GroupEntity Family => new(_haContext, "group.family");
 	}
 
-	public class InputBooleanEntities
+	public partial class InputBooleanEntities
 	{
 		private readonly IHaContext _haContext;
 		public InputBooleanEntities(IHaContext haContext)
@@ -228,10 +239,52 @@ namespace HomeAssistantGenerated
 			_haContext = haContext;
 		}
 
+		///<summary>dev_netdaemon_apps_concurrency_test_app</summary>
+		public InputBooleanEntity DevNetdaemonAppsConcurrencyTestApp => new(_haContext, "input_boolean.dev_netdaemon_apps_concurrency_test_app");
+		///<summary>dev_netdaemon_apps_concurrency_test_app2</summary>
+		public InputBooleanEntity DevNetdaemonAppsConcurrencyTestApp2 => new(_haContext, "input_boolean.dev_netdaemon_apps_concurrency_test_app2");
+		///<summary>dev_netdaemon_apps_config_app</summary>
+		public InputBooleanEntity DevNetdaemonAppsConfigApp => new(_haContext, "input_boolean.dev_netdaemon_apps_config_app");
+		///<summary>dev_netdaemon_apps_hello_app</summary>
+		public InputBooleanEntity DevNetdaemonAppsHelloApp => new(_haContext, "input_boolean.dev_netdaemon_apps_hello_app");
+		///<summary>dev_netdaemon_apps_yaml_app</summary>
+		public InputBooleanEntity DevNetdaemonAppsYamlApp => new(_haContext, "input_boolean.dev_netdaemon_apps_yaml_app");
+		///<summary>dev_netdaemon_daemonapp_apps_scott_home_front_door_locker</summary>
+		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeFrontDoorLocker => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_front_door_locker");
+		///<summary>dev_netdaemon_daemonapp_apps_scott_home_frost_sensor_notifications</summary>
+		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeFrostSensorNotifications => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_frost_sensor_notifications");
+		///<summary>dev_netdaemon_daemonapp_apps_scott_home_ha_services_living_room_lights_service</summary>
+		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeHaServicesLivingRoomLightsService => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_ha_services_living_room_lights_service");
+		///<summary>dev_netdaemon_daemonapp_apps_scott_home_ha_services_mqtt_delete_debug_entities_service</summary>
+		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeHaServicesMqttDeleteDebugEntitiesService => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_ha_services_mqtt_delete_debug_entities_service");
+		///<summary>dev_netdaemon_daemonapp_apps_scott_home_ha_services_set_frost_expected_sensor_service</summary>
+		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeHaServicesSetFrostExpectedSensorService => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_ha_services_set_frost_expected_sensor_service");
+		///<summary>dev_netdaemon_daemonapp_apps_scott_home_ha_services_tides_fetcher_service</summary>
+		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeHaServicesTidesFetcherService => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_ha_services_tides_fetcher_service");
+		///<summary>dev_netdaemon_daemonapp_apps_scott_home_heating_based_on_presence</summary>
+		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeHeatingBasedOnPresence => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_heating_based_on_presence");
+		///<summary>dev_netdaemon_daemonapp_apps_scott_home_living_room_lights_service</summary>
+		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeLivingRoomLightsService => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_living_room_lights_service");
+		///<summary>dev_netdaemon_daemonapp_apps_scott_home_mqtt_delete_debug_entities_service</summary>
+		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeMqttDeleteDebugEntitiesService => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_mqtt_delete_debug_entities_service");
+		///<summary>dev_netdaemon_daemonapp_apps_scott_home_mqtt_tester</summary>
+		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeMqttTester => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_mqtt_tester");
+		///<summary>dev_netdaemon_daemonapp_apps_scott_home_person_home_updater</summary>
+		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomePersonHomeUpdater => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_person_home_updater");
 		///<summary>dev_netdaemon_daemonapp_apps_scott_home_set_frost_expected_sensor_service</summary>
 		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeSetFrostExpectedSensorService => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_set_frost_expected_sensor_service");
+		///<summary>dev_netdaemon_daemonapp_apps_scott_home_tides_fetcher_service</summary>
+		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeTidesFetcherService => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_tides_fetcher_service");
+		///<summary>dev_netdaemon_debug_host_apps_extensions_mqtt_entity_manager_app</summary>
+		public InputBooleanEntity DevNetdaemonDebugHostAppsExtensionsMqttEntityManagerApp => new(_haContext, "input_boolean.dev_netdaemon_debug_host_apps_extensions_mqtt_entity_manager_app");
+		///<summary>dev_netdaemon_debug_host_apps_extensions_mtt_entity_subscription_app</summary>
+		public InputBooleanEntity DevNetdaemonDebugHostAppsExtensionsMttEntitySubscriptionApp => new(_haContext, "input_boolean.dev_netdaemon_debug_host_apps_extensions_mtt_entity_subscription_app");
 		///<summary>FrostySense</summary>
 		public InputBooleanEntity Frostysense => new(_haContext, "input_boolean.frostysense");
+		///<summary>netdaemon_daemonapp_apps_scott_home_front_door_locker</summary>
+		public InputBooleanEntity NetdaemonDaemonappAppsScottHomeFrontDoorLocker => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_front_door_locker");
+		///<summary>netdaemon_daemonapp_apps_scott_home_frost_sensor_notifications</summary>
+		public InputBooleanEntity NetdaemonDaemonappAppsScottHomeFrostSensorNotifications => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_frost_sensor_notifications");
 		///<summary>netdaemon_daemonapp_apps_scott_home_heating_based_on_presence</summary>
 		public InputBooleanEntity NetdaemonDaemonappAppsScottHomeHeatingBasedOnPresence => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_heating_based_on_presence");
 		///<summary>netdaemon_daemonapp_apps_scott_home_living_room_lights_service</summary>
@@ -246,19 +299,7 @@ namespace HomeAssistantGenerated
 		public InputBooleanEntity NetdaemonDaemonappAppsScottHomeTidesFetcherService => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_tides_fetcher_service");
 	}
 
-	public class InputTextEntities
-	{
-		private readonly IHaContext _haContext;
-		public InputTextEntities(IHaContext haContext)
-		{
-			_haContext = haContext;
-		}
-
-		///<summary>Sample text helper</summary>
-		public InputTextEntity SampleTextHelper => new(_haContext, "input_text.sample_text_helper");
-	}
-
-	public class LightEntities
+	public partial class LightEntities
 	{
 		private readonly IHaContext _haContext;
 		public LightEntities(IHaContext haContext)
@@ -276,17 +317,21 @@ namespace HomeAssistantGenerated
 		public LightEntity LrWindowBack => new(_haContext, "light.lr_window_back");
 		///<summary>LR Window front</summary>
 		public LightEntity LrWindowFront => new(_haContext, "light.lr_window_front");
+		///<summary>On air lamp</summary>
+		public LightEntity OnAirLamp => new(_haContext, "light.on_air_lamp");
 		///<summary>Parents</summary>
 		public LightEntity Parents => new(_haContext, "light.parents");
 		///<summary>Scott's lamp</summary>
 		public LightEntity ScottSLamp => new(_haContext, "light.scott_s_lamp");
+		///<summary>Studio light</summary>
+		public LightEntity StudioLight => new(_haContext, "light.studio_light");
 		///<summary>Theo</summary>
 		public LightEntity Theo => new(_haContext, "light.theo");
 		///<summary>Z-Wave Extender</summary>
 		public LightEntity ZWaveExtender => new(_haContext, "light.z_wave_extender");
 	}
 
-	public class LockEntities
+	public partial class LockEntities
 	{
 		private readonly IHaContext _haContext;
 		public LockEntities(IHaContext haContext)
@@ -298,7 +343,7 @@ namespace HomeAssistantGenerated
 		public LockEntity FrontDoorLock => new(_haContext, "lock.front_door_lock");
 	}
 
-	public class MediaPlayerEntities
+	public partial class MediaPlayerEntities
 	{
 		private readonly IHaContext _haContext;
 		public MediaPlayerEntities(IHaContext haContext)
@@ -306,25 +351,57 @@ namespace HomeAssistantGenerated
 			_haContext = haContext;
 		}
 
+		///<summary>Everywhere</summary>
+		public MediaPlayerEntity Everywhere => new(_haContext, "media_player.everywhere");
+		///<summary>Fire TV</summary>
+		public MediaPlayerEntity FireTv => new(_haContext, "media_player.fire_tv");
+		///<summary>Garage echo dot</summary>
+		public MediaPlayerEntity GarageEchoDot => new(_haContext, "media_player.garage_echo_dot");
+		///<summary>Jo's echo</summary>
+		public MediaPlayerEntity JoSEcho => new(_haContext, "media_player.jo_s_echo");
+		///<summary>Kitchen echo</summary>
+		public MediaPlayerEntity KitchenEcho => new(_haContext, "media_player.kitchen_echo");
 		///<summary>LG webOS TV BA72</summary>
 		public MediaPlayerEntity LgWebosTvBa72 => new(_haContext, "media_player.lg_webos_tv_ba72");
+		///<summary>[LG] webOS TV OLED55A16LA</summary>
+		public MediaPlayerEntity LgWebosTvOled55a16la => new(_haContext, "media_player.lg_webos_tv_oled55a16la");
+		///<summary>Parents room echo</summary>
+		public MediaPlayerEntity ScottS2ndEchoDot => new(_haContext, "media_player.scott_s_2nd_echo_dot");
+		///<summary>Scott's 3rd Fire</summary>
+		public MediaPlayerEntity ScottS3rdFire => new(_haContext, "media_player.scott_s_3rd_fire");
+		///<summary>Scott's Echo Show</summary>
+		public MediaPlayerEntity ScottSEchoShow => new(_haContext, "media_player.scott_s_echo_show");
+		///<summary>Scott's FireTVStick</summary>
+		public MediaPlayerEntity ScottSFiretvstick => new(_haContext, "media_player.scott_s_firetvstick");
+		///<summary>Sunroom Echo Dot</summary>
+		public MediaPlayerEntity SunroomEchoDot => new(_haContext, "media_player.sunroom_echo_dot");
+		///<summary>Theo's Echo</summary>
+		public MediaPlayerEntity TheoSEcho => new(_haContext, "media_player.theo_s_echo");
+		///<summary>TV home connect</summary>
+		public MediaPlayerEntity TvHomeConnect => new(_haContext, "media_player.tv_home_connect");
 		///<summary>XboxOne</summary>
 		public MediaPlayerEntity Xboxone => new(_haContext, "media_player.xboxone");
 	}
 
-	public class PersistentNotificationEntities
+	public partial class NumberEntities
 	{
 		private readonly IHaContext _haContext;
-		public PersistentNotificationEntities(IHaContext haContext)
+		public NumberEntities(IHaContext haContext)
 		{
 			_haContext = haContext;
 		}
 
-		///<summary>New devices discovered</summary>
-		public PersistentNotificationEntity ConfigEntryDiscovery => new(_haContext, "persistent_notification.config_entry_discovery");
+		///<summary>ESPresense Downstairs Absorption</summary>
+		public NumberEntity EspresenseDownstairsAbsorption => new(_haContext, "number.espresense_downstairs_absorption");
+		///<summary>ESPresense Downstairs Max Distance</summary>
+		public NumberEntity EspresenseDownstairsMaxDistance => new(_haContext, "number.espresense_downstairs_max_distance");
+		///<summary>ESPresense Scott Office Absorption</summary>
+		public NumberEntity EspresenseScottOfficeAbsorption => new(_haContext, "number.espresense_scott_office_absorption");
+		///<summary>ESPresense Scott Office Max Distance</summary>
+		public NumberEntity EspresenseScottOfficeMaxDistance => new(_haContext, "number.espresense_scott_office_max_distance");
 	}
 
-	public class PersonEntities
+	public partial class PersonEntities
 	{
 		private readonly IHaContext _haContext;
 		public PersonEntities(IHaContext haContext)
@@ -340,7 +417,7 @@ namespace HomeAssistantGenerated
 		public PersonEntity Theo => new(_haContext, "person.theo");
 	}
 
-	public class SceneEntities
+	public partial class SceneEntities
 	{
 		private readonly IHaContext _haContext;
 		public SceneEntities(IHaContext haContext)
@@ -348,53 +425,53 @@ namespace HomeAssistantGenerated
 			_haContext = haContext;
 		}
 
-		///<summary>Dog lights</summary>
+		///<summary>Living room - Dog sleep</summary>
 		public SceneEntity DogLights => new(_haContext, "scene.dog_lights");
 		///<summary>Goodbye!</summary>
 		public SceneEntity Goodbye => new(_haContext, "scene.goodbye");
 		///<summary>I'm Back!</summary>
 		public SceneEntity IMBack => new(_haContext, "scene.i_m_back");
-		///<summary>Living room - Bright</summary>
-		public SceneEntity LivingRoomBright => new(_haContext, "scene.living_room_bright");
-		///<summary>Living room - Dimmed</summary>
-		public SceneEntity LivingRoomDimmed => new(_haContext, "scene.living_room_dimmed");
-		///<summary>Living room - Nightlight</summary>
+		///<summary>Living room - all off</summary>
+		public SceneEntity LivingRoomAllOff => new(_haContext, "scene.living_room_all_off");
+		///<summary>Living room - bright</summary>
+		public SceneEntity LivingRoomBright2 => new(_haContext, "scene.living_room_bright_2");
+		///<summary>Living room Nightlight</summary>
 		public SceneEntity LivingRoomNightlight => new(_haContext, "scene.living_room_nightlight");
-		///<summary>Living room - Relax</summary>
+		///<summary>Living room Relax</summary>
 		public SceneEntity LivingRoomRelax => new(_haContext, "scene.living_room_relax");
-		///<summary>Parents room - Bright</summary>
+		///<summary>Parents room Bright</summary>
 		public SceneEntity ParentsRoomBright => new(_haContext, "scene.parents_room_bright");
-		///<summary>Parents room - Dimmed</summary>
+		///<summary>Parents room Dimmed</summary>
 		public SceneEntity ParentsRoomDimmed => new(_haContext, "scene.parents_room_dimmed");
-		///<summary>Parents room - Nightlight</summary>
+		///<summary>Parents room Nightlight</summary>
 		public SceneEntity ParentsRoomNightlight => new(_haContext, "scene.parents_room_nightlight");
-		///<summary>Theo’s room - Arctic aurora</summary>
+		///<summary>Theo’s room Arctic aurora</summary>
 		public SceneEntity TheosRoomArcticAurora => new(_haContext, "scene.theos_room_arctic_aurora");
-		///<summary>Theo’s room - Bright</summary>
+		///<summary>Theo’s room Bright</summary>
 		public SceneEntity TheosRoomBright => new(_haContext, "scene.theos_room_bright");
-		///<summary>Theo’s room - Concentrate</summary>
+		///<summary>Theo’s room Concentrate</summary>
 		public SceneEntity TheosRoomConcentrate => new(_haContext, "scene.theos_room_concentrate");
-		///<summary>Theo’s room - Dimmed</summary>
+		///<summary>Theo’s room Dimmed</summary>
 		public SceneEntity TheosRoomDimmed => new(_haContext, "scene.theos_room_dimmed");
-		///<summary>Theo’s room - Energize</summary>
+		///<summary>Theo’s room Energize</summary>
 		public SceneEntity TheosRoomEnergize => new(_haContext, "scene.theos_room_energize");
-		///<summary>Theo’s room - Nightlight</summary>
+		///<summary>Theo’s room Nightlight</summary>
 		public SceneEntity TheosRoomNightlight => new(_haContext, "scene.theos_room_nightlight");
-		///<summary>Theo’s room - Read</summary>
+		///<summary>Theo’s room Read</summary>
 		public SceneEntity TheosRoomRead => new(_haContext, "scene.theos_room_read");
-		///<summary>Theo’s room - Relax</summary>
+		///<summary>Theo’s room Relax</summary>
 		public SceneEntity TheosRoomRelax => new(_haContext, "scene.theos_room_relax");
-		///<summary>Theo’s room - Savanna sunset</summary>
+		///<summary>Theo’s room Savanna sunset</summary>
 		public SceneEntity TheosRoomSavannaSunset => new(_haContext, "scene.theos_room_savanna_sunset");
-		///<summary>Theo’s room - Spring blossom</summary>
+		///<summary>Theo’s room Spring blossom</summary>
 		public SceneEntity TheosRoomSpringBlossom => new(_haContext, "scene.theos_room_spring_blossom");
-		///<summary>Theo’s room - Tropical twilight</summary>
+		///<summary>Theo’s room Tropical twilight</summary>
 		public SceneEntity TheosRoomTropicalTwilight => new(_haContext, "scene.theos_room_tropical_twilight");
-		///<summary>Watching TV</summary>
+		///<summary>Living room - Watching TV</summary>
 		public SceneEntity WatchingTv => new(_haContext, "scene.watching_tv");
 	}
 
-	public class SensorEntities
+	public partial class SensorEntities
 	{
 		private readonly IHaContext _haContext;
 		public SensorEntities(IHaContext haContext)
@@ -408,14 +485,22 @@ namespace HomeAssistantGenerated
 		public NumericSensorEntity CameraFtp => new(_haContext, "sensor.camera_ftp");
 		///<summary>CPU Temperature</summary>
 		public NumericSensorEntity CpuTemperature => new(_haContext, "sensor.cpu_temperature");
+		///<summary>current</summary>
+		public NumericSensorEntity Current => new(_haContext, "sensor.current");
+		///<summary>ESPresense Downstairs Free Mem</summary>
+		public NumericSensorEntity EspresenseDownstairsFreeMem => new(_haContext, "sensor.espresense_downstairs_free_mem");
+		///<summary>ESPresense Downstairs Uptime</summary>
+		public NumericSensorEntity EspresenseDownstairsUptime => new(_haContext, "sensor.espresense_downstairs_uptime");
+		///<summary>ESPresense Scott Office Free Mem</summary>
+		public NumericSensorEntity EspresenseScottOfficeFreeMem => new(_haContext, "sensor.espresense_scott_office_free_mem");
+		///<summary>ESPresense Scott Office Uptime</summary>
+		public NumericSensorEntity EspresenseScottOfficeUptime => new(_haContext, "sensor.espresense_scott_office_uptime");
 		///<summary>Front Door Battery</summary>
 		public NumericSensorEntity FrontDoorBattery => new(_haContext, "sensor.front_door_battery");
 		///<summary>Front Door Lock Battery</summary>
 		public NumericSensorEntity FrontDoorLockBattery => new(_haContext, "sensor.front_door_lock_battery");
 		///<summary>garage motion Battery</summary>
 		public NumericSensorEntity GarageMotionBattery => new(_haContext, "sensor.garage_motion_battery");
-		///<summary>hacs</summary>
-		public NumericSensorEntity Hacs => new(_haContext, "sensor.hacs");
 		///<summary>HP ENVY 4520 series black ink</summary>
 		public NumericSensorEntity HpEnvy4520SeriesBlackInk => new(_haContext, "sensor.hp_envy_4520_series_black_ink");
 		///<summary>HP ENVY 4520 series tri-color ink</summary>
@@ -442,10 +527,12 @@ namespace HomeAssistantGenerated
 		public NumericSensorEntity MemoryFree => new(_haContext, "sensor.memory_free");
 		///<summary>Parents switch Battery</summary>
 		public NumericSensorEntity ParentsSwitchBatteryLevel => new(_haContext, "sensor.parents_switch_battery_level");
-		///<summary>Processor temperature</summary>
-		public NumericSensorEntity ProcessorTemperature => new(_haContext, "sensor.processor_temperature");
+		///<summary>power</summary>
+		public NumericSensorEntity Power => new(_haContext, "sensor.power");
 		///<summary>Processor use</summary>
 		public NumericSensorEntity ProcessorUse => new(_haContext, "sensor.processor_use");
+		///<summary>Rain Next Hour4</summary>
+		public NumericSensorEntity RainNexthour4 => new(_haContext, "sensor.rain_nexthour4");
 		///<summary>scott office battery level</summary>
 		public NumericSensorEntity ScottOfficeBatteryLevel => new(_haContext, "sensor.scott_office_battery_level");
 		///<summary>Scott's XR Average Active Pace</summary>
@@ -481,13 +568,33 @@ namespace HomeAssistantGenerated
 		///<summary>Theo’s iPhone 6S Storage</summary>
 		public NumericSensorEntity TheosIphone6sStorage => new(_haContext, "sensor.theos_iphone_6s_storage");
 		///<summary>Thermostat Battery Level</summary>
-		public NumericSensorEntity Thermostat1BatteryLevel => new(_haContext, "sensor.thermostat_1_battery_level");
-		///<summary>Backup State</summary>
-		public SensorEntity BackupState => new(_haContext, "sensor.backup_state");
+		public NumericSensorEntity ThermostatBatteryLevel => new(_haContext, "sensor.thermostat_battery_level");
+		///<summary>basic_sensor</summary>
+		public SensorEntity BasicSensor => new(_haContext, "sensor.basic_sensor");
+		///<summary>Fire TV next Alarm</summary>
+		public SensorEntity FireTvNextAlarm => new(_haContext, "sensor.fire_tv_next_alarm");
+		///<summary>Fire TV next Reminder</summary>
+		public SensorEntity FireTvNextReminder => new(_haContext, "sensor.fire_tv_next_reminder");
+		///<summary>Fire TV next Timer</summary>
+		public SensorEntity FireTvNextTimer => new(_haContext, "sensor.fire_tv_next_timer");
+		///<summary>Garage echo dot next Alarm</summary>
+		public SensorEntity GarageEchoDotNextAlarm => new(_haContext, "sensor.garage_echo_dot_next_alarm");
+		///<summary>Garage echo dot next Reminder</summary>
+		public SensorEntity GarageEchoDotNextReminder => new(_haContext, "sensor.garage_echo_dot_next_reminder");
+		///<summary>Garage echo dot next Timer</summary>
+		public SensorEntity GarageEchoDotNextTimer => new(_haContext, "sensor.garage_echo_dot_next_timer");
+		///<summary>hacs</summary>
+		public SensorEntity Hacs => new(_haContext, "sensor.hacs");
 		///<summary>Home occupancy</summary>
 		public SensorEntity HomeOccupancy => new(_haContext, "sensor.home_occupancy");
 		///<summary>HP ENVY 4520 series</summary>
 		public SensorEntity HpEnvy4520Series => new(_haContext, "sensor.hp_envy_4520_series");
+		///<summary>Jo's echo next Alarm</summary>
+		public SensorEntity JoSEchoNextAlarm => new(_haContext, "sensor.jo_s_echo_next_alarm");
+		///<summary>Jo's echo next Reminder</summary>
+		public SensorEntity JoSEchoNextReminder => new(_haContext, "sensor.jo_s_echo_next_reminder");
+		///<summary>Jo's echo next Timer</summary>
+		public SensorEntity JoSEchoNextTimer => new(_haContext, "sensor.jo_s_echo_next_timer");
 		///<summary>Jo's iPhone Activity</summary>
 		public SensorEntity JoSIphoneActivity => new(_haContext, "sensor.jo_s_iphone_activity");
 		///<summary>Jo's iPhone Battery State</summary>
@@ -506,8 +613,42 @@ namespace HomeAssistantGenerated
 		public SensorEntity JoSIphoneSim2 => new(_haContext, "sensor.jo_s_iphone_sim_2");
 		///<summary>Jo's iPhone SSID</summary>
 		public SensorEntity JoSIphoneSsid => new(_haContext, "sensor.jo_s_iphone_ssid");
+		///<summary>Kitchen echo next Alarm</summary>
+		public SensorEntity KitchenEchoNextAlarm => new(_haContext, "sensor.kitchen_echo_next_alarm");
+		///<summary>Kitchen echo next Reminder</summary>
+		public SensorEntity KitchenEchoNextReminder => new(_haContext, "sensor.kitchen_echo_next_reminder");
+		///<summary>Kitchen echo next Timer</summary>
+		public SensorEntity KitchenEchoNextTimer => new(_haContext, "sensor.kitchen_echo_next_timer");
 		///<summary>Leith Tides</summary>
 		public SensorEntity LeithTides => new(_haContext, "sensor.leith_tides");
+		///<summary>A special kind of sensor</summary>
+		public SensorEntity MyId => new(_haContext, "sensor.my_id");
+		///<summary>Scott iPhone</summary>
+		public SensorEntity ScottIphone => new(_haContext, "sensor.scott_iphone");
+		///<summary>Parents room echo next Alarm</summary>
+		public SensorEntity ScottS2ndEchoDotNextAlarm => new(_haContext, "sensor.scott_s_2nd_echo_dot_next_alarm");
+		///<summary>Parents room echo next Reminder</summary>
+		public SensorEntity ScottS2ndEchoDotNextReminder => new(_haContext, "sensor.scott_s_2nd_echo_dot_next_reminder");
+		///<summary>Parents room echo next Timer</summary>
+		public SensorEntity ScottS2ndEchoDotNextTimer => new(_haContext, "sensor.scott_s_2nd_echo_dot_next_timer");
+		///<summary>Scott's 3rd Fire next Alarm</summary>
+		public SensorEntity ScottS3rdFireNextAlarm => new(_haContext, "sensor.scott_s_3rd_fire_next_alarm");
+		///<summary>Scott's 3rd Fire next Reminder</summary>
+		public SensorEntity ScottS3rdFireNextReminder => new(_haContext, "sensor.scott_s_3rd_fire_next_reminder");
+		///<summary>Scott's 3rd Fire next Timer</summary>
+		public SensorEntity ScottS3rdFireNextTimer => new(_haContext, "sensor.scott_s_3rd_fire_next_timer");
+		///<summary>Scott's Echo Show next Alarm</summary>
+		public SensorEntity ScottSEchoShowNextAlarm => new(_haContext, "sensor.scott_s_echo_show_next_alarm");
+		///<summary>Scott's Echo Show next Reminder</summary>
+		public SensorEntity ScottSEchoShowNextReminder => new(_haContext, "sensor.scott_s_echo_show_next_reminder");
+		///<summary>Scott's Echo Show next Timer</summary>
+		public SensorEntity ScottSEchoShowNextTimer => new(_haContext, "sensor.scott_s_echo_show_next_timer");
+		///<summary>Scott's FireTVStick next Alarm</summary>
+		public SensorEntity ScottSFiretvstickNextAlarm => new(_haContext, "sensor.scott_s_firetvstick_next_alarm");
+		///<summary>Scott's FireTVStick next Reminder</summary>
+		public SensorEntity ScottSFiretvstickNextReminder => new(_haContext, "sensor.scott_s_firetvstick_next_reminder");
+		///<summary>Scott's FireTVStick next Timer</summary>
+		public SensorEntity ScottSFiretvstickNextTimer => new(_haContext, "sensor.scott_s_firetvstick_next_timer");
 		///<summary>Scott's XR Activity</summary>
 		public SensorEntity ScottSXrActivity => new(_haContext, "sensor.scott_s_xr_activity");
 		///<summary>Scott's XR Battery State</summary>
@@ -526,6 +667,18 @@ namespace HomeAssistantGenerated
 		public SensorEntity ScottSXrSim2 => new(_haContext, "sensor.scott_s_xr_sim_2");
 		///<summary>Scott's XR SSID</summary>
 		public SensorEntity ScottSXrSsid => new(_haContext, "sensor.scott_s_xr_ssid");
+		///<summary>Sunroom Echo Dot next Alarm</summary>
+		public SensorEntity SunroomEchoDotNextAlarm => new(_haContext, "sensor.sunroom_echo_dot_next_alarm");
+		///<summary>Sunroom Echo Dot next Reminder</summary>
+		public SensorEntity SunroomEchoDotNextReminder => new(_haContext, "sensor.sunroom_echo_dot_next_reminder");
+		///<summary>Sunroom Echo Dot next Timer</summary>
+		public SensorEntity SunroomEchoDotNextTimer => new(_haContext, "sensor.sunroom_echo_dot_next_timer");
+		///<summary>Theo's Echo next Alarm</summary>
+		public SensorEntity TheoSEchoNextAlarm => new(_haContext, "sensor.theo_s_echo_next_alarm");
+		///<summary>Theo's Echo next Reminder</summary>
+		public SensorEntity TheoSEchoNextReminder => new(_haContext, "sensor.theo_s_echo_next_reminder");
+		///<summary>Theo's Echo next Timer</summary>
+		public SensorEntity TheoSEchoNextTimer => new(_haContext, "sensor.theo_s_echo_next_timer");
 		///<summary>Theo’s iPhone 6S Activity</summary>
 		public SensorEntity TheosIphone6sActivity => new(_haContext, "sensor.theos_iphone_6s_activity");
 		///<summary>Theo’s iPhone 6S Battery State</summary>
@@ -542,9 +695,15 @@ namespace HomeAssistantGenerated
 		public SensorEntity TheosIphone6sSim1 => new(_haContext, "sensor.theos_iphone_6s_sim_1");
 		///<summary>Theo’s iPhone 6S SSID</summary>
 		public SensorEntity TheosIphone6sSsid => new(_haContext, "sensor.theos_iphone_6s_ssid");
+		///<summary>TV home connect next Alarm</summary>
+		public SensorEntity TvHomeConnectNextAlarm => new(_haContext, "sensor.tv_home_connect_next_alarm");
+		///<summary>TV home connect next Reminder</summary>
+		public SensorEntity TvHomeConnectNextReminder => new(_haContext, "sensor.tv_home_connect_next_reminder");
+		///<summary>TV home connect next Timer</summary>
+		public SensorEntity TvHomeConnectNextTimer => new(_haContext, "sensor.tv_home_connect_next_timer");
 	}
 
-	public class SunEntities
+	public partial class SunEntities
 	{
 		private readonly IHaContext _haContext;
 		public SunEntities(IHaContext haContext)
@@ -556,7 +715,7 @@ namespace HomeAssistantGenerated
 		public SunEntity Sun => new(_haContext, "sun.sun");
 	}
 
-	public class SwitchEntities
+	public partial class SwitchEntities
 	{
 		private readonly IHaContext _haContext;
 		public SwitchEntities(IHaContext haContext)
@@ -564,6 +723,38 @@ namespace HomeAssistantGenerated
 			_haContext = haContext;
 		}
 
+		///<summary>ESPresense Downstairs Active Scan</summary>
+		public SwitchEntity EspresenseDownstairsActiveScan => new(_haContext, "switch.espresense_downstairs_active_scan");
+		///<summary>ESPresense Downstairs Arduino OTA</summary>
+		public SwitchEntity EspresenseDownstairsArduinoOta => new(_haContext, "switch.espresense_downstairs_arduino_ota");
+		///<summary>ESPresense Downstairs Auto Update</summary>
+		public SwitchEntity EspresenseDownstairsAutoUpdate => new(_haContext, "switch.espresense_downstairs_auto_update");
+		///<summary>ESPresense Downstairs OTA Update</summary>
+		public SwitchEntity EspresenseDownstairsOtaUpdate => new(_haContext, "switch.espresense_downstairs_ota_update");
+		///<summary>ESPresense Downstairs Prerelease</summary>
+		public SwitchEntity EspresenseDownstairsPrerelease => new(_haContext, "switch.espresense_downstairs_prerelease");
+		///<summary>ESPresense Downstairs Status LED</summary>
+		public SwitchEntity EspresenseDownstairsStatusLed => new(_haContext, "switch.espresense_downstairs_status_led");
+		///<summary>ESPresense Scott Office Active Scan</summary>
+		public SwitchEntity EspresenseScottOfficeActiveScan => new(_haContext, "switch.espresense_scott_office_active_scan");
+		///<summary>ESPresense Scott Office Arduino OTA</summary>
+		public SwitchEntity EspresenseScottOfficeArduinoOta => new(_haContext, "switch.espresense_scott_office_arduino_ota");
+		///<summary>ESPresense Scott Office Auto Update</summary>
+		public SwitchEntity EspresenseScottOfficeAutoUpdate => new(_haContext, "switch.espresense_scott_office_auto_update");
+		///<summary>ESPresense Scott Office OTA Update</summary>
+		public SwitchEntity EspresenseScottOfficeOtaUpdate => new(_haContext, "switch.espresense_scott_office_ota_update");
+		///<summary>ESPresense Scott Office Prerelease</summary>
+		public SwitchEntity EspresenseScottOfficePrerelease => new(_haContext, "switch.espresense_scott_office_prerelease");
+		///<summary>ESPresense Scott Office Status LED</summary>
+		public SwitchEntity EspresenseScottOfficeStatusLed => new(_haContext, "switch.espresense_scott_office_status_led");
+		///<summary>Everywhere do not disturb switch</summary>
+		public SwitchEntity EverywhereDoNotDisturbSwitch => new(_haContext, "switch.everywhere_do_not_disturb_switch");
+		///<summary>Everywhere repeat switch</summary>
+		public SwitchEntity EverywhereRepeatSwitch => new(_haContext, "switch.everywhere_repeat_switch");
+		///<summary>Everywhere shuffle switch</summary>
+		public SwitchEntity EverywhereShuffleSwitch => new(_haContext, "switch.everywhere_shuffle_switch");
+		///<summary>Fire TV do not disturb switch</summary>
+		public SwitchEntity FireTvDoNotDisturbSwitch => new(_haContext, "switch.fire_tv_do_not_disturb_switch");
 		///<summary>Front door email</summary>
 		public SwitchEntity FrontDoorEmail => new(_haContext, "switch.front_door_email");
 		///<summary>Front door FTP</summary>
@@ -576,15 +767,107 @@ namespace HomeAssistantGenerated
 		public SwitchEntity FrontDoorRecordAudio => new(_haContext, "switch.front_door_record_audio");
 		///<summary>Front door recording</summary>
 		public SwitchEntity FrontDoorRecording => new(_haContext, "switch.front_door_recording");
+		///<summary>Garage echo dot do not disturb switch</summary>
+		public SwitchEntity GarageEchoDotDoNotDisturbSwitch => new(_haContext, "switch.garage_echo_dot_do_not_disturb_switch");
+		///<summary>Garage echo dot repeat switch</summary>
+		public SwitchEntity GarageEchoDotRepeatSwitch => new(_haContext, "switch.garage_echo_dot_repeat_switch");
+		///<summary>Garage echo dot shuffle switch</summary>
+		public SwitchEntity GarageEchoDotShuffleSwitch => new(_haContext, "switch.garage_echo_dot_shuffle_switch");
+		///<summary>Helto switch</summary>
+		public SwitchEntity HeltoSwitch => new(_haContext, "switch.helto_switch");
+		///<summary>Jo's echo do not disturb switch</summary>
+		public SwitchEntity JoSEchoDoNotDisturbSwitch => new(_haContext, "switch.jo_s_echo_do_not_disturb_switch");
+		///<summary>Jo's echo repeat switch</summary>
+		public SwitchEntity JoSEchoRepeatSwitch => new(_haContext, "switch.jo_s_echo_repeat_switch");
+		///<summary>Jo's echo shuffle switch</summary>
+		public SwitchEntity JoSEchoShuffleSwitch => new(_haContext, "switch.jo_s_echo_shuffle_switch");
+		///<summary>Kitchen echo do not disturb switch</summary>
+		public SwitchEntity KitchenEchoDoNotDisturbSwitch => new(_haContext, "switch.kitchen_echo_do_not_disturb_switch");
+		///<summary>Kitchen echo repeat switch</summary>
+		public SwitchEntity KitchenEchoRepeatSwitch => new(_haContext, "switch.kitchen_echo_repeat_switch");
+		///<summary>Kitchen echo shuffle switch</summary>
+		public SwitchEntity KitchenEchoShuffleSwitch => new(_haContext, "switch.kitchen_echo_shuffle_switch");
 		///<summary>On air lamp</summary>
 		public SwitchEntity OnAirLampSocket1 => new(_haContext, "switch.on_air_lamp_socket_1");
+		///<summary>Parents room echo do not disturb switch</summary>
+		public SwitchEntity ScottS2ndEchoDotDoNotDisturbSwitch => new(_haContext, "switch.scott_s_2nd_echo_dot_do_not_disturb_switch");
+		///<summary>Parents room echo repeat switch</summary>
+		public SwitchEntity ScottS2ndEchoDotRepeatSwitch => new(_haContext, "switch.scott_s_2nd_echo_dot_repeat_switch");
+		///<summary>Parents room echo shuffle switch</summary>
+		public SwitchEntity ScottS2ndEchoDotShuffleSwitch => new(_haContext, "switch.scott_s_2nd_echo_dot_shuffle_switch");
+		///<summary>Scott's 3rd Fire do not disturb switch</summary>
+		public SwitchEntity ScottS3rdFireDoNotDisturbSwitch => new(_haContext, "switch.scott_s_3rd_fire_do_not_disturb_switch");
+		///<summary>Scott's Echo Show do not disturb switch</summary>
+		public SwitchEntity ScottSEchoShowDoNotDisturbSwitch => new(_haContext, "switch.scott_s_echo_show_do_not_disturb_switch");
+		///<summary>Scott's Echo Show repeat switch</summary>
+		public SwitchEntity ScottSEchoShowRepeatSwitch => new(_haContext, "switch.scott_s_echo_show_repeat_switch");
+		///<summary>Scott's Echo Show shuffle switch</summary>
+		public SwitchEntity ScottSEchoShowShuffleSwitch => new(_haContext, "switch.scott_s_echo_show_shuffle_switch");
+		///<summary>Scott's FireTVStick do not disturb switch</summary>
+		public SwitchEntity ScottSFiretvstickDoNotDisturbSwitch => new(_haContext, "switch.scott_s_firetvstick_do_not_disturb_switch");
 		///<summary>Studio light</summary>
 		public SwitchEntity StudioLightSocket1 => new(_haContext, "switch.studio_light_socket_1");
-		///<summary>Thermostat 1 Heat on Demand</summary>
-		public SwitchEntity Zone1HeatOnDemand => new(_haContext, "switch.zone_1_heat_on_demand");
+		///<summary>Sunroom Echo Dot do not disturb switch</summary>
+		public SwitchEntity SunroomEchoDotDoNotDisturbSwitch => new(_haContext, "switch.sunroom_echo_dot_do_not_disturb_switch");
+		///<summary>Sunroom Echo Dot repeat switch</summary>
+		public SwitchEntity SunroomEchoDotRepeatSwitch => new(_haContext, "switch.sunroom_echo_dot_repeat_switch");
+		///<summary>Sunroom Echo Dot shuffle switch</summary>
+		public SwitchEntity SunroomEchoDotShuffleSwitch => new(_haContext, "switch.sunroom_echo_dot_shuffle_switch");
+		///<summary>Switch One</summary>
+		public SwitchEntity SwitchOne => new(_haContext, "switch.switch_one");
+		///<summary>Switch Two</summary>
+		public SwitchEntity SwitchTwo => new(_haContext, "switch.switch_two");
+		///<summary>Theo's Echo do not disturb switch</summary>
+		public SwitchEntity TheoSEchoDoNotDisturbSwitch => new(_haContext, "switch.theo_s_echo_do_not_disturb_switch");
+		///<summary>Theo's Echo repeat switch</summary>
+		public SwitchEntity TheoSEchoRepeatSwitch => new(_haContext, "switch.theo_s_echo_repeat_switch");
+		///<summary>Theo's Echo shuffle switch</summary>
+		public SwitchEntity TheoSEchoShuffleSwitch => new(_haContext, "switch.theo_s_echo_shuffle_switch");
+		///<summary>Thermostat Heat on Demand</summary>
+		public SwitchEntity ThermostatHeatOnDemand => new(_haContext, "switch.thermostat_heat_on_demand");
+		///<summary>TV home connect do not disturb switch</summary>
+		public SwitchEntity TvHomeConnectDoNotDisturbSwitch => new(_haContext, "switch.tv_home_connect_do_not_disturb_switch");
+		///<summary>TV home connect repeat switch</summary>
+		public SwitchEntity TvHomeConnectRepeatSwitch => new(_haContext, "switch.tv_home_connect_repeat_switch");
+		///<summary>TV home connect shuffle switch</summary>
+		public SwitchEntity TvHomeConnectShuffleSwitch => new(_haContext, "switch.tv_home_connect_shuffle_switch");
 	}
 
-	public class WeatherEntities
+	public partial class UpdateEntities
+	{
+		private readonly IHaContext _haContext;
+		public UpdateEntities(IHaContext haContext)
+		{
+			_haContext = haContext;
+		}
+
+		///<summary>ESPHome: Update</summary>
+		public UpdateEntity EsphomeUpdate => new(_haContext, "update.esphome_update");
+		///<summary>File editor: Update</summary>
+		public UpdateEntity FileEditorUpdate => new(_haContext, "update.file_editor_update");
+		///<summary>Home Assistant Core: Update</summary>
+		public UpdateEntity HomeAssistantCoreUpdate => new(_haContext, "update.home_assistant_core_update");
+		///<summary>Home Assistant Google Drive Backup: Update</summary>
+		public UpdateEntity HomeAssistantGoogleDriveBackupUpdate => new(_haContext, "update.home_assistant_google_drive_backup_update");
+		///<summary>Home Assistant Operating System: Update</summary>
+		public UpdateEntity HomeAssistantOperatingSystemUpdate => new(_haContext, "update.home_assistant_operating_system_update");
+		///<summary>Home Assistant Supervisor: Update</summary>
+		public UpdateEntity HomeAssistantSupervisorUpdate => new(_haContext, "update.home_assistant_supervisor_update");
+		///<summary>MariaDB: Update</summary>
+		public UpdateEntity MariadbUpdate => new(_haContext, "update.mariadb_update");
+		///<summary>Mosquitto broker: Update</summary>
+		public UpdateEntity MosquittoBrokerUpdate => new(_haContext, "update.mosquitto_broker_update");
+		///<summary>NetDaemon V3 - beta: Update</summary>
+		public UpdateEntity NetdaemonV3BetaUpdate => new(_haContext, "update.netdaemon_v3_beta_update");
+		///<summary>Samba share: Update</summary>
+		public UpdateEntity SambaShareUpdate => new(_haContext, "update.samba_share_update");
+		///<summary>SSH & Web Terminal: Update</summary>
+		public UpdateEntity SshWebTerminalUpdate => new(_haContext, "update.ssh_web_terminal_update");
+		///<summary>Z-Wave JS: Update</summary>
+		public UpdateEntity ZWaveJsUpdate => new(_haContext, "update.z_wave_js_update");
+	}
+
+	public partial class WeatherEntities
 	{
 		private readonly IHaContext _haContext;
 		public WeatherEntities(IHaContext haContext)
@@ -596,7 +879,7 @@ namespace HomeAssistantGenerated
 		public WeatherEntity Home => new(_haContext, "weather.home");
 	}
 
-	public class ZoneEntities
+	public partial class ZoneEntities
 	{
 		private readonly IHaContext _haContext;
 		public ZoneEntities(IHaContext haContext)
@@ -608,244 +891,13 @@ namespace HomeAssistantGenerated
 		public ZoneEntity Home => new(_haContext, "zone.home");
 	}
 
-	public record AutomationEntity : Entity<AutomationEntity, EntityState<AutomationAttributes>, AutomationAttributes>
+	public partial record AutomationEntity : Entity<AutomationEntity, EntityState<AutomationAttributes>, AutomationAttributes>
 	{
 		public AutomationEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
 		{
 		}
 
 		public AutomationEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
-	public record BinarySensorEntity : Entity<BinarySensorEntity, EntityState<BinarySensorAttributes>, BinarySensorAttributes>
-	{
-		public BinarySensorEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public BinarySensorEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
-	public record ButtonEntity : Entity<ButtonEntity, EntityState<ButtonAttributes>, ButtonAttributes>
-	{
-		public ButtonEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public ButtonEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
-	public record CameraEntity : Entity<CameraEntity, EntityState<CameraAttributes>, CameraAttributes>
-	{
-		public CameraEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public CameraEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
-	public record ClimateEntity : Entity<ClimateEntity, EntityState<ClimateAttributes>, ClimateAttributes>
-	{
-		public ClimateEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public ClimateEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
-	public record CoverEntity : Entity<CoverEntity, EntityState<CoverAttributes>, CoverAttributes>
-	{
-		public CoverEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public CoverEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
-	public record DeviceTrackerEntity : Entity<DeviceTrackerEntity, EntityState<DeviceTrackerAttributes>, DeviceTrackerAttributes>
-	{
-		public DeviceTrackerEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public DeviceTrackerEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
-	public record GroupEntity : Entity<GroupEntity, EntityState<GroupAttributes>, GroupAttributes>
-	{
-		public GroupEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public GroupEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
-	public record InputBooleanEntity : Entity<InputBooleanEntity, EntityState<InputBooleanAttributes>, InputBooleanAttributes>
-	{
-		public InputBooleanEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public InputBooleanEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
-	public record InputTextEntity : Entity<InputTextEntity, EntityState<InputTextAttributes>, InputTextAttributes>
-	{
-		public InputTextEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public InputTextEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
-	public record LightEntity : Entity<LightEntity, EntityState<LightAttributes>, LightAttributes>
-	{
-		public LightEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public LightEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
-	public record LockEntity : Entity<LockEntity, EntityState<LockAttributes>, LockAttributes>
-	{
-		public LockEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public LockEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
-	public record MediaPlayerEntity : Entity<MediaPlayerEntity, EntityState<MediaPlayerAttributes>, MediaPlayerAttributes>
-	{
-		public MediaPlayerEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public MediaPlayerEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
-	public record PersistentNotificationEntity : Entity<PersistentNotificationEntity, EntityState<PersistentNotificationAttributes>, PersistentNotificationAttributes>
-	{
-		public PersistentNotificationEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public PersistentNotificationEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
-	public record PersonEntity : Entity<PersonEntity, EntityState<PersonAttributes>, PersonAttributes>
-	{
-		public PersonEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public PersonEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
-	public record SceneEntity : Entity<SceneEntity, EntityState<SceneAttributes>, SceneAttributes>
-	{
-		public SceneEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public SceneEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
-	public record NumericSensorEntity : NumericEntity<NumericSensorEntity, NumericEntityState<NumericSensorAttributes>, NumericSensorAttributes>
-	{
-		public NumericSensorEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public NumericSensorEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
-	public record SensorEntity : Entity<SensorEntity, EntityState<SensorAttributes>, SensorAttributes>
-	{
-		public SensorEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public SensorEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
-	public record SunEntity : Entity<SunEntity, EntityState<SunAttributes>, SunAttributes>
-	{
-		public SunEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public SunEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
-	public record SwitchEntity : Entity<SwitchEntity, EntityState<SwitchAttributes>, SwitchAttributes>
-	{
-		public SwitchEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public SwitchEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
-	public record WeatherEntity : Entity<WeatherEntity, EntityState<WeatherAttributes>, WeatherAttributes>
-	{
-		public WeatherEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public WeatherEntity(Entity entity) : base(entity)
-		{
-		}
-	}
-
-	public record ZoneEntity : Entity<ZoneEntity, EntityState<ZoneAttributes>, ZoneAttributes>
-	{
-		public ZoneEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
-		{
-		}
-
-		public ZoneEntity(Entity entity) : base(entity)
 		{
 		}
 	}
@@ -868,16 +920,30 @@ namespace HomeAssistantGenerated
 		public string? Mode { get; init; }
 	}
 
+	public partial record BinarySensorEntity : Entity<BinarySensorEntity, EntityState<BinarySensorAttributes>, BinarySensorAttributes>
+	{
+		public BinarySensorEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public BinarySensorEntity(Entity entity) : base(entity)
+		{
+		}
+	}
+
 	public record BinarySensorAttributes
 	{
+		[JsonPropertyName("attribute1")]
+		public string? Attribute1 { get; init; }
+
 		[JsonPropertyName("bus_event_id")]
 		public string? BusEventId { get; init; }
 
 		[JsonPropertyName("clearDate")]
-		public object? ClearDate { get; init; }
+		public string? ClearDate { get; init; }
 
 		[JsonPropertyName("clearTemp")]
-		public object? ClearTemp { get; init; }
+		public double? ClearTemp { get; init; }
 
 		[JsonPropertyName("coldDate")]
 		public string? ColdDate { get; init; }
@@ -894,23 +960,42 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("icon")]
 		public string? Icon { get; init; }
 
-		[JsonPropertyName("mode")]
-		public object? Mode { get; init; }
+		[JsonPropertyName("restored")]
+		public bool? Restored { get; init; }
 
-		[JsonPropertyName("newest_version")]
-		public string? NewestVersion { get; init; }
-
-		[JsonPropertyName("release_notes")]
-		public string? ReleaseNotes { get; init; }
+		[JsonPropertyName("supported_features")]
+		public double? SupportedFeatures { get; init; }
 
 		[JsonPropertyName("updated")]
 		public string? Updated { get; init; }
+	}
+
+	public partial record ButtonEntity : Entity<ButtonEntity, EntityState<ButtonAttributes>, ButtonAttributes>
+	{
+		public ButtonEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public ButtonEntity(Entity entity) : base(entity)
+		{
+		}
 	}
 
 	public record ButtonAttributes
 	{
 		[JsonPropertyName("friendly_name")]
 		public string? FriendlyName { get; init; }
+	}
+
+	public partial record CameraEntity : Entity<CameraEntity, EntityState<CameraAttributes>, CameraAttributes>
+	{
+		public CameraEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public CameraEntity(Entity entity) : base(entity)
+		{
+		}
 	}
 
 	public record CameraAttributes
@@ -934,10 +1019,21 @@ namespace HomeAssistantGenerated
 		public string? FrontendStreamType { get; init; }
 
 		[JsonPropertyName("sensitivity")]
-		public object? Sensitivity { get; init; }
+		public IReadOnlyList<object>? Sensitivity { get; init; }
 
 		[JsonPropertyName("supported_features")]
 		public double? SupportedFeatures { get; init; }
+	}
+
+	public partial record ClimateEntity : Entity<ClimateEntity, EntityState<ClimateAttributes>, ClimateAttributes>
+	{
+		public ClimateEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public ClimateEntity(Entity entity) : base(entity)
+		{
+		}
 	}
 
 	public record ClimateAttributes
@@ -952,7 +1048,7 @@ namespace HomeAssistantGenerated
 		public string? HvacAction { get; init; }
 
 		[JsonPropertyName("hvac_modes")]
-		public object? HvacModes { get; init; }
+		public IReadOnlyList<string>? HvacModes { get; init; }
 
 		[JsonPropertyName("max_temp")]
 		public double? MaxTemp { get; init; }
@@ -964,7 +1060,7 @@ namespace HomeAssistantGenerated
 		public string? PresetMode { get; init; }
 
 		[JsonPropertyName("preset_modes")]
-		public object? PresetModes { get; init; }
+		public IReadOnlyList<string>? PresetModes { get; init; }
 
 		[JsonPropertyName("supported_features")]
 		public double? SupportedFeatures { get; init; }
@@ -973,19 +1069,41 @@ namespace HomeAssistantGenerated
 		public double? Temperature { get; init; }
 	}
 
+	public partial record CoverEntity : Entity<CoverEntity, EntityState<CoverAttributes>, CoverAttributes>
+	{
+		public CoverEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public CoverEntity(Entity entity) : base(entity)
+		{
+		}
+	}
+
 	public record CoverAttributes
 	{
+		[JsonPropertyName("current_position")]
+		public double? CurrentPosition { get; init; }
+
 		[JsonPropertyName("device_class")]
 		public string? DeviceClass { get; init; }
 
 		[JsonPropertyName("friendly_name")]
 		public string? FriendlyName { get; init; }
 
-		[JsonPropertyName("restored")]
-		public bool? Restored { get; init; }
-
 		[JsonPropertyName("supported_features")]
 		public double? SupportedFeatures { get; init; }
+	}
+
+	public partial record DeviceTrackerEntity : Entity<DeviceTrackerEntity, EntityState<DeviceTrackerAttributes>, DeviceTrackerAttributes>
+	{
+		public DeviceTrackerEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public DeviceTrackerEntity(Entity entity) : base(entity)
+		{
+		}
 	}
 
 	public record DeviceTrackerAttributes
@@ -995,9 +1113,6 @@ namespace HomeAssistantGenerated
 
 		[JsonPropertyName("battery_level")]
 		public double? BatteryLevel { get; init; }
-
-		[JsonPropertyName("course")]
-		public double? Course { get; init; }
 
 		[JsonPropertyName("friendly_name")]
 		public string? FriendlyName { get; init; }
@@ -1014,23 +1129,42 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("source_type")]
 		public string? SourceType { get; init; }
 
-		[JsonPropertyName("speed")]
-		public double? Speed { get; init; }
-
 		[JsonPropertyName("vertical_accuracy")]
 		public double? VerticalAccuracy { get; init; }
+	}
+
+	public partial record GroupEntity : Entity<GroupEntity, EntityState<GroupAttributes>, GroupAttributes>
+	{
+		public GroupEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public GroupEntity(Entity entity) : base(entity)
+		{
+		}
 	}
 
 	public record GroupAttributes
 	{
 		[JsonPropertyName("entity_id")]
-		public object? EntityId { get; init; }
+		public IReadOnlyList<string>? EntityId { get; init; }
 
 		[JsonPropertyName("friendly_name")]
 		public string? FriendlyName { get; init; }
 
 		[JsonPropertyName("order")]
 		public double? Order { get; init; }
+	}
+
+	public partial record InputBooleanEntity : Entity<InputBooleanEntity, EntityState<InputBooleanAttributes>, InputBooleanAttributes>
+	{
+		public InputBooleanEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public InputBooleanEntity(Entity entity) : base(entity)
+		{
+		}
 	}
 
 	public record InputBooleanAttributes
@@ -1045,28 +1179,15 @@ namespace HomeAssistantGenerated
 		public string? Icon { get; init; }
 	}
 
-	public record InputTextAttributes
+	public partial record LightEntity : Entity<LightEntity, EntityState<LightAttributes>, LightAttributes>
 	{
-		[JsonPropertyName("editable")]
-		public bool? Editable { get; init; }
+		public LightEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
 
-		[JsonPropertyName("friendly_name")]
-		public string? FriendlyName { get; init; }
-
-		[JsonPropertyName("icon")]
-		public string? Icon { get; init; }
-
-		[JsonPropertyName("max")]
-		public double? Max { get; init; }
-
-		[JsonPropertyName("min")]
-		public double? Min { get; init; }
-
-		[JsonPropertyName("mode")]
-		public string? Mode { get; init; }
-
-		[JsonPropertyName("pattern")]
-		public object? Pattern { get; init; }
+		public LightEntity(Entity entity) : base(entity)
+		{
+		}
 	}
 
 	public record LightAttributes
@@ -1077,17 +1198,14 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("color_mode")]
 		public string? ColorMode { get; init; }
 
-		[JsonPropertyName("color_temp")]
-		public double? ColorTemp { get; init; }
-
 		[JsonPropertyName("dynamics")]
 		public string? Dynamics { get; init; }
 
+		[JsonPropertyName("effect_list")]
+		public IReadOnlyList<string>? EffectList { get; init; }
+
 		[JsonPropertyName("friendly_name")]
 		public string? FriendlyName { get; init; }
-
-		[JsonPropertyName("hs_color")]
-		public object? HsColor { get; init; }
 
 		[JsonPropertyName("max_mireds")]
 		public double? MaxMireds { get; init; }
@@ -1098,17 +1216,22 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("mode")]
 		public string? Mode { get; init; }
 
-		[JsonPropertyName("rgb_color")]
-		public object? RgbColor { get; init; }
-
 		[JsonPropertyName("supported_color_modes")]
-		public object? SupportedColorModes { get; init; }
+		public IReadOnlyList<string>? SupportedColorModes { get; init; }
 
 		[JsonPropertyName("supported_features")]
 		public double? SupportedFeatures { get; init; }
+	}
 
-		[JsonPropertyName("xy_color")]
-		public object? XyColor { get; init; }
+	public partial record LockEntity : Entity<LockEntity, EntityState<LockAttributes>, LockAttributes>
+	{
+		public LockEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public LockEntity(Entity entity) : base(entity)
+		{
+		}
 	}
 
 	public record LockAttributes
@@ -1123,31 +1246,130 @@ namespace HomeAssistantGenerated
 		public string? Method { get; init; }
 	}
 
+	public partial record MediaPlayerEntity : Entity<MediaPlayerEntity, EntityState<MediaPlayerAttributes>, MediaPlayerAttributes>
+	{
+		public MediaPlayerEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public MediaPlayerEntity(Entity entity) : base(entity)
+		{
+		}
+	}
+
 	public record MediaPlayerAttributes
 	{
+		[JsonPropertyName("assumed_state")]
+		public bool? AssumedState { get; init; }
+
+		[JsonPropertyName("available")]
+		public bool? Available { get; init; }
+
+		[JsonPropertyName("bluetooth_list")]
+		public IReadOnlyList<string>? BluetoothList { get; init; }
+
+		[JsonPropertyName("connected_bluetooth")]
+		public object? ConnectedBluetooth { get; init; }
+
 		[JsonPropertyName("device_class")]
 		public string? DeviceClass { get; init; }
 
+		[JsonPropertyName("entity_picture")]
+		public string? EntityPicture { get; init; }
+
+		[JsonPropertyName("entity_picture_local")]
+		public string? EntityPictureLocal { get; init; }
+
 		[JsonPropertyName("friendly_name")]
 		public string? FriendlyName { get; init; }
 
+		[JsonPropertyName("is_volume_muted")]
+		public bool? IsVolumeMuted { get; init; }
+
+		[JsonPropertyName("last_called")]
+		public bool? LastCalled { get; init; }
+
+		[JsonPropertyName("last_called_summary")]
+		public string? LastCalledSummary { get; init; }
+
+		[JsonPropertyName("last_called_timestamp")]
+		public double? LastCalledTimestamp { get; init; }
+
+		[JsonPropertyName("media_album_name")]
+		public string? MediaAlbumName { get; init; }
+
+		[JsonPropertyName("media_artist")]
+		public string? MediaArtist { get; init; }
+
+		[JsonPropertyName("media_content_type")]
+		public string? MediaContentType { get; init; }
+
+		[JsonPropertyName("media_duration")]
+		public double? MediaDuration { get; init; }
+
+		[JsonPropertyName("media_position")]
+		public double? MediaPosition { get; init; }
+
+		[JsonPropertyName("media_position_updated_at")]
+		public string? MediaPositionUpdatedAt { get; init; }
+
+		[JsonPropertyName("media_title")]
+		public string? MediaTitle { get; init; }
+
+		[JsonPropertyName("shuffle")]
+		public bool? Shuffle { get; init; }
+
+		[JsonPropertyName("source")]
+		public string? Source { get; init; }
+
 		[JsonPropertyName("source_list")]
-		public object? SourceList { get; init; }
+		public IReadOnlyList<string>? SourceList { get; init; }
 
 		[JsonPropertyName("supported_features")]
 		public double? SupportedFeatures { get; init; }
+
+		[JsonPropertyName("volume_level")]
+		public double? VolumeLevel { get; init; }
 	}
 
-	public record PersistentNotificationAttributes
+	public partial record NumberEntity : NumericEntity<NumberEntity, NumericEntityState<NumberAttributes>, NumberAttributes>
+	{
+		public NumberEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public NumberEntity(Entity entity) : base(entity)
+		{
+		}
+	}
+
+	public record NumberAttributes
 	{
 		[JsonPropertyName("friendly_name")]
 		public string? FriendlyName { get; init; }
 
-		[JsonPropertyName("message")]
-		public string? Message { get; init; }
+		[JsonPropertyName("max")]
+		public double? Max { get; init; }
 
-		[JsonPropertyName("title")]
-		public string? Title { get; init; }
+		[JsonPropertyName("min")]
+		public double? Min { get; init; }
+
+		[JsonPropertyName("mode")]
+		public string? Mode { get; init; }
+
+		[JsonPropertyName("step")]
+		public double? Step { get; init; }
+	}
+
+	public partial record PersonEntity : Entity<PersonEntity, EntityState<PersonAttributes>, PersonAttributes>
+	{
+		public PersonEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public PersonEntity(Entity entity) : base(entity)
+		{
+		}
 	}
 
 	public record PersonAttributes
@@ -1180,6 +1402,17 @@ namespace HomeAssistantGenerated
 		public string? UserId { get; init; }
 	}
 
+	public partial record SceneEntity : Entity<SceneEntity, EntityState<SceneAttributes>, SceneAttributes>
+	{
+		public SceneEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public SceneEntity(Entity entity) : base(entity)
+		{
+		}
+	}
+
 	public record SceneAttributes
 	{
 		[JsonPropertyName("brightness")]
@@ -1189,7 +1422,7 @@ namespace HomeAssistantGenerated
 		public object? Color { get; init; }
 
 		[JsonPropertyName("entity_id")]
-		public object? EntityId { get; init; }
+		public IReadOnlyList<string>? EntityId { get; init; }
 
 		[JsonPropertyName("friendly_name")]
 		public string? FriendlyName { get; init; }
@@ -1217,6 +1450,17 @@ namespace HomeAssistantGenerated
 
 		[JsonPropertyName("speed")]
 		public double? Speed { get; init; }
+	}
+
+	public partial record NumericSensorEntity : NumericEntity<NumericSensorEntity, NumericEntityState<NumericSensorAttributes>, NumericSensorAttributes>
+	{
+		public NumericSensorEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public NumericSensorEntity(Entity entity) : base(entity)
+		{
+		}
 	}
 
 	public record NumericSensorAttributes
@@ -1251,9 +1495,6 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("marker_type")]
 		public string? MarkerType { get; init; }
 
-		[JsonPropertyName("repositories")]
-		public object? Repositories { get; init; }
-
 		[JsonPropertyName("restored")]
 		public bool? Restored { get; init; }
 
@@ -1270,6 +1511,17 @@ namespace HomeAssistantGenerated
 		public string? UnitOfMeasurement { get; init; }
 	}
 
+	public partial record SensorEntity : Entity<SensorEntity, EntityState<SensorAttributes>, SensorAttributes>
+	{
+		public SensorEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public SensorEntity(Entity entity) : base(entity)
+		{
+		}
+	}
+
 	public record SensorAttributes
 	{
 		[JsonPropertyName("Administrative Area")]
@@ -1280,15 +1532,6 @@ namespace HomeAssistantGenerated
 
 		[JsonPropertyName("Areas Of Interest")]
 		public string? AreasOfInterest { get; init; }
-
-		[JsonPropertyName("backups")]
-		public object? Backups { get; init; }
-
-		[JsonPropertyName("backups_in_google_drive")]
-		public double? BackupsInGoogleDrive { get; init; }
-
-		[JsonPropertyName("backups_in_home_assistant")]
-		public double? BackupsInHomeAssistant { get; init; }
 
 		[JsonPropertyName("Carrier ID")]
 		public string? CarrierID { get; init; }
@@ -1311,44 +1554,23 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("Current Radio Technology")]
 		public string? CurrentRadioTechnology { get; init; }
 
-		[JsonPropertyName("Date1")]
-		public string? Date1 { get; init; }
+		[JsonPropertyName("Dates")]
+		public IReadOnlyList<string>? Dates { get; init; }
 
-		[JsonPropertyName("Date2")]
-		public string? Date2 { get; init; }
+		[JsonPropertyName("device_class")]
+		public string? DeviceClass { get; init; }
 
-		[JsonPropertyName("Date3")]
-		public string? Date3 { get; init; }
+		[JsonPropertyName("dismissed")]
+		public object? Dismissed { get; init; }
 
-		[JsonPropertyName("Date4")]
-		public string? Date4 { get; init; }
-
-		[JsonPropertyName("EventType1")]
-		public string? EventType1 { get; init; }
-
-		[JsonPropertyName("EventType2")]
-		public string? EventType2 { get; init; }
-
-		[JsonPropertyName("EventType3")]
-		public string? EventType3 { get; init; }
-
-		[JsonPropertyName("EventType4")]
-		public string? EventType4 { get; init; }
+		[JsonPropertyName("distance")]
+		public object? Distance { get; init; }
 
 		[JsonPropertyName("friendly_name")]
 		public string? FriendlyName { get; init; }
 
-		[JsonPropertyName("Height1")]
-		public double? Height1 { get; init; }
-
-		[JsonPropertyName("Height2")]
-		public double? Height2 { get; init; }
-
-		[JsonPropertyName("Height3")]
-		public double? Height3 { get; init; }
-
-		[JsonPropertyName("Height4")]
-		public double? Height4 { get; init; }
+		[JsonPropertyName("Heights")]
+		public IReadOnlyList<double>? Heights { get; init; }
 
 		[JsonPropertyName("icon")]
 		public string? Icon { get; init; }
@@ -1362,12 +1584,6 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("ISO Country Code")]
 		public string? ISOCountryCode { get; init; }
 
-		[JsonPropertyName("last_backup")]
-		public string? LastBackup { get; init; }
-
-		[JsonPropertyName("last_uploaded")]
-		public string? LastUploaded { get; init; }
-
 		[JsonPropertyName("Locality")]
 		public string? Locality { get; init; }
 
@@ -1375,7 +1591,7 @@ namespace HomeAssistantGenerated
 		public string? Location_0 { get; init; }
 
 		[JsonPropertyName("Location")]
-		public object? Location_1 { get; init; }
+		public IReadOnlyList<double>? Location_1 { get; init; }
 
 		[JsonPropertyName("Low Power Mode")]
 		public bool? LowPowerMode { get; init; }
@@ -1395,20 +1611,38 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("Postal Code")]
 		public string? PostalCode { get; init; }
 
+		[JsonPropertyName("prior_value")]
+		public string? PriorValue { get; init; }
+
+		[JsonPropertyName("process_timestamp")]
+		public string? ProcessTimestamp { get; init; }
+
+		[JsonPropertyName("recurrence")]
+		public object? Recurrence { get; init; }
+
+		[JsonPropertyName("reminder")]
+		public object? Reminder { get; init; }
+
+		[JsonPropertyName("repositories")]
+		public IReadOnlyList<object>? Repositories { get; init; }
+
 		[JsonPropertyName("serial")]
 		public string? Serial { get; init; }
 
-		[JsonPropertyName("size_in_google_drive")]
-		public string? SizeInGoogleDrive { get; init; }
+		[JsonPropertyName("sorted_active")]
+		public string? SortedActive { get; init; }
 
-		[JsonPropertyName("size_in_home_assistant")]
-		public string? SizeInHomeAssistant { get; init; }
+		[JsonPropertyName("sorted_all")]
+		public string? SortedAll { get; init; }
 
 		[JsonPropertyName("state_message")]
 		public string? StateMessage { get; init; }
 
 		[JsonPropertyName("state_reason")]
 		public object? StateReason { get; init; }
+
+		[JsonPropertyName("status")]
+		public string? Status { get; init; }
 
 		[JsonPropertyName("Sub Administrative Area")]
 		public string? SubAdministrativeArea { get; init; }
@@ -1419,35 +1653,43 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("Sub Thoroughfare")]
 		public string? SubThoroughfare { get; init; }
 
-		[JsonPropertyName("Summary1")]
-		public string? Summary1 { get; init; }
-
-		[JsonPropertyName("Summary2")]
-		public string? Summary2 { get; init; }
-
-		[JsonPropertyName("Summary3")]
-		public string? Summary3 { get; init; }
-
-		[JsonPropertyName("Summary4")]
-		public string? Summary4 { get; init; }
-
 		[JsonPropertyName("Thoroughfare")]
 		public string? Thoroughfare { get; init; }
 
 		[JsonPropertyName("Time Zone")]
 		public string? TimeZone { get; init; }
 
+		[JsonPropertyName("total_active")]
+		public double? TotalActive { get; init; }
+
+		[JsonPropertyName("total_all")]
+		public double? TotalAll { get; init; }
+
 		[JsonPropertyName("Types")]
-		public object? Types { get; init; }
+		public IReadOnlyList<string>? Types { get; init; }
+
+		[JsonPropertyName("updated")]
+		public string? Updated_0 { get; init; }
 
 		[JsonPropertyName("Updated")]
-		public string? Updated { get; init; }
+		public string? Updated_1 { get; init; }
 
 		[JsonPropertyName("uri_supported")]
-		public object? UriSupported { get; init; }
+		public IReadOnlyList<string>? UriSupported { get; init; }
 
 		[JsonPropertyName("Zones")]
-		public object? Zones { get; init; }
+		public IReadOnlyList<string>? Zones { get; init; }
+	}
+
+	public partial record SunEntity : Entity<SunEntity, EntityState<SunAttributes>, SunAttributes>
+	{
+		public SunEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public SunEntity(Entity entity) : base(entity)
+		{
+		}
 	}
 
 	public record SunAttributes
@@ -1483,6 +1725,17 @@ namespace HomeAssistantGenerated
 		public bool? Rising { get; init; }
 	}
 
+	public partial record SwitchEntity : Entity<SwitchEntity, EntityState<SwitchAttributes>, SwitchAttributes>
+	{
+		public SwitchEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public SwitchEntity(Entity entity) : base(entity)
+		{
+		}
+	}
+
 	public record SwitchAttributes
 	{
 		[JsonPropertyName("device_class")]
@@ -1498,13 +1751,71 @@ namespace HomeAssistantGenerated
 		public object? Mode { get; init; }
 	}
 
+	public partial record UpdateEntity : Entity<UpdateEntity, EntityState<UpdateAttributes>, UpdateAttributes>
+	{
+		public UpdateEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public UpdateEntity(Entity entity) : base(entity)
+		{
+		}
+	}
+
+	public record UpdateAttributes
+	{
+		[JsonPropertyName("auto_update")]
+		public bool? AutoUpdate { get; init; }
+
+		[JsonPropertyName("entity_picture")]
+		public string? EntityPicture { get; init; }
+
+		[JsonPropertyName("friendly_name")]
+		public string? FriendlyName { get; init; }
+
+		[JsonPropertyName("in_progress")]
+		public bool? InProgress { get; init; }
+
+		[JsonPropertyName("installed_version")]
+		public string? InstalledVersion { get; init; }
+
+		[JsonPropertyName("latest_version")]
+		public string? LatestVersion { get; init; }
+
+		[JsonPropertyName("release_summary")]
+		public string? ReleaseSummary { get; init; }
+
+		[JsonPropertyName("release_url")]
+		public string? ReleaseUrl { get; init; }
+
+		[JsonPropertyName("skipped_version")]
+		public object? SkippedVersion { get; init; }
+
+		[JsonPropertyName("supported_features")]
+		public double? SupportedFeatures { get; init; }
+
+		[JsonPropertyName("title")]
+		public string? Title { get; init; }
+	}
+
+	public partial record WeatherEntity : Entity<WeatherEntity, EntityState<WeatherAttributes>, WeatherAttributes>
+	{
+		public WeatherEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public WeatherEntity(Entity entity) : base(entity)
+		{
+		}
+	}
+
 	public record WeatherAttributes
 	{
 		[JsonPropertyName("attribution")]
 		public string? Attribution { get; init; }
 
 		[JsonPropertyName("forecast")]
-		public object? Forecast { get; init; }
+		public IReadOnlyList<object>? Forecast { get; init; }
 
 		[JsonPropertyName("friendly_name")]
 		public string? FriendlyName { get; init; }
@@ -1512,17 +1823,43 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("humidity")]
 		public double? Humidity { get; init; }
 
+		[JsonPropertyName("precipitation_unit")]
+		public string? PrecipitationUnit { get; init; }
+
 		[JsonPropertyName("pressure")]
 		public double? Pressure { get; init; }
 
+		[JsonPropertyName("pressure_unit")]
+		public string? PressureUnit { get; init; }
+
 		[JsonPropertyName("temperature")]
 		public double? Temperature { get; init; }
+
+		[JsonPropertyName("temperature_unit")]
+		public string? TemperatureUnit { get; init; }
+
+		[JsonPropertyName("visibility_unit")]
+		public string? VisibilityUnit { get; init; }
 
 		[JsonPropertyName("wind_bearing")]
 		public double? WindBearing { get; init; }
 
 		[JsonPropertyName("wind_speed")]
 		public double? WindSpeed { get; init; }
+
+		[JsonPropertyName("wind_speed_unit")]
+		public string? WindSpeedUnit { get; init; }
+	}
+
+	public partial record ZoneEntity : Entity<ZoneEntity, EntityState<ZoneAttributes>, ZoneAttributes>
+	{
+		public ZoneEntity(IHaContext haContext, string entityId) : base(haContext, entityId)
+		{
+		}
+
+		public ZoneEntity(Entity entity) : base(entity)
+		{
+		}
 	}
 
 	public record ZoneAttributes
@@ -1545,6 +1882,9 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("passive")]
 		public bool? Passive { get; init; }
 
+		[JsonPropertyName("persons")]
+		public IReadOnlyList<string>? Persons { get; init; }
+
 		[JsonPropertyName("radius")]
 		public double? Radius { get; init; }
 	}
@@ -1552,6 +1892,8 @@ namespace HomeAssistantGenerated
 	public interface IServices
 	{
 		AlarmControlPanelServices AlarmControlPanel { get; }
+
+		AlexaMediaServices AlexaMedia { get; }
 
 		AutomationServices Automation { get; }
 
@@ -1643,9 +1985,15 @@ namespace HomeAssistantGenerated
 
 		TtsServices Tts { get; }
 
+		UpdateServices Update { get; }
+
 		VacuumServices Vacuum { get; }
 
+		WebostvServices Webostv { get; }
+
 		ZoneServices Zone { get; }
+
+		ZwaveJsServices ZwaveJs { get; }
 	}
 
 	public class Services : IServices
@@ -1657,6 +2005,7 @@ namespace HomeAssistantGenerated
 		}
 
 		public AlarmControlPanelServices AlarmControlPanel => new(_haContext);
+		public AlexaMediaServices AlexaMedia => new(_haContext);
 		public AutomationServices Automation => new(_haContext);
 		public ButtonServices Button => new(_haContext);
 		public CameraServices Camera => new(_haContext);
@@ -1702,8 +2051,11 @@ namespace HomeAssistantGenerated
 		public SystemLogServices SystemLog => new(_haContext);
 		public TimerServices Timer => new(_haContext);
 		public TtsServices Tts => new(_haContext);
+		public UpdateServices Update => new(_haContext);
 		public VacuumServices Vacuum => new(_haContext);
+		public WebostvServices Webostv => new(_haContext);
 		public ZoneServices Zone => new(_haContext);
+		public ZwaveJsServices ZwaveJs => new(_haContext);
 	}
 
 	public class AlarmControlPanelServices
@@ -1869,6 +2221,80 @@ namespace HomeAssistantGenerated
 		public string? Code { get; init; }
 	}
 
+	public class AlexaMediaServices
+	{
+		private readonly IHaContext _haContext;
+		public AlexaMediaServices(IHaContext haContext)
+		{
+			_haContext = haContext;
+		}
+
+		///<summary>Clear last entries from Alexa history for each Alexa account.</summary>
+		public void ClearHistory(AlexaMediaClearHistoryParameters data)
+		{
+			_haContext.CallService("alexa_media", "clear_history", null, data);
+		}
+
+		///<summary>Clear last entries from Alexa history for each Alexa account.</summary>
+		///<param name="email">List of Alexa accounts to update. If empty, will delete from all known accounts. eg: my_email@alexa.com</param>
+		///<param name="entries">Number of entries to clear from 1 to 50. If empty, clear 50. eg: 50</param>
+		public void ClearHistory(object? @email = null, object? @entries = null)
+		{
+			_haContext.CallService("alexa_media", "clear_history", null, new AlexaMediaClearHistoryParameters{Email = @email, Entries = @entries});
+		}
+
+		///<summary>Force logout of Alexa Login account and deletion of .pickle. Intended for debugging use.</summary>
+		public void ForceLogout(AlexaMediaForceLogoutParameters data)
+		{
+			_haContext.CallService("alexa_media", "force_logout", null, data);
+		}
+
+		///<summary>Force logout of Alexa Login account and deletion of .pickle. Intended for debugging use.</summary>
+		///<param name="email">List of Alexa accounts to log out. If empty, will log out from all known accounts. eg: my_email@alexa.com</param>
+		public void ForceLogout(object? @email = null)
+		{
+			_haContext.CallService("alexa_media", "force_logout", null, new AlexaMediaForceLogoutParameters{Email = @email});
+		}
+
+		///<summary>Forces update of last_called echo device for each Alexa account.</summary>
+		public void UpdateLastCalled(AlexaMediaUpdateLastCalledParameters data)
+		{
+			_haContext.CallService("alexa_media", "update_last_called", null, data);
+		}
+
+		///<summary>Forces update of last_called echo device for each Alexa account.</summary>
+		///<param name="email">List of Alexa accounts to update. If empty, will update all known accounts. eg: my_email@alexa.com</param>
+		public void UpdateLastCalled(object? @email = null)
+		{
+			_haContext.CallService("alexa_media", "update_last_called", null, new AlexaMediaUpdateLastCalledParameters{Email = @email});
+		}
+	}
+
+	public record AlexaMediaClearHistoryParameters
+	{
+		///<summary>List of Alexa accounts to update. If empty, will delete from all known accounts. eg: my_email@alexa.com</summary>
+		[JsonPropertyName("email")]
+		public object? Email { get; init; }
+
+		///<summary>Number of entries to clear from 1 to 50. If empty, clear 50. eg: 50</summary>
+		[JsonPropertyName("entries")]
+		public object? Entries { get; init; }
+	}
+
+	public record AlexaMediaForceLogoutParameters
+	{
+		///<summary>List of Alexa accounts to log out. If empty, will log out from all known accounts. eg: my_email@alexa.com</summary>
+		[JsonPropertyName("email")]
+		public object? Email { get; init; }
+	}
+
+	public record AlexaMediaUpdateLastCalledParameters
+	{
+		///<summary>List of Alexa accounts to update. If empty, will update all known accounts. eg: my_email@alexa.com</summary>
+		[JsonPropertyName("email")]
+		public object? Email { get; init; }
+	}
+
 	public class AutomationServices
 	{
 		private readonly IHaContext _haContext;
@@ -1991,7 +2417,7 @@ namespace HomeAssistantGenerated
 		///<param name="target">The target for this service call</param>
 		///<param name="mediaPlayer">Name(s) of media player to stream to.</param>
 		///<param name="format">Stream format supported by media player.</param>
-		public void PlayStream(ServiceTarget target, string @mediaPlayer, string? @format = null)
+		public void PlayStream(ServiceTarget target, string @mediaPlayer, object? @format = null)
 		{
 			_haContext.CallService("camera", "play_stream", target, new CameraPlayStreamParameters{MediaPlayer = @mediaPlayer, Format = @format});
 		}
@@ -2051,7 +2477,7 @@ namespace HomeAssistantGenerated
 
 		///<summary>Stream format supported by media player.</summary>
 		[JsonPropertyName("format")]
-		public string? Format { get; init; }
+		public object? Format { get; init; }
 	}
 
 	public record CameraRecordParameters
@@ -2139,7 +2565,7 @@ namespace HomeAssistantGenerated
 		///<summary>Set HVAC operation mode for climate device.</summary>
 		///<param name="target">The target for this service call</param>
 		///<param name="hvacMode">New value of operation mode.</param>
-		public void SetHvacMode(ServiceTarget target, string? @hvacMode = null)
+		public void SetHvacMode(ServiceTarget target, object? @hvacMode = null)
 		{
 			_haContext.CallService("climate", "set_hvac_mode", target, new ClimateSetHvacModeParameters{HvacMode = @hvacMode});
 		}
@@ -2187,7 +2613,7 @@ namespace HomeAssistantGenerated
 		///<param name="targetTempHigh">New target high temperature for HVAC.</param>
 		///<param name="targetTempLow">New target low temperature for HVAC.</param>
 		///<param name="hvacMode">HVAC operation mode to set temperature to.</param>
-		public void SetTemperature(ServiceTarget target, double? @temperature = null, double? @targetTempHigh = null, double? @targetTempLow = null, string? @hvacMode = null)
+		public void SetTemperature(ServiceTarget target, double? @temperature = null, double? @targetTempHigh = null, double? @targetTempLow = null, object? @hvacMode = null)
 		{
 			_haContext.CallService("climate", "set_temperature", target, new ClimateSetTemperatureParameters{Temperature = @temperature, TargetTempHigh = @targetTempHigh, TargetTempLow = @targetTempLow, HvacMode = @hvacMode});
 		}
@@ -2232,7 +2658,7 @@ namespace HomeAssistantGenerated
 	{
 		///<summary>New value of operation mode.</summary>
 		[JsonPropertyName("hvac_mode")]
-		public string? HvacMode { get; init; }
+		public object? HvacMode { get; init; }
 	}
 
 	public record ClimateSetPresetModeParameters
@@ -2265,7 +2691,7 @@ namespace HomeAssistantGenerated
 
 		///<summary>HVAC operation mode to set temperature to.</summary>
 		[JsonPropertyName("hvac_mode")]
-		public string? HvacMode { get; init; }
+		public object? HvacMode { get; init; }
 	}
 
 	public class CloudServices
@@ -2607,7 +3033,7 @@ namespace HomeAssistantGenerated
 		///<summary>Set the fan rotation.</summary>
 		///<param name="target">The target for this service call</param>
 		///<param name="direction">The direction to rotate.</param>
-		public void SetDirection(ServiceTarget target, string @direction)
+		public void SetDirection(ServiceTarget target, object @direction)
 		{
 			_haContext.CallService("fan", "set_direction", target, new FanSetDirectionParameters{Direction = @direction});
 		}
@@ -2640,21 +3066,6 @@ namespace HomeAssistantGenerated
 		public void SetPresetMode(ServiceTarget target, string @presetMode)
 		{
 			_haContext.CallService("fan", "set_preset_mode", target, new FanSetPresetModeParameters{PresetMode = @presetMode});
-		}
-
-		///<summary>Set fan speed.</summary>
-		///<param name="target">The target for this service call</param>
-		public void SetSpeed(ServiceTarget target, FanSetSpeedParameters data)
-		{
-			_haContext.CallService("fan", "set_speed", target, data);
-		}
-
-		///<summary>Set fan speed.</summary>
-		///<param name="target">The target for this service call</param>
-		///<param name="speed">Speed setting. eg: low</param>
-		public void SetSpeed(ServiceTarget target, string @speed)
-		{
-			_haContext.CallService("fan", "set_speed", target, new FanSetSpeedParameters{Speed = @speed});
 		}
 
 		///<summary>Toggle the fan on/off.</summary>
@@ -2714,7 +3125,7 @@ namespace HomeAssistantGenerated
 	{
 		///<summary>The direction to rotate.</summary>
 		[JsonPropertyName("direction")]
-		public string? Direction { get; init; }
+		public object? Direction { get; init; }
 	}
 
 	public record FanSetPercentageParameters
@@ -2729,13 +3140,6 @@ namespace HomeAssistantGenerated
 		///<summary>New value of preset mode. eg: auto</summary>
 		[JsonPropertyName("preset_mode")]
 		public string? PresetMode { get; init; }
-	}
-
-	public record FanSetSpeedParameters
-	{
-		///<summary>Speed setting. eg: low</summary>
-		[JsonPropertyName("speed")]
-		public string? Speed { get; init; }
 	}
 
 	public record FanTurnOnParameters
@@ -2843,9 +3247,9 @@ namespace HomeAssistantGenerated
 		}
 
 		///<summary>Set a theme unless the client selected per-device theme.</summary>
-		///<param name="name">Name of a predefined theme, 'default' or 'none'. eg: default</param>
+		///<param name="name">Name of a predefined theme eg: default</param>
 		///<param name="mode">The mode the theme is for.</param>
-		public void SetTheme(string @name, string? @mode = null)
+		public void SetTheme(object @name, object? @mode = null)
 		{
 			_haContext.CallService("frontend", "set_theme", null, new FrontendSetThemeParameters{Name = @name, Mode = @mode});
 		}
@@ -2853,13 +3257,13 @@ namespace HomeAssistantGenerated
 
 	public record FrontendSetThemeParameters
 	{
-		///<summary>Name of a predefined theme, 'default' or 'none'. eg: default</summary>
+		///<summary>Name of a predefined theme eg: default</summary>
 		[JsonPropertyName("name")]
-		public string? Name { get; init; }
+		public object? Name { get; init; }
 
 		///<summary>The mode the theme is for.</summary>
 		[JsonPropertyName("mode")]
-		public string? Mode { get; init; }
+		public object? Mode { get; init; }
 	}
 
 	public class GroupServices
@@ -2902,7 +3306,7 @@ namespace HomeAssistantGenerated
 		///<param name="entities">List of all members in the group. Not compatible with 'delta'. eg: domain.entity_id1, domain.entity_id2</param>
 		///<param name="addEntities">List of members that will change on group listening. eg: domain.entity_id1, domain.entity_id2</param>
 		///<param name="all">Enable this option if the group should only turn on when all entities are on.</param>
-		public void Set(string @objectId, string? @name = null, string? @icon = null, object? @entities = null, object? @addEntities = null, bool? @all = null)
+		public void Set(string @objectId, string? @name = null, object? @icon = null, object? @entities = null, object? @addEntities = null, bool? @all = null)
 		{
 			_haContext.CallService("group", "set", null, new GroupSetParameters{ObjectId = @objectId, Name = @name, Icon = @icon, Entities = @entities, AddEntities = @addEntities, All = @all});
 		}
@@ -2927,7 +3331,7 @@ namespace HomeAssistantGenerated
 
 		///<summary>Name of icon for the group. eg: mdi:camera</summary>
 		[JsonPropertyName("icon")]
-		public string? Icon { get; init; }
+		public object? Icon { get; init; }
 
 		///<summary>List of all members in the group. Not compatible with 'delta'. eg: domain.entity_id1, domain.entity_id2</summary>
 		[JsonPropertyName("entities")]
@@ -3024,9 +3428,10 @@ namespace HomeAssistantGenerated
 		///<summary>Create a full backup.</summary>
 		///<param name="name">Optional (default = current date and time). eg: Backup 1</param>
 		///<param name="password">Optional password. eg: password</param>
-		public void BackupFull(string? @name = null, string? @password = null)
+		///<param name="compressed">Use compressed archives</param>
+		public void BackupFull(string? @name = null, string? @password = null, bool? @compressed = null)
 		{
-			_haContext.CallService("hassio", "backup_full", null, new HassioBackupFullParameters{Name = @name, Password = @password});
+			_haContext.CallService("hassio", "backup_full", null, new HassioBackupFullParameters{Name = @name, Password = @password, Compressed = @compressed});
 		}
 
 		///<summary>Create a partial backup.</summary>
@@ -3036,13 +3441,15 @@ namespace HomeAssistantGenerated
 		}
 
 		///<summary>Create a partial backup.</summary>
-		///<param name="addons">Optional list of add-on slugs. eg: ["core_ssh", "core_samba", "core_mosquitto"]</param>
-		///<param name="folders">Optional list of directories. eg: ["homeassistant", "share"]</param>
+		///<param name="homeassistant">Backup Home Assistant settings</param>
+		///<param name="addons">Optional list of add-on slugs. eg: ["core_ssh","core_samba","core_mosquitto"]</param>
+		///<param name="folders">Optional list of directories. eg: ["homeassistant","share"]</param>
 		///<param name="name">Optional (default = current date and time). eg: Partial backup 1</param>
 		///<param name="password">Optional password. eg: password</param>
-		public void BackupPartial(object? @addons = null, object? @folders = null, string? @name = null, string? @password = null)
+		///<param name="compressed">Use compressed archives</param>
+		public void BackupPartial(bool? @homeassistant = null, object? @addons = null, object? @folders = null, string? @name = null, string? @password = null, bool? @compressed = null)
 		{
-			_haContext.CallService("hassio", "backup_partial", null, new HassioBackupPartialParameters{Addons = @addons, Folders = @folders, Name = @name, Password = @password});
+			_haContext.CallService("hassio", "backup_partial", null, new HassioBackupPartialParameters{Homeassistant = @homeassistant, Addons = @addons, Folders = @folders, Name = @name, Password = @password, Compressed = @compressed});
 		}
 
 		///<summary>Reboot the host system.</summary>
@@ -3080,8 +3487,8 @@ namespace HomeAssistantGenerated
 		///<summary>Restore from partial backup.</summary>
 		///<param name="slug">Slug of backup to restore from.</param>
 		///<param name="homeassistant">Restore Home Assistant</param>
-		///<param name="folders">Optional list of directories. eg: ["homeassistant", "share"]</param>
-		///<param name="addons">Optional list of add-on slugs. eg: ["core_ssh", "core_samba", "core_mosquitto"]</param>
+		///<param name="folders">Optional list of directories. eg: ["homeassistant","share"]</param>
+		///<param name="addons">Optional list of add-on slugs. eg: ["core_ssh","core_samba","core_mosquitto"]</param>
 		///<param name="password">Optional password. eg: password</param>
 		public void RestorePartial(string @slug, bool? @homeassistant = null, object? @folders = null, object? @addons = null, string? @password = null)
 		{
@@ -3133,15 +3540,23 @@ namespace HomeAssistantGenerated
 		///<summary>Optional password. eg: password</summary>
 		[JsonPropertyName("password")]
 		public string? Password { get; init; }
+
+		///<summary>Use compressed archives</summary>
+		[JsonPropertyName("compressed")]
+		public bool? Compressed { get; init; }
 	}
 
 	public record HassioBackupPartialParameters
 	{
-		///<summary>Optional list of add-on slugs. eg: ["core_ssh", "core_samba", "core_mosquitto"]</summary>
+		///<summary>Backup Home Assistant settings</summary>
+		[JsonPropertyName("homeassistant")]
+		public bool? Homeassistant { get; init; }
+
+		///<summary>Optional list of add-on slugs. eg: ["core_ssh","core_samba","core_mosquitto"]</summary>
 		[JsonPropertyName("addons")]
 		public object? Addons { get; init; }
 
-		///<summary>Optional list of directories. eg: ["homeassistant", "share"]</summary>
+		///<summary>Optional list of directories. eg: ["homeassistant","share"]</summary>
 		[JsonPropertyName("folders")]
 		public object? Folders { get; init; }
 
@@ -3152,6 +3567,10 @@ namespace HomeAssistantGenerated
 		///<summary>Optional password. eg: password</summary>
 		[JsonPropertyName("password")]
 		public string? Password { get; init; }
+
+		///<summary>Use compressed archives</summary>
+		[JsonPropertyName("compressed")]
+		public bool? Compressed { get; init; }
 	}
 
 	public record HassioRestoreFullParameters
@@ -3175,11 +3594,11 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("homeassistant")]
 		public bool? Homeassistant { get; init; }
 
-		///<summary>Optional list of directories. eg: ["homeassistant", "share"]</summary>
+		///<summary>Optional list of directories. eg: ["homeassistant","share"]</summary>
 		[JsonPropertyName("folders")]
 		public object? Folders { get; init; }
 
-		///<summary>Optional list of add-on slugs. eg: ["core_ssh", "core_samba", "core_mosquitto"]</summary>
+		///<summary>Optional list of add-on slugs. eg: ["core_ssh","core_samba","core_mosquitto"]</summary>
 		[JsonPropertyName("addons")]
 		public object? Addons { get; init; }
 
@@ -3879,7 +4298,7 @@ namespace HomeAssistantGenerated
 		///<param name="profile">Name of a light profile to use. eg: relax</param>
 		///<param name="flash">If the light should flash.</param>
 		///<param name="effect">Light effect.</param>
-		public void Toggle(ServiceTarget target, long? @transition = null, object? @rgbColor = null, string? @colorName = null, object? @hsColor = null, object? @xyColor = null, long? @colorTemp = null, long? @kelvin = null, long? @whiteValue = null, long? @brightness = null, long? @brightnessPct = null, string? @profile = null, string? @flash = null, string? @effect = null)
+		public void Toggle(ServiceTarget target, long? @transition = null, object? @rgbColor = null, object? @colorName = null, object? @hsColor = null, object? @xyColor = null, object? @colorTemp = null, long? @kelvin = null, long? @whiteValue = null, long? @brightness = null, long? @brightnessPct = null, string? @profile = null, object? @flash = null, string? @effect = null)
 		{
 			_haContext.CallService("light", "toggle", target, new LightToggleParameters{Transition = @transition, RgbColor = @rgbColor, ColorName = @colorName, HsColor = @hsColor, XyColor = @xyColor, ColorTemp = @colorTemp, Kelvin = @kelvin, WhiteValue = @whiteValue, Brightness = @brightness, BrightnessPct = @brightnessPct, Profile = @profile, Flash = @flash, Effect = @effect});
 		}
@@ -3895,7 +4314,7 @@ namespace HomeAssistantGenerated
 		///<param name="target">The target for this service call</param>
 		///<param name="transition">Duration it takes to get to next state.</param>
 		///<param name="flash">If the light should flash.</param>
-		public void TurnOff(ServiceTarget target, long? @transition = null, string? @flash = null)
+		public void TurnOff(ServiceTarget target, long? @transition = null, object? @flash = null)
 		{
 			_haContext.CallService("light", "turn_off", target, new LightTurnOffParameters{Transition = @transition, Flash = @flash});
 		}
@@ -3910,7 +4329,7 @@ namespace HomeAssistantGenerated
 		///<summary>Turn on one or more lights and adjust properties of the light, even when they are turned on already. </summary>
 		///<param name="target">The target for this service call</param>
 		///<param name="transition">Duration it takes to get to next state.</param>
-		///<param name="rgbColor">A list containing three integers between 0 and 255 representing the RGB (red, green, blue) color for the light. eg: [255, 100, 100]</param>
+		///<param name="rgbColor">The color for the light (based on RGB - red, green, blue).</param>
 		///<param name="rgbwColor">A list containing four integers between 0 and 255 representing the RGBW (red, green, blue, white) color for the light. eg: [255, 100, 100, 50]</param>
 		///<param name="rgbwwColor">A list containing five integers between 0 and 255 representing the RGBWW (red, green, blue, cold white, warm white) color for the light. eg: [255, 100, 100, 50, 70]</param>
 		///<param name="colorName">A human readable color name.</param>
@@ -3926,7 +4345,7 @@ namespace HomeAssistantGenerated
 		///<param name="profile">Name of a light profile to use. eg: relax</param>
 		///<param name="flash">If the light should flash.</param>
 		///<param name="effect">Light effect.</param>
-		public void TurnOn(ServiceTarget target, long? @transition = null, object? @rgbColor = null, object? @rgbwColor = null, object? @rgbwwColor = null, string? @colorName = null, object? @hsColor = null, object? @xyColor = null, long? @colorTemp = null, long? @kelvin = null, long? @brightness = null, long? @brightnessPct = null, long? @brightnessStep = null, long? @brightnessStepPct = null, long? @white = null, string? @profile = null, string? @flash = null, string? @effect = null)
+		public void TurnOn(ServiceTarget target, long? @transition = null, object? @rgbColor = null, object? @rgbwColor = null, object? @rgbwwColor = null, object? @colorName = null, object? @hsColor = null, object? @xyColor = null, object? @colorTemp = null, long? @kelvin = null, long? @brightness = null, long? @brightnessPct = null, long? @brightnessStep = null, long? @brightnessStepPct = null, long? @white = null, string? @profile = null, object? @flash = null, string? @effect = null)
 		{
 			_haContext.CallService("light", "turn_on", target, new LightTurnOnParameters{Transition = @transition, RgbColor = @rgbColor, RgbwColor = @rgbwColor, RgbwwColor = @rgbwwColor, ColorName = @colorName, HsColor = @hsColor, XyColor = @xyColor, ColorTemp = @colorTemp, Kelvin = @kelvin, Brightness = @brightness, BrightnessPct = @brightnessPct, BrightnessStep = @brightnessStep, BrightnessStepPct = @brightnessStepPct, White = @white, Profile = @profile, Flash = @flash, Effect = @effect});
 		}
@@ -3944,7 +4363,7 @@ namespace HomeAssistantGenerated
 
 		///<summary>A human readable color name.</summary>
 		[JsonPropertyName("color_name")]
-		public string? ColorName { get; init; }
+		public object? ColorName { get; init; }
 
 		///<summary>Color for the light in hue/sat format. Hue is 0-360 and Sat is 0-100. eg: [300, 70]</summary>
 		[JsonPropertyName("hs_color")]
@@ -3956,7 +4375,7 @@ namespace HomeAssistantGenerated
 
 		///<summary>Color temperature for the light in mireds.</summary>
 		[JsonPropertyName("color_temp")]
-		public long? ColorTemp { get; init; }
+		public object? ColorTemp { get; init; }
 
 		///<summary>Color temperature for the light in Kelvin.</summary>
 		[JsonPropertyName("kelvin")]
@@ -3980,7 +4399,7 @@ namespace HomeAssistantGenerated
 
 		///<summary>If the light should flash.</summary>
 		[JsonPropertyName("flash")]
-		public string? Flash { get; init; }
+		public object? Flash { get; init; }
 
 		///<summary>Light effect.</summary>
 		[JsonPropertyName("effect")]
@@ -3995,7 +4414,7 @@ namespace HomeAssistantGenerated
 
 		///<summary>If the light should flash.</summary>
 		[JsonPropertyName("flash")]
-		public string? Flash { get; init; }
+		public object? Flash { get; init; }
 	}
 
 	public record LightTurnOnParameters
@@ -4004,7 +4423,7 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("transition")]
 		public long? Transition { get; init; }
 
-		///<summary>A list containing three integers between 0 and 255 representing the RGB (red, green, blue) color for the light. eg: [255, 100, 100]</summary>
+		///<summary>The color for the light (based on RGB - red, green, blue).</summary>
 		[JsonPropertyName("rgb_color")]
 		public object? RgbColor { get; init; }
 
@@ -4018,7 +4437,7 @@ namespace HomeAssistantGenerated
 
 		///<summary>A human readable color name.</summary>
 		[JsonPropertyName("color_name")]
-		public string? ColorName { get; init; }
+		public object? ColorName { get; init; }
 
 		///<summary>Color for the light in hue/sat format. Hue is 0-360 and Sat is 0-100. eg: [300, 70]</summary>
 		[JsonPropertyName("hs_color")]
@@ -4030,7 +4449,7 @@ namespace HomeAssistantGenerated
 
 		///<summary>Color temperature for the light in mireds.</summary>
 		[JsonPropertyName("color_temp")]
-		public long? ColorTemp { get; init; }
+		public object? ColorTemp { get; init; }
 
 		///<summary>Color temperature for the light in Kelvin.</summary>
 		[JsonPropertyName("kelvin")]
@@ -4062,7 +4481,7 @@ namespace HomeAssistantGenerated
 
 		///<summary>If the light should flash.</summary>
 		[JsonPropertyName("flash")]
-		public string? Flash { get; init; }
+		public object? Flash { get; init; }
 
 		///<summary>Light effect.</summary>
 		[JsonPropertyName("effect")]
@@ -4204,7 +4623,7 @@ namespace HomeAssistantGenerated
 
 		///<summary>Set the default log level for integrations.</summary>
 		///<param name="level">Default severity level for all integrations.</param>
-		public void SetDefaultLevel(string? @level = null)
+		public void SetDefaultLevel(object? @level = null)
 		{
 			_haContext.CallService("logger", "set_default_level", null, new LoggerSetDefaultLevelParameters{Level = @level});
 		}
@@ -4220,7 +4639,7 @@ namespace HomeAssistantGenerated
 	{
 		///<summary>Default severity level for all integrations.</summary>
 		[JsonPropertyName("level")]
-		public string? Level { get; init; }
+		public object? Level { get; init; }
 	}
 
 	public class MediaPlayerServices
@@ -4247,7 +4666,7 @@ namespace HomeAssistantGenerated
 
 		///<summary>Group players together. Only works on platforms with support for player groups.</summary>
 		///<param name="target">The target for this service call</param>
-		///<param name="groupMembers">The players which will be synced with the target player. eg: ["media_player.multiroom_player2", "media_player.multiroom_player3"]</param>
+		///<param name="groupMembers">The players which will be synced with the target player. eg: ["media_player.multiroom_player2","media_player.multiroom_player3"]</param>
 		public void Join(ServiceTarget target, object? @groupMembers = null)
 		{
 			_haContext.CallService("media_player", "join", target, new MediaPlayerJoinParameters{GroupMembers = @groupMembers});
@@ -4321,9 +4740,11 @@ namespace HomeAssistantGenerated
 		///<param name="target">The target for this service call</param>
 		///<param name="mediaContentId">The ID of the content to play. Platform dependent. eg: https://home-assistant.io/images/cast/splash.png</param>
 		///<param name="mediaContentType">The type of the content to play. Like image, music, tvshow, video, episode, channel or playlist. eg: music</param>
-		public void PlayMedia(ServiceTarget target, string @mediaContentId, string @mediaContentType)
+		///<param name="enqueue">If the content should be played now or be added to the queue.</param>
+		///<param name="announce">If the media should be played as an announcement. eg: true</param>
+		public void PlayMedia(ServiceTarget target, string @mediaContentId, string @mediaContentType, object? @enqueue = null, bool? @announce = null)
 		{
-			_haContext.CallService("media_player", "play_media", target, new MediaPlayerPlayMediaParameters{MediaContentId = @mediaContentId, MediaContentType = @mediaContentType});
+			_haContext.CallService("media_player", "play_media", target, new MediaPlayerPlayMediaParameters{MediaContentId = @mediaContentId, MediaContentType = @mediaContentType, Enqueue = @enqueue, Announce = @announce});
 		}
 
 		///<summary>Set repeat mode</summary>
@@ -4336,7 +4757,7 @@ namespace HomeAssistantGenerated
 		///<summary>Set repeat mode</summary>
 		///<param name="target">The target for this service call</param>
 		///<param name="repeat">Repeat mode to set.</param>
-		public void RepeatSet(ServiceTarget target, string @repeat)
+		public void RepeatSet(ServiceTarget target, object @repeat)
 		{
 			_haContext.CallService("media_player", "repeat_set", target, new MediaPlayerRepeatSetParameters{Repeat = @repeat});
 		}
@@ -4461,7 +4882,7 @@ namespace HomeAssistantGenerated
 
 	public record MediaPlayerJoinParameters
 	{
-		///<summary>The players which will be synced with the target player. eg: ["media_player.multiroom_player2", "media_player.multiroom_player3"]</summary>
+		///<summary>The players which will be synced with the target player. eg: ["media_player.multiroom_player2","media_player.multiroom_player3"]</summary>
 		[JsonPropertyName("group_members")]
 		public object? GroupMembers { get; init; }
 	}
@@ -4482,13 +4903,21 @@ namespace HomeAssistantGenerated
 		///<summary>The type of the content to play. Like image, music, tvshow, video, episode, channel or playlist. eg: music</summary>
 		[JsonPropertyName("media_content_type")]
 		public string? MediaContentType { get; init; }
+
+		///<summary>If the content should be played now or be added to the queue.</summary>
+		[JsonPropertyName("enqueue")]
+		public object? Enqueue { get; init; }
+
+		///<summary>If the media should be played as an announcement. eg: true</summary>
+		[JsonPropertyName("announce")]
+		public bool? Announce { get; init; }
 	}
 
 	public record MediaPlayerRepeatSetParameters
 	{
 		///<summary>Repeat mode to set.</summary>
 		[JsonPropertyName("repeat")]
-		public string? Repeat { get; init; }
+		public object? Repeat { get; init; }
 	}
 
 	public record MediaPlayerSelectSoundModeParameters
@@ -4560,7 +4989,7 @@ namespace HomeAssistantGenerated
 		///<param name="payloadTemplate">Template to render as payload value. Ignored if payload given. eg: {{ states('sensor.temperature') }}</param>
 		///<param name="qos">Quality of Service to use.</param>
 		///<param name="retain">If message should have the retain flag set.</param>
-		public void Publish(string @topic, string? @payload = null, object? @payloadTemplate = null, string? @qos = null, bool? @retain = null)
+		public void Publish(string @topic, string? @payload = null, object? @payloadTemplate = null, object? @qos = null, bool? @retain = null)
 		{
 			_haContext.CallService("mqtt", "publish", null, new MqttPublishParameters{Topic = @topic, Payload = @payload, PayloadTemplate = @payloadTemplate, Qos = @qos, Retain = @retain});
 		}
@@ -4599,7 +5028,7 @@ namespace HomeAssistantGenerated
 
 		///<summary>Quality of Service to use.</summary>
 		[JsonPropertyName("qos")]
-		public string? Qos { get; init; }
+		public object? Qos { get; init; }
 
 		///<summary>If message should have the retain flag set.</summary>
 		[JsonPropertyName("retain")]
@@ -4614,11 +5043,6 @@ namespace HomeAssistantGenerated
 			_haContext = haContext;
 		}
 
-		public void CheckForFrost()
-		{
-			_haContext.CallService("netdaemon", "check_for_frost", null);
-		}
-
 		///<summary>Create an entity</summary>
 		public void EntityCreate(NetdaemonEntityCreateParameters data)
 		{
@@ -4630,10 +5054,11 @@ namespace HomeAssistantGenerated
 		///<param name="state">The state of the entity eg: Lorem ipsum</param>
 		///<param name="icon">The icon for the entity eg: mdi:rocket-launch-outline</param>
 		///<param name="unit">The unit of measurement for the entity</param>
+		///<param name="options">List of options for a select entity</param>
 		///<param name="attributes">The attributes of the entity</param>
-		public void EntityCreate(object? @entityId = null, object? @state = null, object? @icon = null, object? @unit = null, object? @attributes = null)
+		public void EntityCreate(object? @entityId = null, object? @state = null, object? @icon = null, object? @unit = null, object? @options = null, object? @attributes = null)
 		{
-			_haContext.CallService("netdaemon", "entity_create", null, new NetdaemonEntityCreateParameters{EntityId = @entityId, State = @state, Icon = @icon, Unit = @unit, Attributes = @attributes});
+			_haContext.CallService("netdaemon", "entity_create", null, new NetdaemonEntityCreateParameters{EntityId = @entityId, State = @state, Icon = @icon, Unit = @unit, Options = @options, Attributes = @attributes});
 		}
 
 		///<summary>Remove an entity</summary>
@@ -4660,25 +5085,11 @@ namespace HomeAssistantGenerated
 		///<param name="state">The state of the entity eg: Lorem ipsum</param>
 		///<param name="icon">The icon for the entity eg: mdi:rocket-launch-outline</param>
 		///<param name="unit">The unit of measurement for the entity</param>
+		///<param name="options">List of options for a select entity</param>
 		///<param name="attributes">The attributes of the entity</param>
-		public void EntityUpdate(object? @entityId = null, object? @state = null, object? @icon = null, object? @unit = null, object? @attributes = null)
+		public void EntityUpdate(object? @entityId = null, object? @state = null, object? @icon = null, object? @unit = null, object? @options = null, object? @attributes = null)
 		{
-			_haContext.CallService("netdaemon", "entity_update", null, new NetdaemonEntityUpdateParameters{EntityId = @entityId, State = @state, Icon = @icon, Unit = @unit, Attributes = @attributes});
-		}
-
-		public void GetTidalEvents()
-		{
-			_haContext.CallService("netdaemon", "get_tidal_events", null);
-		}
-
-		public void LivingroomLightsOff()
-		{
-			_haContext.CallService("netdaemon", "livingroom_lights_off", null);
-		}
-
-		public void LivingroomLightsOn()
-		{
-			_haContext.CallService("netdaemon", "livingroom_lights_on", null);
+			_haContext.CallService("netdaemon", "entity_update", null, new NetdaemonEntityUpdateParameters{EntityId = @entityId, State = @state, Icon = @icon, Unit = @unit, Options = @options, Attributes = @attributes});
 		}
 
 		///<summary>Register a new service for netdaemon, used by the daemon and not to be used by users</summary>
@@ -4720,6 +5131,10 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("unit")]
 		public object? Unit { get; init; }
 
+		///<summary>List of options for a select entity</summary>
+		[JsonPropertyName("options")]
+		public object? Options { get; init; }
+
 		///<summary>The attributes of the entity</summary>
 		[JsonPropertyName("attributes")]
 		public object? Attributes { get; init; }
@@ -4750,6 +5165,10 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("unit")]
 		public object? Unit { get; init; }
 
+		///<summary>List of options for a select entity</summary>
+		[JsonPropertyName("options")]
+		public object? Options { get; init; }
+
 		///<summary>The attributes of the entity</summary>
 		[JsonPropertyName("attributes")]
 		public object? Attributes { get; init; }
@@ -4776,6 +5195,246 @@ namespace HomeAssistantGenerated
 		public NotifyServices(IHaContext haContext)
 		{
 			_haContext = haContext;
+		}
+
+		///<summary>Sends a notification message using the alexa_media service.</summary>
+		public void AlexaMedia(NotifyAlexaMediaParameters data)
+		{
+			_haContext.CallService("notify", "alexa_media", null, data);
+		}
+
+		///<summary>Sends a notification message using the alexa_media service.</summary>
+		///<param name="message">Message body of the notification. eg: The garage door has been open for 10 minutes.</param>
+		///<param name="title">Title for your notification. eg: Your Garage Door Friend</param>
+		///<param name="target">An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</param>
+		///<param name="data">Extended information for notification. Optional depending on the platform. eg: platform specific</param>
+		public void AlexaMedia(string @message, string? @title = null, object? @target = null, object? @data = null)
+		{
+			_haContext.CallService("notify", "alexa_media", null, new NotifyAlexaMediaParameters{Message = @message, Title = @title, Target = @target, Data = @data});
+		}
+
+		///<summary>Sends a notification message using the alexa_media_everywhere integration.</summary>
+		public void AlexaMediaEverywhere(NotifyAlexaMediaEverywhereParameters data)
+		{
+			_haContext.CallService("notify", "alexa_media_everywhere", null, data);
+		}
+
+		///<summary>Sends a notification message using the alexa_media_everywhere integration.</summary>
+		///<param name="message">Message body of the notification. eg: The garage door has been open for 10 minutes.</param>
+		///<param name="title">Title for your notification. eg: Your Garage Door Friend</param>
+		///<param name="target">An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</param>
+		///<param name="data">Extended information for notification. Optional depending on the platform. eg: platform specific</param>
+		public void AlexaMediaEverywhere(string @message, string? @title = null, object? @target = null, object? @data = null)
+		{
+			_haContext.CallService("notify", "alexa_media_everywhere", null, new NotifyAlexaMediaEverywhereParameters{Message = @message, Title = @title, Target = @target, Data = @data});
+		}
+
+		///<summary>Sends a notification message using the alexa_media_fire_tv integration.</summary>
+		public void AlexaMediaFireTv(NotifyAlexaMediaFireTvParameters data)
+		{
+			_haContext.CallService("notify", "alexa_media_fire_tv", null, data);
+		}
+
+		///<summary>Sends a notification message using the alexa_media_fire_tv integration.</summary>
+		///<param name="message">Message body of the notification. eg: The garage door has been open for 10 minutes.</param>
+		///<param name="title">Title for your notification. eg: Your Garage Door Friend</param>
+		///<param name="target">An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</param>
+		///<param name="data">Extended information for notification. Optional depending on the platform. eg: platform specific</param>
+		public void AlexaMediaFireTv(string @message, string? @title = null, object? @target = null, object? @data = null)
+		{
+			_haContext.CallService("notify", "alexa_media_fire_tv", null, new NotifyAlexaMediaFireTvParameters{Message = @message, Title = @title, Target = @target, Data = @data});
+		}
+
+		///<summary>Sends a notification message using the alexa_media_garage_echo_dot integration.</summary>
+		public void AlexaMediaGarageEchoDot(NotifyAlexaMediaGarageEchoDotParameters data)
+		{
+			_haContext.CallService("notify", "alexa_media_garage_echo_dot", null, data);
+		}
+
+		///<summary>Sends a notification message using the alexa_media_garage_echo_dot integration.</summary>
+		///<param name="message">Message body of the notification. eg: The garage door has been open for 10 minutes.</param>
+		///<param name="title">Title for your notification. eg: Your Garage Door Friend</param>
+		///<param name="target">An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</param>
+		///<param name="data">Extended information for notification. Optional depending on the platform. eg: platform specific</param>
+		public void AlexaMediaGarageEchoDot(string @message, string? @title = null, object? @target = null, object? @data = null)
+		{
+			_haContext.CallService("notify", "alexa_media_garage_echo_dot", null, new NotifyAlexaMediaGarageEchoDotParameters{Message = @message, Title = @title, Target = @target, Data = @data});
+		}
+
+		///<summary>Sends a notification message using the alexa_media_jo_s_echo integration.</summary>
+		public void AlexaMediaJoSEcho(NotifyAlexaMediaJoSEchoParameters data)
+		{
+			_haContext.CallService("notify", "alexa_media_jo_s_echo", null, data);
+		}
+
+		///<summary>Sends a notification message using the alexa_media_jo_s_echo integration.</summary>
+		///<param name="message">Message body of the notification. eg: The garage door has been open for 10 minutes.</param>
+		///<param name="title">Title for your notification. eg: Your Garage Door Friend</param>
+		///<param name="target">An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</param>
+		///<param name="data">Extended information for notification. Optional depending on the platform. eg: platform specific</param>
+		public void AlexaMediaJoSEcho(string @message, string? @title = null, object? @target = null, object? @data = null)
+		{
+			_haContext.CallService("notify", "alexa_media_jo_s_echo", null, new NotifyAlexaMediaJoSEchoParameters{Message = @message, Title = @title, Target = @target, Data = @data});
+		}
+
+		///<summary>Sends a notification message using the alexa_media_kitchen_echo integration.</summary>
+		public void AlexaMediaKitchenEcho(NotifyAlexaMediaKitchenEchoParameters data)
+		{
+			_haContext.CallService("notify", "alexa_media_kitchen_echo", null, data);
+		}
+
+		///<summary>Sends a notification message using the alexa_media_kitchen_echo integration.</summary>
+		///<param name="message">Message body of the notification. eg: The garage door has been open for 10 minutes.</param>
+		///<param name="title">Title for your notification. eg: Your Garage Door Friend</param>
+		///<param name="target">An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</param>
+		///<param name="data">Extended information for notification. Optional depending on the platform. eg: platform specific</param>
+		public void AlexaMediaKitchenEcho(string @message, string? @title = null, object? @target = null, object? @data = null)
+		{
+			_haContext.CallService("notify", "alexa_media_kitchen_echo", null, new NotifyAlexaMediaKitchenEchoParameters{Message = @message, Title = @title, Target = @target, Data = @data});
+		}
+
+		///<summary>Sends a notification message using the alexa_media_last_called integration.</summary>
+		public void AlexaMediaLastCalled(NotifyAlexaMediaLastCalledParameters data)
+		{
+			_haContext.CallService("notify", "alexa_media_last_called", null, data);
+		}
+
+		///<summary>Sends a notification message using the alexa_media_last_called integration.</summary>
+		///<param name="message">Message body of the notification. eg: The garage door has been open for 10 minutes.</param>
+		///<param name="title">Title for your notification. eg: Your Garage Door Friend</param>
+		///<param name="target">An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</param>
+		///<param name="data">Extended information for notification. Optional depending on the platform. eg: platform specific</param>
+		public void AlexaMediaLastCalled(string @message, string? @title = null, object? @target = null, object? @data = null)
+		{
+			_haContext.CallService("notify", "alexa_media_last_called", null, new NotifyAlexaMediaLastCalledParameters{Message = @message, Title = @title, Target = @target, Data = @data});
+		}
+
+		///<summary>Sends a notification message using the alexa_media_scott_s_2nd_echo_dot integration.</summary>
+		public void AlexaMediaScottS2ndEchoDot(NotifyAlexaMediaScottS2ndEchoDotParameters data)
+		{
+			_haContext.CallService("notify", "alexa_media_scott_s_2nd_echo_dot", null, data);
+		}
+
+		///<summary>Sends a notification message using the alexa_media_scott_s_2nd_echo_dot integration.</summary>
+		///<param name="message">Message body of the notification. eg: The garage door has been open for 10 minutes.</param>
+		///<param name="title">Title for your notification. eg: Your Garage Door Friend</param>
+		///<param name="target">An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</param>
+		///<param name="data">Extended information for notification. Optional depending on the platform. eg: platform specific</param>
+		public void AlexaMediaScottS2ndEchoDot(string @message, string? @title = null, object? @target = null, object? @data = null)
+		{
+			_haContext.CallService("notify", "alexa_media_scott_s_2nd_echo_dot", null, new NotifyAlexaMediaScottS2ndEchoDotParameters{Message = @message, Title = @title, Target = @target, Data = @data});
+		}
+
+		///<summary>Sends a notification message using the alexa_media_scott_s_3rd_fire integration.</summary>
+		public void AlexaMediaScottS3rdFire(NotifyAlexaMediaScottS3rdFireParameters data)
+		{
+			_haContext.CallService("notify", "alexa_media_scott_s_3rd_fire", null, data);
+		}
+
+		///<summary>Sends a notification message using the alexa_media_scott_s_3rd_fire integration.</summary>
+		///<param name="message">Message body of the notification. eg: The garage door has been open for 10 minutes.</param>
+		///<param name="title">Title for your notification. eg: Your Garage Door Friend</param>
+		///<param name="target">An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</param>
+		///<param name="data">Extended information for notification. Optional depending on the platform. eg: platform specific</param>
+		public void AlexaMediaScottS3rdFire(string @message, string? @title = null, object? @target = null, object? @data = null)
+		{
+			_haContext.CallService("notify", "alexa_media_scott_s_3rd_fire", null, new NotifyAlexaMediaScottS3rdFireParameters{Message = @message, Title = @title, Target = @target, Data = @data});
+		}
+
+		///<summary>Sends a notification message using the alexa_media_scott_s_echo_show integration.</summary>
+		public void AlexaMediaScottSEchoShow(NotifyAlexaMediaScottSEchoShowParameters data)
+		{
+			_haContext.CallService("notify", "alexa_media_scott_s_echo_show", null, data);
+		}
+
+		///<summary>Sends a notification message using the alexa_media_scott_s_echo_show integration.</summary>
+		///<param name="message">Message body of the notification. eg: The garage door has been open for 10 minutes.</param>
+		///<param name="title">Title for your notification. eg: Your Garage Door Friend</param>
+		///<param name="target">An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</param>
+		///<param name="data">Extended information for notification. Optional depending on the platform. eg: platform specific</param>
+		public void AlexaMediaScottSEchoShow(string @message, string? @title = null, object? @target = null, object? @data = null)
+		{
+			_haContext.CallService("notify", "alexa_media_scott_s_echo_show", null, new NotifyAlexaMediaScottSEchoShowParameters{Message = @message, Title = @title, Target = @target, Data = @data});
+		}
+
+		///<summary>Sends a notification message using the alexa_media_scott_s_firetvstick integration.</summary>
+		public void AlexaMediaScottSFiretvstick(NotifyAlexaMediaScottSFiretvstickParameters data)
+		{
+			_haContext.CallService("notify", "alexa_media_scott_s_firetvstick", null, data);
+		}
+
+		///<summary>Sends a notification message using the alexa_media_scott_s_firetvstick integration.</summary>
+		///<param name="message">Message body of the notification. eg: The garage door has been open for 10 minutes.</param>
+		///<param name="title">Title for your notification. eg: Your Garage Door Friend</param>
+		///<param name="target">An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</param>
+		///<param name="data">Extended information for notification. Optional depending on the platform. eg: platform specific</param>
+		public void AlexaMediaScottSFiretvstick(string @message, string? @title = null, object? @target = null, object? @data = null)
+		{
+			_haContext.CallService("notify", "alexa_media_scott_s_firetvstick", null, new NotifyAlexaMediaScottSFiretvstickParameters{Message = @message, Title = @title, Target = @target, Data = @data});
+		}
+
+		///<summary>Sends a notification message using the alexa_media_sunroom_echo_dot integration.</summary>
+		public void AlexaMediaSunroomEchoDot(NotifyAlexaMediaSunroomEchoDotParameters data)
+		{
+			_haContext.CallService("notify", "alexa_media_sunroom_echo_dot", null, data);
+		}
+
+		///<summary>Sends a notification message using the alexa_media_sunroom_echo_dot integration.</summary>
+		///<param name="message">Message body of the notification. eg: The garage door has been open for 10 minutes.</param>
+		///<param name="title">Title for your notification. eg: Your Garage Door Friend</param>
+		///<param name="target">An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</param>
+		///<param name="data">Extended information for notification. Optional depending on the platform. eg: platform specific</param>
+		public void AlexaMediaSunroomEchoDot(string @message, string? @title = null, object? @target = null, object? @data = null)
+		{
+			_haContext.CallService("notify", "alexa_media_sunroom_echo_dot", null, new NotifyAlexaMediaSunroomEchoDotParameters{Message = @message, Title = @title, Target = @target, Data = @data});
+		}
+
+		///<summary>Sends a notification message using the alexa_media_theo_s_echo integration.</summary>
+		public void AlexaMediaTheoSEcho(NotifyAlexaMediaTheoSEchoParameters data)
+		{
+			_haContext.CallService("notify", "alexa_media_theo_s_echo", null, data);
+		}
+
+		///<summary>Sends a notification message using the alexa_media_theo_s_echo integration.</summary>
+		///<param name="message">Message body of the notification. eg: The garage door has been open for 10 minutes.</param>
+		///<param name="title">Title for your notification. eg: Your Garage Door Friend</param>
+		///<param name="target">An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</param>
+		///<param name="data">Extended information for notification. Optional depending on the platform. eg: platform specific</param>
+		public void AlexaMediaTheoSEcho(string @message, string? @title = null, object? @target = null, object? @data = null)
+		{
+			_haContext.CallService("notify", "alexa_media_theo_s_echo", null, new NotifyAlexaMediaTheoSEchoParameters{Message = @message, Title = @title, Target = @target, Data = @data});
+		}
+
+		///<summary>Sends a notification message using the alexa_media_tv_home_connect integration.</summary>
+		public void AlexaMediaTvHomeConnect(NotifyAlexaMediaTvHomeConnectParameters data)
+		{
+			_haContext.CallService("notify", "alexa_media_tv_home_connect", null, data);
+		}
+
+		///<summary>Sends a notification message using the alexa_media_tv_home_connect integration.</summary>
+		///<param name="message">Message body of the notification. eg: The garage door has been open for 10 minutes.</param>
+		///<param name="title">Title for your notification. eg: Your Garage Door Friend</param>
+		///<param name="target">An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</param>
+		///<param name="data">Extended information for notification. Optional depending on the platform. eg: platform specific</param>
+		public void AlexaMediaTvHomeConnect(string @message, string? @title = null, object? @target = null, object? @data = null)
+		{
+			_haContext.CallService("notify", "alexa_media_tv_home_connect", null, new NotifyAlexaMediaTvHomeConnectParameters{Message = @message, Title = @title, Target = @target, Data = @data});
+		}
+
+		///<summary>Sends a notification message using the lg_webos_tv_oled55a16la service.</summary>
+		public void LgWebosTvOled55a16la(NotifyLgWebosTvOled55a16laParameters data)
+		{
+			_haContext.CallService("notify", "lg_webos_tv_oled55a16la", null, data);
+		}
+
+		///<summary>Sends a notification message using the lg_webos_tv_oled55a16la service.</summary>
+		///<param name="message">Message body of the notification. eg: The garage door has been open for 10 minutes.</param>
+		///<param name="title">Title for your notification. eg: Your Garage Door Friend</param>
+		///<param name="target">An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</param>
+		///<param name="data">Extended information for notification. Optional depending on the platform. eg: platform specific</param>
+		public void LgWebosTvOled55a16la(string @message, string? @title = null, object? @target = null, object? @data = null)
+		{
+			_haContext.CallService("notify", "lg_webos_tv_oled55a16la", null, new NotifyLgWebosTvOled55a16laParameters{Message = @message, Title = @title, Target = @target, Data = @data});
 		}
 
 		///<summary>Sends a notification message using the mobile_app_jo_s_iphone integration.</summary>
@@ -4842,19 +5501,304 @@ namespace HomeAssistantGenerated
 			_haContext.CallService("notify", "notify", null, new NotifyNotifyParameters{Message = @message, Title = @title, Target = @target, Data = @data});
 		}
 
-		///<summary>Sends a notification to the visible in the front-end.</summary>
+		///<summary>Sends a notification that is visible in the front-end.</summary>
 		public void PersistentNotification(NotifyPersistentNotificationParameters data)
 		{
 			_haContext.CallService("notify", "persistent_notification", null, data);
 		}
 
-		///<summary>Sends a notification to the visible in the front-end.</summary>
+		///<summary>Sends a notification that is visible in the front-end.</summary>
 		///<param name="message">Message body of the notification. eg: The garage door has been open for 10 minutes.</param>
 		///<param name="title">Title for your notification. eg: Your Garage Door Friend</param>
 		public void PersistentNotification(string @message, string? @title = null)
 		{
 			_haContext.CallService("notify", "persistent_notification", null, new NotifyPersistentNotificationParameters{Message = @message, Title = @title});
 		}
+	}
+
+	public record NotifyAlexaMediaParameters
+	{
+		///<summary>Message body of the notification. eg: The garage door has been open for 10 minutes.</summary>
+		[JsonPropertyName("message")]
+		public string? Message { get; init; }
+
+		///<summary>Title for your notification. eg: Your Garage Door Friend</summary>
+		[JsonPropertyName("title")]
+		public string? Title { get; init; }
+
+		///<summary>An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("target")]
+		public object? Target { get; init; }
+
+		///<summary>Extended information for notification. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("data")]
+		public object? Data { get; init; }
+	}
+
+	public record NotifyAlexaMediaEverywhereParameters
+	{
+		///<summary>Message body of the notification. eg: The garage door has been open for 10 minutes.</summary>
+		[JsonPropertyName("message")]
+		public string? Message { get; init; }
+
+		///<summary>Title for your notification. eg: Your Garage Door Friend</summary>
+		[JsonPropertyName("title")]
+		public string? Title { get; init; }
+
+		///<summary>An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("target")]
+		public object? Target { get; init; }
+
+		///<summary>Extended information for notification. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("data")]
+		public object? Data { get; init; }
+	}
+
+	public record NotifyAlexaMediaFireTvParameters
+	{
+		///<summary>Message body of the notification. eg: The garage door has been open for 10 minutes.</summary>
+		[JsonPropertyName("message")]
+		public string? Message { get; init; }
+
+		///<summary>Title for your notification. eg: Your Garage Door Friend</summary>
+		[JsonPropertyName("title")]
+		public string? Title { get; init; }
+
+		///<summary>An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("target")]
+		public object? Target { get; init; }
+
+		///<summary>Extended information for notification. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("data")]
+		public object? Data { get; init; }
+	}
+
+	public record NotifyAlexaMediaGarageEchoDotParameters
+	{
+		///<summary>Message body of the notification. eg: The garage door has been open for 10 minutes.</summary>
+		[JsonPropertyName("message")]
+		public string? Message { get; init; }
+
+		///<summary>Title for your notification. eg: Your Garage Door Friend</summary>
+		[JsonPropertyName("title")]
+		public string? Title { get; init; }
+
+		///<summary>An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("target")]
+		public object? Target { get; init; }
+
+		///<summary>Extended information for notification. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("data")]
+		public object? Data { get; init; }
+	}
+
+	public record NotifyAlexaMediaJoSEchoParameters
+	{
+		///<summary>Message body of the notification. eg: The garage door has been open for 10 minutes.</summary>
+		[JsonPropertyName("message")]
+		public string? Message { get; init; }
+
+		///<summary>Title for your notification. eg: Your Garage Door Friend</summary>
+		[JsonPropertyName("title")]
+		public string? Title { get; init; }
+
+		///<summary>An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("target")]
+		public object? Target { get; init; }
+
+		///<summary>Extended information for notification. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("data")]
+		public object? Data { get; init; }
+	}
+
+	public record NotifyAlexaMediaKitchenEchoParameters
+	{
+		///<summary>Message body of the notification. eg: The garage door has been open for 10 minutes.</summary>
+		[JsonPropertyName("message")]
+		public string? Message { get; init; }
+
+		///<summary>Title for your notification. eg: Your Garage Door Friend</summary>
+		[JsonPropertyName("title")]
+		public string? Title { get; init; }
+
+		///<summary>An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("target")]
+		public object? Target { get; init; }
+
+		///<summary>Extended information for notification. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("data")]
+		public object? Data { get; init; }
+	}
+
+	public record NotifyAlexaMediaLastCalledParameters
+	{
+		///<summary>Message body of the notification. eg: The garage door has been open for 10 minutes.</summary>
+		[JsonPropertyName("message")]
+		public string? Message { get; init; }
+
+		///<summary>Title for your notification. eg: Your Garage Door Friend</summary>
+		[JsonPropertyName("title")]
+		public string? Title { get; init; }
+
+		///<summary>An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("target")]
+		public object? Target { get; init; }
+
+		///<summary>Extended information for notification. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("data")]
+		public object? Data { get; init; }
+	}
+
+	public record NotifyAlexaMediaScottS2ndEchoDotParameters
+	{
+		///<summary>Message body of the notification. eg: The garage door has been open for 10 minutes.</summary>
+		[JsonPropertyName("message")]
+		public string? Message { get; init; }
+
+		///<summary>Title for your notification. eg: Your Garage Door Friend</summary>
+		[JsonPropertyName("title")]
+		public string? Title { get; init; }
+
+		///<summary>An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("target")]
+		public object? Target { get; init; }
+
+		///<summary>Extended information for notification. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("data")]
+		public object? Data { get; init; }
+	}
+
+	public record NotifyAlexaMediaScottS3rdFireParameters
+	{
+		///<summary>Message body of the notification. eg: The garage door has been open for 10 minutes.</summary>
+		[JsonPropertyName("message")]
+		public string? Message { get; init; }
+
+		///<summary>Title for your notification. eg: Your Garage Door Friend</summary>
+		[JsonPropertyName("title")]
+		public string? Title { get; init; }
+
+		///<summary>An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("target")]
+		public object? Target { get; init; }
+
+		///<summary>Extended information for notification. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("data")]
+		public object? Data { get; init; }
+	}
+
+	public record NotifyAlexaMediaScottSEchoShowParameters
+	{
+		///<summary>Message body of the notification. eg: The garage door has been open for 10 minutes.</summary>
+		[JsonPropertyName("message")]
+		public string? Message { get; init; }
+
+		///<summary>Title for your notification. eg: Your Garage Door Friend</summary>
+		[JsonPropertyName("title")]
+		public string? Title { get; init; }
+
+		///<summary>An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("target")]
+		public object? Target { get; init; }
+
+		///<summary>Extended information for notification. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("data")]
+		public object? Data { get; init; }
+	}
+
+	public record NotifyAlexaMediaScottSFiretvstickParameters
+	{
+		///<summary>Message body of the notification. eg: The garage door has been open for 10 minutes.</summary>
+		[JsonPropertyName("message")]
+		public string? Message { get; init; }
+
+		///<summary>Title for your notification. eg: Your Garage Door Friend</summary>
+		[JsonPropertyName("title")]
+		public string? Title { get; init; }
+
+		///<summary>An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("target")]
+		public object? Target { get; init; }
+
+		///<summary>Extended information for notification. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("data")]
+		public object? Data { get; init; }
+	}
+
+	public record NotifyAlexaMediaSunroomEchoDotParameters
+	{
+		///<summary>Message body of the notification. eg: The garage door has been open for 10 minutes.</summary>
+		[JsonPropertyName("message")]
+		public string? Message { get; init; }
+
+		///<summary>Title for your notification. eg: Your Garage Door Friend</summary>
+		[JsonPropertyName("title")]
+		public string? Title { get; init; }
+
+		///<summary>An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("target")]
+		public object? Target { get; init; }
+
+		///<summary>Extended information for notification. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("data")]
+		public object? Data { get; init; }
+	}
+
+	public record NotifyAlexaMediaTheoSEchoParameters
+	{
+		///<summary>Message body of the notification. eg: The garage door has been open for 10 minutes.</summary>
+		[JsonPropertyName("message")]
+		public string? Message { get; init; }
+
+		///<summary>Title for your notification. eg: Your Garage Door Friend</summary>
+		[JsonPropertyName("title")]
+		public string? Title { get; init; }
+
+		///<summary>An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("target")]
+		public object? Target { get; init; }
+
+		///<summary>Extended information for notification. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("data")]
+		public object? Data { get; init; }
+	}
+
+	public record NotifyAlexaMediaTvHomeConnectParameters
+	{
+		///<summary>Message body of the notification. eg: The garage door has been open for 10 minutes.</summary>
+		[JsonPropertyName("message")]
+		public string? Message { get; init; }
+
+		///<summary>Title for your notification. eg: Your Garage Door Friend</summary>
+		[JsonPropertyName("title")]
+		public string? Title { get; init; }
+
+		///<summary>An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("target")]
+		public object? Target { get; init; }
+
+		///<summary>Extended information for notification. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("data")]
+		public object? Data { get; init; }
+	}
+
+	public record NotifyLgWebosTvOled55a16laParameters
+	{
+		///<summary>Message body of the notification. eg: The garage door has been open for 10 minutes.</summary>
+		[JsonPropertyName("message")]
+		public string? Message { get; init; }
+
+		///<summary>Title for your notification. eg: Your Garage Door Friend</summary>
+		[JsonPropertyName("title")]
+		public string? Title { get; init; }
+
+		///<summary>An array of targets to send the notification to. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("target")]
+		public object? Target { get; init; }
+
+		///<summary>Extended information for notification. Optional depending on the platform. eg: platform specific</summary>
+		[JsonPropertyName("data")]
+		public object? Data { get; init; }
 	}
 
 	public record NotifyMobileAppJoSIphoneParameters
@@ -5114,7 +6058,7 @@ namespace HomeAssistantGenerated
 		///<summary>Start purge task to remove specific entities from your database.</summary>
 		///<param name="target">The target for this service call</param>
 		///<param name="domains">List the domains that need to be removed from the recorder database. eg: sun</param>
-		///<param name="entityGlobs">List the regular expressions to select entities for removal from the recorder database. eg: domain*.object_id*</param>
+		///<param name="entityGlobs">List the glob patterns to select entities for removal from the recorder database. eg: domain*.object_id*</param>
 		public void PurgeEntities(ServiceTarget target, object? @domains = null, object? @entityGlobs = null)
 		{
 			_haContext.CallService("recorder", "purge_entities", target, new RecorderPurgeEntitiesParameters{Domains = @domains, EntityGlobs = @entityGlobs});
@@ -5142,7 +6086,7 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("domains")]
 		public object? Domains { get; init; }
 
-		///<summary>List the regular expressions to select entities for removal from the recorder database. eg: domain*.object_id*</summary>
+		///<summary>List the glob patterns to select entities for removal from the recorder database. eg: domain*.object_id*</summary>
 		[JsonPropertyName("entity_globs")]
 		public object? EntityGlobs { get; init; }
 	}
@@ -5331,7 +6275,7 @@ namespace HomeAssistantGenerated
 		}
 
 		///<summary>Activate a scene with configuration.</summary>
-		///<param name="entities">The entities and the state that they need to be. eg: {"light.kitchen": "on", "light.ceiling": {"state": "on", "brightness": 80}}</param>
+		///<param name="entities">The entities and the state that they need to be. eg: {"light.kitchen":"on","light.ceiling":{"state":"on","brightness":80}}</param>
 		///<param name="transition">Transition duration it takes to bring devices to the state defined in the scene.</param>
 		public void Apply(object @entities, long? @transition = null)
 		{
@@ -5346,8 +6290,8 @@ namespace HomeAssistantGenerated
 
 		///<summary>Creates a new scene.</summary>
 		///<param name="sceneId">The entity_id of the new scene. eg: all_lights</param>
-		///<param name="entities">The entities to control with the scene. eg: {"light.tv_back_light": "on", "light.ceiling": {"state": "on", "brightness": 200}}</param>
-		///<param name="snapshotEntities">The entities of which a snapshot is to be taken eg: ["light.ceiling", "light.kitchen"]</param>
+		///<param name="entities">The entities to control with the scene. eg: {"light.tv_back_light":"on","light.ceiling":{"state":"on","brightness":200}}</param>
+		///<param name="snapshotEntities">The entities of which a snapshot is to be taken eg: ["light.ceiling","light.kitchen"]</param>
 		public void Create(string @sceneId, object? @entities = null, object? @snapshotEntities = null)
 		{
 			_haContext.CallService("scene", "create", null, new SceneCreateParameters{SceneId = @sceneId, Entities = @entities, SnapshotEntities = @snapshotEntities});
@@ -5377,7 +6321,7 @@ namespace HomeAssistantGenerated
 
 	public record SceneApplyParameters
 	{
-		///<summary>The entities and the state that they need to be. eg: {"light.kitchen": "on", "light.ceiling": {"state": "on", "brightness": 80}}</summary>
+		///<summary>The entities and the state that they need to be. eg: {"light.kitchen":"on","light.ceiling":{"state":"on","brightness":80}}</summary>
 		[JsonPropertyName("entities")]
 		public object? Entities { get; init; }
 
@@ -5392,11 +6336,11 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("scene_id")]
 		public string? SceneId { get; init; }
 
-		///<summary>The entities to control with the scene. eg: {"light.tv_back_light": "on", "light.ceiling": {"state": "on", "brightness": 200}}</summary>
+		///<summary>The entities to control with the scene. eg: {"light.tv_back_light":"on","light.ceiling":{"state":"on","brightness":200}}</summary>
 		[JsonPropertyName("entities")]
 		public object? Entities { get; init; }
 
-		///<summary>The entities of which a snapshot is to be taken eg: ["light.ceiling", "light.kitchen"]</summary>
+		///<summary>The entities of which a snapshot is to be taken eg: ["light.ceiling","light.kitchen"]</summary>
 		[JsonPropertyName("snapshot_entities")]
 		public object? SnapshotEntities { get; init; }
 	}
@@ -5584,7 +6528,7 @@ namespace HomeAssistantGenerated
 		///<param name="message">Message to log. eg: Something went wrong</param>
 		///<param name="level">Log level.</param>
 		///<param name="logger">Logger name under which to log the message. Defaults to 'system_log.external'. eg: mycomponent.myplatform</param>
-		public void Write(string @message, string? @level = null, string? @logger = null)
+		public void Write(string @message, object? @level = null, string? @logger = null)
 		{
 			_haContext.CallService("system_log", "write", null, new SystemLogWriteParameters{Message = @message, Level = @level, Logger = @logger});
 		}
@@ -5598,7 +6542,7 @@ namespace HomeAssistantGenerated
 
 		///<summary>Log level.</summary>
 		[JsonPropertyName("level")]
-		public string? Level { get; init; }
+		public object? Level { get; init; }
 
 		///<summary>Logger name under which to log the message. Defaults to 'system_log.external'. eg: mycomponent.myplatform</summary>
 		[JsonPropertyName("logger")]
@@ -5757,6 +6701,56 @@ namespace HomeAssistantGenerated
 		public object? Options { get; init; }
 	}
 
+	public class UpdateServices
+	{
+		private readonly IHaContext _haContext;
+		public UpdateServices(IHaContext haContext)
+		{
+			_haContext = haContext;
+		}
+
+		///<summary>Removes the skipped version marker from an update.</summary>
+		///<param name="target">The target for this service call</param>
+		public void ClearSkipped(ServiceTarget target)
+		{
+			_haContext.CallService("update", "clear_skipped", target);
+		}
+
+		///<summary>Install an update for this device or service</summary>
+		///<param name="target">The target for this service call</param>
+		public void Install(ServiceTarget target, UpdateInstallParameters data)
+		{
+			_haContext.CallService("update", "install", target, data);
+		}
+
+		///<summary>Install an update for this device or service</summary>
+		///<param name="target">The target for this service call</param>
+		///<param name="version">Version to install, if omitted, the latest version will be installed. eg: 1.0.0</param>
+		///<param name="backup">Backup before installing the update, if supported by the integration.</param>
+		public void Install(ServiceTarget target, string? @version = null, bool? @backup = null)
+		{
+			_haContext.CallService("update", "install", target, new UpdateInstallParameters{Version = @version, Backup = @backup});
+		}
+
+		///<summary>Mark currently available update as skipped.</summary>
+		///<param name="target">The target for this service call</param>
+		public void Skip(ServiceTarget target)
+		{
+			_haContext.CallService("update", "skip", target);
+		}
+	}
+
+	public record UpdateInstallParameters
+	{
+		///<summary>Version to install, if omitted, the latest version will be installed. eg: 1.0.0</summary>
+		[JsonPropertyName("version")]
+		public string? Version { get; init; }
+
+		///<summary>Backup before installing the update, if supported by the integration.</summary>
+		[JsonPropertyName("backup")]
+		public bool? Backup { get; init; }
+	}
+
 	public class VacuumServices
 	{
 		private readonly IHaContext _haContext;
@@ -5883,6 +6877,95 @@ namespace HomeAssistantGenerated
 		public string? FanSpeed { get; init; }
 	}
 
+	public class WebostvServices
+	{
+		private readonly IHaContext _haContext;
+		public WebostvServices(IHaContext haContext)
+		{
+			_haContext = haContext;
+		}
+
+		///<summary>Send a button press command.</summary>
+		public void Button(WebostvButtonParameters data)
+		{
+			_haContext.CallService("webostv", "button", null, data);
+		}
+
+		///<summary>Send a button press command.</summary>
+		///<param name="entityId">Name(s) of the webostv entities where to run the API method.</param>
+		///<param name="button">Name of the button to press.  Known possible values are LEFT, RIGHT, DOWN, UP, HOME, MENU, BACK, ENTER, DASH, INFO, ASTERISK, CC, EXIT, MUTE, RED, GREEN, BLUE, VOLUMEUP, VOLUMEDOWN, CHANNELUP, CHANNELDOWN, PLAY, PAUSE, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 eg: LEFT</param>
+		public void Button(string @entityId, string @button)
+		{
+			_haContext.CallService("webostv", "button", null, new WebostvButtonParameters{EntityId = @entityId, Button = @button});
+		}
+
+		///<summary>Send a command.</summary>
+		public void Command(WebostvCommandParameters data)
+		{
+			_haContext.CallService("webostv", "command", null, data);
+		}
+
+		///<summary>Send a command.</summary>
+		///<param name="entityId">Name(s) of the webostv entities where to run the API method.</param>
+		///<param name="command">Endpoint of the command. eg: system.launcher/open</param>
+		///<param name="payload">An optional payload to provide to the endpoint in the format of key value pair(s). eg: target: https://www.google.com</param>
+		public void Command(string @entityId, string @command, object? @payload = null)
+		{
+			_haContext.CallService("webostv", "command", null, new WebostvCommandParameters{EntityId = @entityId, Command = @command, Payload = @payload});
+		}
+
+		///<summary>Send the TV the command to change sound output.</summary>
+		public void SelectSoundOutput(WebostvSelectSoundOutputParameters data)
+		{
+			_haContext.CallService("webostv", "select_sound_output", null, data);
+		}
+
+		///<summary>Send the TV the command to change sound output.</summary>
+		///<param name="entityId">Name(s) of the webostv entities to change sound output on.</param>
+		///<param name="soundOutput">Name of the sound output to switch to. eg: external_speaker</param>
+		public void SelectSoundOutput(string @entityId, string @soundOutput)
+		{
+			_haContext.CallService("webostv", "select_sound_output", null, new WebostvSelectSoundOutputParameters{EntityId = @entityId, SoundOutput = @soundOutput});
+		}
+	}
+
+	public record WebostvButtonParameters
+	{
+		///<summary>Name(s) of the webostv entities where to run the API method.</summary>
+		[JsonPropertyName("entity_id")]
+		public string? EntityId { get; init; }
+
+		///<summary>Name of the button to press.  Known possible values are LEFT, RIGHT, DOWN, UP, HOME, MENU, BACK, ENTER, DASH, INFO, ASTERISK, CC, EXIT, MUTE, RED, GREEN, BLUE, VOLUMEUP, VOLUMEDOWN, CHANNELUP, CHANNELDOWN, PLAY, PAUSE, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 eg: LEFT</summary>
+		[JsonPropertyName("button")]
+		public string? Button { get; init; }
+	}
+
+	public record WebostvCommandParameters
+	{
+		///<summary>Name(s) of the webostv entities where to run the API method.</summary>
+		[JsonPropertyName("entity_id")]
+		public string? EntityId { get; init; }
+
+		///<summary>Endpoint of the command. eg: system.launcher/open</summary>
+		[JsonPropertyName("command")]
+		public string? Command { get; init; }
+
+		///<summary>An optional payload to provide to the endpoint in the format of key value pair(s). eg: target: https://www.google.com</summary>
+		[JsonPropertyName("payload")]
+		public object? Payload { get; init; }
+	}
+
+	public record WebostvSelectSoundOutputParameters
+	{
+		///<summary>Name(s) of the webostv entities to change sound output on.</summary>
+		[JsonPropertyName("entity_id")]
+		public string? EntityId { get; init; }
+
+		///<summary>Name of the sound output to switch to. eg: external_speaker</summary>
+		[JsonPropertyName("sound_output")]
+		public string? SoundOutput { get; init; }
+	}
+
 	public class ZoneServices
 	{
 		private readonly IHaContext _haContext;
@@ -5898,426 +6981,1025 @@ namespace HomeAssistantGenerated
 		}
 	}
 
+	public class ZwaveJsServices
+	{
+		private readonly IHaContext _haContext;
+		public ZwaveJsServices(IHaContext haContext)
+		{
+			_haContext = haContext;
+		}
+
+		///<summary>Allow for bulk setting partial parameters. Useful when multiple partial parameters have to be set at the same time.</summary>
+		///<param name="target">The target for this service call</param>
+		public void BulkSetPartialConfigParameters(ServiceTarget target, ZwaveJsBulkSetPartialConfigParametersParameters data)
+		{
+			_haContext.CallService("zwave_js", "bulk_set_partial_config_parameters", target, data);
+		}
+
+		///<summary>Allow for bulk setting partial parameters. Useful when multiple partial parameters have to be set at the same time.</summary>
+		///<param name="target">The target for this service call</param>
+		///<param name="parameter">The id of the configuration parameter you want to configure. eg: 9</param>
+		///<param name="value">The new value(s) to set for this configuration parameter. Can either be a raw integer value to represent the bulk change or a mapping where the key is the bitmask (either in hex or integer form) and the value is the new value you want to set for that partial parameter. eg: {"0x1":1,"0x10":1,"0x20":1,"0x40":1}</param>
+		public void BulkSetPartialConfigParameters(ServiceTarget target, string @parameter, object @value)
+		{
+			_haContext.CallService("zwave_js", "bulk_set_partial_config_parameters", target, new ZwaveJsBulkSetPartialConfigParametersParameters{Parameter = @parameter, Value = @value});
+		}
+
+		///<summary>Allows for calling a Command Class API on a node. Some Command Classes can't be fully controlled via the `set_value` service and require direct calls to the Command Class API.</summary>
+		///<param name="target">The target for this service call</param>
+		public void InvokeCcApi(ServiceTarget target, ZwaveJsInvokeCcApiParameters data)
+		{
+			_haContext.CallService("zwave_js", "invoke_cc_api", target, data);
+		}
+
+		///<summary>Allows for calling a Command Class API on a node. Some Command Classes can't be fully controlled via the `set_value` service and require direct calls to the Command Class API.</summary>
+		///<param name="target">The target for this service call</param>
+		///<param name="commandClass">The ID of the command class that you want to issue a command to. eg: 132</param>
+		///<param name="endpoint">The endpoint to call the API on. If an endpoint is specified, that endpoint will be targeted for all nodes associated with the target areas, devices, and/or entities. If an endpoint is not specified, the root endpoint (0) will be targeted for nodes associated with target areas and devices, and the endpoint for the primary value of each entity will be targeted. eg: 1</param>
+		///<param name="methodName">The name of the API method to call. Refer to the Z-Wave JS Command Class API documentation (https://zwave-js.github.io/node-zwave-js/#/api/CCs/index) for available methods. eg: setInterval</param>
+		///<param name="parameters">A list of parameters to pass to the API method. Refer to the Z-Wave JS Command Class API documentation (https://zwave-js.github.io/node-zwave-js/#/api/CCs/index) for parameters. eg: [1,1]</param>
+		public void InvokeCcApi(ServiceTarget target, string @commandClass, string @methodName, object @parameters, string? @endpoint = null)
+		{
+			_haContext.CallService("zwave_js", "invoke_cc_api", target, new ZwaveJsInvokeCcApiParameters{CommandClass = @commandClass, Endpoint = @endpoint, MethodName = @methodName, Parameters = @parameters});
+		}
+
+		///<summary>Allow for changing any value that Z-Wave JS recognizes on multiple Z-Wave devices using multicast, so all devices receive the message simultaneously. This service has minimal validation so only use this service if you know what you are doing.</summary>
+		///<param name="target">The target for this service call</param>
+		public void MulticastSetValue(ServiceTarget target, ZwaveJsMulticastSetValueParameters data)
+		{
+			_haContext.CallService("zwave_js", "multicast_set_value", target, data);
+		}
+
+		///<summary>Allow for changing any value that Z-Wave JS recognizes on multiple Z-Wave devices using multicast, so all devices receive the message simultaneously. This service has minimal validation so only use this service if you know what you are doing.</summary>
+		///<param name="target">The target for this service call</param>
+		///<param name="broadcast">Whether command should be broadcast to all devices on the network. eg: True</param>
+		///<param name="commandClass">The ID of the command class for the value. eg: 117</param>
+		///<param name="endpoint">The endpoint for the value. eg: 1</param>
+		///<param name="property">The ID of the property for the value. eg: currentValue</param>
+		///<param name="propertyKey">The ID of the property key for the value eg: 1</param>
+		///<param name="options">Set value options map. Refer to the Z-Wave JS documentation for more information on what options can be set.</param>
+		///<param name="value">The new value to set. eg: ffbb99</param>
+		public void MulticastSetValue(ServiceTarget target, string @commandClass, string @property, object @value, bool? @broadcast = null, string? @endpoint = null, string? @propertyKey = null, object? @options = null)
+		{
+			_haContext.CallService("zwave_js", "multicast_set_value", target, new ZwaveJsMulticastSetValueParameters{Broadcast = @broadcast, CommandClass = @commandClass, Endpoint = @endpoint, Property = @property, PropertyKey = @propertyKey, Options = @options, Value = @value});
+		}
+
+		///<summary>Forces Z-Wave JS to try to reach a node. This can be used to update the status of the node in Z-Wave JS when you think it doesn't accurately reflect reality, e.g. reviving a failed/dead node or marking the node as asleep.</summary>
+		///<param name="target">The target for this service call</param>
+		public void Ping(ServiceTarget target)
+		{
+			_haContext.CallService("zwave_js", "ping", target);
+		}
+
+		///<summary>Force update value(s) for a Z-Wave entity</summary>
+		public void RefreshValue(ZwaveJsRefreshValueParameters data)
+		{
+			_haContext.CallService("zwave_js", "refresh_value", null, data);
+		}
+
+		///<summary>Force update value(s) for a Z-Wave entity</summary>
+		///<param name="entityId">Entity whose value(s) should be refreshed eg: sensor.family_room_motion</param>
+		///<param name="refreshAllValues">Whether to refresh all values (true) or just the primary value (false)</param>
+		public void RefreshValue(string @entityId, bool? @refreshAllValues = null)
+		{
+			_haContext.CallService("zwave_js", "refresh_value", null, new ZwaveJsRefreshValueParameters{EntityId = @entityId, RefreshAllValues = @refreshAllValues});
+		}
+
+		///<summary>Allow for changing configuration parameters of your Z-Wave devices.</summary>
+		///<param name="target">The target for this service call</param>
+		public void SetConfigParameter(ServiceTarget target, ZwaveJsSetConfigParameterParameters data)
+		{
+			_haContext.CallService("zwave_js", "set_config_parameter", target, data);
+		}
+
+		///<summary>Allow for changing configuration parameters of your Z-Wave devices.</summary>
+		///<param name="target">The target for this service call</param>
+		///<param name="parameter">The (name or id of the) configuration parameter you want to configure. eg: Minimum brightness level</param>
+		///<param name="value">The new value to set for this configuration parameter. eg: 5</param>
+		///<param name="bitmask">Target a specific bitmask (see the documentation for more information).</param>
+		public void SetConfigParameter(ServiceTarget target, string @parameter, string @value, string? @bitmask = null)
+		{
+			_haContext.CallService("zwave_js", "set_config_parameter", target, new ZwaveJsSetConfigParameterParameters{Parameter = @parameter, Value = @value, Bitmask = @bitmask});
+		}
+
+		///<summary>Allow for changing any value that Z-Wave JS recognizes on a Z-Wave device. This service has minimal validation so only use this service if you know what you are doing.</summary>
+		///<param name="target">The target for this service call</param>
+		public void SetValue(ServiceTarget target, ZwaveJsSetValueParameters data)
+		{
+			_haContext.CallService("zwave_js", "set_value", target, data);
+		}
+
+		///<summary>Allow for changing any value that Z-Wave JS recognizes on a Z-Wave device. This service has minimal validation so only use this service if you know what you are doing.</summary>
+		///<param name="target">The target for this service call</param>
+		///<param name="commandClass">The ID of the command class for the value. eg: 117</param>
+		///<param name="endpoint">The endpoint for the value. eg: 1</param>
+		///<param name="property">The ID of the property for the value. eg: currentValue</param>
+		///<param name="propertyKey">The ID of the property key for the value eg: 1</param>
+		///<param name="value">The new value to set. eg: ffbb99</param>
+		///<param name="options">Set value options map. Refer to the Z-Wave JS documentation for more information on what options can be set.</param>
+		///<param name="waitForResult">Whether or not to wait for a response from the node. If not included in the payload, the integration will decide whether to wait or not. If set to `true`, note that the service call can take a while if setting a value on an asleep battery device.</param>
+		public void SetValue(ServiceTarget target, string @commandClass, string @property, object @value, string? @endpoint = null, string? @propertyKey = null, object? @options = null, bool? @waitForResult = null)
+		{
+			_haContext.CallService("zwave_js", "set_value", target, new ZwaveJsSetValueParameters{CommandClass = @commandClass, Endpoint = @endpoint, Property = @property, PropertyKey = @propertyKey, Value = @value, Options = @options, WaitForResult = @waitForResult});
+		}
+	}
+
+	public record ZwaveJsBulkSetPartialConfigParametersParameters
+	{
+		///<summary>The id of the configuration parameter you want to configure. eg: 9</summary>
+		[JsonPropertyName("parameter")]
+		public string? Parameter { get; init; }
+
+		///<summary>The new value(s) to set for this configuration parameter. Can either be a raw integer value to represent the bulk change or a mapping where the key is the bitmask (either in hex or integer form) and the value is the new value you want to set for that partial parameter. eg: {"0x1":1,"0x10":1,"0x20":1,"0x40":1}</summary>
+		[JsonPropertyName("value")]
+		public object? Value { get; init; }
+	}
+
+	public record ZwaveJsInvokeCcApiParameters
+	{
+		///<summary>The ID of the command class that you want to issue a command to. eg: 132</summary>
+		[JsonPropertyName("command_class")]
+		public string? CommandClass { get; init; }
+
+		///<summary>The endpoint to call the API on. If an endpoint is specified, that endpoint will be targeted for all nodes associated with the target areas, devices, and/or entities. If an endpoint is not specified, the root endpoint (0) will be targeted for nodes associated with target areas and devices, and the endpoint for the primary value of each entity will be targeted. eg: 1</summary>
+		[JsonPropertyName("endpoint")]
+		public string? Endpoint { get; init; }
+
+		///<summary>The name of the API method to call. Refer to the Z-Wave JS Command Class API documentation (https://zwave-js.github.io/node-zwave-js/#/api/CCs/index) for available methods. eg: setInterval</summary>
+		[JsonPropertyName("method_name")]
+		public string? MethodName { get; init; }
+
+		///<summary>A list of parameters to pass to the API method. Refer to the Z-Wave JS Command Class API documentation (https://zwave-js.github.io/node-zwave-js/#/api/CCs/index) for parameters. eg: [1,1]</summary>
+		[JsonPropertyName("parameters")]
+		public object? Parameters { get; init; }
+	}
+
+	public record ZwaveJsMulticastSetValueParameters
+	{
+		///<summary>Whether command should be broadcast to all devices on the network. eg: True</summary>
+		[JsonPropertyName("broadcast")]
+		public bool? Broadcast { get; init; }
+
+		///<summary>The ID of the command class for the value. eg: 117</summary>
+		[JsonPropertyName("command_class")]
+		public string? CommandClass { get; init; }
+
+		///<summary>The endpoint for the value. eg: 1</summary>
+		[JsonPropertyName("endpoint")]
+		public string? Endpoint { get; init; }
+
+		///<summary>The ID of the property for the value. eg: currentValue</summary>
+		[JsonPropertyName("property")]
+		public string? Property { get; init; }
+
+		///<summary>The ID of the property key for the value eg: 1</summary>
+		[JsonPropertyName("property_key")]
+		public string? PropertyKey { get; init; }
+
+		///<summary>Set value options map. Refer to the Z-Wave JS documentation for more information on what options can be set.</summary>
+		[JsonPropertyName("options")]
+		public object? Options { get; init; }
+
+		///<summary>The new value to set. eg: ffbb99</summary>
+		[JsonPropertyName("value")]
+		public object? Value { get; init; }
+	}
+
+	public record ZwaveJsRefreshValueParameters
+	{
+		///<summary>Entity whose value(s) should be refreshed eg: sensor.family_room_motion</summary>
+		[JsonPropertyName("entity_id")]
+		public string? EntityId { get; init; }
+
+		///<summary>Whether to refresh all values (true) or just the primary value (false)</summary>
+		[JsonPropertyName("refresh_all_values")]
+		public bool? RefreshAllValues { get; init; }
+	}
+
+	public record ZwaveJsSetConfigParameterParameters
+	{
+		///<summary>The (name or id of the) configuration parameter you want to configure. eg: Minimum brightness level</summary>
+		[JsonPropertyName("parameter")]
+		public string? Parameter { get; init; }
+
+		///<summary>The new value to set for this configuration parameter. eg: 5</summary>
+		[JsonPropertyName("value")]
+		public string? Value { get; init; }
+
+		///<summary>Target a specific bitmask (see the documentation for more information).</summary>
+		[JsonPropertyName("bitmask")]
+		public string? Bitmask { get; init; }
+	}
+
+	public record ZwaveJsSetValueParameters
+	{
+		///<summary>The ID of the command class for the value. eg: 117</summary>
+		[JsonPropertyName("command_class")]
+		public string? CommandClass { get; init; }
+
+		///<summary>The endpoint for the value. eg: 1</summary>
+		[JsonPropertyName("endpoint")]
+		public string? Endpoint { get; init; }
+
+		///<summary>The ID of the property for the value. eg: currentValue</summary>
+		[JsonPropertyName("property")]
+		public string? Property { get; init; }
+
+		///<summary>The ID of the property key for the value eg: 1</summary>
+		[JsonPropertyName("property_key")]
+		public string? PropertyKey { get; init; }
+
+		///<summary>The new value to set. eg: ffbb99</summary>
+		[JsonPropertyName("value")]
+		public object? Value { get; init; }
+
+		///<summary>Set value options map. Refer to the Z-Wave JS documentation for more information on what options can be set.</summary>
+		[JsonPropertyName("options")]
+		public object? Options { get; init; }
+
+		///<summary>Whether or not to wait for a response from the node. If not included in the payload, the integration will decide whether to wait or not. If set to `true`, note that the service call can take a while if setting a value on an asleep battery device.</summary>
+		[JsonPropertyName("wait_for_result")]
+		public bool? WaitForResult { get; init; }
+	}
+
 	public static class AutomationEntityExtensionMethods
 	{
 		///<summary>Toggle (enable / disable) an automation.</summary>
-		public static void Toggle(this AutomationEntity entity)
+		public static void Toggle(this AutomationEntity target)
 		{
-			entity.CallService("toggle");
+			target.CallService("toggle");
+		}
+
+		///<summary>Toggle (enable / disable) an automation.</summary>
+		public static void Toggle(this IEnumerable<AutomationEntity> target)
+		{
+			target.CallService("toggle");
 		}
 
 		///<summary>Trigger the actions of an automation.</summary>
-		public static void Trigger(this AutomationEntity entity, AutomationTriggerParameters data)
+		public static void Trigger(this AutomationEntity target, AutomationTriggerParameters data)
 		{
-			entity.CallService("trigger", data);
+			target.CallService("trigger", data);
 		}
 
 		///<summary>Trigger the actions of an automation.</summary>
-		///<param name="entity">The AutomationEntity to call this service for</param>
+		public static void Trigger(this IEnumerable<AutomationEntity> target, AutomationTriggerParameters data)
+		{
+			target.CallService("trigger", data);
+		}
+
+		///<summary>Trigger the actions of an automation.</summary>
+		///<param name="target">The AutomationEntity to call this service for</param>
 		///<param name="skipCondition">Whether or not the conditions will be skipped.</param>
-		public static void Trigger(this AutomationEntity entity, bool? @skipCondition = null)
+		public static void Trigger(this AutomationEntity target, bool? @skipCondition = null)
 		{
-			entity.CallService("trigger", new AutomationTriggerParameters{SkipCondition = @skipCondition});
+			target.CallService("trigger", new AutomationTriggerParameters{SkipCondition = @skipCondition});
+		}
+
+		///<summary>Trigger the actions of an automation.</summary>
+		///<param name="target">The IEnumerable<AutomationEntity> to call this service for</param>
+		///<param name="skipCondition">Whether or not the conditions will be skipped.</param>
+		public static void Trigger(this IEnumerable<AutomationEntity> target, bool? @skipCondition = null)
+		{
+			target.CallService("trigger", new AutomationTriggerParameters{SkipCondition = @skipCondition});
 		}
 
 		///<summary>Disable an automation.</summary>
-		public static void TurnOff(this AutomationEntity entity, AutomationTurnOffParameters data)
+		public static void TurnOff(this AutomationEntity target, AutomationTurnOffParameters data)
 		{
-			entity.CallService("turn_off", data);
+			target.CallService("turn_off", data);
 		}
 
 		///<summary>Disable an automation.</summary>
-		///<param name="entity">The AutomationEntity to call this service for</param>
+		public static void TurnOff(this IEnumerable<AutomationEntity> target, AutomationTurnOffParameters data)
+		{
+			target.CallService("turn_off", data);
+		}
+
+		///<summary>Disable an automation.</summary>
+		///<param name="target">The AutomationEntity to call this service for</param>
 		///<param name="stopActions">Stop currently running actions.</param>
-		public static void TurnOff(this AutomationEntity entity, bool? @stopActions = null)
+		public static void TurnOff(this AutomationEntity target, bool? @stopActions = null)
 		{
-			entity.CallService("turn_off", new AutomationTurnOffParameters{StopActions = @stopActions});
+			target.CallService("turn_off", new AutomationTurnOffParameters{StopActions = @stopActions});
+		}
+
+		///<summary>Disable an automation.</summary>
+		///<param name="target">The IEnumerable<AutomationEntity> to call this service for</param>
+		///<param name="stopActions">Stop currently running actions.</param>
+		public static void TurnOff(this IEnumerable<AutomationEntity> target, bool? @stopActions = null)
+		{
+			target.CallService("turn_off", new AutomationTurnOffParameters{StopActions = @stopActions});
 		}
 
 		///<summary>Enable an automation.</summary>
-		public static void TurnOn(this AutomationEntity entity)
+		public static void TurnOn(this AutomationEntity target)
 		{
-			entity.CallService("turn_on");
+			target.CallService("turn_on");
+		}
+
+		///<summary>Enable an automation.</summary>
+		public static void TurnOn(this IEnumerable<AutomationEntity> target)
+		{
+			target.CallService("turn_on");
 		}
 	}
 
 	public static class ButtonEntityExtensionMethods
 	{
 		///<summary>Press the button entity.</summary>
-		public static void Press(this ButtonEntity entity)
+		public static void Press(this ButtonEntity target)
 		{
-			entity.CallService("press");
+			target.CallService("press");
+		}
+
+		///<summary>Press the button entity.</summary>
+		public static void Press(this IEnumerable<ButtonEntity> target)
+		{
+			target.CallService("press");
 		}
 	}
 
 	public static class CameraEntityExtensionMethods
 	{
 		///<summary>Disable the motion detection in a camera.</summary>
-		public static void DisableMotionDetection(this CameraEntity entity)
+		public static void DisableMotionDetection(this CameraEntity target)
 		{
-			entity.CallService("disable_motion_detection");
+			target.CallService("disable_motion_detection");
+		}
+
+		///<summary>Disable the motion detection in a camera.</summary>
+		public static void DisableMotionDetection(this IEnumerable<CameraEntity> target)
+		{
+			target.CallService("disable_motion_detection");
 		}
 
 		///<summary>Enable the motion detection in a camera.</summary>
-		public static void EnableMotionDetection(this CameraEntity entity)
+		public static void EnableMotionDetection(this CameraEntity target)
 		{
-			entity.CallService("enable_motion_detection");
+			target.CallService("enable_motion_detection");
+		}
+
+		///<summary>Enable the motion detection in a camera.</summary>
+		public static void EnableMotionDetection(this IEnumerable<CameraEntity> target)
+		{
+			target.CallService("enable_motion_detection");
 		}
 
 		///<summary>Play camera stream on supported media player.</summary>
-		public static void PlayStream(this CameraEntity entity, CameraPlayStreamParameters data)
+		public static void PlayStream(this CameraEntity target, CameraPlayStreamParameters data)
 		{
-			entity.CallService("play_stream", data);
+			target.CallService("play_stream", data);
 		}
 
 		///<summary>Play camera stream on supported media player.</summary>
-		///<param name="entity">The CameraEntity to call this service for</param>
+		public static void PlayStream(this IEnumerable<CameraEntity> target, CameraPlayStreamParameters data)
+		{
+			target.CallService("play_stream", data);
+		}
+
+		///<summary>Play camera stream on supported media player.</summary>
+		///<param name="target">The CameraEntity to call this service for</param>
 		///<param name="mediaPlayer">Name(s) of media player to stream to.</param>
 		///<param name="format">Stream format supported by media player.</param>
-		public static void PlayStream(this CameraEntity entity, string @mediaPlayer, string? @format = null)
+		public static void PlayStream(this CameraEntity target, string @mediaPlayer, object? @format = null)
 		{
-			entity.CallService("play_stream", new CameraPlayStreamParameters{MediaPlayer = @mediaPlayer, Format = @format});
+			target.CallService("play_stream", new CameraPlayStreamParameters{MediaPlayer = @mediaPlayer, Format = @format});
+		}
+
+		///<summary>Play camera stream on supported media player.</summary>
+		///<param name="target">The IEnumerable<CameraEntity> to call this service for</param>
+		///<param name="mediaPlayer">Name(s) of media player to stream to.</param>
+		///<param name="format">Stream format supported by media player.</param>
+		public static void PlayStream(this IEnumerable<CameraEntity> target, string @mediaPlayer, object? @format = null)
+		{
+			target.CallService("play_stream", new CameraPlayStreamParameters{MediaPlayer = @mediaPlayer, Format = @format});
 		}
 
 		///<summary>Record live camera feed.</summary>
-		public static void Record(this CameraEntity entity, CameraRecordParameters data)
+		public static void Record(this CameraEntity target, CameraRecordParameters data)
 		{
-			entity.CallService("record", data);
+			target.CallService("record", data);
 		}
 
 		///<summary>Record live camera feed.</summary>
-		///<param name="entity">The CameraEntity to call this service for</param>
+		public static void Record(this IEnumerable<CameraEntity> target, CameraRecordParameters data)
+		{
+			target.CallService("record", data);
+		}
+
+		///<summary>Record live camera feed.</summary>
+		///<param name="target">The CameraEntity to call this service for</param>
 		///<param name="filename">Template of a Filename. Variable is entity_id. Must be mp4. eg: /tmp/snapshot_{{ entity_id.name }}.mp4</param>
 		///<param name="duration">Target recording length.</param>
 		///<param name="lookback">Target lookback period to include in addition to duration. Only available if there is currently an active HLS stream.</param>
-		public static void Record(this CameraEntity entity, string @filename, long? @duration = null, long? @lookback = null)
+		public static void Record(this CameraEntity target, string @filename, long? @duration = null, long? @lookback = null)
 		{
-			entity.CallService("record", new CameraRecordParameters{Filename = @filename, Duration = @duration, Lookback = @lookback});
+			target.CallService("record", new CameraRecordParameters{Filename = @filename, Duration = @duration, Lookback = @lookback});
+		}
+
+		///<summary>Record live camera feed.</summary>
+		///<param name="target">The IEnumerable<CameraEntity> to call this service for</param>
+		///<param name="filename">Template of a Filename. Variable is entity_id. Must be mp4. eg: /tmp/snapshot_{{ entity_id.name }}.mp4</param>
+		///<param name="duration">Target recording length.</param>
+		///<param name="lookback">Target lookback period to include in addition to duration. Only available if there is currently an active HLS stream.</param>
+		public static void Record(this IEnumerable<CameraEntity> target, string @filename, long? @duration = null, long? @lookback = null)
+		{
+			target.CallService("record", new CameraRecordParameters{Filename = @filename, Duration = @duration, Lookback = @lookback});
 		}
 
 		///<summary>Take a snapshot from a camera.</summary>
-		public static void Snapshot(this CameraEntity entity, CameraSnapshotParameters data)
+		public static void Snapshot(this CameraEntity target, CameraSnapshotParameters data)
 		{
-			entity.CallService("snapshot", data);
+			target.CallService("snapshot", data);
 		}
 
 		///<summary>Take a snapshot from a camera.</summary>
-		///<param name="entity">The CameraEntity to call this service for</param>
+		public static void Snapshot(this IEnumerable<CameraEntity> target, CameraSnapshotParameters data)
+		{
+			target.CallService("snapshot", data);
+		}
+
+		///<summary>Take a snapshot from a camera.</summary>
+		///<param name="target">The CameraEntity to call this service for</param>
 		///<param name="filename">Template of a Filename. Variable is entity_id. eg: /tmp/snapshot_{{ entity_id.name }}.jpg</param>
-		public static void Snapshot(this CameraEntity entity, string @filename)
+		public static void Snapshot(this CameraEntity target, string @filename)
 		{
-			entity.CallService("snapshot", new CameraSnapshotParameters{Filename = @filename});
+			target.CallService("snapshot", new CameraSnapshotParameters{Filename = @filename});
+		}
+
+		///<summary>Take a snapshot from a camera.</summary>
+		///<param name="target">The IEnumerable<CameraEntity> to call this service for</param>
+		///<param name="filename">Template of a Filename. Variable is entity_id. eg: /tmp/snapshot_{{ entity_id.name }}.jpg</param>
+		public static void Snapshot(this IEnumerable<CameraEntity> target, string @filename)
+		{
+			target.CallService("snapshot", new CameraSnapshotParameters{Filename = @filename});
 		}
 
 		///<summary>Turn off camera.</summary>
-		public static void TurnOff(this CameraEntity entity)
+		public static void TurnOff(this CameraEntity target)
 		{
-			entity.CallService("turn_off");
+			target.CallService("turn_off");
+		}
+
+		///<summary>Turn off camera.</summary>
+		public static void TurnOff(this IEnumerable<CameraEntity> target)
+		{
+			target.CallService("turn_off");
 		}
 
 		///<summary>Turn on camera.</summary>
-		public static void TurnOn(this CameraEntity entity)
+		public static void TurnOn(this CameraEntity target)
 		{
-			entity.CallService("turn_on");
+			target.CallService("turn_on");
+		}
+
+		///<summary>Turn on camera.</summary>
+		public static void TurnOn(this IEnumerable<CameraEntity> target)
+		{
+			target.CallService("turn_on");
 		}
 	}
 
 	public static class ClimateEntityExtensionMethods
 	{
 		///<summary>Turn auxiliary heater on/off for climate device.</summary>
-		public static void SetAuxHeat(this ClimateEntity entity, ClimateSetAuxHeatParameters data)
+		public static void SetAuxHeat(this ClimateEntity target, ClimateSetAuxHeatParameters data)
 		{
-			entity.CallService("set_aux_heat", data);
+			target.CallService("set_aux_heat", data);
 		}
 
 		///<summary>Turn auxiliary heater on/off for climate device.</summary>
-		///<param name="entity">The ClimateEntity to call this service for</param>
+		public static void SetAuxHeat(this IEnumerable<ClimateEntity> target, ClimateSetAuxHeatParameters data)
+		{
+			target.CallService("set_aux_heat", data);
+		}
+
+		///<summary>Turn auxiliary heater on/off for climate device.</summary>
+		///<param name="target">The ClimateEntity to call this service for</param>
 		///<param name="auxHeat">New value of auxiliary heater.</param>
-		public static void SetAuxHeat(this ClimateEntity entity, bool @auxHeat)
+		public static void SetAuxHeat(this ClimateEntity target, bool @auxHeat)
 		{
-			entity.CallService("set_aux_heat", new ClimateSetAuxHeatParameters{AuxHeat = @auxHeat});
+			target.CallService("set_aux_heat", new ClimateSetAuxHeatParameters{AuxHeat = @auxHeat});
+		}
+
+		///<summary>Turn auxiliary heater on/off for climate device.</summary>
+		///<param name="target">The IEnumerable<ClimateEntity> to call this service for</param>
+		///<param name="auxHeat">New value of auxiliary heater.</param>
+		public static void SetAuxHeat(this IEnumerable<ClimateEntity> target, bool @auxHeat)
+		{
+			target.CallService("set_aux_heat", new ClimateSetAuxHeatParameters{AuxHeat = @auxHeat});
 		}
 
 		///<summary>Set fan operation for climate device.</summary>
-		public static void SetFanMode(this ClimateEntity entity, ClimateSetFanModeParameters data)
+		public static void SetFanMode(this ClimateEntity target, ClimateSetFanModeParameters data)
 		{
-			entity.CallService("set_fan_mode", data);
+			target.CallService("set_fan_mode", data);
 		}
 
 		///<summary>Set fan operation for climate device.</summary>
-		///<param name="entity">The ClimateEntity to call this service for</param>
+		public static void SetFanMode(this IEnumerable<ClimateEntity> target, ClimateSetFanModeParameters data)
+		{
+			target.CallService("set_fan_mode", data);
+		}
+
+		///<summary>Set fan operation for climate device.</summary>
+		///<param name="target">The ClimateEntity to call this service for</param>
 		///<param name="fanMode">New value of fan mode. eg: low</param>
-		public static void SetFanMode(this ClimateEntity entity, string @fanMode)
+		public static void SetFanMode(this ClimateEntity target, string @fanMode)
 		{
-			entity.CallService("set_fan_mode", new ClimateSetFanModeParameters{FanMode = @fanMode});
+			target.CallService("set_fan_mode", new ClimateSetFanModeParameters{FanMode = @fanMode});
+		}
+
+		///<summary>Set fan operation for climate device.</summary>
+		///<param name="target">The IEnumerable<ClimateEntity> to call this service for</param>
+		///<param name="fanMode">New value of fan mode. eg: low</param>
+		public static void SetFanMode(this IEnumerable<ClimateEntity> target, string @fanMode)
+		{
+			target.CallService("set_fan_mode", new ClimateSetFanModeParameters{FanMode = @fanMode});
 		}
 
 		///<summary>Set target humidity of climate device.</summary>
-		public static void SetHumidity(this ClimateEntity entity, ClimateSetHumidityParameters data)
+		public static void SetHumidity(this ClimateEntity target, ClimateSetHumidityParameters data)
 		{
-			entity.CallService("set_humidity", data);
+			target.CallService("set_humidity", data);
 		}
 
 		///<summary>Set target humidity of climate device.</summary>
-		///<param name="entity">The ClimateEntity to call this service for</param>
+		public static void SetHumidity(this IEnumerable<ClimateEntity> target, ClimateSetHumidityParameters data)
+		{
+			target.CallService("set_humidity", data);
+		}
+
+		///<summary>Set target humidity of climate device.</summary>
+		///<param name="target">The ClimateEntity to call this service for</param>
 		///<param name="humidity">New target humidity for climate device.</param>
-		public static void SetHumidity(this ClimateEntity entity, long @humidity)
+		public static void SetHumidity(this ClimateEntity target, long @humidity)
 		{
-			entity.CallService("set_humidity", new ClimateSetHumidityParameters{Humidity = @humidity});
+			target.CallService("set_humidity", new ClimateSetHumidityParameters{Humidity = @humidity});
+		}
+
+		///<summary>Set target humidity of climate device.</summary>
+		///<param name="target">The IEnumerable<ClimateEntity> to call this service for</param>
+		///<param name="humidity">New target humidity for climate device.</param>
+		public static void SetHumidity(this IEnumerable<ClimateEntity> target, long @humidity)
+		{
+			target.CallService("set_humidity", new ClimateSetHumidityParameters{Humidity = @humidity});
 		}
 
 		///<summary>Set HVAC operation mode for climate device.</summary>
-		public static void SetHvacMode(this ClimateEntity entity, ClimateSetHvacModeParameters data)
+		public static void SetHvacMode(this ClimateEntity target, ClimateSetHvacModeParameters data)
 		{
-			entity.CallService("set_hvac_mode", data);
+			target.CallService("set_hvac_mode", data);
 		}
 
 		///<summary>Set HVAC operation mode for climate device.</summary>
-		///<param name="entity">The ClimateEntity to call this service for</param>
+		public static void SetHvacMode(this IEnumerable<ClimateEntity> target, ClimateSetHvacModeParameters data)
+		{
+			target.CallService("set_hvac_mode", data);
+		}
+
+		///<summary>Set HVAC operation mode for climate device.</summary>
+		///<param name="target">The ClimateEntity to call this service for</param>
 		///<param name="hvacMode">New value of operation mode.</param>
-		public static void SetHvacMode(this ClimateEntity entity, string? @hvacMode = null)
+		public static void SetHvacMode(this ClimateEntity target, object? @hvacMode = null)
 		{
-			entity.CallService("set_hvac_mode", new ClimateSetHvacModeParameters{HvacMode = @hvacMode});
+			target.CallService("set_hvac_mode", new ClimateSetHvacModeParameters{HvacMode = @hvacMode});
+		}
+
+		///<summary>Set HVAC operation mode for climate device.</summary>
+		///<param name="target">The IEnumerable<ClimateEntity> to call this service for</param>
+		///<param name="hvacMode">New value of operation mode.</param>
+		public static void SetHvacMode(this IEnumerable<ClimateEntity> target, object? @hvacMode = null)
+		{
+			target.CallService("set_hvac_mode", new ClimateSetHvacModeParameters{HvacMode = @hvacMode});
 		}
 
 		///<summary>Set preset mode for climate device.</summary>
-		public static void SetPresetMode(this ClimateEntity entity, ClimateSetPresetModeParameters data)
+		public static void SetPresetMode(this ClimateEntity target, ClimateSetPresetModeParameters data)
 		{
-			entity.CallService("set_preset_mode", data);
+			target.CallService("set_preset_mode", data);
 		}
 
 		///<summary>Set preset mode for climate device.</summary>
-		///<param name="entity">The ClimateEntity to call this service for</param>
+		public static void SetPresetMode(this IEnumerable<ClimateEntity> target, ClimateSetPresetModeParameters data)
+		{
+			target.CallService("set_preset_mode", data);
+		}
+
+		///<summary>Set preset mode for climate device.</summary>
+		///<param name="target">The ClimateEntity to call this service for</param>
 		///<param name="presetMode">New value of preset mode. eg: away</param>
-		public static void SetPresetMode(this ClimateEntity entity, string @presetMode)
+		public static void SetPresetMode(this ClimateEntity target, string @presetMode)
 		{
-			entity.CallService("set_preset_mode", new ClimateSetPresetModeParameters{PresetMode = @presetMode});
+			target.CallService("set_preset_mode", new ClimateSetPresetModeParameters{PresetMode = @presetMode});
+		}
+
+		///<summary>Set preset mode for climate device.</summary>
+		///<param name="target">The IEnumerable<ClimateEntity> to call this service for</param>
+		///<param name="presetMode">New value of preset mode. eg: away</param>
+		public static void SetPresetMode(this IEnumerable<ClimateEntity> target, string @presetMode)
+		{
+			target.CallService("set_preset_mode", new ClimateSetPresetModeParameters{PresetMode = @presetMode});
 		}
 
 		///<summary>Set swing operation for climate device.</summary>
-		public static void SetSwingMode(this ClimateEntity entity, ClimateSetSwingModeParameters data)
+		public static void SetSwingMode(this ClimateEntity target, ClimateSetSwingModeParameters data)
 		{
-			entity.CallService("set_swing_mode", data);
+			target.CallService("set_swing_mode", data);
 		}
 
 		///<summary>Set swing operation for climate device.</summary>
-		///<param name="entity">The ClimateEntity to call this service for</param>
+		public static void SetSwingMode(this IEnumerable<ClimateEntity> target, ClimateSetSwingModeParameters data)
+		{
+			target.CallService("set_swing_mode", data);
+		}
+
+		///<summary>Set swing operation for climate device.</summary>
+		///<param name="target">The ClimateEntity to call this service for</param>
 		///<param name="swingMode">New value of swing mode. eg: horizontal</param>
-		public static void SetSwingMode(this ClimateEntity entity, string @swingMode)
+		public static void SetSwingMode(this ClimateEntity target, string @swingMode)
 		{
-			entity.CallService("set_swing_mode", new ClimateSetSwingModeParameters{SwingMode = @swingMode});
+			target.CallService("set_swing_mode", new ClimateSetSwingModeParameters{SwingMode = @swingMode});
+		}
+
+		///<summary>Set swing operation for climate device.</summary>
+		///<param name="target">The IEnumerable<ClimateEntity> to call this service for</param>
+		///<param name="swingMode">New value of swing mode. eg: horizontal</param>
+		public static void SetSwingMode(this IEnumerable<ClimateEntity> target, string @swingMode)
+		{
+			target.CallService("set_swing_mode", new ClimateSetSwingModeParameters{SwingMode = @swingMode});
 		}
 
 		///<summary>Set target temperature of climate device.</summary>
-		public static void SetTemperature(this ClimateEntity entity, ClimateSetTemperatureParameters data)
+		public static void SetTemperature(this ClimateEntity target, ClimateSetTemperatureParameters data)
 		{
-			entity.CallService("set_temperature", data);
+			target.CallService("set_temperature", data);
 		}
 
 		///<summary>Set target temperature of climate device.</summary>
-		///<param name="entity">The ClimateEntity to call this service for</param>
+		public static void SetTemperature(this IEnumerable<ClimateEntity> target, ClimateSetTemperatureParameters data)
+		{
+			target.CallService("set_temperature", data);
+		}
+
+		///<summary>Set target temperature of climate device.</summary>
+		///<param name="target">The ClimateEntity to call this service for</param>
 		///<param name="temperature">New target temperature for HVAC.</param>
 		///<param name="targetTempHigh">New target high temperature for HVAC.</param>
 		///<param name="targetTempLow">New target low temperature for HVAC.</param>
 		///<param name="hvacMode">HVAC operation mode to set temperature to.</param>
-		public static void SetTemperature(this ClimateEntity entity, double? @temperature = null, double? @targetTempHigh = null, double? @targetTempLow = null, string? @hvacMode = null)
+		public static void SetTemperature(this ClimateEntity target, double? @temperature = null, double? @targetTempHigh = null, double? @targetTempLow = null, object? @hvacMode = null)
 		{
-			entity.CallService("set_temperature", new ClimateSetTemperatureParameters{Temperature = @temperature, TargetTempHigh = @targetTempHigh, TargetTempLow = @targetTempLow, HvacMode = @hvacMode});
+			target.CallService("set_temperature", new ClimateSetTemperatureParameters{Temperature = @temperature, TargetTempHigh = @targetTempHigh, TargetTempLow = @targetTempLow, HvacMode = @hvacMode});
+		}
+
+		///<summary>Set target temperature of climate device.</summary>
+		///<param name="target">The IEnumerable<ClimateEntity> to call this service for</param>
+		///<param name="temperature">New target temperature for HVAC.</param>
+		///<param name="targetTempHigh">New target high temperature for HVAC.</param>
+		///<param name="targetTempLow">New target low temperature for HVAC.</param>
+		///<param name="hvacMode">HVAC operation mode to set temperature to.</param>
+		public static void SetTemperature(this IEnumerable<ClimateEntity> target, double? @temperature = null, double? @targetTempHigh = null, double? @targetTempLow = null, object? @hvacMode = null)
+		{
+			target.CallService("set_temperature", new ClimateSetTemperatureParameters{Temperature = @temperature, TargetTempHigh = @targetTempHigh, TargetTempLow = @targetTempLow, HvacMode = @hvacMode});
 		}
 
 		///<summary>Turn climate device off.</summary>
-		public static void TurnOff(this ClimateEntity entity)
+		public static void TurnOff(this ClimateEntity target)
 		{
-			entity.CallService("turn_off");
+			target.CallService("turn_off");
+		}
+
+		///<summary>Turn climate device off.</summary>
+		public static void TurnOff(this IEnumerable<ClimateEntity> target)
+		{
+			target.CallService("turn_off");
 		}
 
 		///<summary>Turn climate device on.</summary>
-		public static void TurnOn(this ClimateEntity entity)
+		public static void TurnOn(this ClimateEntity target)
 		{
-			entity.CallService("turn_on");
+			target.CallService("turn_on");
+		}
+
+		///<summary>Turn climate device on.</summary>
+		public static void TurnOn(this IEnumerable<ClimateEntity> target)
+		{
+			target.CallService("turn_on");
 		}
 	}
 
 	public static class CoverEntityExtensionMethods
 	{
 		///<summary>Close all or specified cover.</summary>
-		public static void CloseCover(this CoverEntity entity)
+		public static void CloseCover(this CoverEntity target)
 		{
-			entity.CallService("close_cover");
+			target.CallService("close_cover");
+		}
+
+		///<summary>Close all or specified cover.</summary>
+		public static void CloseCover(this IEnumerable<CoverEntity> target)
+		{
+			target.CallService("close_cover");
 		}
 
 		///<summary>Close all or specified cover tilt.</summary>
-		public static void CloseCoverTilt(this CoverEntity entity)
+		public static void CloseCoverTilt(this CoverEntity target)
 		{
-			entity.CallService("close_cover_tilt");
+			target.CallService("close_cover_tilt");
+		}
+
+		///<summary>Close all or specified cover tilt.</summary>
+		public static void CloseCoverTilt(this IEnumerable<CoverEntity> target)
+		{
+			target.CallService("close_cover_tilt");
 		}
 
 		///<summary>Open all or specified cover.</summary>
-		public static void OpenCover(this CoverEntity entity)
+		public static void OpenCover(this CoverEntity target)
 		{
-			entity.CallService("open_cover");
+			target.CallService("open_cover");
+		}
+
+		///<summary>Open all or specified cover.</summary>
+		public static void OpenCover(this IEnumerable<CoverEntity> target)
+		{
+			target.CallService("open_cover");
 		}
 
 		///<summary>Open all or specified cover tilt.</summary>
-		public static void OpenCoverTilt(this CoverEntity entity)
+		public static void OpenCoverTilt(this CoverEntity target)
 		{
-			entity.CallService("open_cover_tilt");
+			target.CallService("open_cover_tilt");
+		}
+
+		///<summary>Open all or specified cover tilt.</summary>
+		public static void OpenCoverTilt(this IEnumerable<CoverEntity> target)
+		{
+			target.CallService("open_cover_tilt");
 		}
 
 		///<summary>Move to specific position all or specified cover.</summary>
-		public static void SetCoverPosition(this CoverEntity entity, CoverSetCoverPositionParameters data)
+		public static void SetCoverPosition(this CoverEntity target, CoverSetCoverPositionParameters data)
 		{
-			entity.CallService("set_cover_position", data);
+			target.CallService("set_cover_position", data);
 		}
 
 		///<summary>Move to specific position all or specified cover.</summary>
-		///<param name="entity">The CoverEntity to call this service for</param>
+		public static void SetCoverPosition(this IEnumerable<CoverEntity> target, CoverSetCoverPositionParameters data)
+		{
+			target.CallService("set_cover_position", data);
+		}
+
+		///<summary>Move to specific position all or specified cover.</summary>
+		///<param name="target">The CoverEntity to call this service for</param>
 		///<param name="position">Position of the cover</param>
-		public static void SetCoverPosition(this CoverEntity entity, long @position)
+		public static void SetCoverPosition(this CoverEntity target, long @position)
 		{
-			entity.CallService("set_cover_position", new CoverSetCoverPositionParameters{Position = @position});
+			target.CallService("set_cover_position", new CoverSetCoverPositionParameters{Position = @position});
+		}
+
+		///<summary>Move to specific position all or specified cover.</summary>
+		///<param name="target">The IEnumerable<CoverEntity> to call this service for</param>
+		///<param name="position">Position of the cover</param>
+		public static void SetCoverPosition(this IEnumerable<CoverEntity> target, long @position)
+		{
+			target.CallService("set_cover_position", new CoverSetCoverPositionParameters{Position = @position});
 		}
 
 		///<summary>Move to specific position all or specified cover tilt.</summary>
-		public static void SetCoverTiltPosition(this CoverEntity entity, CoverSetCoverTiltPositionParameters data)
+		public static void SetCoverTiltPosition(this CoverEntity target, CoverSetCoverTiltPositionParameters data)
 		{
-			entity.CallService("set_cover_tilt_position", data);
+			target.CallService("set_cover_tilt_position", data);
 		}
 
 		///<summary>Move to specific position all or specified cover tilt.</summary>
-		///<param name="entity">The CoverEntity to call this service for</param>
+		public static void SetCoverTiltPosition(this IEnumerable<CoverEntity> target, CoverSetCoverTiltPositionParameters data)
+		{
+			target.CallService("set_cover_tilt_position", data);
+		}
+
+		///<summary>Move to specific position all or specified cover tilt.</summary>
+		///<param name="target">The CoverEntity to call this service for</param>
 		///<param name="tiltPosition">Tilt position of the cover.</param>
-		public static void SetCoverTiltPosition(this CoverEntity entity, long @tiltPosition)
+		public static void SetCoverTiltPosition(this CoverEntity target, long @tiltPosition)
 		{
-			entity.CallService("set_cover_tilt_position", new CoverSetCoverTiltPositionParameters{TiltPosition = @tiltPosition});
+			target.CallService("set_cover_tilt_position", new CoverSetCoverTiltPositionParameters{TiltPosition = @tiltPosition});
+		}
+
+		///<summary>Move to specific position all or specified cover tilt.</summary>
+		///<param name="target">The IEnumerable<CoverEntity> to call this service for</param>
+		///<param name="tiltPosition">Tilt position of the cover.</param>
+		public static void SetCoverTiltPosition(this IEnumerable<CoverEntity> target, long @tiltPosition)
+		{
+			target.CallService("set_cover_tilt_position", new CoverSetCoverTiltPositionParameters{TiltPosition = @tiltPosition});
 		}
 
 		///<summary>Stop all or specified cover.</summary>
-		public static void StopCover(this CoverEntity entity)
+		public static void StopCover(this CoverEntity target)
 		{
-			entity.CallService("stop_cover");
+			target.CallService("stop_cover");
 		}
 
 		///<summary>Stop all or specified cover.</summary>
-		public static void StopCoverTilt(this CoverEntity entity)
+		public static void StopCover(this IEnumerable<CoverEntity> target)
 		{
-			entity.CallService("stop_cover_tilt");
+			target.CallService("stop_cover");
+		}
+
+		///<summary>Stop all or specified cover.</summary>
+		public static void StopCoverTilt(this CoverEntity target)
+		{
+			target.CallService("stop_cover_tilt");
+		}
+
+		///<summary>Stop all or specified cover.</summary>
+		public static void StopCoverTilt(this IEnumerable<CoverEntity> target)
+		{
+			target.CallService("stop_cover_tilt");
 		}
 
 		///<summary>Toggle a cover open/closed.</summary>
-		public static void Toggle(this CoverEntity entity)
+		public static void Toggle(this CoverEntity target)
 		{
-			entity.CallService("toggle");
+			target.CallService("toggle");
+		}
+
+		///<summary>Toggle a cover open/closed.</summary>
+		public static void Toggle(this IEnumerable<CoverEntity> target)
+		{
+			target.CallService("toggle");
 		}
 
 		///<summary>Toggle a cover tilt open/closed.</summary>
-		public static void ToggleCoverTilt(this CoverEntity entity)
+		public static void ToggleCoverTilt(this CoverEntity target)
 		{
-			entity.CallService("toggle_cover_tilt");
+			target.CallService("toggle_cover_tilt");
+		}
+
+		///<summary>Toggle a cover tilt open/closed.</summary>
+		public static void ToggleCoverTilt(this IEnumerable<CoverEntity> target)
+		{
+			target.CallService("toggle_cover_tilt");
 		}
 	}
 
 	public static class HiveEntityExtensionMethods
 	{
 		///<summary>To be deprecated please use boost_heating_on.</summary>
-		public static void BoostHeating(this ClimateEntity entity, HiveBoostHeatingParameters data)
+		public static void BoostHeating(this ClimateEntity target, HiveBoostHeatingParameters data)
 		{
-			entity.CallService("boost_heating", data);
+			target.CallService("boost_heating", data);
 		}
 
 		///<summary>To be deprecated please use boost_heating_on.</summary>
-		///<param name="entity">The ClimateEntity to call this service for</param>
+		public static void BoostHeating(this IEnumerable<ClimateEntity> target, HiveBoostHeatingParameters data)
+		{
+			target.CallService("boost_heating", data);
+		}
+
+		///<summary>To be deprecated please use boost_heating_on.</summary>
+		///<param name="target">The ClimateEntity to call this service for</param>
 		///<param name="timePeriod">Set the time period for the boost. eg: 01:30:00</param>
 		///<param name="temperature">Set the target temperature for the boost period.</param>
-		public static void BoostHeating(this ClimateEntity entity, DateTime @timePeriod, double? @temperature = null)
+		public static void BoostHeating(this ClimateEntity target, DateTime @timePeriod, double? @temperature = null)
 		{
-			entity.CallService("boost_heating", new HiveBoostHeatingParameters{TimePeriod = @timePeriod, Temperature = @temperature});
+			target.CallService("boost_heating", new HiveBoostHeatingParameters{TimePeriod = @timePeriod, Temperature = @temperature});
+		}
+
+		///<summary>To be deprecated please use boost_heating_on.</summary>
+		///<param name="target">The IEnumerable<ClimateEntity> to call this service for</param>
+		///<param name="timePeriod">Set the time period for the boost. eg: 01:30:00</param>
+		///<param name="temperature">Set the target temperature for the boost period.</param>
+		public static void BoostHeating(this IEnumerable<ClimateEntity> target, DateTime @timePeriod, double? @temperature = null)
+		{
+			target.CallService("boost_heating", new HiveBoostHeatingParameters{TimePeriod = @timePeriod, Temperature = @temperature});
 		}
 
 		///<summary>Set the boost mode ON defining the period of time and the desired target temperature for the boost.</summary>
-		public static void BoostHeatingOn(this ClimateEntity entity, HiveBoostHeatingOnParameters data)
+		public static void BoostHeatingOn(this ClimateEntity target, HiveBoostHeatingOnParameters data)
 		{
-			entity.CallService("boost_heating_on", data);
+			target.CallService("boost_heating_on", data);
 		}
 
 		///<summary>Set the boost mode ON defining the period of time and the desired target temperature for the boost.</summary>
-		///<param name="entity">The ClimateEntity to call this service for</param>
+		public static void BoostHeatingOn(this IEnumerable<ClimateEntity> target, HiveBoostHeatingOnParameters data)
+		{
+			target.CallService("boost_heating_on", data);
+		}
+
+		///<summary>Set the boost mode ON defining the period of time and the desired target temperature for the boost.</summary>
+		///<param name="target">The ClimateEntity to call this service for</param>
 		///<param name="timePeriod">Set the time period for the boost. eg: 01:30:00</param>
 		///<param name="temperature">Set the target temperature for the boost period.</param>
-		public static void BoostHeatingOn(this ClimateEntity entity, DateTime @timePeriod, double? @temperature = null)
+		public static void BoostHeatingOn(this ClimateEntity target, DateTime @timePeriod, double? @temperature = null)
 		{
-			entity.CallService("boost_heating_on", new HiveBoostHeatingOnParameters{TimePeriod = @timePeriod, Temperature = @temperature});
+			target.CallService("boost_heating_on", new HiveBoostHeatingOnParameters{TimePeriod = @timePeriod, Temperature = @temperature});
+		}
+
+		///<summary>Set the boost mode ON defining the period of time and the desired target temperature for the boost.</summary>
+		///<param name="target">The IEnumerable<ClimateEntity> to call this service for</param>
+		///<param name="timePeriod">Set the time period for the boost. eg: 01:30:00</param>
+		///<param name="temperature">Set the target temperature for the boost period.</param>
+		public static void BoostHeatingOn(this IEnumerable<ClimateEntity> target, DateTime @timePeriod, double? @temperature = null)
+		{
+			target.CallService("boost_heating_on", new HiveBoostHeatingOnParameters{TimePeriod = @timePeriod, Temperature = @temperature});
 		}
 	}
 
 	public static class HueEntityExtensionMethods
 	{
 		///<summary>Activate a Hue scene with more control over the options.</summary>
-		public static void ActivateScene(this SceneEntity entity, HueActivateSceneParameters data)
+		public static void ActivateScene(this SceneEntity target, HueActivateSceneParameters data)
 		{
-			entity.CallService("activate_scene", data);
+			target.CallService("activate_scene", data);
 		}
 
 		///<summary>Activate a Hue scene with more control over the options.</summary>
-		///<param name="entity">The SceneEntity to call this service for</param>
+		public static void ActivateScene(this IEnumerable<SceneEntity> target, HueActivateSceneParameters data)
+		{
+			target.CallService("activate_scene", data);
+		}
+
+		///<summary>Activate a Hue scene with more control over the options.</summary>
+		///<param name="target">The SceneEntity to call this service for</param>
 		///<param name="transition">Transition duration it takes to bring devices to the state defined in the scene.</param>
 		///<param name="dynamic">Enable dynamic mode of the scene.</param>
 		///<param name="speed">Speed of dynamic palette for this scene</param>
 		///<param name="brightness">Set brightness for the scene.</param>
-		public static void ActivateScene(this SceneEntity entity, long? @transition = null, bool? @dynamic = null, long? @speed = null, long? @brightness = null)
+		public static void ActivateScene(this SceneEntity target, long? @transition = null, bool? @dynamic = null, long? @speed = null, long? @brightness = null)
 		{
-			entity.CallService("activate_scene", new HueActivateSceneParameters{Transition = @transition, Dynamic = @dynamic, Speed = @speed, Brightness = @brightness});
+			target.CallService("activate_scene", new HueActivateSceneParameters{Transition = @transition, Dynamic = @dynamic, Speed = @speed, Brightness = @brightness});
+		}
+
+		///<summary>Activate a Hue scene with more control over the options.</summary>
+		///<param name="target">The IEnumerable<SceneEntity> to call this service for</param>
+		///<param name="transition">Transition duration it takes to bring devices to the state defined in the scene.</param>
+		///<param name="dynamic">Enable dynamic mode of the scene.</param>
+		///<param name="speed">Speed of dynamic palette for this scene</param>
+		///<param name="brightness">Set brightness for the scene.</param>
+		public static void ActivateScene(this IEnumerable<SceneEntity> target, long? @transition = null, bool? @dynamic = null, long? @speed = null, long? @brightness = null)
+		{
+			target.CallService("activate_scene", new HueActivateSceneParameters{Transition = @transition, Dynamic = @dynamic, Speed = @speed, Brightness = @brightness});
 		}
 	}
 
 	public static class InputBooleanEntityExtensionMethods
 	{
 		///<summary>Toggle an input boolean</summary>
-		public static void Toggle(this InputBooleanEntity entity)
+		public static void Toggle(this InputBooleanEntity target)
 		{
-			entity.CallService("toggle");
+			target.CallService("toggle");
+		}
+
+		///<summary>Toggle an input boolean</summary>
+		public static void Toggle(this IEnumerable<InputBooleanEntity> target)
+		{
+			target.CallService("toggle");
 		}
 
 		///<summary>Turn off an input boolean</summary>
-		public static void TurnOff(this InputBooleanEntity entity)
+		public static void TurnOff(this InputBooleanEntity target)
 		{
-			entity.CallService("turn_off");
+			target.CallService("turn_off");
+		}
+
+		///<summary>Turn off an input boolean</summary>
+		public static void TurnOff(this IEnumerable<InputBooleanEntity> target)
+		{
+			target.CallService("turn_off");
 		}
 
 		///<summary>Turn on an input boolean</summary>
-		public static void TurnOn(this InputBooleanEntity entity)
+		public static void TurnOn(this InputBooleanEntity target)
 		{
-			entity.CallService("turn_on");
-		}
-	}
-
-	public static class InputTextEntityExtensionMethods
-	{
-		///<summary>Set the value of an input text entity.</summary>
-		public static void SetValue(this InputTextEntity entity, InputTextSetValueParameters data)
-		{
-			entity.CallService("set_value", data);
+			target.CallService("turn_on");
 		}
 
-		///<summary>Set the value of an input text entity.</summary>
-		///<param name="entity">The InputTextEntity to call this service for</param>
-		///<param name="value">The target value the entity should be set to. eg: This is an example text</param>
-		public static void SetValue(this InputTextEntity entity, string @value)
+		///<summary>Turn on an input boolean</summary>
+		public static void TurnOn(this IEnumerable<InputBooleanEntity> target)
 		{
-			entity.CallService("set_value", new InputTextSetValueParameters{Value = @value});
+			target.CallService("turn_on");
 		}
 	}
 
 	public static class LightEntityExtensionMethods
 	{
 		///<summary>Toggles one or more lights, from on to off, or, off to on, based on their current state. </summary>
-		public static void Toggle(this LightEntity entity, LightToggleParameters data)
+		public static void Toggle(this LightEntity target, LightToggleParameters data)
 		{
-			entity.CallService("toggle", data);
+			target.CallService("toggle", data);
 		}
 
 		///<summary>Toggles one or more lights, from on to off, or, off to on, based on their current state. </summary>
-		///<param name="entity">The LightEntity to call this service for</param>
+		public static void Toggle(this IEnumerable<LightEntity> target, LightToggleParameters data)
+		{
+			target.CallService("toggle", data);
+		}
+
+		///<summary>Toggles one or more lights, from on to off, or, off to on, based on their current state. </summary>
+		///<param name="target">The LightEntity to call this service for</param>
 		///<param name="transition">Duration it takes to get to next state.</param>
 		///<param name="rgbColor">Color for the light in RGB-format. eg: [255, 100, 100]</param>
 		///<param name="colorName">A human readable color name.</param>
@@ -6331,36 +8013,77 @@ namespace HomeAssistantGenerated
 		///<param name="profile">Name of a light profile to use. eg: relax</param>
 		///<param name="flash">If the light should flash.</param>
 		///<param name="effect">Light effect.</param>
-		public static void Toggle(this LightEntity entity, long? @transition = null, object? @rgbColor = null, string? @colorName = null, object? @hsColor = null, object? @xyColor = null, long? @colorTemp = null, long? @kelvin = null, long? @whiteValue = null, long? @brightness = null, long? @brightnessPct = null, string? @profile = null, string? @flash = null, string? @effect = null)
+		public static void Toggle(this LightEntity target, long? @transition = null, object? @rgbColor = null, object? @colorName = null, object? @hsColor = null, object? @xyColor = null, object? @colorTemp = null, long? @kelvin = null, long? @whiteValue = null, long? @brightness = null, long? @brightnessPct = null, string? @profile = null, object? @flash = null, string? @effect = null)
 		{
-			entity.CallService("toggle", new LightToggleParameters{Transition = @transition, RgbColor = @rgbColor, ColorName = @colorName, HsColor = @hsColor, XyColor = @xyColor, ColorTemp = @colorTemp, Kelvin = @kelvin, WhiteValue = @whiteValue, Brightness = @brightness, BrightnessPct = @brightnessPct, Profile = @profile, Flash = @flash, Effect = @effect});
+			target.CallService("toggle", new LightToggleParameters{Transition = @transition, RgbColor = @rgbColor, ColorName = @colorName, HsColor = @hsColor, XyColor = @xyColor, ColorTemp = @colorTemp, Kelvin = @kelvin, WhiteValue = @whiteValue, Brightness = @brightness, BrightnessPct = @brightnessPct, Profile = @profile, Flash = @flash, Effect = @effect});
+		}
+
+		///<summary>Toggles one or more lights, from on to off, or, off to on, based on their current state. </summary>
+		///<param name="target">The IEnumerable<LightEntity> to call this service for</param>
+		///<param name="transition">Duration it takes to get to next state.</param>
+		///<param name="rgbColor">Color for the light in RGB-format. eg: [255, 100, 100]</param>
+		///<param name="colorName">A human readable color name.</param>
+		///<param name="hsColor">Color for the light in hue/sat format. Hue is 0-360 and Sat is 0-100. eg: [300, 70]</param>
+		///<param name="xyColor">Color for the light in XY-format. eg: [0.52, 0.43]</param>
+		///<param name="colorTemp">Color temperature for the light in mireds.</param>
+		///<param name="kelvin">Color temperature for the light in Kelvin.</param>
+		///<param name="whiteValue">Number indicating level of white.</param>
+		///<param name="brightness">Number indicating brightness, where 0 turns the light off, 1 is the minimum brightness and 255 is the maximum brightness supported by the light.</param>
+		///<param name="brightnessPct">Number indicating percentage of full brightness, where 0 turns the light off, 1 is the minimum brightness and 100 is the maximum brightness supported by the light.</param>
+		///<param name="profile">Name of a light profile to use. eg: relax</param>
+		///<param name="flash">If the light should flash.</param>
+		///<param name="effect">Light effect.</param>
+		public static void Toggle(this IEnumerable<LightEntity> target, long? @transition = null, object? @rgbColor = null, object? @colorName = null, object? @hsColor = null, object? @xyColor = null, object? @colorTemp = null, long? @kelvin = null, long? @whiteValue = null, long? @brightness = null, long? @brightnessPct = null, string? @profile = null, object? @flash = null, string? @effect = null)
+		{
+			target.CallService("toggle", new LightToggleParameters{Transition = @transition, RgbColor = @rgbColor, ColorName = @colorName, HsColor = @hsColor, XyColor = @xyColor, ColorTemp = @colorTemp, Kelvin = @kelvin, WhiteValue = @whiteValue, Brightness = @brightness, BrightnessPct = @brightnessPct, Profile = @profile, Flash = @flash, Effect = @effect});
 		}
 
 		///<summary>Turns off one or more lights.</summary>
-		public static void TurnOff(this LightEntity entity, LightTurnOffParameters data)
+		public static void TurnOff(this LightEntity target, LightTurnOffParameters data)
 		{
-			entity.CallService("turn_off", data);
+			target.CallService("turn_off", data);
 		}
 
 		///<summary>Turns off one or more lights.</summary>
-		///<param name="entity">The LightEntity to call this service for</param>
+		public static void TurnOff(this IEnumerable<LightEntity> target, LightTurnOffParameters data)
+		{
+			target.CallService("turn_off", data);
+		}
+
+		///<summary>Turns off one or more lights.</summary>
+		///<param name="target">The LightEntity to call this service for</param>
 		///<param name="transition">Duration it takes to get to next state.</param>
 		///<param name="flash">If the light should flash.</param>
-		public static void TurnOff(this LightEntity entity, long? @transition = null, string? @flash = null)
+		public static void TurnOff(this LightEntity target, long? @transition = null, object? @flash = null)
 		{
-			entity.CallService("turn_off", new LightTurnOffParameters{Transition = @transition, Flash = @flash});
+			target.CallService("turn_off", new LightTurnOffParameters{Transition = @transition, Flash = @flash});
 		}
 
-		///<summary>Turn on one or more lights and adjust properties of the light, even when they are turned on already. </summary>
-		public static void TurnOn(this LightEntity entity, LightTurnOnParameters data)
-		{
-			entity.CallService("turn_on", data);
-		}
-
-		///<summary>Turn on one or more lights and adjust properties of the light, even when they are turned on already. </summary>
-		///<param name="entity">The LightEntity to call this service for</param>
+		///<summary>Turns off one or more lights.</summary>
+		///<param name="target">The IEnumerable<LightEntity> to call this service for</param>
 		///<param name="transition">Duration it takes to get to next state.</param>
-		///<param name="rgbColor">A list containing three integers between 0 and 255 representing the RGB (red, green, blue) color for the light. eg: [255, 100, 100]</param>
+		///<param name="flash">If the light should flash.</param>
+		public static void TurnOff(this IEnumerable<LightEntity> target, long? @transition = null, object? @flash = null)
+		{
+			target.CallService("turn_off", new LightTurnOffParameters{Transition = @transition, Flash = @flash});
+		}
+
+		///<summary>Turn on one or more lights and adjust properties of the light, even when they are turned on already. </summary>
+		public static void TurnOn(this LightEntity target, LightTurnOnParameters data)
+		{
+			target.CallService("turn_on", data);
+		}
+
+		///<summary>Turn on one or more lights and adjust properties of the light, even when they are turned on already. </summary>
+		public static void TurnOn(this IEnumerable<LightEntity> target, LightTurnOnParameters data)
+		{
+			target.CallService("turn_on", data);
+		}
+
+		///<summary>Turn on one or more lights and adjust properties of the light, even when they are turned on already. </summary>
+		///<param name="target">The LightEntity to call this service for</param>
+		///<param name="transition">Duration it takes to get to next state.</param>
+		///<param name="rgbColor">The color for the light (based on RGB - red, green, blue).</param>
 		///<param name="rgbwColor">A list containing four integers between 0 and 255 representing the RGBW (red, green, blue, white) color for the light. eg: [255, 100, 100, 50]</param>
 		///<param name="rgbwwColor">A list containing five integers between 0 and 255 representing the RGBWW (red, green, blue, cold white, warm white) color for the light. eg: [255, 100, 100, 50, 70]</param>
 		///<param name="colorName">A human readable color name.</param>
@@ -6376,383 +8099,858 @@ namespace HomeAssistantGenerated
 		///<param name="profile">Name of a light profile to use. eg: relax</param>
 		///<param name="flash">If the light should flash.</param>
 		///<param name="effect">Light effect.</param>
-		public static void TurnOn(this LightEntity entity, long? @transition = null, object? @rgbColor = null, object? @rgbwColor = null, object? @rgbwwColor = null, string? @colorName = null, object? @hsColor = null, object? @xyColor = null, long? @colorTemp = null, long? @kelvin = null, long? @brightness = null, long? @brightnessPct = null, long? @brightnessStep = null, long? @brightnessStepPct = null, long? @white = null, string? @profile = null, string? @flash = null, string? @effect = null)
+		public static void TurnOn(this LightEntity target, long? @transition = null, object? @rgbColor = null, object? @rgbwColor = null, object? @rgbwwColor = null, object? @colorName = null, object? @hsColor = null, object? @xyColor = null, object? @colorTemp = null, long? @kelvin = null, long? @brightness = null, long? @brightnessPct = null, long? @brightnessStep = null, long? @brightnessStepPct = null, long? @white = null, string? @profile = null, object? @flash = null, string? @effect = null)
 		{
-			entity.CallService("turn_on", new LightTurnOnParameters{Transition = @transition, RgbColor = @rgbColor, RgbwColor = @rgbwColor, RgbwwColor = @rgbwwColor, ColorName = @colorName, HsColor = @hsColor, XyColor = @xyColor, ColorTemp = @colorTemp, Kelvin = @kelvin, Brightness = @brightness, BrightnessPct = @brightnessPct, BrightnessStep = @brightnessStep, BrightnessStepPct = @brightnessStepPct, White = @white, Profile = @profile, Flash = @flash, Effect = @effect});
+			target.CallService("turn_on", new LightTurnOnParameters{Transition = @transition, RgbColor = @rgbColor, RgbwColor = @rgbwColor, RgbwwColor = @rgbwwColor, ColorName = @colorName, HsColor = @hsColor, XyColor = @xyColor, ColorTemp = @colorTemp, Kelvin = @kelvin, Brightness = @brightness, BrightnessPct = @brightnessPct, BrightnessStep = @brightnessStep, BrightnessStepPct = @brightnessStepPct, White = @white, Profile = @profile, Flash = @flash, Effect = @effect});
+		}
+
+		///<summary>Turn on one or more lights and adjust properties of the light, even when they are turned on already. </summary>
+		///<param name="target">The IEnumerable<LightEntity> to call this service for</param>
+		///<param name="transition">Duration it takes to get to next state.</param>
+		///<param name="rgbColor">The color for the light (based on RGB - red, green, blue).</param>
+		///<param name="rgbwColor">A list containing four integers between 0 and 255 representing the RGBW (red, green, blue, white) color for the light. eg: [255, 100, 100, 50]</param>
+		///<param name="rgbwwColor">A list containing five integers between 0 and 255 representing the RGBWW (red, green, blue, cold white, warm white) color for the light. eg: [255, 100, 100, 50, 70]</param>
+		///<param name="colorName">A human readable color name.</param>
+		///<param name="hsColor">Color for the light in hue/sat format. Hue is 0-360 and Sat is 0-100. eg: [300, 70]</param>
+		///<param name="xyColor">Color for the light in XY-format. eg: [0.52, 0.43]</param>
+		///<param name="colorTemp">Color temperature for the light in mireds.</param>
+		///<param name="kelvin">Color temperature for the light in Kelvin.</param>
+		///<param name="brightness">Number indicating brightness, where 0 turns the light off, 1 is the minimum brightness and 255 is the maximum brightness supported by the light.</param>
+		///<param name="brightnessPct">Number indicating percentage of full brightness, where 0 turns the light off, 1 is the minimum brightness and 100 is the maximum brightness supported by the light.</param>
+		///<param name="brightnessStep">Change brightness by an amount.</param>
+		///<param name="brightnessStepPct">Change brightness by a percentage.</param>
+		///<param name="white">Set the light to white mode and change its brightness, where 0 turns the light off, 1 is the minimum brightness and 255 is the maximum brightness supported by the light.</param>
+		///<param name="profile">Name of a light profile to use. eg: relax</param>
+		///<param name="flash">If the light should flash.</param>
+		///<param name="effect">Light effect.</param>
+		public static void TurnOn(this IEnumerable<LightEntity> target, long? @transition = null, object? @rgbColor = null, object? @rgbwColor = null, object? @rgbwwColor = null, object? @colorName = null, object? @hsColor = null, object? @xyColor = null, object? @colorTemp = null, long? @kelvin = null, long? @brightness = null, long? @brightnessPct = null, long? @brightnessStep = null, long? @brightnessStepPct = null, long? @white = null, string? @profile = null, object? @flash = null, string? @effect = null)
+		{
+			target.CallService("turn_on", new LightTurnOnParameters{Transition = @transition, RgbColor = @rgbColor, RgbwColor = @rgbwColor, RgbwwColor = @rgbwwColor, ColorName = @colorName, HsColor = @hsColor, XyColor = @xyColor, ColorTemp = @colorTemp, Kelvin = @kelvin, Brightness = @brightness, BrightnessPct = @brightnessPct, BrightnessStep = @brightnessStep, BrightnessStepPct = @brightnessStepPct, White = @white, Profile = @profile, Flash = @flash, Effect = @effect});
 		}
 	}
 
 	public static class LockEntityExtensionMethods
 	{
 		///<summary>Lock all or specified locks.</summary>
-		public static void Lock(this LockEntity entity, LockLockParameters data)
+		public static void Lock(this LockEntity target, LockLockParameters data)
 		{
-			entity.CallService("lock", data);
+			target.CallService("lock", data);
 		}
 
 		///<summary>Lock all or specified locks.</summary>
-		///<param name="entity">The LockEntity to call this service for</param>
+		public static void Lock(this IEnumerable<LockEntity> target, LockLockParameters data)
+		{
+			target.CallService("lock", data);
+		}
+
+		///<summary>Lock all or specified locks.</summary>
+		///<param name="target">The LockEntity to call this service for</param>
 		///<param name="code">An optional code to lock the lock with. eg: 1234</param>
-		public static void Lock(this LockEntity entity, string? @code = null)
+		public static void Lock(this LockEntity target, string? @code = null)
 		{
-			entity.CallService("lock", new LockLockParameters{Code = @code});
+			target.CallService("lock", new LockLockParameters{Code = @code});
+		}
+
+		///<summary>Lock all or specified locks.</summary>
+		///<param name="target">The IEnumerable<LockEntity> to call this service for</param>
+		///<param name="code">An optional code to lock the lock with. eg: 1234</param>
+		public static void Lock(this IEnumerable<LockEntity> target, string? @code = null)
+		{
+			target.CallService("lock", new LockLockParameters{Code = @code});
 		}
 
 		///<summary>Open all or specified locks.</summary>
-		public static void Open(this LockEntity entity, LockOpenParameters data)
+		public static void Open(this LockEntity target, LockOpenParameters data)
 		{
-			entity.CallService("open", data);
+			target.CallService("open", data);
 		}
 
 		///<summary>Open all or specified locks.</summary>
-		///<param name="entity">The LockEntity to call this service for</param>
+		public static void Open(this IEnumerable<LockEntity> target, LockOpenParameters data)
+		{
+			target.CallService("open", data);
+		}
+
+		///<summary>Open all or specified locks.</summary>
+		///<param name="target">The LockEntity to call this service for</param>
 		///<param name="code">An optional code to open the lock with. eg: 1234</param>
-		public static void Open(this LockEntity entity, string? @code = null)
+		public static void Open(this LockEntity target, string? @code = null)
 		{
-			entity.CallService("open", new LockOpenParameters{Code = @code});
+			target.CallService("open", new LockOpenParameters{Code = @code});
+		}
+
+		///<summary>Open all or specified locks.</summary>
+		///<param name="target">The IEnumerable<LockEntity> to call this service for</param>
+		///<param name="code">An optional code to open the lock with. eg: 1234</param>
+		public static void Open(this IEnumerable<LockEntity> target, string? @code = null)
+		{
+			target.CallService("open", new LockOpenParameters{Code = @code});
 		}
 
 		///<summary>Unlock all or specified locks.</summary>
-		public static void Unlock(this LockEntity entity, LockUnlockParameters data)
+		public static void Unlock(this LockEntity target, LockUnlockParameters data)
 		{
-			entity.CallService("unlock", data);
+			target.CallService("unlock", data);
 		}
 
 		///<summary>Unlock all or specified locks.</summary>
-		///<param name="entity">The LockEntity to call this service for</param>
+		public static void Unlock(this IEnumerable<LockEntity> target, LockUnlockParameters data)
+		{
+			target.CallService("unlock", data);
+		}
+
+		///<summary>Unlock all or specified locks.</summary>
+		///<param name="target">The LockEntity to call this service for</param>
 		///<param name="code">An optional code to unlock the lock with. eg: 1234</param>
-		public static void Unlock(this LockEntity entity, string? @code = null)
+		public static void Unlock(this LockEntity target, string? @code = null)
 		{
-			entity.CallService("unlock", new LockUnlockParameters{Code = @code});
+			target.CallService("unlock", new LockUnlockParameters{Code = @code});
+		}
+
+		///<summary>Unlock all or specified locks.</summary>
+		///<param name="target">The IEnumerable<LockEntity> to call this service for</param>
+		///<param name="code">An optional code to unlock the lock with. eg: 1234</param>
+		public static void Unlock(this IEnumerable<LockEntity> target, string? @code = null)
+		{
+			target.CallService("unlock", new LockUnlockParameters{Code = @code});
 		}
 	}
 
 	public static class MediaPlayerEntityExtensionMethods
 	{
 		///<summary>Send the media player the command to clear players playlist.</summary>
-		public static void ClearPlaylist(this MediaPlayerEntity entity)
+		public static void ClearPlaylist(this MediaPlayerEntity target)
 		{
-			entity.CallService("clear_playlist");
+			target.CallService("clear_playlist");
+		}
+
+		///<summary>Send the media player the command to clear players playlist.</summary>
+		public static void ClearPlaylist(this IEnumerable<MediaPlayerEntity> target)
+		{
+			target.CallService("clear_playlist");
 		}
 
 		///<summary>Group players together. Only works on platforms with support for player groups.</summary>
-		public static void Join(this MediaPlayerEntity entity, MediaPlayerJoinParameters data)
+		public static void Join(this MediaPlayerEntity target, MediaPlayerJoinParameters data)
 		{
-			entity.CallService("join", data);
+			target.CallService("join", data);
 		}
 
 		///<summary>Group players together. Only works on platforms with support for player groups.</summary>
-		///<param name="entity">The MediaPlayerEntity to call this service for</param>
-		///<param name="groupMembers">The players which will be synced with the target player. eg: ["media_player.multiroom_player2", "media_player.multiroom_player3"]</param>
-		public static void Join(this MediaPlayerEntity entity, object? @groupMembers = null)
+		public static void Join(this IEnumerable<MediaPlayerEntity> target, MediaPlayerJoinParameters data)
 		{
-			entity.CallService("join", new MediaPlayerJoinParameters{GroupMembers = @groupMembers});
+			target.CallService("join", data);
+		}
+
+		///<summary>Group players together. Only works on platforms with support for player groups.</summary>
+		///<param name="target">The MediaPlayerEntity to call this service for</param>
+		///<param name="groupMembers">The players which will be synced with the target player. eg: ["media_player.multiroom_player2","media_player.multiroom_player3"]</param>
+		public static void Join(this MediaPlayerEntity target, object? @groupMembers = null)
+		{
+			target.CallService("join", new MediaPlayerJoinParameters{GroupMembers = @groupMembers});
+		}
+
+		///<summary>Group players together. Only works on platforms with support for player groups.</summary>
+		///<param name="target">The IEnumerable<MediaPlayerEntity> to call this service for</param>
+		///<param name="groupMembers">The players which will be synced with the target player. eg: ["media_player.multiroom_player2","media_player.multiroom_player3"]</param>
+		public static void Join(this IEnumerable<MediaPlayerEntity> target, object? @groupMembers = null)
+		{
+			target.CallService("join", new MediaPlayerJoinParameters{GroupMembers = @groupMembers});
 		}
 
 		///<summary>Send the media player the command for next track.</summary>
-		public static void MediaNextTrack(this MediaPlayerEntity entity)
+		public static void MediaNextTrack(this MediaPlayerEntity target)
 		{
-			entity.CallService("media_next_track");
+			target.CallService("media_next_track");
+		}
+
+		///<summary>Send the media player the command for next track.</summary>
+		public static void MediaNextTrack(this IEnumerable<MediaPlayerEntity> target)
+		{
+			target.CallService("media_next_track");
 		}
 
 		///<summary>Send the media player the command for pause.</summary>
-		public static void MediaPause(this MediaPlayerEntity entity)
+		public static void MediaPause(this MediaPlayerEntity target)
 		{
-			entity.CallService("media_pause");
+			target.CallService("media_pause");
+		}
+
+		///<summary>Send the media player the command for pause.</summary>
+		public static void MediaPause(this IEnumerable<MediaPlayerEntity> target)
+		{
+			target.CallService("media_pause");
 		}
 
 		///<summary>Send the media player the command for play.</summary>
-		public static void MediaPlay(this MediaPlayerEntity entity)
+		public static void MediaPlay(this MediaPlayerEntity target)
 		{
-			entity.CallService("media_play");
+			target.CallService("media_play");
+		}
+
+		///<summary>Send the media player the command for play.</summary>
+		public static void MediaPlay(this IEnumerable<MediaPlayerEntity> target)
+		{
+			target.CallService("media_play");
 		}
 
 		///<summary>Toggle media player play/pause state.</summary>
-		public static void MediaPlayPause(this MediaPlayerEntity entity)
+		public static void MediaPlayPause(this MediaPlayerEntity target)
 		{
-			entity.CallService("media_play_pause");
+			target.CallService("media_play_pause");
+		}
+
+		///<summary>Toggle media player play/pause state.</summary>
+		public static void MediaPlayPause(this IEnumerable<MediaPlayerEntity> target)
+		{
+			target.CallService("media_play_pause");
 		}
 
 		///<summary>Send the media player the command for previous track.</summary>
-		public static void MediaPreviousTrack(this MediaPlayerEntity entity)
+		public static void MediaPreviousTrack(this MediaPlayerEntity target)
 		{
-			entity.CallService("media_previous_track");
+			target.CallService("media_previous_track");
+		}
+
+		///<summary>Send the media player the command for previous track.</summary>
+		public static void MediaPreviousTrack(this IEnumerable<MediaPlayerEntity> target)
+		{
+			target.CallService("media_previous_track");
 		}
 
 		///<summary>Send the media player the command to seek in current playing media.</summary>
-		public static void MediaSeek(this MediaPlayerEntity entity, MediaPlayerMediaSeekParameters data)
+		public static void MediaSeek(this MediaPlayerEntity target, MediaPlayerMediaSeekParameters data)
 		{
-			entity.CallService("media_seek", data);
+			target.CallService("media_seek", data);
 		}
 
 		///<summary>Send the media player the command to seek in current playing media.</summary>
-		///<param name="entity">The MediaPlayerEntity to call this service for</param>
+		public static void MediaSeek(this IEnumerable<MediaPlayerEntity> target, MediaPlayerMediaSeekParameters data)
+		{
+			target.CallService("media_seek", data);
+		}
+
+		///<summary>Send the media player the command to seek in current playing media.</summary>
+		///<param name="target">The MediaPlayerEntity to call this service for</param>
 		///<param name="seekPosition">Position to seek to. The format is platform dependent.</param>
-		public static void MediaSeek(this MediaPlayerEntity entity, double @seekPosition)
+		public static void MediaSeek(this MediaPlayerEntity target, double @seekPosition)
 		{
-			entity.CallService("media_seek", new MediaPlayerMediaSeekParameters{SeekPosition = @seekPosition});
+			target.CallService("media_seek", new MediaPlayerMediaSeekParameters{SeekPosition = @seekPosition});
+		}
+
+		///<summary>Send the media player the command to seek in current playing media.</summary>
+		///<param name="target">The IEnumerable<MediaPlayerEntity> to call this service for</param>
+		///<param name="seekPosition">Position to seek to. The format is platform dependent.</param>
+		public static void MediaSeek(this IEnumerable<MediaPlayerEntity> target, double @seekPosition)
+		{
+			target.CallService("media_seek", new MediaPlayerMediaSeekParameters{SeekPosition = @seekPosition});
 		}
 
 		///<summary>Send the media player the stop command.</summary>
-		public static void MediaStop(this MediaPlayerEntity entity)
+		public static void MediaStop(this MediaPlayerEntity target)
 		{
-			entity.CallService("media_stop");
+			target.CallService("media_stop");
+		}
+
+		///<summary>Send the media player the stop command.</summary>
+		public static void MediaStop(this IEnumerable<MediaPlayerEntity> target)
+		{
+			target.CallService("media_stop");
 		}
 
 		///<summary>Send the media player the command for playing media.</summary>
-		public static void PlayMedia(this MediaPlayerEntity entity, MediaPlayerPlayMediaParameters data)
+		public static void PlayMedia(this MediaPlayerEntity target, MediaPlayerPlayMediaParameters data)
 		{
-			entity.CallService("play_media", data);
+			target.CallService("play_media", data);
 		}
 
 		///<summary>Send the media player the command for playing media.</summary>
-		///<param name="entity">The MediaPlayerEntity to call this service for</param>
+		public static void PlayMedia(this IEnumerable<MediaPlayerEntity> target, MediaPlayerPlayMediaParameters data)
+		{
+			target.CallService("play_media", data);
+		}
+
+		///<summary>Send the media player the command for playing media.</summary>
+		///<param name="target">The MediaPlayerEntity to call this service for</param>
 		///<param name="mediaContentId">The ID of the content to play. Platform dependent. eg: https://home-assistant.io/images/cast/splash.png</param>
 		///<param name="mediaContentType">The type of the content to play. Like image, music, tvshow, video, episode, channel or playlist. eg: music</param>
-		public static void PlayMedia(this MediaPlayerEntity entity, string @mediaContentId, string @mediaContentType)
+		///<param name="enqueue">If the content should be played now or be added to the queue.</param>
+		///<param name="announce">If the media should be played as an announcement. eg: true</param>
+		public static void PlayMedia(this MediaPlayerEntity target, string @mediaContentId, string @mediaContentType, object? @enqueue = null, bool? @announce = null)
 		{
-			entity.CallService("play_media", new MediaPlayerPlayMediaParameters{MediaContentId = @mediaContentId, MediaContentType = @mediaContentType});
+			target.CallService("play_media", new MediaPlayerPlayMediaParameters{MediaContentId = @mediaContentId, MediaContentType = @mediaContentType, Enqueue = @enqueue, Announce = @announce});
+		}
+
+		///<summary>Send the media player the command for playing media.</summary>
+		///<param name="target">The IEnumerable<MediaPlayerEntity> to call this service for</param>
+		///<param name="mediaContentId">The ID of the content to play. Platform dependent. eg: https://home-assistant.io/images/cast/splash.png</param>
+		///<param name="mediaContentType">The type of the content to play. Like image, music, tvshow, video, episode, channel or playlist. eg: music</param>
+		///<param name="enqueue">If the content should be played now or be added to the queue.</param>
+		///<param name="announce">If the media should be played as an announcement. eg: true</param>
+		public static void PlayMedia(this IEnumerable<MediaPlayerEntity> target, string @mediaContentId, string @mediaContentType, object? @enqueue = null, bool? @announce = null)
+		{
+			target.CallService("play_media", new MediaPlayerPlayMediaParameters{MediaContentId = @mediaContentId, MediaContentType = @mediaContentType, Enqueue = @enqueue, Announce = @announce});
 		}
 
 		///<summary>Set repeat mode</summary>
-		public static void RepeatSet(this MediaPlayerEntity entity, MediaPlayerRepeatSetParameters data)
+		public static void RepeatSet(this MediaPlayerEntity target, MediaPlayerRepeatSetParameters data)
 		{
-			entity.CallService("repeat_set", data);
+			target.CallService("repeat_set", data);
 		}
 
 		///<summary>Set repeat mode</summary>
-		///<param name="entity">The MediaPlayerEntity to call this service for</param>
+		public static void RepeatSet(this IEnumerable<MediaPlayerEntity> target, MediaPlayerRepeatSetParameters data)
+		{
+			target.CallService("repeat_set", data);
+		}
+
+		///<summary>Set repeat mode</summary>
+		///<param name="target">The MediaPlayerEntity to call this service for</param>
 		///<param name="repeat">Repeat mode to set.</param>
-		public static void RepeatSet(this MediaPlayerEntity entity, string @repeat)
+		public static void RepeatSet(this MediaPlayerEntity target, object @repeat)
 		{
-			entity.CallService("repeat_set", new MediaPlayerRepeatSetParameters{Repeat = @repeat});
+			target.CallService("repeat_set", new MediaPlayerRepeatSetParameters{Repeat = @repeat});
+		}
+
+		///<summary>Set repeat mode</summary>
+		///<param name="target">The IEnumerable<MediaPlayerEntity> to call this service for</param>
+		///<param name="repeat">Repeat mode to set.</param>
+		public static void RepeatSet(this IEnumerable<MediaPlayerEntity> target, object @repeat)
+		{
+			target.CallService("repeat_set", new MediaPlayerRepeatSetParameters{Repeat = @repeat});
 		}
 
 		///<summary>Send the media player the command to change sound mode.</summary>
-		public static void SelectSoundMode(this MediaPlayerEntity entity, MediaPlayerSelectSoundModeParameters data)
+		public static void SelectSoundMode(this MediaPlayerEntity target, MediaPlayerSelectSoundModeParameters data)
 		{
-			entity.CallService("select_sound_mode", data);
+			target.CallService("select_sound_mode", data);
 		}
 
 		///<summary>Send the media player the command to change sound mode.</summary>
-		///<param name="entity">The MediaPlayerEntity to call this service for</param>
+		public static void SelectSoundMode(this IEnumerable<MediaPlayerEntity> target, MediaPlayerSelectSoundModeParameters data)
+		{
+			target.CallService("select_sound_mode", data);
+		}
+
+		///<summary>Send the media player the command to change sound mode.</summary>
+		///<param name="target">The MediaPlayerEntity to call this service for</param>
 		///<param name="soundMode">Name of the sound mode to switch to. eg: Music</param>
-		public static void SelectSoundMode(this MediaPlayerEntity entity, string? @soundMode = null)
+		public static void SelectSoundMode(this MediaPlayerEntity target, string? @soundMode = null)
 		{
-			entity.CallService("select_sound_mode", new MediaPlayerSelectSoundModeParameters{SoundMode = @soundMode});
+			target.CallService("select_sound_mode", new MediaPlayerSelectSoundModeParameters{SoundMode = @soundMode});
+		}
+
+		///<summary>Send the media player the command to change sound mode.</summary>
+		///<param name="target">The IEnumerable<MediaPlayerEntity> to call this service for</param>
+		///<param name="soundMode">Name of the sound mode to switch to. eg: Music</param>
+		public static void SelectSoundMode(this IEnumerable<MediaPlayerEntity> target, string? @soundMode = null)
+		{
+			target.CallService("select_sound_mode", new MediaPlayerSelectSoundModeParameters{SoundMode = @soundMode});
 		}
 
 		///<summary>Send the media player the command to change input source.</summary>
-		public static void SelectSource(this MediaPlayerEntity entity, MediaPlayerSelectSourceParameters data)
+		public static void SelectSource(this MediaPlayerEntity target, MediaPlayerSelectSourceParameters data)
 		{
-			entity.CallService("select_source", data);
+			target.CallService("select_source", data);
 		}
 
 		///<summary>Send the media player the command to change input source.</summary>
-		///<param name="entity">The MediaPlayerEntity to call this service for</param>
+		public static void SelectSource(this IEnumerable<MediaPlayerEntity> target, MediaPlayerSelectSourceParameters data)
+		{
+			target.CallService("select_source", data);
+		}
+
+		///<summary>Send the media player the command to change input source.</summary>
+		///<param name="target">The MediaPlayerEntity to call this service for</param>
 		///<param name="source">Name of the source to switch to. Platform dependent. eg: video1</param>
-		public static void SelectSource(this MediaPlayerEntity entity, string @source)
+		public static void SelectSource(this MediaPlayerEntity target, string @source)
 		{
-			entity.CallService("select_source", new MediaPlayerSelectSourceParameters{Source = @source});
+			target.CallService("select_source", new MediaPlayerSelectSourceParameters{Source = @source});
+		}
+
+		///<summary>Send the media player the command to change input source.</summary>
+		///<param name="target">The IEnumerable<MediaPlayerEntity> to call this service for</param>
+		///<param name="source">Name of the source to switch to. Platform dependent. eg: video1</param>
+		public static void SelectSource(this IEnumerable<MediaPlayerEntity> target, string @source)
+		{
+			target.CallService("select_source", new MediaPlayerSelectSourceParameters{Source = @source});
 		}
 
 		///<summary>Set shuffling state.</summary>
-		public static void ShuffleSet(this MediaPlayerEntity entity, MediaPlayerShuffleSetParameters data)
+		public static void ShuffleSet(this MediaPlayerEntity target, MediaPlayerShuffleSetParameters data)
 		{
-			entity.CallService("shuffle_set", data);
+			target.CallService("shuffle_set", data);
 		}
 
 		///<summary>Set shuffling state.</summary>
-		///<param name="entity">The MediaPlayerEntity to call this service for</param>
+		public static void ShuffleSet(this IEnumerable<MediaPlayerEntity> target, MediaPlayerShuffleSetParameters data)
+		{
+			target.CallService("shuffle_set", data);
+		}
+
+		///<summary>Set shuffling state.</summary>
+		///<param name="target">The MediaPlayerEntity to call this service for</param>
 		///<param name="shuffle">True/false for enabling/disabling shuffle.</param>
-		public static void ShuffleSet(this MediaPlayerEntity entity, bool @shuffle)
+		public static void ShuffleSet(this MediaPlayerEntity target, bool @shuffle)
 		{
-			entity.CallService("shuffle_set", new MediaPlayerShuffleSetParameters{Shuffle = @shuffle});
+			target.CallService("shuffle_set", new MediaPlayerShuffleSetParameters{Shuffle = @shuffle});
+		}
+
+		///<summary>Set shuffling state.</summary>
+		///<param name="target">The IEnumerable<MediaPlayerEntity> to call this service for</param>
+		///<param name="shuffle">True/false for enabling/disabling shuffle.</param>
+		public static void ShuffleSet(this IEnumerable<MediaPlayerEntity> target, bool @shuffle)
+		{
+			target.CallService("shuffle_set", new MediaPlayerShuffleSetParameters{Shuffle = @shuffle});
 		}
 
 		///<summary>Toggles a media player power state.</summary>
-		public static void Toggle(this MediaPlayerEntity entity)
+		public static void Toggle(this MediaPlayerEntity target)
 		{
-			entity.CallService("toggle");
+			target.CallService("toggle");
+		}
+
+		///<summary>Toggles a media player power state.</summary>
+		public static void Toggle(this IEnumerable<MediaPlayerEntity> target)
+		{
+			target.CallService("toggle");
 		}
 
 		///<summary>Turn a media player power off.</summary>
-		public static void TurnOff(this MediaPlayerEntity entity)
+		public static void TurnOff(this MediaPlayerEntity target)
 		{
-			entity.CallService("turn_off");
+			target.CallService("turn_off");
+		}
+
+		///<summary>Turn a media player power off.</summary>
+		public static void TurnOff(this IEnumerable<MediaPlayerEntity> target)
+		{
+			target.CallService("turn_off");
 		}
 
 		///<summary>Turn a media player power on.</summary>
-		public static void TurnOn(this MediaPlayerEntity entity)
+		public static void TurnOn(this MediaPlayerEntity target)
 		{
-			entity.CallService("turn_on");
+			target.CallService("turn_on");
+		}
+
+		///<summary>Turn a media player power on.</summary>
+		public static void TurnOn(this IEnumerable<MediaPlayerEntity> target)
+		{
+			target.CallService("turn_on");
 		}
 
 		///<summary>Unjoin the player from a group. Only works on platforms with support for player groups.</summary>
-		public static void Unjoin(this MediaPlayerEntity entity)
+		public static void Unjoin(this MediaPlayerEntity target)
 		{
-			entity.CallService("unjoin");
+			target.CallService("unjoin");
+		}
+
+		///<summary>Unjoin the player from a group. Only works on platforms with support for player groups.</summary>
+		public static void Unjoin(this IEnumerable<MediaPlayerEntity> target)
+		{
+			target.CallService("unjoin");
 		}
 
 		///<summary>Turn a media player volume down.</summary>
-		public static void VolumeDown(this MediaPlayerEntity entity)
+		public static void VolumeDown(this MediaPlayerEntity target)
 		{
-			entity.CallService("volume_down");
+			target.CallService("volume_down");
+		}
+
+		///<summary>Turn a media player volume down.</summary>
+		public static void VolumeDown(this IEnumerable<MediaPlayerEntity> target)
+		{
+			target.CallService("volume_down");
 		}
 
 		///<summary>Mute a media player's volume.</summary>
-		public static void VolumeMute(this MediaPlayerEntity entity, MediaPlayerVolumeMuteParameters data)
+		public static void VolumeMute(this MediaPlayerEntity target, MediaPlayerVolumeMuteParameters data)
 		{
-			entity.CallService("volume_mute", data);
+			target.CallService("volume_mute", data);
 		}
 
 		///<summary>Mute a media player's volume.</summary>
-		///<param name="entity">The MediaPlayerEntity to call this service for</param>
+		public static void VolumeMute(this IEnumerable<MediaPlayerEntity> target, MediaPlayerVolumeMuteParameters data)
+		{
+			target.CallService("volume_mute", data);
+		}
+
+		///<summary>Mute a media player's volume.</summary>
+		///<param name="target">The MediaPlayerEntity to call this service for</param>
 		///<param name="isVolumeMuted">True/false for mute/unmute.</param>
-		public static void VolumeMute(this MediaPlayerEntity entity, bool @isVolumeMuted)
+		public static void VolumeMute(this MediaPlayerEntity target, bool @isVolumeMuted)
 		{
-			entity.CallService("volume_mute", new MediaPlayerVolumeMuteParameters{IsVolumeMuted = @isVolumeMuted});
+			target.CallService("volume_mute", new MediaPlayerVolumeMuteParameters{IsVolumeMuted = @isVolumeMuted});
+		}
+
+		///<summary>Mute a media player's volume.</summary>
+		///<param name="target">The IEnumerable<MediaPlayerEntity> to call this service for</param>
+		///<param name="isVolumeMuted">True/false for mute/unmute.</param>
+		public static void VolumeMute(this IEnumerable<MediaPlayerEntity> target, bool @isVolumeMuted)
+		{
+			target.CallService("volume_mute", new MediaPlayerVolumeMuteParameters{IsVolumeMuted = @isVolumeMuted});
 		}
 
 		///<summary>Set a media player's volume level.</summary>
-		public static void VolumeSet(this MediaPlayerEntity entity, MediaPlayerVolumeSetParameters data)
+		public static void VolumeSet(this MediaPlayerEntity target, MediaPlayerVolumeSetParameters data)
 		{
-			entity.CallService("volume_set", data);
+			target.CallService("volume_set", data);
 		}
 
 		///<summary>Set a media player's volume level.</summary>
-		///<param name="entity">The MediaPlayerEntity to call this service for</param>
+		public static void VolumeSet(this IEnumerable<MediaPlayerEntity> target, MediaPlayerVolumeSetParameters data)
+		{
+			target.CallService("volume_set", data);
+		}
+
+		///<summary>Set a media player's volume level.</summary>
+		///<param name="target">The MediaPlayerEntity to call this service for</param>
 		///<param name="volumeLevel">Volume level to set as float.</param>
-		public static void VolumeSet(this MediaPlayerEntity entity, double @volumeLevel)
+		public static void VolumeSet(this MediaPlayerEntity target, double @volumeLevel)
 		{
-			entity.CallService("volume_set", new MediaPlayerVolumeSetParameters{VolumeLevel = @volumeLevel});
+			target.CallService("volume_set", new MediaPlayerVolumeSetParameters{VolumeLevel = @volumeLevel});
+		}
+
+		///<summary>Set a media player's volume level.</summary>
+		///<param name="target">The IEnumerable<MediaPlayerEntity> to call this service for</param>
+		///<param name="volumeLevel">Volume level to set as float.</param>
+		public static void VolumeSet(this IEnumerable<MediaPlayerEntity> target, double @volumeLevel)
+		{
+			target.CallService("volume_set", new MediaPlayerVolumeSetParameters{VolumeLevel = @volumeLevel});
 		}
 
 		///<summary>Turn a media player volume up.</summary>
-		public static void VolumeUp(this MediaPlayerEntity entity)
+		public static void VolumeUp(this MediaPlayerEntity target)
 		{
-			entity.CallService("volume_up");
+			target.CallService("volume_up");
+		}
+
+		///<summary>Turn a media player volume up.</summary>
+		public static void VolumeUp(this IEnumerable<MediaPlayerEntity> target)
+		{
+			target.CallService("volume_up");
+		}
+	}
+
+	public static class NumberEntityExtensionMethods
+	{
+		///<summary>Set the value of a Number entity.</summary>
+		public static void SetValue(this NumberEntity target, NumberSetValueParameters data)
+		{
+			target.CallService("set_value", data);
+		}
+
+		///<summary>Set the value of a Number entity.</summary>
+		public static void SetValue(this IEnumerable<NumberEntity> target, NumberSetValueParameters data)
+		{
+			target.CallService("set_value", data);
+		}
+
+		///<summary>Set the value of a Number entity.</summary>
+		///<param name="target">The NumberEntity to call this service for</param>
+		///<param name="value">The target value the entity should be set to. eg: 42</param>
+		public static void SetValue(this NumberEntity target, string? @value = null)
+		{
+			target.CallService("set_value", new NumberSetValueParameters{Value = @value});
+		}
+
+		///<summary>Set the value of a Number entity.</summary>
+		///<param name="target">The IEnumerable<NumberEntity> to call this service for</param>
+		///<param name="value">The target value the entity should be set to. eg: 42</param>
+		public static void SetValue(this IEnumerable<NumberEntity> target, string? @value = null)
+		{
+			target.CallService("set_value", new NumberSetValueParameters{Value = @value});
 		}
 	}
 
 	public static class ReolinkDevEntityExtensionMethods
 	{
 		///<summary>Execute a PTZ command.</summary>
-		public static void PtzControl(this CameraEntity entity, ReolinkDevPtzControlParameters data)
+		public static void PtzControl(this CameraEntity target, ReolinkDevPtzControlParameters data)
 		{
-			entity.CallService("ptz_control", data);
+			target.CallService("ptz_control", data);
 		}
 
 		///<summary>Execute a PTZ command.</summary>
-		///<param name="entity">The CameraEntity to call this service for</param>
+		public static void PtzControl(this IEnumerable<CameraEntity> target, ReolinkDevPtzControlParameters data)
+		{
+			target.CallService("ptz_control", data);
+		}
+
+		///<summary>Execute a PTZ command.</summary>
+		///<param name="target">The CameraEntity to call this service for</param>
 		///<param name="entityId">Name(s) of the Reolink camera entity to execute the command on. eg: camera.frontdoor</param>
 		///<param name="command">Command to execute. Possible values are: AUTO DOWN FOCUSDEC FOCUSINC LEFT LEFTDOWN LEFTUP RIGHT RIGHTDOWN RIGHTUP STOP TOPOS UP ZOOMDEC ZOOMINC eg: LEFTUP</param>
 		///<param name="preset">(Optional) In case of the command TOPOS. The available presets are listed as attribute on the camera. eg: HOME</param>
 		///<param name="speed">(Optional) Speed at which the movement takes place. eg: 25</param>
-		public static void PtzControl(this CameraEntity entity, object? @entityId = null, object? @command = null, object? @preset = null, object? @speed = null)
+		public static void PtzControl(this CameraEntity target, object? @entityId = null, object? @command = null, object? @preset = null, object? @speed = null)
 		{
-			entity.CallService("ptz_control", new ReolinkDevPtzControlParameters{EntityId = @entityId, Command = @command, Preset = @preset, Speed = @speed});
+			target.CallService("ptz_control", new ReolinkDevPtzControlParameters{EntityId = @entityId, Command = @command, Preset = @preset, Speed = @speed});
+		}
+
+		///<summary>Execute a PTZ command.</summary>
+		///<param name="target">The IEnumerable<CameraEntity> to call this service for</param>
+		///<param name="entityId">Name(s) of the Reolink camera entity to execute the command on. eg: camera.frontdoor</param>
+		///<param name="command">Command to execute. Possible values are: AUTO DOWN FOCUSDEC FOCUSINC LEFT LEFTDOWN LEFTUP RIGHT RIGHTDOWN RIGHTUP STOP TOPOS UP ZOOMDEC ZOOMINC eg: LEFTUP</param>
+		///<param name="preset">(Optional) In case of the command TOPOS. The available presets are listed as attribute on the camera. eg: HOME</param>
+		///<param name="speed">(Optional) Speed at which the movement takes place. eg: 25</param>
+		public static void PtzControl(this IEnumerable<CameraEntity> target, object? @entityId = null, object? @command = null, object? @preset = null, object? @speed = null)
+		{
+			target.CallService("ptz_control", new ReolinkDevPtzControlParameters{EntityId = @entityId, Command = @command, Preset = @preset, Speed = @speed});
 		}
 
 		///<summary>For cameras that have Video-On-Demand Playback capability, this will query the camera and emit an reolink_dev-vod-data event for each matching VoD that matches the search parameters, it will also provide the thumbail path for the expected thumbnail.</summary>
-		public static void QueryVods(this CameraEntity entity, ReolinkDevQueryVodsParameters data)
+		public static void QueryVods(this CameraEntity target, ReolinkDevQueryVodsParameters data)
 		{
-			entity.CallService("query_vods", data);
+			target.CallService("query_vods", data);
 		}
 
 		///<summary>For cameras that have Video-On-Demand Playback capability, this will query the camera and emit an reolink_dev-vod-data event for each matching VoD that matches the search parameters, it will also provide the thumbail path for the expected thumbnail.</summary>
-		///<param name="entity">The CameraEntity to call this service for</param>
+		public static void QueryVods(this IEnumerable<CameraEntity> target, ReolinkDevQueryVodsParameters data)
+		{
+			target.CallService("query_vods", data);
+		}
+
+		///<summary>For cameras that have Video-On-Demand Playback capability, this will query the camera and emit an reolink_dev-vod-data event for each matching VoD that matches the search parameters, it will also provide the thumbail path for the expected thumbnail.</summary>
+		///<param name="target">The CameraEntity to call this service for</param>
 		///<param name="entityId">Name(s) of the Reolink camera entity to execute the command on. eg: camera.frontdoor</param>
 		///<param name="eventId">Event to emit as eg: VoD-query</param>
 		///<param name="start">Start of date range, if not provided will use the month playback range eg: 1/1/2021</param>
 		///<param name="end">End of date range, if not provided will use the current date and time eg: 1/31/2021</param>
-		public static void QueryVods(this CameraEntity entity, object? @entityId = null, object? @eventId = null, object? @start = null, object? @end = null)
+		public static void QueryVods(this CameraEntity target, object? @entityId = null, object? @eventId = null, object? @start = null, object? @end = null)
 		{
-			entity.CallService("query_vods", new ReolinkDevQueryVodsParameters{EntityId = @entityId, EventId = @eventId, Start = @start, End = @end});
+			target.CallService("query_vods", new ReolinkDevQueryVodsParameters{EntityId = @entityId, EventId = @eventId, Start = @start, End = @end});
+		}
+
+		///<summary>For cameras that have Video-On-Demand Playback capability, this will query the camera and emit an reolink_dev-vod-data event for each matching VoD that matches the search parameters, it will also provide the thumbail path for the expected thumbnail.</summary>
+		///<param name="target">The IEnumerable<CameraEntity> to call this service for</param>
+		///<param name="entityId">Name(s) of the Reolink camera entity to execute the command on. eg: camera.frontdoor</param>
+		///<param name="eventId">Event to emit as eg: VoD-query</param>
+		///<param name="start">Start of date range, if not provided will use the month playback range eg: 1/1/2021</param>
+		///<param name="end">End of date range, if not provided will use the current date and time eg: 1/31/2021</param>
+		public static void QueryVods(this IEnumerable<CameraEntity> target, object? @entityId = null, object? @eventId = null, object? @start = null, object? @end = null)
+		{
+			target.CallService("query_vods", new ReolinkDevQueryVodsParameters{EntityId = @entityId, EventId = @eventId, Start = @start, End = @end});
 		}
 
 		///<summary>Optimizing brightness and contrast levels to compensate for differences between dark and bright objects using either BLC or WDR mode. This may improve image clarity in high contrast situations, but it should be tested at different times of the day and night to ensure there is no negative effect.</summary>
-		public static void SetBacklight(this CameraEntity entity, ReolinkDevSetBacklightParameters data)
+		public static void SetBacklight(this CameraEntity target, ReolinkDevSetBacklightParameters data)
 		{
-			entity.CallService("set_backlight", data);
+			target.CallService("set_backlight", data);
 		}
 
 		///<summary>Optimizing brightness and contrast levels to compensate for differences between dark and bright objects using either BLC or WDR mode. This may improve image clarity in high contrast situations, but it should be tested at different times of the day and night to ensure there is no negative effect.</summary>
-		///<param name="entity">The CameraEntity to call this service for</param>
+		public static void SetBacklight(this IEnumerable<CameraEntity> target, ReolinkDevSetBacklightParameters data)
+		{
+			target.CallService("set_backlight", data);
+		}
+
+		///<summary>Optimizing brightness and contrast levels to compensate for differences between dark and bright objects using either BLC or WDR mode. This may improve image clarity in high contrast situations, but it should be tested at different times of the day and night to ensure there is no negative effect.</summary>
+		///<param name="target">The CameraEntity to call this service for</param>
 		///<param name="entityId">Name(s) of the Reolink camera entity to execute the command on. eg: camera.frontdoor</param>
 		///<param name="mode">The backlight parameter supports the following values:   BACKLIGHTCONTROL: use Backlight Control   DYNAMICRANGECONTROL: use Dynamic Range Control   OFF: no optimization eg: DYNAMICRANGECONTROL</param>
-		public static void SetBacklight(this CameraEntity entity, object? @entityId = null, object? @mode = null)
+		public static void SetBacklight(this CameraEntity target, object? @entityId = null, object? @mode = null)
 		{
-			entity.CallService("set_backlight", new ReolinkDevSetBacklightParameters{EntityId = @entityId, Mode = @mode});
+			target.CallService("set_backlight", new ReolinkDevSetBacklightParameters{EntityId = @entityId, Mode = @mode});
+		}
+
+		///<summary>Optimizing brightness and contrast levels to compensate for differences between dark and bright objects using either BLC or WDR mode. This may improve image clarity in high contrast situations, but it should be tested at different times of the day and night to ensure there is no negative effect.</summary>
+		///<param name="target">The IEnumerable<CameraEntity> to call this service for</param>
+		///<param name="entityId">Name(s) of the Reolink camera entity to execute the command on. eg: camera.frontdoor</param>
+		///<param name="mode">The backlight parameter supports the following values:   BACKLIGHTCONTROL: use Backlight Control   DYNAMICRANGECONTROL: use Dynamic Range Control   OFF: no optimization eg: DYNAMICRANGECONTROL</param>
+		public static void SetBacklight(this IEnumerable<CameraEntity> target, object? @entityId = null, object? @mode = null)
+		{
+			target.CallService("set_backlight", new ReolinkDevSetBacklightParameters{EntityId = @entityId, Mode = @mode});
 		}
 
 		///<summary>Set day and night parameter.</summary>
-		public static void SetDaynight(this CameraEntity entity, ReolinkDevSetDaynightParameters data)
+		public static void SetDaynight(this CameraEntity target, ReolinkDevSetDaynightParameters data)
 		{
-			entity.CallService("set_daynight", data);
+			target.CallService("set_daynight", data);
 		}
 
 		///<summary>Set day and night parameter.</summary>
-		///<param name="entity">The CameraEntity to call this service for</param>
+		public static void SetDaynight(this IEnumerable<CameraEntity> target, ReolinkDevSetDaynightParameters data)
+		{
+			target.CallService("set_daynight", data);
+		}
+
+		///<summary>Set day and night parameter.</summary>
+		///<param name="target">The CameraEntity to call this service for</param>
 		///<param name="entityId">Name(s) of the Reolink camera entity to execute the command on. eg: camera.frontdoor</param>
 		///<param name="mode">The day and night mode parameter supports the following values:   AUTO: Auto switch between black & white mode   COLOR: Always record videos in color mode   BLACKANDWHITE: Always record videos in black & white mode eg: AUTO</param>
-		public static void SetDaynight(this CameraEntity entity, object? @entityId = null, object? @mode = null)
+		public static void SetDaynight(this CameraEntity target, object? @entityId = null, object? @mode = null)
 		{
-			entity.CallService("set_daynight", new ReolinkDevSetDaynightParameters{EntityId = @entityId, Mode = @mode});
+			target.CallService("set_daynight", new ReolinkDevSetDaynightParameters{EntityId = @entityId, Mode = @mode});
+		}
+
+		///<summary>Set day and night parameter.</summary>
+		///<param name="target">The IEnumerable<CameraEntity> to call this service for</param>
+		///<param name="entityId">Name(s) of the Reolink camera entity to execute the command on. eg: camera.frontdoor</param>
+		///<param name="mode">The day and night mode parameter supports the following values:   AUTO: Auto switch between black & white mode   COLOR: Always record videos in color mode   BLACKANDWHITE: Always record videos in black & white mode eg: AUTO</param>
+		public static void SetDaynight(this IEnumerable<CameraEntity> target, object? @entityId = null, object? @mode = null)
+		{
+			target.CallService("set_daynight", new ReolinkDevSetDaynightParameters{EntityId = @entityId, Mode = @mode});
 		}
 
 		///<summary>Set the motion detection sensitivity.</summary>
-		public static void SetSensitivity(this CameraEntity entity, ReolinkDevSetSensitivityParameters data)
+		public static void SetSensitivity(this CameraEntity target, ReolinkDevSetSensitivityParameters data)
 		{
-			entity.CallService("set_sensitivity", data);
+			target.CallService("set_sensitivity", data);
 		}
 
 		///<summary>Set the motion detection sensitivity.</summary>
-		///<param name="entity">The CameraEntity to call this service for</param>
+		public static void SetSensitivity(this IEnumerable<CameraEntity> target, ReolinkDevSetSensitivityParameters data)
+		{
+			target.CallService("set_sensitivity", data);
+		}
+
+		///<summary>Set the motion detection sensitivity.</summary>
+		///<param name="target">The CameraEntity to call this service for</param>
 		///<param name="entityId">Name(s) of the Reolink camera entity to execute the command on. eg: camera.frontdoor</param>
 		///<param name="sensitivity">New sensitivity, value between 1 (low sensitivity) and 50 (high sensitivity) eg: 25</param>
 		///<param name="preset">(Optional) Set the sensitivity of a specific preset (time schedule). When no value is supplied, all presets will be changed.</param>
-		public static void SetSensitivity(this CameraEntity entity, object? @entityId = null, object? @sensitivity = null, object? @preset = null)
+		public static void SetSensitivity(this CameraEntity target, object? @entityId = null, object? @sensitivity = null, object? @preset = null)
 		{
-			entity.CallService("set_sensitivity", new ReolinkDevSetSensitivityParameters{EntityId = @entityId, Sensitivity = @sensitivity, Preset = @preset});
+			target.CallService("set_sensitivity", new ReolinkDevSetSensitivityParameters{EntityId = @entityId, Sensitivity = @sensitivity, Preset = @preset});
+		}
+
+		///<summary>Set the motion detection sensitivity.</summary>
+		///<param name="target">The IEnumerable<CameraEntity> to call this service for</param>
+		///<param name="entityId">Name(s) of the Reolink camera entity to execute the command on. eg: camera.frontdoor</param>
+		///<param name="sensitivity">New sensitivity, value between 1 (low sensitivity) and 50 (high sensitivity) eg: 25</param>
+		///<param name="preset">(Optional) Set the sensitivity of a specific preset (time schedule). When no value is supplied, all presets will be changed.</param>
+		public static void SetSensitivity(this IEnumerable<CameraEntity> target, object? @entityId = null, object? @sensitivity = null, object? @preset = null)
+		{
+			target.CallService("set_sensitivity", new ReolinkDevSetSensitivityParameters{EntityId = @entityId, Sensitivity = @sensitivity, Preset = @preset});
 		}
 	}
 
 	public static class SceneEntityExtensionMethods
 	{
 		///<summary>Activate a scene.</summary>
-		public static void TurnOn(this SceneEntity entity, SceneTurnOnParameters data)
+		public static void TurnOn(this SceneEntity target, SceneTurnOnParameters data)
 		{
-			entity.CallService("turn_on", data);
+			target.CallService("turn_on", data);
 		}
 
 		///<summary>Activate a scene.</summary>
-		///<param name="entity">The SceneEntity to call this service for</param>
-		///<param name="transition">Transition duration it takes to bring devices to the state defined in the scene.</param>
-		public static void TurnOn(this SceneEntity entity, long? @transition = null)
+		public static void TurnOn(this IEnumerable<SceneEntity> target, SceneTurnOnParameters data)
 		{
-			entity.CallService("turn_on", new SceneTurnOnParameters{Transition = @transition});
+			target.CallService("turn_on", data);
+		}
+
+		///<summary>Activate a scene.</summary>
+		///<param name="target">The SceneEntity to call this service for</param>
+		///<param name="transition">Transition duration it takes to bring devices to the state defined in the scene.</param>
+		public static void TurnOn(this SceneEntity target, long? @transition = null)
+		{
+			target.CallService("turn_on", new SceneTurnOnParameters{Transition = @transition});
+		}
+
+		///<summary>Activate a scene.</summary>
+		///<param name="target">The IEnumerable<SceneEntity> to call this service for</param>
+		///<param name="transition">Transition duration it takes to bring devices to the state defined in the scene.</param>
+		public static void TurnOn(this IEnumerable<SceneEntity> target, long? @transition = null)
+		{
+			target.CallService("turn_on", new SceneTurnOnParameters{Transition = @transition});
 		}
 	}
 
 	public static class SwitchEntityExtensionMethods
 	{
 		///<summary>Toggles a switch state</summary>
-		public static void Toggle(this SwitchEntity entity)
+		public static void Toggle(this SwitchEntity target)
 		{
-			entity.CallService("toggle");
+			target.CallService("toggle");
+		}
+
+		///<summary>Toggles a switch state</summary>
+		public static void Toggle(this IEnumerable<SwitchEntity> target)
+		{
+			target.CallService("toggle");
 		}
 
 		///<summary>Turn a switch off</summary>
-		public static void TurnOff(this SwitchEntity entity)
+		public static void TurnOff(this SwitchEntity target)
 		{
-			entity.CallService("turn_off");
+			target.CallService("turn_off");
+		}
+
+		///<summary>Turn a switch off</summary>
+		public static void TurnOff(this IEnumerable<SwitchEntity> target)
+		{
+			target.CallService("turn_off");
 		}
 
 		///<summary>Turn a switch on</summary>
-		public static void TurnOn(this SwitchEntity entity)
+		public static void TurnOn(this SwitchEntity target)
 		{
-			entity.CallService("turn_on");
+			target.CallService("turn_on");
+		}
+
+		///<summary>Turn a switch on</summary>
+		public static void TurnOn(this IEnumerable<SwitchEntity> target)
+		{
+			target.CallService("turn_on");
+		}
+	}
+
+	public static class UpdateEntityExtensionMethods
+	{
+		///<summary>Removes the skipped version marker from an update.</summary>
+		public static void ClearSkipped(this UpdateEntity target)
+		{
+			target.CallService("clear_skipped");
+		}
+
+		///<summary>Removes the skipped version marker from an update.</summary>
+		public static void ClearSkipped(this IEnumerable<UpdateEntity> target)
+		{
+			target.CallService("clear_skipped");
+		}
+
+		///<summary>Install an update for this device or service</summary>
+		public static void Install(this UpdateEntity target, UpdateInstallParameters data)
+		{
+			target.CallService("install", data);
+		}
+
+		///<summary>Install an update for this device or service</summary>
+		public static void Install(this IEnumerable<UpdateEntity> target, UpdateInstallParameters data)
+		{
+			target.CallService("install", data);
+		}
+
+		///<summary>Install an update for this device or service</summary>
+		///<param name="target">The UpdateEntity to call this service for</param>
+		///<param name="version">Version to install, if omitted, the latest version will be installed. eg: 1.0.0</param>
+		///<param name="backup">Backup before installing the update, if supported by the integration.</param>
+		public static void Install(this UpdateEntity target, string? @version = null, bool? @backup = null)
+		{
+			target.CallService("install", new UpdateInstallParameters{Version = @version, Backup = @backup});
+		}
+
+		///<summary>Install an update for this device or service</summary>
+		///<param name="target">The IEnumerable<UpdateEntity> to call this service for</param>
+		///<param name="version">Version to install, if omitted, the latest version will be installed. eg: 1.0.0</param>
+		///<param name="backup">Backup before installing the update, if supported by the integration.</param>
+		public static void Install(this IEnumerable<UpdateEntity> target, string? @version = null, bool? @backup = null)
+		{
+			target.CallService("install", new UpdateInstallParameters{Version = @version, Backup = @backup});
+		}
+
+		///<summary>Mark currently available update as skipped.</summary>
+		public static void Skip(this UpdateEntity target)
+		{
+			target.CallService("skip");
+		}
+
+		///<summary>Mark currently available update as skipped.</summary>
+		public static void Skip(this IEnumerable<UpdateEntity> target)
+		{
+			target.CallService("skip");
 		}
 	}
 }

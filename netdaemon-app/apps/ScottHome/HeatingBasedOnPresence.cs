@@ -29,7 +29,7 @@ public class HeatingBasedOnPresence
         _logger.LogInformation("{App} started", nameof(HeatingBasedOnPresence));
         var entities = new Entities(ha);
         var homeOccupancy = entities.Sensor.HomeOccupancy;
-        var thermostat = entities.Climate.Thermostat1;
+        var thermostat = entities.Climate.Thermostat;
 
         // When people have moved far from the house
         SubscribeMovedOutsideHeatZone(entities.DeviceTracker.ScottSXr, homeOccupancy, thermostat);
