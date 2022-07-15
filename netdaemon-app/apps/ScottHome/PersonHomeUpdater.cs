@@ -20,6 +20,7 @@ public class PersonHomeUpdater
     private readonly IHaContext _ha;
     private readonly ILogger<PersonHomeUpdater> _logger;
     private readonly IMqttEntityManager _mqttEntityManager;
+    private string LastPersonUpdate = "unknown";
 
     public PersonHomeUpdater(IHaContext ha, ILogger<PersonHomeUpdater> logger, INetDaemonScheduler scheduler,
         IMqttEntityManager mqttEntityManager)
@@ -63,6 +64,8 @@ public class PersonHomeUpdater
     {
         _logger.LogDebug("{EntityId} changed state to {NewState}", entityId, newState);
 
+        LastPersonUpdate = entityId;
+        
         var peopleStates = _ha.GetAllEntities()
             .Where(e => e.EntityId != entityId && MyHomeEntityList.GetFamily.Contains(e.EntityId))
             .Select(e => e.State)
@@ -91,7 +94,7 @@ public class PersonHomeUpdater
             {
                 icon = verifiedState == StateEnums.HomePresence.not_occupied ? NotOccupiedIcon : OccupiedIcon
             });
-            _ha.WriteLogbook(EntityId, $"Home is now {verifiedState}");
+            _ha.WriteLogbook(EntityId, $"Home is now {verifiedState}, due to an update from {LastPersonUpdate}");
         }
     }
 }
