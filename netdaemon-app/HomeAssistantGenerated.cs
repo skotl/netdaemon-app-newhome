@@ -115,6 +115,8 @@ namespace HomeAssistantGenerated
 			_haContext = haContext;
 		}
 
+		///<summary>Backups Stale</summary>
+		public BinarySensorEntity BackupsStale => new(_haContext, "binary_sensor.backups_stale");
 		///<summary>ESPresense Downstairs</summary>
 		public BinarySensorEntity EspresenseDownstairs => new(_haContext, "binary_sensor.espresense_downstairs");
 		///<summary>ESPresense Scott Office</summary>
@@ -135,12 +137,8 @@ namespace HomeAssistantGenerated
 		public BinarySensorEntity KitchenDoorContact => new(_haContext, "binary_sensor.kitchen_door_contact");
 		///<summary>Kitchen Door tamper</summary>
 		public BinarySensorEntity KitchenDoorTamper => new(_haContext, "binary_sensor.kitchen_door_tamper");
-		///<summary>Manager Test</summary>
-		public BinarySensorEntity ManagerTest => new(_haContext, "binary_sensor.manager_test");
 		///<summary>Remote UI</summary>
 		public BinarySensorEntity RemoteUi => new(_haContext, "binary_sensor.remote_ui");
-		///<summary>HotDog sensor</summary>
-		public BinarySensorEntity S2 => new(_haContext, "binary_sensor.s2");
 		///<summary>Scott's XR Focus</summary>
 		public BinarySensorEntity ScottSXrFocus => new(_haContext, "binary_sensor.scott_s_xr_focus");
 		///<summary>Sun Room Door contact</summary>
@@ -249,32 +247,6 @@ namespace HomeAssistantGenerated
 		public InputBooleanEntity DevNetdaemonAppsHelloApp => new(_haContext, "input_boolean.dev_netdaemon_apps_hello_app");
 		///<summary>dev_netdaemon_apps_yaml_app</summary>
 		public InputBooleanEntity DevNetdaemonAppsYamlApp => new(_haContext, "input_boolean.dev_netdaemon_apps_yaml_app");
-		///<summary>dev_netdaemon_daemonapp_apps_scott_home_front_door_locker</summary>
-		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeFrontDoorLocker => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_front_door_locker");
-		///<summary>dev_netdaemon_daemonapp_apps_scott_home_frost_sensor_notifications</summary>
-		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeFrostSensorNotifications => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_frost_sensor_notifications");
-		///<summary>dev_netdaemon_daemonapp_apps_scott_home_ha_services_living_room_lights_service</summary>
-		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeHaServicesLivingRoomLightsService => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_ha_services_living_room_lights_service");
-		///<summary>dev_netdaemon_daemonapp_apps_scott_home_ha_services_mqtt_delete_debug_entities_service</summary>
-		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeHaServicesMqttDeleteDebugEntitiesService => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_ha_services_mqtt_delete_debug_entities_service");
-		///<summary>dev_netdaemon_daemonapp_apps_scott_home_ha_services_set_frost_expected_sensor_service</summary>
-		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeHaServicesSetFrostExpectedSensorService => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_ha_services_set_frost_expected_sensor_service");
-		///<summary>dev_netdaemon_daemonapp_apps_scott_home_ha_services_tides_fetcher_service</summary>
-		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeHaServicesTidesFetcherService => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_ha_services_tides_fetcher_service");
-		///<summary>dev_netdaemon_daemonapp_apps_scott_home_heating_based_on_presence</summary>
-		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeHeatingBasedOnPresence => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_heating_based_on_presence");
-		///<summary>dev_netdaemon_daemonapp_apps_scott_home_living_room_lights_service</summary>
-		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeLivingRoomLightsService => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_living_room_lights_service");
-		///<summary>dev_netdaemon_daemonapp_apps_scott_home_mqtt_delete_debug_entities_service</summary>
-		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeMqttDeleteDebugEntitiesService => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_mqtt_delete_debug_entities_service");
-		///<summary>dev_netdaemon_daemonapp_apps_scott_home_mqtt_tester</summary>
-		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeMqttTester => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_mqtt_tester");
-		///<summary>dev_netdaemon_daemonapp_apps_scott_home_person_home_updater</summary>
-		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomePersonHomeUpdater => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_person_home_updater");
-		///<summary>dev_netdaemon_daemonapp_apps_scott_home_set_frost_expected_sensor_service</summary>
-		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeSetFrostExpectedSensorService => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_set_frost_expected_sensor_service");
-		///<summary>dev_netdaemon_daemonapp_apps_scott_home_tides_fetcher_service</summary>
-		public InputBooleanEntity DevNetdaemonDaemonappAppsScottHomeTidesFetcherService => new(_haContext, "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_tides_fetcher_service");
 		///<summary>dev_netdaemon_debug_host_apps_extensions_mqtt_entity_manager_app</summary>
 		public InputBooleanEntity DevNetdaemonDebugHostAppsExtensionsMqttEntityManagerApp => new(_haContext, "input_boolean.dev_netdaemon_debug_host_apps_extensions_mqtt_entity_manager_app");
 		///<summary>dev_netdaemon_debug_host_apps_extensions_mtt_entity_subscription_app</summary>
@@ -285,18 +257,18 @@ namespace HomeAssistantGenerated
 		public InputBooleanEntity NetdaemonDaemonappAppsScottHomeFrontDoorLocker => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_front_door_locker");
 		///<summary>netdaemon_daemonapp_apps_scott_home_frost_sensor_notifications</summary>
 		public InputBooleanEntity NetdaemonDaemonappAppsScottHomeFrostSensorNotifications => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_frost_sensor_notifications");
+		///<summary>netdaemon_daemonapp_apps_scott_home_ha_services_living_room_lights_service</summary>
+		public InputBooleanEntity NetdaemonDaemonappAppsScottHomeHaServicesLivingRoomLightsService => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_ha_services_living_room_lights_service");
+		///<summary>netdaemon_daemonapp_apps_scott_home_ha_services_mqtt_delete_debug_entities_service</summary>
+		public InputBooleanEntity NetdaemonDaemonappAppsScottHomeHaServicesMqttDeleteDebugEntitiesService => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_ha_services_mqtt_delete_debug_entities_service");
+		///<summary>netdaemon_daemonapp_apps_scott_home_ha_services_set_frost_expected_sensor_service</summary>
+		public InputBooleanEntity NetdaemonDaemonappAppsScottHomeHaServicesSetFrostExpectedSensorService => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_ha_services_set_frost_expected_sensor_service");
+		///<summary>netdaemon_daemonapp_apps_scott_home_ha_services_tides_fetcher_service</summary>
+		public InputBooleanEntity NetdaemonDaemonappAppsScottHomeHaServicesTidesFetcherService => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_ha_services_tides_fetcher_service");
 		///<summary>netdaemon_daemonapp_apps_scott_home_heating_based_on_presence</summary>
 		public InputBooleanEntity NetdaemonDaemonappAppsScottHomeHeatingBasedOnPresence => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_heating_based_on_presence");
-		///<summary>netdaemon_daemonapp_apps_scott_home_living_room_lights_service</summary>
-		public InputBooleanEntity NetdaemonDaemonappAppsScottHomeLivingRoomLightsService => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_living_room_lights_service");
-		///<summary>netdaemon_daemonapp_apps_scott_home_mqtt_tester</summary>
-		public InputBooleanEntity NetdaemonDaemonappAppsScottHomeMqttTester => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_mqtt_tester");
 		///<summary>netdaemon_daemonapp_apps_scott_home_person_home_updater</summary>
 		public InputBooleanEntity NetdaemonDaemonappAppsScottHomePersonHomeUpdater => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_person_home_updater");
-		///<summary>netdaemon_daemonapp_apps_scott_home_set_frost_expected_sensor_service</summary>
-		public InputBooleanEntity NetdaemonDaemonappAppsScottHomeSetFrostExpectedSensorService => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_set_frost_expected_sensor_service");
-		///<summary>netdaemon_daemonapp_apps_scott_home_tides_fetcher_service</summary>
-		public InputBooleanEntity NetdaemonDaemonappAppsScottHomeTidesFetcherService => new(_haContext, "input_boolean.netdaemon_daemonapp_apps_scott_home_tides_fetcher_service");
 	}
 
 	public partial class LightEntities
@@ -531,8 +503,14 @@ namespace HomeAssistantGenerated
 		public NumericSensorEntity Power => new(_haContext, "sensor.power");
 		///<summary>Processor use</summary>
 		public NumericSensorEntity ProcessorUse => new(_haContext, "sensor.processor_use");
-		///<summary>Rain Next Hour4</summary>
-		public NumericSensorEntity RainNexthour4 => new(_haContext, "sensor.rain_nexthour4");
+		///<summary>Queensferry (Edinburgh) Probability of Precipitation 3-Hourly</summary>
+		public NumericSensorEntity QueensferryEdinburghProbabilityOfPrecipitation3Hourly => new(_haContext, "sensor.queensferry_edinburgh_probability_of_precipitation_3_hourly");
+		///<summary>Queensferry (Edinburgh) Temperature 3-Hourly</summary>
+		public NumericSensorEntity QueensferryEdinburghTemperature3Hourly => new(_haContext, "sensor.queensferry_edinburgh_temperature_3_hourly");
+		///<summary>Queensferry (Edinburgh) UV Index 3-Hourly</summary>
+		public NumericSensorEntity QueensferryEdinburghUvIndex3Hourly => new(_haContext, "sensor.queensferry_edinburgh_uv_index_3_hourly");
+		///<summary>Queensferry (Edinburgh) Wind Speed 3-Hourly</summary>
+		public NumericSensorEntity QueensferryEdinburghWindSpeed3Hourly => new(_haContext, "sensor.queensferry_edinburgh_wind_speed_3_hourly");
 		///<summary>scott office battery level</summary>
 		public NumericSensorEntity ScottOfficeBatteryLevel => new(_haContext, "sensor.scott_office_battery_level");
 		///<summary>Scott's XR Average Active Pace</summary>
@@ -569,8 +547,8 @@ namespace HomeAssistantGenerated
 		public NumericSensorEntity TheosIphone6sStorage => new(_haContext, "sensor.theos_iphone_6s_storage");
 		///<summary>Thermostat Battery Level</summary>
 		public NumericSensorEntity ThermostatBatteryLevel => new(_haContext, "sensor.thermostat_battery_level");
-		///<summary>basic_sensor</summary>
-		public SensorEntity BasicSensor => new(_haContext, "sensor.basic_sensor");
+		///<summary>Backup State</summary>
+		public SensorEntity BackupState => new(_haContext, "sensor.backup_state");
 		///<summary>Fire TV next Alarm</summary>
 		public SensorEntity FireTvNextAlarm => new(_haContext, "sensor.fire_tv_next_alarm");
 		///<summary>Fire TV next Reminder</summary>
@@ -621,8 +599,8 @@ namespace HomeAssistantGenerated
 		public SensorEntity KitchenEchoNextTimer => new(_haContext, "sensor.kitchen_echo_next_timer");
 		///<summary>Leith Tides</summary>
 		public SensorEntity LeithTides => new(_haContext, "sensor.leith_tides");
-		///<summary>A special kind of sensor</summary>
-		public SensorEntity MyId => new(_haContext, "sensor.my_id");
+		///<summary>Queensferry (Edinburgh) Weather 3-Hourly</summary>
+		public SensorEntity QueensferryEdinburghWeather3Hourly => new(_haContext, "sensor.queensferry_edinburgh_weather_3_hourly");
 		///<summary>Scott iPhone</summary>
 		public SensorEntity ScottIphone => new(_haContext, "sensor.scott_iphone");
 		///<summary>Parents room echo next Alarm</summary>
@@ -773,8 +751,6 @@ namespace HomeAssistantGenerated
 		public SwitchEntity GarageEchoDotRepeatSwitch => new(_haContext, "switch.garage_echo_dot_repeat_switch");
 		///<summary>Garage echo dot shuffle switch</summary>
 		public SwitchEntity GarageEchoDotShuffleSwitch => new(_haContext, "switch.garage_echo_dot_shuffle_switch");
-		///<summary>Helto switch</summary>
-		public SwitchEntity HeltoSwitch => new(_haContext, "switch.helto_switch");
 		///<summary>Jo's echo do not disturb switch</summary>
 		public SwitchEntity JoSEchoDoNotDisturbSwitch => new(_haContext, "switch.jo_s_echo_do_not_disturb_switch");
 		///<summary>Jo's echo repeat switch</summary>
@@ -813,10 +789,6 @@ namespace HomeAssistantGenerated
 		public SwitchEntity SunroomEchoDotRepeatSwitch => new(_haContext, "switch.sunroom_echo_dot_repeat_switch");
 		///<summary>Sunroom Echo Dot shuffle switch</summary>
 		public SwitchEntity SunroomEchoDotShuffleSwitch => new(_haContext, "switch.sunroom_echo_dot_shuffle_switch");
-		///<summary>Switch One</summary>
-		public SwitchEntity SwitchOne => new(_haContext, "switch.switch_one");
-		///<summary>Switch Two</summary>
-		public SwitchEntity SwitchTwo => new(_haContext, "switch.switch_two");
 		///<summary>Theo's Echo do not disturb switch</summary>
 		public SwitchEntity TheoSEchoDoNotDisturbSwitch => new(_haContext, "switch.theo_s_echo_do_not_disturb_switch");
 		///<summary>Theo's Echo repeat switch</summary>
@@ -875,8 +847,10 @@ namespace HomeAssistantGenerated
 			_haContext = haContext;
 		}
 
-		///<summary>Home</summary>
-		public WeatherEntity Home => new(_haContext, "weather.home");
+		///<summary>Met Office Queensferry (Edinburgh) 3-Hourly</summary>
+		public WeatherEntity MetOfficeQueensferryEdinburgh3Hourly => new(_haContext, "weather.met_office_queensferry_edinburgh_3_hourly");
+		///<summary>Met Office Queensferry (Edinburgh) Daily</summary>
+		public WeatherEntity MetOfficeQueensferryEdinburghDaily => new(_haContext, "weather.met_office_queensferry_edinburgh_daily");
 	}
 
 	public partial class ZoneEntities
@@ -933,9 +907,6 @@ namespace HomeAssistantGenerated
 
 	public record BinarySensorAttributes
 	{
-		[JsonPropertyName("attribute1")]
-		public string? Attribute1 { get; init; }
-
 		[JsonPropertyName("bus_event_id")]
 		public string? BusEventId { get; init; }
 
@@ -1192,12 +1163,6 @@ namespace HomeAssistantGenerated
 
 	public record LightAttributes
 	{
-		[JsonPropertyName("brightness")]
-		public double? Brightness { get; init; }
-
-		[JsonPropertyName("color_mode")]
-		public string? ColorMode { get; init; }
-
 		[JsonPropertyName("dynamics")]
 		public string? Dynamics { get; init; }
 
@@ -1465,6 +1430,9 @@ namespace HomeAssistantGenerated
 
 	public record NumericSensorAttributes
 	{
+		[JsonPropertyName("attribution")]
+		public string? Attribution { get; init; }
+
 		[JsonPropertyName("Available")]
 		public string? Available { get; init; }
 
@@ -1486,6 +1454,9 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("icon")]
 		public string? Icon { get; init; }
 
+		[JsonPropertyName("last_update")]
+		public string? LastUpdate { get; init; }
+
 		[JsonPropertyName("marker_high_level")]
 		public double? MarkerHighLevel { get; init; }
 
@@ -1497,6 +1468,15 @@ namespace HomeAssistantGenerated
 
 		[JsonPropertyName("restored")]
 		public bool? Restored { get; init; }
+
+		[JsonPropertyName("sensor_id")]
+		public string? SensorId { get; init; }
+
+		[JsonPropertyName("site_id")]
+		public string? SiteId { get; init; }
+
+		[JsonPropertyName("site_name")]
+		public string? SiteName { get; init; }
 
 		[JsonPropertyName("state_class")]
 		public string? StateClass { get; init; }
@@ -1532,6 +1512,18 @@ namespace HomeAssistantGenerated
 
 		[JsonPropertyName("Areas Of Interest")]
 		public string? AreasOfInterest { get; init; }
+
+		[JsonPropertyName("attribution")]
+		public string? Attribution { get; init; }
+
+		[JsonPropertyName("backups")]
+		public IReadOnlyList<object>? Backups { get; init; }
+
+		[JsonPropertyName("backups_in_google_drive")]
+		public double? BackupsInGoogleDrive { get; init; }
+
+		[JsonPropertyName("backups_in_home_assistant")]
+		public double? BackupsInHomeAssistant { get; init; }
 
 		[JsonPropertyName("Carrier ID")]
 		public string? CarrierID { get; init; }
@@ -1584,6 +1576,15 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("ISO Country Code")]
 		public string? ISOCountryCode { get; init; }
 
+		[JsonPropertyName("last_backup")]
+		public string? LastBackup { get; init; }
+
+		[JsonPropertyName("last_update")]
+		public string? LastUpdate { get; init; }
+
+		[JsonPropertyName("last_uploaded")]
+		public string? LastUploaded { get; init; }
+
 		[JsonPropertyName("Locality")]
 		public string? Locality { get; init; }
 
@@ -1626,8 +1627,23 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("repositories")]
 		public IReadOnlyList<object>? Repositories { get; init; }
 
+		[JsonPropertyName("sensor_id")]
+		public string? SensorId { get; init; }
+
 		[JsonPropertyName("serial")]
 		public string? Serial { get; init; }
+
+		[JsonPropertyName("site_id")]
+		public string? SiteId { get; init; }
+
+		[JsonPropertyName("site_name")]
+		public string? SiteName { get; init; }
+
+		[JsonPropertyName("size_in_google_drive")]
+		public string? SizeInGoogleDrive { get; init; }
+
+		[JsonPropertyName("size_in_home_assistant")]
+		public string? SizeInHomeAssistant { get; init; }
 
 		[JsonPropertyName("sorted_active")]
 		public string? SortedActive { get; init; }
@@ -1668,11 +1684,8 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("Types")]
 		public IReadOnlyList<string>? Types { get; init; }
 
-		[JsonPropertyName("updated")]
-		public string? Updated_0 { get; init; }
-
 		[JsonPropertyName("Updated")]
-		public string? Updated_1 { get; init; }
+		public string? Updated { get; init; }
 
 		[JsonPropertyName("uri_supported")]
 		public IReadOnlyList<string>? UriSupported { get; init; }
@@ -1826,9 +1839,6 @@ namespace HomeAssistantGenerated
 		[JsonPropertyName("precipitation_unit")]
 		public string? PrecipitationUnit { get; init; }
 
-		[JsonPropertyName("pressure")]
-		public double? Pressure { get; init; }
-
 		[JsonPropertyName("pressure_unit")]
 		public string? PressureUnit { get; init; }
 
@@ -1842,7 +1852,7 @@ namespace HomeAssistantGenerated
 		public string? VisibilityUnit { get; init; }
 
 		[JsonPropertyName("wind_bearing")]
-		public double? WindBearing { get; init; }
+		public string? WindBearing { get; init; }
 
 		[JsonPropertyName("wind_speed")]
 		public double? WindSpeed { get; init; }
@@ -5043,6 +5053,16 @@ namespace HomeAssistantGenerated
 			_haContext = haContext;
 		}
 
+		public void CheckForFrost()
+		{
+			_haContext.CallService("netdaemon", "check_for_frost", null);
+		}
+
+		public void DeleteDebugEntities()
+		{
+			_haContext.CallService("netdaemon", "delete_debug_entities", null);
+		}
+
 		///<summary>Create an entity</summary>
 		public void EntityCreate(NetdaemonEntityCreateParameters data)
 		{
@@ -5090,6 +5110,21 @@ namespace HomeAssistantGenerated
 		public void EntityUpdate(object? @entityId = null, object? @state = null, object? @icon = null, object? @unit = null, object? @options = null, object? @attributes = null)
 		{
 			_haContext.CallService("netdaemon", "entity_update", null, new NetdaemonEntityUpdateParameters{EntityId = @entityId, State = @state, Icon = @icon, Unit = @unit, Options = @options, Attributes = @attributes});
+		}
+
+		public void GetTidalEvents()
+		{
+			_haContext.CallService("netdaemon", "get_tidal_events", null);
+		}
+
+		public void LivingroomLightsOff()
+		{
+			_haContext.CallService("netdaemon", "livingroom_lights_off", null);
+		}
+
+		public void LivingroomLightsOn()
+		{
+			_haContext.CallService("netdaemon", "livingroom_lights_on", null);
 		}
 
 		///<summary>Register a new service for netdaemon, used by the daemon and not to be used by users</summary>

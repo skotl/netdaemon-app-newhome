@@ -5,7 +5,7 @@ public class WeatherForecast
     [System.Text.Json.Serialization.JsonPropertyNameAttribute("condition")]
     public string? Condition { get; init; }
 
-    [System.Text.Json.Serialization.JsonPropertyNameAttribute("precipitation")]
+    [System.Text.Json.Serialization.JsonPropertyNameAttribute("precipitation_probability")]
     public double? Precipitation { get; init; }
 
     [System.Text.Json.Serialization.JsonPropertyNameAttribute("temperature")]
@@ -18,7 +18,7 @@ public class WeatherForecast
     public DateTime? DateTime { get; init; }
     
     [System.Text.Json.Serialization.JsonPropertyNameAttribute("wind_bearing")]
-    public double? WindBearing { get; init; }
+    public string? WindBearing { get; init; }
 
     [System.Text.Json.Serialization.JsonPropertyNameAttribute("wind_speed")]
     public double? WindSpeed { get; init; }
