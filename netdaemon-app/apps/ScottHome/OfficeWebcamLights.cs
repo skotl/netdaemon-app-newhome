@@ -23,7 +23,7 @@ public class OfficeWebcamLights
 
     private static readonly string[] AffectedLights = new string[]
     {
-        "light.on_air_lamp", "light.studio_light"
+        "light.on_air_lamp", "switch.studio_light_socket_1"
     };
 
     public OfficeWebcamLights(ILogger<OfficeWebcamLights> logger, IHaContext ha, IMqttEntityManager mqtt,
