@@ -31,6 +31,10 @@ public class HeatingBasedOnPresence
         var homeOccupancy = entities.Sensor.HomeOccupancy;
         var thermostat = entities.Climate.Thermostat;
 
+        return;
+        
+        // TODO: Too hot in the summer - can we read the schedule from Hive and set it based on that?
+        
         // When people have moved far from the house
         SubscribeMovedOutsideHeatZone(entities.DeviceTracker.ScottSXr, homeOccupancy, thermostat);
         SubscribeMovedOutsideHeatZone(entities.DeviceTracker.JoSIphone, homeOccupancy, thermostat);

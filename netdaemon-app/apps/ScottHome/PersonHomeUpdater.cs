@@ -3,7 +3,6 @@ using daemonapp.apps.ScottHome.Helpers;
 using HomeAssistantGenerated;
 using NetDaemon.Extensions.MqttEntityManager;
 using NetDaemon.Extensions.Scheduler;
-using NetDaemon.HassModel.Entities;
 
 namespace daemonapp.apps.ScottHome;
 
@@ -20,7 +19,7 @@ public class PersonHomeUpdater
     private readonly IHaContext _ha;
     private readonly ILogger<PersonHomeUpdater> _logger;
     private readonly IMqttEntityManager _mqttEntityManager;
-    private string LastPersonUpdate = "unknown";
+    private string _lastPersonUpdate = "unknown";
 
     public PersonHomeUpdater(IHaContext ha, ILogger<PersonHomeUpdater> logger, INetDaemonScheduler scheduler,
         IMqttEntityManager mqttEntityManager)
@@ -64,13 +63,13 @@ public class PersonHomeUpdater
     {
         _logger.LogDebug("{EntityId} changed state to {NewState}", entityId, newState);
 
-        LastPersonUpdate = entityId;
+        _lastPersonUpdate = entityId;
         
         var peopleStates = _ha.GetAllEntities()
             .Where(e => e.EntityId != entityId && MyHomeEntityList.GetFamily.Contains(e.EntityId))
             .Select(e => e.State)
             .ToList();
-
+        
         peopleStates.Add(newState);
 
         VerifyHomeStateAs(peopleStates.Contains(StateEnums.PersonPresence.home.ToString())
@@ -94,7 +93,7 @@ public class PersonHomeUpdater
             {
                 icon = verifiedState == StateEnums.HomePresence.not_occupied ? NotOccupiedIcon : OccupiedIcon
             });
-            _ha.WriteLogbook(EntityId, $"Home is now {verifiedState}, due to an update from {LastPersonUpdate}");
+            _ha.WriteLogbook(EntityId, $"Home is now {verifiedState}, due to an update from {_lastPersonUpdate}");
         }
     }
 }
