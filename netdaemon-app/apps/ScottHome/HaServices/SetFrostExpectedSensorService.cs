@@ -17,9 +17,11 @@ public class SetFrostExpectedSensorService
     private const string EntityId = "binary_sensor.frost_forecast";
     private const string EntityName = "Frost forecast";
     private const double FrostWarningThreshold = 5.0;
-    private const string WarningSetTrue = "on";
-    private const string WarningSetFalse = "off";
+    private const string WarningSetTrue = "ON";
+    private const string WarningSetFalse = "OFF";
     private const string WarningSetUnknown = "unknown";
+    private const string Available = "online";
+    private const string Unavailable = "offline";
     private readonly IHaContext _ha;
     private readonly ILogger<SetFrostExpectedSensorService> _logger;
     private readonly IMqttEntityManager _mqttEntityManager;
@@ -44,8 +46,11 @@ public class SetFrostExpectedSensorService
         try
         {
             _logger.LogDebug("Creating entity {EntityId}", EntityId);
-            _mqttEntityManager.CreateAsync(EntityId, new EntityCreationOptions(Name: EntityName, DeviceClass:"cold"))
+            _mqttEntityManager.CreateAsync(EntityId, new EntityCreationOptions(
+                    Name: EntityName, DeviceClass:"cold",
+                    PayloadAvailable: Available, PayloadNotAvailable: Unavailable))
                 .GetAwaiter();
+            ClearFrostWarning();
         }
         catch (Exception ex)
         {
@@ -62,12 +67,15 @@ public class SetFrostExpectedSensorService
         if (!forecasts.Any())
         {
             _logger.LogWarning("Failed to fetch weather forecast data");
+            SetUnavailable();
             return;
         }
 
         var willBeFrosty = forecasts.Any(f => f.TempLow <= FrostWarningThreshold);
         var lowestForecast = forecasts.OrderBy(f => f.TempLow).First();
         var clearedForecast = FindClearedForecast(forecasts);
+
+        _logger.LogInformation("Will be frost={WillBe}, Lowest={Lowest}", willBeFrosty, lowestForecast);
 
         switch (willBeFrosty)
         {
@@ -112,11 +120,12 @@ public class SetFrostExpectedSensorService
 
     private void SetFrostWarning(WeatherForecast coldest, WeatherForecast? clearingBy)
     {
+        SetAvailable();
         _mqttEntityManager.SetStateAsync(EntityId, WarningSetTrue).GetAwaiter();
         
         _mqttEntityManager.SetAttributesAsync(EntityId, new
         {
-            friendly_name = "Frost forecast", icon = "mdi:snowflake-alert", coldTemp = coldest.TempLow,
+            friendly_name = EntityName, icon = "mdi:snowflake-alert", coldTemp = coldest.TempLow,
             coldDate = coldest.DateTime, clearTemp = clearingBy?.TempLow, clearDate = clearingBy?.DateTime,
             updated = DateTime.UtcNow
         }).GetAwaiter();
@@ -124,12 +133,23 @@ public class SetFrostExpectedSensorService
 
     private void ClearFrostWarning()
     {
+        SetAvailable();
         _mqttEntityManager.SetStateAsync(EntityId, WarningSetFalse).GetAwaiter();
         
         _mqttEntityManager.SetAttributesAsync(EntityId, new
         {
-            friendly_name = "Frost forecast", icon = "mdi:sun-thermometer-outline",
+            friendly_name = EntityName, icon = "mdi:sun-thermometer-outline",
             updated = DateTime.UtcNow
         }).GetAwaiter();
+    }
+
+    private void SetAvailable()
+    {
+        _mqttEntityManager.SetAvailabilityAsync(EntityId, Available).GetAwaiter();
+    }
+
+    private void SetUnavailable()
+    {
+        _mqttEntityManager.SetAvailabilityAsync(EntityId, Unavailable).GetAwaiter();
     }
 }
