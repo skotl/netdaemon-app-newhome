@@ -25,13 +25,15 @@ public class SetFrostExpectedSensorService
     private readonly IHaContext _ha;
     private readonly ILogger<SetFrostExpectedSensorService> _logger;
     private readonly IMqttEntityManager _mqttEntityManager;
+    private readonly IWeatherHelper _weatherHelper;
 
     public SetFrostExpectedSensorService(IHaContext ha, ILogger<SetFrostExpectedSensorService> logger,
-        INetDaemonScheduler scheduler, IMqttEntityManager mqttEntityManager)
+        INetDaemonScheduler scheduler, IMqttEntityManager mqttEntityManager, IWeatherHelper weatherHelper)
     {
         _ha = ha;
         _logger = logger;
         _mqttEntityManager = mqttEntityManager;
+        _weatherHelper = weatherHelper;
 
         _logger.LogInformation("{App} started", nameof(SetFrostExpectedSensorService));
 
@@ -61,8 +63,8 @@ public class SetFrostExpectedSensorService
     private void SetFrostExpected()
     {
         var entities = new Entities(_ha);
-        var currentFrostExpected = _ha.Entity(EntityId).State;
-        var forecasts = WeatherHelper.GetWeatherForecast(entities.Weather.MetOfficeQueensferryEdinburghDaily).ToList();
+        var currentFrostExpected = TranslateState(_ha.Entity(EntityId).State);
+        var forecasts = _weatherHelper.GetWeatherForecast(entities.Weather.MetOfficeQueensferryEdinburghDaily).ToList();
 
         if (!forecasts.Any())
         {
@@ -96,6 +98,21 @@ public class SetFrostExpectedSensorService
             default:
                 throw new InvalidDataException(
                     $"Unhandled state for {nameof(currentFrostExpected)} == {currentFrostExpected}, {nameof(willBeFrosty)} == {willBeFrosty}");
+        }
+    }
+
+    private string TranslateState(string? state)
+    {
+        switch (state?.ToLower())
+        {
+            case "false":
+                case "off":
+                return WarningSetFalse;
+            case "true":
+                case "on":
+                return WarningSetTrue;
+            default:
+                return WarningSetUnknown;
         }
     }
 

@@ -25,6 +25,6 @@ public class WeatherForecast
 
     public override string ToString()
     {
-        return $"{DateTime}: {TempLow}-{Temperature}";
+        return $"{DateTime}: {TempLow}...{Temperature}";
     }
 }

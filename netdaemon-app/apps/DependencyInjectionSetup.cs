@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using daemonapp.apps.ScottHome.Weather;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace daemonapp.apps;
@@ -10,7 +11,7 @@ public static class DependencyInjectionSetup
     {
         return hostBuilder.ConfigureServices((Action<HostBuilderContext, IServiceCollection>) ((context, services) =>
         {
-            
+            services.AddSingleton<IWeatherHelper, WeatherHelper>();
         }));
     }
 }
