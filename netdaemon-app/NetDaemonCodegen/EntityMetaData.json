@@ -675,6 +675,26 @@
           "jsonName": "supported_features",
           "cSharpName": "SupportedFeatures",
           "clrType": "System.Double"
+        },
+        {
+          "jsonName": "coldTemp",
+          "cSharpName": "ColdTemp",
+          "clrType": "System.Double"
+        },
+        {
+          "jsonName": "coldDate",
+          "cSharpName": "ColdDate",
+          "clrType": "System.String"
+        },
+        {
+          "jsonName": "clearTemp",
+          "cSharpName": "ClearTemp",
+          "clrType": "System.Double"
+        },
+        {
+          "jsonName": "clearDate",
+          "cSharpName": "ClearDate",
+          "clrType": "System.String"
         }
       ]
     },
