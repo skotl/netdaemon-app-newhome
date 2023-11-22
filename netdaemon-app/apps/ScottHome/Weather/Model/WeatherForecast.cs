@@ -18,7 +18,7 @@ public class WeatherForecast
     public DateTime? DateTime { get; init; }
     
     [System.Text.Json.Serialization.JsonPropertyNameAttribute("wind_bearing")]
-    public string? WindBearing { get; init; }
+    public double? WindBearing { get; init; }
 
     [System.Text.Json.Serialization.JsonPropertyNameAttribute("wind_speed")]
     public double? WindSpeed { get; init; }

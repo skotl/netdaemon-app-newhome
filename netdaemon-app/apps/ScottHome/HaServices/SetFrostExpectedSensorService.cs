@@ -64,7 +64,7 @@ public class SetFrostExpectedSensorService
     {
         var entities = new Entities(_ha);
         var currentFrostExpected = TranslateState(_ha.Entity(EntityId).State);
-        var forecasts = _weatherHelper.GetWeatherForecast(entities.Weather.MetOfficeQueensferryEdinburghDaily).ToList();
+        var forecasts = _weatherHelper.GetWeatherForecast(entities.Weather.ForecastHome).ToList();
 
         if (!forecasts.Any())
         {

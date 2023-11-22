@@ -1263,6 +1263,41 @@
       "domain": "input_boolean",
       "entities": [
         {
+          "id": "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_ha_services_living_room_lights_service",
+          "friendlyName": "dev_netdaemon_daemonapp_apps_scott_home_ha_services_living_room_lights_service",
+          "cSharpName": "DevNetdaemonDaemonappAppsScottHomeHaServicesLivingRoomLightsService"
+        },
+        {
+          "id": "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_ha_services_mqtt_delete_debug_entities_service",
+          "friendlyName": "dev_netdaemon_daemonapp_apps_scott_home_ha_services_mqtt_delete_debug_entities_service",
+          "cSharpName": "DevNetdaemonDaemonappAppsScottHomeHaServicesMqttDeleteDebugEntitiesService"
+        },
+        {
+          "id": "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_ha_services_set_frost_expected_sensor_service",
+          "friendlyName": "dev_netdaemon_daemonapp_apps_scott_home_ha_services_set_frost_expected_sensor_service",
+          "cSharpName": "DevNetdaemonDaemonappAppsScottHomeHaServicesSetFrostExpectedSensorService"
+        },
+        {
+          "id": "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_ha_services_tides_fetcher_service",
+          "friendlyName": "dev_netdaemon_daemonapp_apps_scott_home_ha_services_tides_fetcher_service",
+          "cSharpName": "DevNetdaemonDaemonappAppsScottHomeHaServicesTidesFetcherService"
+        },
+        {
+          "id": "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_heating_based_on_presence",
+          "friendlyName": "dev_netdaemon_daemonapp_apps_scott_home_heating_based_on_presence",
+          "cSharpName": "DevNetdaemonDaemonappAppsScottHomeHeatingBasedOnPresence"
+        },
+        {
+          "id": "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_office_webcam_lights",
+          "friendlyName": "dev_netdaemon_daemonapp_apps_scott_home_office_webcam_lights",
+          "cSharpName": "DevNetdaemonDaemonappAppsScottHomeOfficeWebcamLights"
+        },
+        {
+          "id": "input_boolean.dev_netdaemon_daemonapp_apps_scott_home_person_home_updater",
+          "friendlyName": "dev_netdaemon_daemonapp_apps_scott_home_person_home_updater",
+          "cSharpName": "DevNetdaemonDaemonappAppsScottHomePersonHomeUpdater"
+        },
+        {
           "id": "input_boolean.frostysense",
           "friendlyName": "FrostySense",
           "cSharpName": "Frostysense"
@@ -1779,11 +1814,6 @@
           "id": "sensor.leith_tides",
           "friendlyName": "Leith Tides",
           "cSharpName": "LeithTides"
-        },
-        {
-          "id": "sensor.queensferry_edinburgh_weather_3_hourly",
-          "friendlyName": "Met Office Queensferry (Edinburgh) Weather 3-hourly",
-          "cSharpName": "QueensferryEdinburghWeather3Hourly"
         },
         {
           "id": "sensor.scott_s_14_activity",
@@ -2439,26 +2469,6 @@
           "cSharpName": "PlusnetHubTwoUploadSpeed"
         },
         {
-          "id": "sensor.queensferry_edinburgh_probability_of_precipitation_3_hourly",
-          "friendlyName": "Met Office Queensferry (Edinburgh) Probability of precipitation 3-hourly",
-          "cSharpName": "QueensferryEdinburghProbabilityOfPrecipitation3Hourly"
-        },
-        {
-          "id": "sensor.queensferry_edinburgh_temperature_3_hourly",
-          "friendlyName": "Met Office Queensferry (Edinburgh) Temperature 3-hourly",
-          "cSharpName": "QueensferryEdinburghTemperature3Hourly"
-        },
-        {
-          "id": "sensor.queensferry_edinburgh_uv_index_3_hourly",
-          "friendlyName": "Met Office Queensferry (Edinburgh) UV index 3-hourly",
-          "cSharpName": "QueensferryEdinburghUvIndex3Hourly"
-        },
-        {
-          "id": "sensor.queensferry_edinburgh_wind_speed_3_hourly",
-          "friendlyName": "Met Office Queensferry (Edinburgh) Wind speed 3-hourly",
-          "cSharpName": "QueensferryEdinburghWindSpeed3Hourly"
-        },
-        {
           "id": "sensor.scott_office_battery_level",
           "friendlyName": "Blinds battery level",
           "cSharpName": "ScottOfficeBatteryLevel"
@@ -3037,14 +3047,9 @@
       "domain": "weather",
       "entities": [
         {
-          "id": "weather.met_office_queensferry_edinburgh_3_hourly",
-          "friendlyName": "Met Office Queensferry (Edinburgh) 3-Hourly",
-          "cSharpName": "MetOfficeQueensferryEdinburgh3Hourly"
-        },
-        {
-          "id": "weather.met_office_queensferry_edinburgh_daily",
-          "friendlyName": "Met Office Queensferry (Edinburgh) Daily",
-          "cSharpName": "MetOfficeQueensferryEdinburghDaily"
+          "id": "weather.forecast_home",
+          "friendlyName": "Forecast Home",
+          "cSharpName": "ForecastHome"
         }
       ],
       "attributes": [
@@ -3071,7 +3076,7 @@
         {
           "jsonName": "wind_bearing",
           "cSharpName": "WindBearing",
-          "clrType": "System.String"
+          "clrType": "System.Object"
         },
         {
           "jsonName": "wind_speed",
@@ -3111,6 +3116,21 @@
         {
           "jsonName": "supported_features",
           "cSharpName": "SupportedFeatures",
+          "clrType": "System.Double"
+        },
+        {
+          "jsonName": "dew_point",
+          "cSharpName": "DewPoint",
+          "clrType": "System.Double"
+        },
+        {
+          "jsonName": "cloud_coverage",
+          "cSharpName": "CloudCoverage",
+          "clrType": "System.Double"
+        },
+        {
+          "jsonName": "pressure",
+          "cSharpName": "Pressure",
           "clrType": "System.Double"
         }
       ]
