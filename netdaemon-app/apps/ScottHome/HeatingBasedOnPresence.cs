@@ -36,14 +36,14 @@ public class HeatingBasedOnPresence
         // TODO: Too hot in the summer - can we read the schedule from Hive and set it based on that?
         
         // When people have moved far from the house
-        SubscribeMovedOutsideHeatZone(entities.DeviceTracker.ScottSXr, homeOccupancy, thermostat);
-        SubscribeMovedOutsideHeatZone(entities.DeviceTracker.JoSIphone, homeOccupancy, thermostat);
-        SubscribeMovedOutsideHeatZone(entities.DeviceTracker.TheosIphone6s, homeOccupancy, thermostat);
+        SubscribeMovedOutsideHeatZone(entities.DeviceTracker.ScottPhone, homeOccupancy, thermostat);
+        SubscribeMovedOutsideHeatZone(entities.DeviceTracker.JoPhone, homeOccupancy, thermostat);
+        SubscribeMovedOutsideHeatZone(entities.DeviceTracker.TheoPhone, homeOccupancy, thermostat);
 
         // When people are moving closer to the house
-        SubscribeMovedInsideHeatZone(entities.DeviceTracker.ScottSXr, homeOccupancy, thermostat);
-        SubscribeMovedInsideHeatZone(entities.DeviceTracker.JoSIphone, homeOccupancy, thermostat);
-        SubscribeMovedInsideHeatZone(entities.DeviceTracker.TheosIphone6s, homeOccupancy, thermostat);
+        SubscribeMovedInsideHeatZone(entities.DeviceTracker.ScottPhone, homeOccupancy, thermostat);
+        SubscribeMovedInsideHeatZone(entities.DeviceTracker.JoPhone, homeOccupancy, thermostat);
+        SubscribeMovedInsideHeatZone(entities.DeviceTracker.TheoPhone, homeOccupancy, thermostat);
     }
 
     private void SubscribeMovedOutsideHeatZone(DeviceTrackerEntity trackerEntity, SensorEntity homeOccupancy,

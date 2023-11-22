@@ -5,6 +5,7 @@ using NetDaemon.HassModel.Entities;
 
 namespace daemonapp.apps.ScottHome;
 
+/*
 /// <summary>
 /// When the home status changes, check whether the front door needs to be locked or unlocked and do so if needed
 /// </summary>
@@ -59,4 +60,4 @@ public class FrontDoorLocker
                     $"Unexpected state for current home status = {currentHomeStatus}, current lock status = {currentLockStatus}");
         }
     }
-}
+}*/
