@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="b7a95cf1-8de2-4f8c-9fa0-3708b21c360b" name="homeassistant.local">
-        <fileTransfer rootFolder="/root/config/netdaemon3" accessType="SFTP" host="homeassistant.local" port="22" sshConfigId="74b8853f-678b-4bc9-97fb-2124f7978d80" sshConfig="root@homeassistant.local:22 password">
+        <fileTransfer rootFolder="/root/config/netdaemon4" accessType="SFTP" host="homeassistant.local" port="22" sshConfigId="74b8853f-678b-4bc9-97fb-2124f7978d80" sshConfig="root@homeassistant.local:22 password">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
