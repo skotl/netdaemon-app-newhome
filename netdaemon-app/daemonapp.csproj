@@ -28,7 +28,6 @@
     <PackageReference Include="JoySoftware.NetDaemon.Extensions.Scheduling" Version="23.44.1" />
     <PackageReference Include="JoySoftware.NetDaemon.HassModel.Integration" Version="23.44.1" />
     <PackageReference Include="JoySoftware.NetDaemon.Runtime" Version="23.44.1" />
-    <PackageReference Include="Kwolo.MaseratiConnect" Version="1.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
     <PackageReference Include="MQTTnet" Version="4.3.1.873" />
     <PackageReference Include="MQTTnet.Extensions.ManagedClient" Version="4.3.1.873" />

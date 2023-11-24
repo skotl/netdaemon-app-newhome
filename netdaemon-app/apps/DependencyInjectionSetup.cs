@@ -1,6 +1,4 @@
-﻿using daemonapp.apps.Maserati;
-using daemonapp.apps.ScottHome.Weather;
-using Kwolo.MaseratiConnect;
+﻿using daemonapp.apps.ScottHome.Weather;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -13,9 +11,7 @@ public static class DependencyInjectionSetup
     {
         return hostBuilder.ConfigureServices((Action<HostBuilderContext, IServiceCollection>) ((context, services) =>
         {
-            services.UseMaseratiConnect();
             services.AddSingleton<IWeatherHelper, WeatherHelper>();
-            services.AddSingleton<IMaseratiConnect, MaseratiConnect>();
         }));
     }
 }
