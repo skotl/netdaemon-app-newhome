@@ -4,7 +4,6 @@ using daemonapp.apps;
 using HomeAssistantGenerated.Logging;
 using NetDaemon.Extensions.MqttEntityManager;
 using NetDaemon.Extensions.Scheduler;
-using NetDaemon.Extensions.Tts;
 using NetDaemon.Runtime;
 
 #pragma warning disable CA1812
@@ -17,7 +16,6 @@ try
         .UseNetDaemonAppSettings()
         .UseCustomLogging()
         .UseNetDaemonRuntime()
-        .UseNetDaemonTextToSpeech()
         .UseNetDaemonMqttEntityManagement()
         .UseScottServices()
         .ConfigureServices((_, services) =>
